@@ -24,7 +24,7 @@ export default function AboutPage() {
     return (
         <div className="min-h-screen">
             {/* Hero Banner */}
-            <div className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden">
+            <div className="relative h-[400px] md:h-[200px] lg:h-[300px]  hidden lg:block flex items-center justify-center overflow-hidden">
                 <Image
                     src="/images/about-us-banner.jpg"
                     alt="About Us Banner"
@@ -32,15 +32,8 @@ export default function AboutPage() {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-black/50"></div>
-                <div className="relative z-10 text-center px-6">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 uppercase">
-                        ABOUT <span className="text-yellow-400">US</span>
-                    </h1>
-                    <p className="text-lg md:text-xl text-white max-w-2xl mx-auto">
-                        Building Digital Excellence Since Day One
-                    </p>
-                </div>
+
+
             </div>
 
             {/* Main Content */}
