@@ -28,14 +28,15 @@ export default function Navbar() {
         { name: "Portfolio", href: "/portfolio" },
         { name: "Projects", href: "/projects" },
         { name: "Pricing", href: "/pricing" },
+        { name: "Blogs", href: "/blog" },
         { name: "About Us", href: "/about" },
     ];
 
     return (
         <nav
             className={`fixed w-full z-50 transition-all duration-300 ${scrolled
-                ? "bg-white/90 backdrop-blur-md shadow-lg py-3"
-                : "bg-transparent py-5"
+                ? "bg-white lg:bg-white/90 lg:backdrop-blur-md shadow-lg py-3"
+                : "bg-white lg:bg-transparent py-5"
                 }`}
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
