@@ -187,7 +187,7 @@ export default function PortfolioPage() {
         : projects.filter(project => project.category === selectedCategory);
 
     return (
-        <div className="min-h-screen bg-[#0a0a0b] text-white selection:bg-yellow-500 selection:text-black">
+        <div className="min-h-screen bg-white text-slate-900 selection:bg-yellow-500 selection:text-black">
             {/* SEO Hero Section */}
             <section className="relative h-[85vh] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
@@ -198,21 +198,21 @@ export default function PortfolioPage() {
                         className="object-cover opacity-60 scale-105"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0b]/80 to-[#0a0a0b]"></div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0b] via-transparent to-[#0a0a0b]"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-white"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white"></div>
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="max-w-5xl">
-                        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
-                            <span className="flex h-2 w-2 rounded-full bg-yellow-500 animate-pulse"></span>
-                            <span className="text-xs uppercase tracking-[0.2em] font-bold text-gray-400">Award Winning Digital Agency</span>
+                        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-slate-100 border border-black backdrop-blur-md mb-8">
+                            <span className="flex h-2 w-2 rounded-full bg-black animate-pulse"></span>
+                            <span className="text-xs uppercase tracking-[0.2em] font-bold text-black">Award Winning Digital Agency</span>
                         </div>
                         <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
                             CRAFTING <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif">DIGITAL</span><br />
                             EXCELLENCE.
                         </h1>
-                        <p className="text-xl md:text-2xl text-gray-400 leading-relaxed mb-12 max-w-3xl">
+                        <p className="text-xl md:text-2xl text-black leading-relaxed mb-12 max-w-3xl">
                             We bridge the gap between imagination and reality. Our portfolio represents the pinnacle of web development,
                             SEO strategy, and conversion-focused design.
                         </p>
@@ -220,7 +220,7 @@ export default function PortfolioPage() {
                             <a href="#work" className="px-10 py-5 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-black uppercase text-sm tracking-widest rounded-full hover:scale-105 transition-all duration-500 shadow-[0_0_30px_rgba(234,179,8,0.3)]">
                                 View Projects
                             </a>
-                            <a href="/contact" className="px-10 py-5 bg-white/5 hover:bg-white/10 text-white border border-white/10 font-black uppercase text-sm tracking-widest rounded-full transition-all duration-500">
+                            <a href="/contact" className="px-10 py-5 bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-200 font-black uppercase text-sm tracking-widest rounded-full transition-all duration-500">
                                 Contact Experts
                             </a>
                         </div>
@@ -235,7 +235,7 @@ export default function PortfolioPage() {
             </section>
 
             {/* Statistics / Value Prop */}
-            <section className="py-24 border-y border-white/5 bg-white/2">
+            <section className="py-24 border-y border-slate-100 bg-slate-50">
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
                         {[
@@ -245,9 +245,9 @@ export default function PortfolioPage() {
                             { val: "98%", label: "ROI Satisfaction", sub: "Quality Guaranteed" }
                         ].map((stat, i) => (
                             <div key={i} className="flex flex-col gap-2">
-                                <span className="text-4xl md:text-6xl font-black text-white">{stat.val}</span>
+                                <span className="text-4xl md:text-6xl font-black text-slate-900">{stat.val}</span>
                                 <span className="text-sm uppercase tracking-widest font-bold text-yellow-500">{stat.label}</span>
-                                <span className="text-xs text-gray-600 italic">{stat.sub}</span>
+                                <span className="text-xs text-slate-400 italic">{stat.sub}</span>
                             </div>
                         ))}
                     </div>
@@ -255,7 +255,7 @@ export default function PortfolioPage() {
             </section>
 
             {/* Portfolio Navigation */}
-            <section id="work" className="sticky top-0 z-40 py-8 bg-[#0a0a0b]/80 backdrop-blur-xl border-b border-white/5">
+            <section id="work" className="sticky top-0 z-40 py-8 bg-white/80 backdrop-blur-xl border-b border-slate-200">
                 <div className="container mx-auto px-6">
                     <div className="flex flex-wrap items-center justify-center gap-4">
                         {categories.map((cat) => (
@@ -264,7 +264,7 @@ export default function PortfolioPage() {
                                 onClick={() => setSelectedCategory(cat.id)}
                                 className={`flex items-center gap-3 px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-500 ${selectedCategory === cat.id
                                     ? 'bg-yellow-500 text-black shadow-[0_0_20px_rgba(234,179,8,0.4)]'
-                                    : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10'}`}
+                                    : 'bg-slate-100 text-slate-500 hover:text-slate-900 hover:bg-slate-200'}`}
                             >
                                 {cat.icon}
                                 {cat.name}
@@ -285,7 +285,7 @@ export default function PortfolioPage() {
                                 onClick={() => setLightboxImage(proj.image)}
                             >
                                 {/* Premium Image Container */}
-                                <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-white/5 border border-white/10">
+                                <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-slate-100 border border-slate-200">
                                     <Image
                                         src={proj.image}
                                         alt={proj.title}
@@ -295,7 +295,7 @@ export default function PortfolioPage() {
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
 
                                     {/* Project Category Tag */}
-                                    <div className="absolute top-6 left-6 px-4 py-2 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full">
+                                    <div className="absolute top-6 left-6 px-4 py-2 bg-white/60 backdrop-blur-md border border-slate-200 rounded-full">
                                         <span className="text-[10px] font-black uppercase tracking-widest text-yellow-500">{proj.category}</span>
                                     </div>
 
@@ -312,12 +312,12 @@ export default function PortfolioPage() {
                                     <h3 className="text-2xl font-black mb-3 group-hover:text-yellow-500 transition-colors duration-300">
                                         {proj.title}
                                     </h3>
-                                    <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3">
+                                    <p className="text-slate-600 text-sm leading-relaxed mb-6 line-clamp-3">
                                         {proj.description}
                                     </p>
                                     <div className="flex flex-wrap gap-2">
                                         {proj.tags.map((tag, i) => (
-                                            <span key={i} className="text-[10px] uppercase tracking-widest font-bold text-gray-400 border border-white/10 px-3 py-1 rounded-full">
+                                            <span key={i} className="text-[10px] uppercase tracking-widest font-bold text-slate-500 border border-slate-200 px-3 py-1 rounded-full">
                                                 {tag}
                                             </span>
                                         ))}
@@ -330,24 +330,24 @@ export default function PortfolioPage() {
             </section>
 
             {/* Bottom SEO Call to Action */}
-            <section className="py-32 relative overflow-hidden bg-white/2 border-t border-white/5">
+            <section className="py-32 relative overflow-hidden bg-slate-50 border-t border-slate-100">
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <h2 className="text-4xl md:text-7xl font-black mb-12 tracking-tighter uppercase leading-[0.9]">
                             HAVE A PROJECT <span className="italic font-serif text-yellow-500">IN MIND?</span>
                         </h2>
-                        <p className="text-xl text-gray-400 mb-16 max-w-2xl mx-auto">
+                        <p className="text-xl text-slate-600 mb-16 max-w-2xl mx-auto">
                             Join over 350+ worldwide brands that trust us to bring their digital vision to life.
                             Let's discuss how we can skyrocket your business ROI today.
                         </p>
                         <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
-                            <a href="/contact" className="group px-12 py-6 bg-white text-black font-black uppercase tracking-[0.2em] rounded-full hover:bg-yellow-500 transition-all duration-500 flex items-center gap-4">
+                            <a href="/contact" className="group px-12 py-6 bg-slate-900 text-white font-black uppercase tracking-[0.2em] rounded-full hover:bg-yellow-500 transition-all duration-500 flex items-center gap-4">
                                 Project Consultation
                                 <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                             </a>
                             <div className="flex flex-col items-start gap-1">
-                                <span className="text-[10px] uppercase tracking-widest text-gray-600 font-black">Quick Call Assistance</span>
-                                <a href="tel:17867538470" className="text-2xl font-black text-white hover:text-yellow-500 transition-colors tracking-tight">
+                                <span className="text-[10px] uppercase tracking-widest text-slate-400 font-black">Quick Call Assistance</span>
+                                <a href="tel:17867538470" className="text-2xl font-black text-slate-900 hover:text-yellow-500 transition-colors tracking-tight">
                                     1-786-753-8470
                                 </a>
                             </div>
@@ -359,13 +359,13 @@ export default function PortfolioPage() {
             {/* Premium Lightbox Modal */}
             {lightboxImage && (
                 <div
-                    className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-8 transition-all duration-500 animate-in fade-in"
+                    className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-2xl flex items-center justify-center p-8 transition-all duration-500 animate-in fade-in"
                     onClick={() => setLightboxImage(null)}
                 >
-                    <button className="absolute top-10 right-10 w-16 h-16 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center border border-white/10 transition-all">
+                    <button className="absolute top-10 right-10 w-16 h-16 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center border border-slate-200 transition-all text-slate-900">
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
-                    <div className="relative w-full h-full max-w-7xl max-h-[85vh] rounded-[3rem] overflow-hidden border border-white/10 bg-white/5 animate-in zoom-in duration-500">
+                    <div className="relative w-full h-full max-w-7xl max-h-[85vh] rounded-[3rem] overflow-hidden border border-slate-200 bg-slate-50 animate-in zoom-in duration-500">
                         <Image
                             src={lightboxImage}
                             alt="Full View Project"

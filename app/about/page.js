@@ -15,19 +15,31 @@ export default function AboutPage() {
         {
             name: "Digital Engineering",
             description: "High-performance web architecture, mobile ecosystem development, and custom internal software logic.",
-            icon: "🌐",
+            icon: (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+            ),
             color: "bg-orange-50 text-orange-600"
         },
         {
             name: "Full-Scale Marketing",
             description: "Internet marketing, brand positioning, and product growth strategies for global markets.",
-            icon: "🚀",
+            icon: (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            ),
             color: "bg-blue-50 text-blue-600"
         },
         {
             name: "Cloud Infrastructure",
             description: "Redundant hosting nodes, domain management, and mission-critical server stability at scale.",
-            icon: "☁️",
+            icon: (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                </svg>
+            ),
             color: "bg-purple-50 text-purple-600"
         }
     ];
@@ -40,7 +52,7 @@ export default function AboutPage() {
         { img: "/images/about-img6.jpg", name: "Project Manager" },
         { img: "/images/about-img7.jpg", name: "Cloud Engineer" },
         { img: "/images/about-img8.jpg", name: "DevOps Lead" },
-        { img: "/images/about-img9.jpg", name: "Creative Director" }
+
     ];
 
     return (
@@ -55,21 +67,22 @@ export default function AboutPage() {
                         className="object-cover opacity-60 scale-105"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0b]/80 to-[#0a0a0b]"></div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0b] via-transparent to-[#0a0a0b]"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-white"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white"></div>
+
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10 text-center lg:text-left">
                     <div className="max-w-6xl">
-                        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 backdrop-blur-md mb-8">
-                            <span className="flex h-2 w-2 rounded-full bg-yellow-500 animate-pulse"></span>
-                            <span className="text-xs uppercase tracking-[0.2em] font-bold text-yellow-500">Global Digital Solutions Provider</span>
+                        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-yellow-400 border border-yellow-500/20 backdrop-blur-md mb-8">
+                            <span className="flex h-2 w-2 rounded-full bg-black animate-pulse"></span>
+                            <span className="text-xs uppercase tracking-[0.2em] font-bold text-black">Global Digital Solutions Provider</span>
                         </div>
-                        <h1 className="text-4xl md:text-8xl font-black mb-8 leading-[1] lg:leading-[0.8] tracking-tighter uppercase whitespace-pre-line text-white">
+                        <h1 className="text-4xl md:text-8xl font-black mb-8 leading-[1] lg:leading-[0.8] tracking-tighter uppercase whitespace-pre-line text-black">
                             GET TO KNOW ABOUT US & <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase block mt-2">OUR THINKING.</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto lg:mx-0">
+                        <p className="text-lg md:text-xl text-black leading-relaxed max-w-4xl mx-auto lg:mx-0">
                             We bridge the gap between complex engineering and user-centric design, providing the infrastructure
                             that powers high-growth companies worldwide.
                         </p>
@@ -121,11 +134,19 @@ export default function AboutPage() {
                             </div>
                             <div className="grid grid-cols-2 gap-6 pt-6">
                                 <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-                                    <span className="block text-3xl mb-2">💎</span>
+                                    <div className="text-orange-600 mb-2">
+                                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                                        </svg>
+                                    </div>
                                     <h4 className="font-bold uppercase text-[10px] tracking-widest text-gray-500">Lowest Price Guarantee</h4>
                                 </div>
                                 <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-                                    <span className="block text-3xl mb-2">🔒</span>
+                                    <div className="text-orange-600 mb-2">
+                                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-11V7a4 4 0 00-8 0v4h8z" />
+                                        </svg>
+                                    </div>
                                     <h4 className="font-bold uppercase text-[10px] tracking-widest text-gray-500">Simplified Logistics</h4>
                                 </div>
                             </div>
@@ -153,7 +174,11 @@ export default function AboutPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div className="p-12 rounded-[3.5rem] bg-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
-                            <div className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center text-black text-3xl mb-10 shadow-lg">🌍</div>
+                            <div className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center text-black mb-10 shadow-lg">
+                                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                </svg>
+                            </div>
                             <h3 className="text-2xl font-black mb-6 uppercase tracking-tight text-gray-900">Global Connectivity</h3>
                             <p className="text-gray-500 leading-relaxed">
                                 Our mission is to create an environment that helps companies to capitalize on the diversity of its people
@@ -161,7 +186,11 @@ export default function AboutPage() {
                             </p>
                         </div>
                         <div className="p-12 rounded-[3.5rem] bg-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
-                            <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center text-white text-3xl mb-10 shadow-lg">🔥</div>
+                            <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center text-white mb-10 shadow-lg">
+                                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.5-7 3 3 3.5 1.3 2.1 5m1.3.6a4 4 0 11-8 1.3" />
+                                </svg>
+                            </div>
                             <h3 className="text-2xl font-black mb-6 uppercase tracking-tight text-gray-900">Passion & Capabilities</h3>
                             <p className="text-gray-500 leading-relaxed">
                                 With thousands of successful projects delivered across the world, we believe in giving life to your
@@ -202,12 +231,20 @@ export default function AboutPage() {
                                     and customer service.
                                 </p>
                                 <div className="flex flex-wrap gap-4">
-                                    <div className="flex items-center gap-3 px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl group hover:shadow-md transition-all">
-                                        <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 font-black">QA</div>
+                                    <div className="flex items-center gap-4 px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl group hover:shadow-md transition-all">
+                                        <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600">
+                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                            </svg>
+                                        </div>
                                         <span className="text-xs uppercase font-bold tracking-widest text-gray-500">Premier Quality Team</span>
                                     </div>
-                                    <div className="flex items-center gap-3 px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl group hover:shadow-md transition-all">
-                                        <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-600 font-black">RT</div>
+                                    <div className="flex items-center gap-4 px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl group hover:shadow-md transition-all">
+                                        <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-600">
+                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                            </svg>
+                                        </div>
                                         <span className="text-xs uppercase font-bold tracking-widest text-gray-500">Repeat Trust Model</span>
                                     </div>
                                 </div>
@@ -281,7 +318,10 @@ export default function AboutPage() {
                                 <svg className="w-6 h-6 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                             </Link>
                             <a href="tel:17867538470" className="group px-12 py-8 bg-white text-gray-900 border border-gray-200 font-black uppercase tracking-[0.2em] rounded-full hover:bg-gray-50 transition-all duration-500 flex items-center gap-6 shadow-md">
-                                Direct Assistance 📞
+                                Direct Assistance
+                                <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5.5A2.5 2.5 0 015.5 3h1.8a1 1 0 01.9.6l.8 2.5a1 1 0 01-.6 1.2l-1.5.8a11 11 0 005 5l.8-1.5a1 1 0 011.2-.6l2.5.8a1 1 0 01.6.9v1.8a2.5 2.5 0 01-2.5 2.5h-1C8.5 21 3 15.5 3 8.35v-2.85z" />
+                                </svg>
                             </a>
                         </div>
                     </div>

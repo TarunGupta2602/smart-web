@@ -73,8 +73,9 @@ export default function HeroSlider() {
                     className="object-cover opacity-60 scale-105"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0b]/80 to-[#0a0a0b]"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0b] via-transparent to-[#0a0a0b]"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-white"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white"></div>
+
             </div>
 
             {/* Slides Container */}
@@ -88,17 +89,17 @@ export default function HeroSlider() {
 
                             {/* Text Section */}
                             <div className="order-2 lg:order-1 text-center lg:text-left">
-                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 lg:mb-8">
+                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-black backdrop-blur-md mb-6 lg:mb-8">
                                     <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-500 animate-pulse"></span>
-                                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">Premium Web Solutions</span>
+                                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black">Premium Web Solutions</span>
                                 </div>
 
-                                <h2 className="text-3xl md:text-6xl lg:text-7xl font-black text-white mb-4 lg:mb-6 leading-[1] md:leading-[0.9] tracking-tighter uppercase">
+                                <h2 className="text-3xl md:text-6xl lg:text-7xl font-black text-black mb-4 lg:mb-6 leading-[1] md:leading-[0.9] tracking-tighter uppercase">
                                     {slide.content.mainHeadline} <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase block mt-1 lg:mt-2">{slide.content.highlightedWord}</span>
                                     <span className="block mt-1 lg:mt-2">{slide.content.subHeadline}</span>
                                 </h2>
 
-                                <p className="text-sm md:text-xl text-gray-400 leading-relaxed mb-8 lg:mb-10 max-w-xl mx-auto lg:mx-0">
+                                <p className="text-sm md:text-xl text-black leading-relaxed mb-8 lg:mb-10 max-w-xl mx-auto lg:mx-0">
                                     {slide.content.subtitle}
                                 </p>
 
@@ -111,7 +112,7 @@ export default function HeroSlider() {
                                     </Link>
                                     <a
                                         href="tel:17867538470"
-                                        className="px-6 md:px-8 py-3 md:py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 font-black uppercase text-xs md:text-sm tracking-widest rounded-full transition-all duration-500"
+                                        className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-black uppercase text-xs md:text-sm tracking-widest rounded-full hover:scale-105 transition-all duration-500 shadow-[0_0_30px_rgba(234,179,8,0.3)]"
                                     >
                                         Call Us Now
                                     </a>
