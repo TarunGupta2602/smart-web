@@ -2,20 +2,20 @@ import Link from "next/link";
 
 export default function PricingIndustriesSection() {
     const industries = [
-        "AGRICULTURE & OTHER RELATED INDUSTRY PRODUCTS",
-        "AVIATION AND AIRLINE INDUSTRY SERVICES",
-        "BANKING INDUSTRY AND LOANS & FINANCE",
-        "SCHOOL, COLLEGES, COACHING, TRAINING CENTER",
-        "E-COMMERCE, ONLINE RETAIL, ONLINE SHOPPING",
-        "REAL ESTATE, CONSTRUCTION, CONTRACTORS",
-        "ALL KIND OF SPORTS GOODS & SERVICES",
-        "EVENT MANAGEMENT INDUSTRY",
-        "SYSTEM GAMING & ONLINE GAMING BUSINESS",
-        "DOCTOR, MEDICAL, HOSPITAL, DISPENSARY, MEDICINE",
-        "LEGAL CONSULTANT, LAWYER, ADVOCATE",
-        "ENTERTAINMENT, BROADCAST, FILMS",
-        "TRANSPORT, MOVERS, CAR RENTAL, TAXI",
-        "OTHER SMALL HOME BUSINESS & INDIVIDUAL WEBSITE"
+        { name: "AGRICULTURE & RELATED INDUSTRY", icon: "🌾" },
+        { name: "AVIATION AND AIRLINE SERVICES", icon: "✈️" },
+        { name: "BANKING, LOANS & FINANCE", icon: "🏦" },
+        { name: "EDUCATION & TRAINING CENTER", icon: "🎓" },
+        { name: "E-COMMERCE & ONLINE RETAIL", icon: "🛒" },
+        { name: "REAL ESTATE & CONSTRUCTION", icon: "🏗️" },
+        { name: "SPORTS GOODS & SERVICES", icon: "⚽" },
+        { name: "EVENT MANAGEMENT", icon: "🎉" },
+        { name: "GAMING & ONLINE GAMING", icon: "🎮" },
+        { name: "MEDICAL & HEALTHCARE", icon: "⚕️" },
+        { name: "LEGAL CONSULTANT & LAWYER", icon: "⚖️" },
+        { name: "ENTERTAINMENT & BROADCAST", icon: "🎬" },
+        { name: "TRANSPORT & CAR RENTAL", icon: "🚗" },
+        { name: "SMALL BUSINESS & INDIVIDUAL", icon: "💼" }
     ];
 
     return (
@@ -58,43 +58,31 @@ export default function PricingIndustriesSection() {
                 </div>
 
                 {/* Industry Expertise Section */}
-                <div className="mt-20 bg-white rounded-3xl shadow-xl p-8 md:p-12 lg:p-16">
+                <div className="mt-20">
                     <div className="text-center mb-12">
                         <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-6 uppercase">
-                            OUR INDUSTRY EXPERTISE
+                            OUR INDUSTRY <span className="text-yellow-500">EXPERTISE</span>
                         </h3>
                         <p className="text-base md:text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed mb-4">
                             As experts in the various industries we service, we have designed, developed, integrated, and implemented
                             a wide variety of software solutions for niche markets.
                         </p>
-                        <div className="inline-block bg-yellow-100 px-6 py-3 rounded-lg mt-4">
-                            <p className="text-sm md:text-base text-gray-800 font-semibold uppercase">
-                                ✓ WE HAVE SERVED THESE INDUSTRIES SO FAR, AND WILL CONTINUE TO SERVE MORE
-                            </p>
-                        </div>
+                        <div className="h-1 w-24 bg-yellow-500 rounded-full mx-auto mt-6"></div>
                     </div>
 
-                    {/* Industries List - Clean Text-Based Design */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+                    {/* Industries Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         {industries.map((industry, index) => (
                             <div
                                 key={index}
-                                className="group relative bg-gradient-to-br from-gray-50 to-white hover:from-yellow-50 hover:to-yellow-100 p-5 md:p-6 rounded-xl border-2 border-gray-200 hover:border-yellow-400 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                                className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-gray-100 hover:border-yellow-400"
                             >
-                                {/* Number Badge */}
-                                <div className="absolute -top-3 -left-3 w-8 h-8 bg-yellow-400 text-gray-900 rounded-full flex items-center justify-center font-bold text-sm shadow-md">
-                                    {index + 1}
-                                </div>
-
-                                {/* Checkmark Icon */}
-                                <div className="flex items-start gap-3">
-                                    <div className="flex-shrink-0 mt-1">
-                                        <svg className="w-5 h-5 text-yellow-500 group-hover:scale-125 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                        </svg>
+                                <div className="text-center">
+                                    <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                                        {industry.icon}
                                     </div>
-                                    <h4 className="text-sm md:text-base font-bold text-gray-800 leading-tight uppercase flex-1">
-                                        {industry}
+                                    <h4 className="text-sm md:text-base font-bold text-gray-800 leading-tight uppercase">
+                                        {industry.name}
                                     </h4>
                                 </div>
                             </div>
@@ -102,13 +90,16 @@ export default function PricingIndustriesSection() {
                     </div>
 
                     {/* Bottom CTA */}
-                    <div className="mt-12 text-center">
-                        <p className="text-lg md:text-xl text-gray-700 mb-6">
-                            Don't see your industry? <span className="font-bold">We serve ALL industries!</span>
+                    <div className="mt-16 text-center bg-gradient-to-r from-yellow-50 to-orange-50 p-8 md:p-12 rounded-3xl border-2 border-yellow-200">
+                        <p className="text-xl md:text-2xl text-gray-800 mb-6 font-bold">
+                            Don't see your industry? <span className="text-yellow-600">We serve ALL industries!</span>
+                        </p>
+                        <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                            Every business is unique. Contact us to discuss how we can create the perfect solution for your specific industry needs.
                         </p>
                         <Link
                             href="/contact"
-                            className="inline-block bg-gray-900 text-white px-10 py-4 rounded-full font-bold text-base uppercase hover:bg-gray-800 transition-colors shadow-lg"
+                            className="inline-block bg-gray-900 text-white px-10 py-4 rounded-full font-bold text-base uppercase hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                         >
                             Contact Us For Your Industry
                         </Link>
