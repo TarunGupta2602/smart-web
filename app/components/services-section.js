@@ -29,22 +29,22 @@ export default function ServicesSection() {
         {
             title: "SHOPPING STORE WEBSITES",
             description: "We are experts in shopping store websites with full functionality from order system to payments and to shipping. You can have all of your products listed on website and your target customers can purchase them online. It applies to all industries and professions",
-            icon: "/images/icon11.png"
+            icon: "/images/p2.jpg"
         },
         {
             title: "E-COMMERCE CATALOG WEBSITES",
             description: "We have e-commerce technology to develop ecommerce catalog website with all product details. You can list your catalog with all necessary details. You select designs as per your business or industry needs & get yourself online",
-            icon: "/images/icon22.jpg"
+            icon: "/images/p3.jpg"
         },
         {
             title: "SMALL BUSINESS & PROFESSION WEBSITES",
             description: "We can make websites as per your business needs. If you are professional or indivisual or small business then we are best for you in terms of Quality & Cost budget. we make websites for all industry and professions be it servies or goods.",
-            icon: "/images/icon33.png"
+            icon: "/images/p4.jpg"
         },
         {
             title: "DIGITAL MARKETING & ANDROID IOS APPS",
             description: "We can also do internet marketing of your business or profession. we can do digital marketing online like running your ads on google or bing or yahoo search engines. We also make android apps or ios apps for business or profession or services.",
-            icon: "/images/icon111.png"
+            icon: "/images/p5.jpg"
         }
     ];
 
@@ -111,34 +111,51 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Detailed Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
                     {detailedServices.map((service, index) => (
                         <div
                             key={index}
-                            className="group bg-white p-8 md:p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-l-4 border-yellow-400 relative overflow-hidden"
+                            className="group relative bg-white rounded-[2.5rem] p-10 shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] transition-all duration-700 hover:-translate-y-3 overflow-hidden border border-gray-100"
                         >
-                            {/* Decorative background element */}
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-50 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                            {/* Decorative Background Elements */}
+                            <div className="absolute -top-24 -right-24 w-64 h-64 bg-yellow-50 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
+                            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-orange-50 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
 
-                            <div className="relative z-10">
-                                {/* Icon */}
-                                <div className="mb-6">
-                                    <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-2xl flex items-center justify-center p-4 shadow-md group-hover:scale-110 transition-transform duration-300">
-                                        <img
-                                            src={service.icon}
-                                            alt={service.title}
-                                            className="w-full h-full object-contain"
-                                        />
+                            <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+                                {/* Enhanced Icon Container */}
+                                <div className="flex-shrink-0">
+                                    <div className="relative w-24 h-24 md:w-32 md:h-32">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                                        <div className="relative w-full h-full bg-white rounded-3xl flex items-center justify-center p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)] group-hover:shadow-[0_20px_40px_rgba(234,179,8,0.2)] group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border border-gray-50">
+                                            <img
+                                                src={service.icon}
+                                                alt={service.title}
+                                                className="w-full h-full object-contain"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
 
-                                {/* Content */}
-                                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 uppercase leading-tight">
-                                    {service.title}
-                                </h3>
-                                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                                    {service.description}
-                                </p>
+                                {/* Content Section */}
+                                <div className="flex-1">
+                                    <div className="mb-4">
+                                        <h3 className="text-2xl md:text-3xl font-black text-gray-900 mb-2 uppercase leading-none tracking-tight group-hover:text-yellow-600 transition-colors duration-300">
+                                            {service.title}
+                                        </h3>
+                                        <div className="h-1.5 w-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full transform origin-left group-hover:scale-x-150 transition-transform duration-500"></div>
+                                    </div>
+                                    <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
+                                        {service.description}
+                                    </p>
+
+                                    {/* Action Button */}
+                                    <div className="mt-8 flex items-center gap-3 text-yellow-600 font-black text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+
+                                        <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     ))}
