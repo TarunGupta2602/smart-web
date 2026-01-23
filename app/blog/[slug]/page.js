@@ -11,7 +11,7 @@ import { breadcrumbList, article, faqPage, stringifySchema } from '@/lib/schema'
 
 async function getBlogBySlug(slug) {
     if (!slug) return null
-    const { data, error } = await supabase.from('blogs').select('*').eq('slug', slug).single()
+    const { data, error } = await supabase.from('blogs_site2').select('*').eq('slug', slug).single()
     if (error) {
         console.error('Error fetching blog:', error)
         return null
