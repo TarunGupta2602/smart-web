@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://www.smartsoftsolutions.org'),
+  metadataBase: new URL('https://smartsoftsolutions.org'),
   title: {
     default: "SmartSoft Solutions | Digital Engineering & Strategic Growth",
     template: "%s | SmartSoft Solutions"

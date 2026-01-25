@@ -5,6 +5,6 @@ export default function robots() {
             allow: '/',
             disallow: ['/private/', '/api/'],
         },
-        sitemap: 'https://www.smartsoftsolutions.org/sitemap.xml',
+        sitemap: 'https://smartsoftsolutions.org/sitemap.xml',
     }
 }

@@ -1,10 +1,10 @@
 import { supabase } from '@/lib/supabaseClient'
 
 export default async function sitemap() {
-    const baseUrl = 'https://www.smartsoftsolutions.org'
+    const baseUrl = 'https://smartsoftsolutions.org'
 
     // Static routes
-    const routes = [
+    const staticRoutes = [
         '',
         '/about',
         '/contact',
@@ -14,27 +14,30 @@ export default async function sitemap() {
         '/blog',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
-        lastModified: new Date().toISOString(),
+        lastModified: new Date().toISOString().split('T')[0],
         changeFrequency: 'weekly',
-        priority: route === '' ? 1 : 0.8,
+        priority: route === '' ? 1.0 : 0.8,
     }))
 
-    // Dynamic blog routes
+    // Dynamic blog routes from Supabase
     try {
-        const { data: blogs } = await supabase
+        const { data: blogs, error } = await supabase
             .from('blogs_site2')
             .select('slug, updated_at, date_posted')
+            .order('date_posted', { ascending: false })
+
+        if (error) throw error
 
         const blogRoutes = (blogs || []).map((blog) => ({
             url: `${baseUrl}/blog/${blog.slug}`,
-            lastModified: blog.updated_at || blog.date_posted || new Date().toISOString(),
+            lastModified: new Date(blog.updated_at || blog.date_posted || new Date()).toISOString().split('T')[0],
             changeFrequency: 'monthly',
             priority: 0.6,
         }))
 
-        return [...routes, ...blogRoutes]
+        return [...staticRoutes, ...blogRoutes]
     } catch (error) {
-        console.error('Sitemap generation error:', error)
-        return routes
+        console.error('Sitemap dynamic fetch failed:', error)
+        return staticRoutes
     }
 }

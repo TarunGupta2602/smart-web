@@ -10,19 +10,19 @@ export const metadata = {
   description: "Transform your business with SmartSoft Solutions. We specialize in digital engineering, high-end web development, and global marketing strategies.",
   keywords: ["Digital Engineering Noida", "Digital Engineering USA", "Web Development Agency", "Strategic Brand Growth", "Software Solutions", "Technical Consulting"],
   alternates: {
-    canonical: 'https://www.smartsoftsolutions.org',
+    canonical: 'https://smartsoftsolutions.org',
   },
   openGraph: {
     title: "SmartSoft Solutions | Engineering Excellence",
     description: "Transform your business with our elite digital engineering and strategic marketing solutions.",
-    url: 'https://www.smartsoftsolutions.org',
+    url: 'https://smartsoftsolutions.org',
     images: [{ url: '/og-image.jpg' }],
   },
 };
 
 export default function Homepage() {
   const orgSchema = organization({
-    logo: '/logo.png', // Assuming logo.png exists in public
+    logo: '/images/logo.png', // Assuming logo.png exists in public
     description: 'SmartSoft Solutions is a leading digital engineering firm and one-stop shop for web development, software solutions, and brand marketing.'
   });
   const siteSchema = webSite({

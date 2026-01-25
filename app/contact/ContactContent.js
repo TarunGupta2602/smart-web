@@ -146,6 +146,10 @@ export default function ContactContent({ contactMethods }) {
                                 <span className="text-xl">📞</span>
                                 Call 1-786-753-8470
                             </a>
+                            <a href="mailto:support@smartsoftsolutions.org" className="group px-12 py-8 bg-white text-slate-900 border border-slate-200 font-black uppercase tracking-[0.2em] rounded-full hover:bg-yellow-500 transition-all duration-500 flex items-center gap-6 shadow-lg">
+                                <span className="text-xl">✉️</span>
+                                Email Us
+                            </a>
                             <a href="https://wa.me/17867538470" className="group px-12 py-8 bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/30 font-black uppercase tracking-[0.2em] rounded-full hover:bg-[#25D366] hover:text-white transition-all duration-500 flex items-center gap-6">
                                 <span className="text-xl">💬</span>
                                 WhatsApp Chat
