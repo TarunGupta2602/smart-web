@@ -1,54 +1,44 @@
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from "@/lib/supabaseClient";
 
 export const dynamic = 'force-dynamic';
-export const revalidate = 0;
 
 export default async function sitemap() {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
     const siteUrl = 'https://www.smartsoftsolutions.org';
-    const now = new Date();
+    const lastModified = new Date().toISOString();
 
-    const staticRoutes = [
-        { url: siteUrl, lastModified: now, changeFrequency: 'daily', priority: 1.0 },
-        { url: `${siteUrl}/about`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-        { url: `${siteUrl}/contact`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-        { url: `${siteUrl}/projects`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-        { url: `${siteUrl}/pricing`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-        { url: `${siteUrl}/portfolio`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-        { url: `${siteUrl}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    // Static pages
+    const staticPages = [
+        { path: '', priority: 1.0, changefreq: 'daily' },
+        { path: 'about', priority: 0.8, changefreq: 'weekly' },
+        { path: 'contact', priority: 0.8, changefreq: 'weekly' },
+        { path: 'projects', priority: 0.8, changefreq: 'weekly' },
+        { path: 'pricing', priority: 0.8, changefreq: 'weekly' },
+        { path: 'portfolio', priority: 0.8, changefreq: 'weekly' },
+        { path: 'blog', priority: 0.8, changefreq: 'weekly' },
     ];
 
-    let blogRoutes = [];
+    const staticUrls = staticPages.map(({ path, priority, changefreq }) => ({
+        url: path === '' ? siteUrl : `${siteUrl}/${path}`,
+        lastmod: lastModified,
+        priority,
+        changefreq,
+    }));
+
+    // Blog detail pages
+    let blogUrls = [];
     try {
-        // Try both possible tables just in case
-        const [res1, res2] = await Promise.all([
-            supabase.from('blogs_site2').select('slug, updated_at, date_posted'),
-            supabase.from('blogs').select('slug, updated_at, date_posted')
-        ]);
-
-        const allBlogs = [...(res1.data || []), ...(res2.data || [])];
-
-        if (allBlogs.length > 0) {
-            blogRoutes = allBlogs.map((blog) => ({
+        const { data, error } = await supabase.from('blogs').select('slug');
+        if (!error && data) {
+            blogUrls = data.map((blog) => ({
                 url: `${siteUrl}/blog/${blog.slug}`,
-                lastModified: new Date(blog.updated_at || blog.date_posted || now),
-                changeFrequency: 'monthly',
+                lastmod: lastModified,
                 priority: 0.7,
+                changefreq: 'weekly',
             }));
         }
-    } catch (error) {
-        console.error('Sitemap fetch error:', error);
+    } catch (err) {
+        console.error('Sitemap generation error:', err);
     }
 
-    // Deduplicate and filter out any invalid blogs
-    const uniqueMap = new Map();
-    [...staticRoutes, ...blogRoutes].forEach(item => {
-        if (item.url && !uniqueMap.has(item.url)) {
-            uniqueMap.set(item.url, item);
-        }
-    });
-
-    return Array.from(uniqueMap.values());
+    return [...staticUrls, ...blogUrls];
 }
