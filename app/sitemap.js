@@ -27,7 +27,7 @@ export default async function sitemap() {
     // Blog detail pages
     let blogUrls = [];
     try {
-        const { data, error } = await supabase.from('blogs').select('slug');
+        const { data, error } = await supabase.from('blogs_site2').select('slug');
         if (!error && data) {
             blogUrls = data.map((blog) => ({
                 url: `${siteUrl}/blog/${blog.slug}`,
