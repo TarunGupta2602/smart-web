@@ -1,49 +1,40 @@
 import { supabase } from "@/lib/supabaseClient";
 
-export const dynamic = 'force-dynamic'; // Ensures fresh generation on each request
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function sitemap() {
     const siteUrl = 'https://www.smartsoftsolutions.org';
-    const lastModified = new Date();
+    const now = new Date();
 
-    // ---------- STATIC PAGES ----------
-    const staticPages = [
-        { path: '', priority: 1.0, changefreq: 'daily' },
-        { path: 'about', priority: 0.8, changefreq: 'weekly' },
-        { path: 'contact', priority: 0.8, changefreq: 'weekly' },
-        { path: 'projects', priority: 0.8, changefreq: 'weekly' },
-        { path: 'pricing', priority: 0.8, changefreq: 'weekly' },
-        { path: 'portfolio', priority: 0.8, changefreq: 'weekly' },
-        { path: 'blog', priority: 0.8, changefreq: 'weekly' },
+    const staticRoutes = [
+        { url: siteUrl, lastModified: now, changeFrequency: 'daily', priority: 1.0 },
+        { url: `${siteUrl}/about`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+        { url: `${siteUrl}/contact`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+        { url: `${siteUrl}/projects`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+        { url: `${siteUrl}/pricing`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+        { url: `${siteUrl}/portfolio`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+        { url: `${siteUrl}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     ];
 
-    const staticUrls = staticPages.map(({ path, priority, changefreq }) => ({
-        url: path === '' ? siteUrl : `${siteUrl}/${path}`,
-        lastModified: lastModified,
-        priority,
-        changeFrequency: changefreq,
-    }));
-
-    // ---------- BLOG DETAIL PAGES ----------
-    let blogUrls = [];
+    let blogRoutes = [];
     try {
-        const { data, error } = await supabase
+        const { data: blogs } = await supabase
             .from('blogs_site2')
-            .select('slug, updated_at, date_posted');
+            .select('slug, updated_at, date_posted')
+            .order('date_posted', { ascending: false });
 
-        if (error) {
-            console.error('Supabase error:', error);
-        } else if (data) {
-            blogUrls = data.map((blog) => ({
+        if (blogs && blogs.length > 0) {
+            blogRoutes = blogs.map((blog) => ({
                 url: `${siteUrl}/blog/${blog.slug}`,
-                lastModified: new Date(blog.updated_at || blog.date_posted || lastModified),
-                priority: 0.7,
+                lastModified: new Date(blog.updated_at || blog.date_posted || now),
                 changeFrequency: 'monthly',
+                priority: 0.7,
             }));
         }
-    } catch (err) {
-        console.error('Sitemap generation error:', err);
+    } catch (error) {
+        console.error('Sitemap blog fetch error:', error);
     }
 
-    return [...staticUrls, ...blogUrls];
+    return [...staticRoutes, ...blogRoutes];
 }
