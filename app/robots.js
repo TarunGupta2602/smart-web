@@ -7,6 +7,6 @@ export default function robots() {
                 disallow: ['/private/', '/api/'],
             },
         ],
-        sitemap: 'https://smartsoftsolutions.org/sitemap.xml',
+        sitemap: 'https://www.smartsoftsolutions.org/sitemap.xml',
     }
 }
