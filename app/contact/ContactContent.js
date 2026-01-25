@@ -31,8 +31,8 @@ export default function ContactContent({ contactMethods }) {
                         </h1>
                         <p className="text-xl md:text-2xl text-black leading-relaxed max-w-2xl">
                             Transforming your vision into digital excellence starts with a simple conversation.
-                            Our team of **Senior Technical Consultants** and **Software Architects** is ready to scale your business
-                            through **Enterprise-Grade Engineering** and **Global Marketing Strategies**.
+                            Our team of Senior Technical Consultants and Software Architects is ready to scale your business
+                            through Enterprise-Grade Engineering and Global Marketing Strategies.
                         </p>
                     </div>
                 </div>

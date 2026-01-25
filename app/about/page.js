@@ -4,8 +4,14 @@ import { organization, stringifySchema } from "@/lib/schema";
 export const metadata = {
     title: "About Us | Our Story & Thinking",
     description: "Learn about SmartSoft Solutions, our core philosophy, global reach, and our commitment to building world-class digital products with a customer-first approach.",
+    keywords: ["Core Philosophy", "Global Reach", "Digital Product Story", "Customer-First Approach", "Software Engineering Expertise"],
     alternates: {
         canonical: 'https://smartsoftsolutions.org/about',
+    },
+    openGraph: {
+        title: "About SmartSoft Solutions | Our Philosophy",
+        description: "Discover the driving force behind our elite digital engineering solutions.",
+        url: 'https://smartsoftsolutions.org/about',
     },
 };
 

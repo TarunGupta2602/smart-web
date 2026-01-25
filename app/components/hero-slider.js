@@ -94,18 +94,18 @@ export default function HeroSlider() {
                                     <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black">Premium Web Solutions</span>
                                 </div>
 
-                                <h2 className="text-3xl md:text-6xl lg:text-7xl font-black text-black mb-4 lg:mb-6 leading-[1] md:leading-[0.9] tracking-tighter uppercase">
+                                <h1 className="text-3xl md:text-6xl lg:text-7xl font-black text-black mb-4 lg:mb-6 leading-[1] md:leading-[0.9] tracking-tighter uppercase">
                                     {index === 0 ? (
-                                        <h1 className="text-inherit font-inherit">
+                                        <p className="text-inherit font-inherit">
                                             {slide.content.mainHeadline} <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase block mt-1 lg:mt-2">{slide.content.highlightedWord}</span>
-                                        </h1>
+                                        </p>
                                     ) : (
                                         <>
                                             {slide.content.mainHeadline} <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase block mt-1 lg:mt-2">{slide.content.highlightedWord}</span>
                                         </>
                                     )}
                                     <span className="block mt-1 lg:mt-2">{slide.content.subHeadline}</span>
-                                </h2>
+                                </h1>
 
                                 <p className="text-sm md:text-xl text-black leading-relaxed mb-8 lg:mb-10 max-w-xl mx-auto lg:mx-0">
                                     {slide.content.subtitle}

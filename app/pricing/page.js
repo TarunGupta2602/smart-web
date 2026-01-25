@@ -5,8 +5,14 @@ import { localBusiness, stringifySchema } from "@/lib/schema";
 export const metadata = {
     title: "Transparent Pricing & Scalable Infrastructure Plans",
     description: "Choose the perfect digital infrastructure for your business. From individual brands to global e-commerce engines, we offer scalable pricing models.",
+    keywords: ["Web Development Pricing", "E-commerce Infrastructure Cost", "Scalable Growth Plans", "Digital Solution Tiers", "Affordable Tech Investment"],
     alternates: {
         canonical: 'https://smartsoftsolutions.org/pricing',
+    },
+    openGraph: {
+        title: "SmartSoft Solutions Pricing | Scalable Models",
+        description: "Expert infrastructure tiers tailored for every business stage.",
+        url: 'https://smartsoftsolutions.org/pricing',
     },
 };
 

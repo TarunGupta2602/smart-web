@@ -76,14 +76,14 @@ export default function AboutContent({ expertiseItems, team }) {
                             </h2>
                             <div className="prose max-w-none">
                                 <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                                    We possess deep expertise in **Advanced Website Development**, **Professional UI/UX Design**, **Custom Software Engineering**,
-                                    and **Strategic Digital Marketing**. As a premier web designing agency, we specialize in building high-conversion platforms
-                                    that integrate **Android/iOS App Development** and **Enterprise-Grade Cloud Hosting**.
+                                    We possess deep expertise in Advanced Website Development, Professional UI/UX Design, Custom Software Engineering,
+                                    and Strategic Digital Marketing. As a premier web designing agency, we specialize in building high-conversion platforms
+                                    that integrate Android/iOS App Development and Enterprise-Grade Cloud Hosting.
                                 </p>
                                 <p className="text-lg text-gray-500 leading-relaxed">
                                     Our unique capability to serve as a comprehensive digital solutions provider removes
                                     technological bottlenecks and vendor fragmentation. We are your reliable partner for **Agile Development**,
-                                    **Secure API Integrations**, and **Global Brand Scaling**.
+                                    Secure API Integrations, and Global Brand Scaling.
                                 </p>
                             </div>
                             <div className="grid grid-cols-2 gap-6 pt-6">

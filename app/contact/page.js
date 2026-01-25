@@ -4,8 +4,14 @@ import { organization, stringifySchema } from "@/lib/schema";
 export const metadata = {
     title: "Contact Our Technical Experts | 24/7 Global Support",
     description: "Get in touch with SmartSoft Solutions for expert digital engineering consulting. Available 24/7 via call, email, or WhatsApp for global software support.",
+    keywords: ["Contact Technical Experts", "24/7 Support", "Software Consulting", "Global Digital Support", "Noida Technical Hub"],
     alternates: {
         canonical: 'https://smartsoftsolutions.org/contact',
+    },
+    openGraph: {
+        title: "Contact SmartSoft Solutions | 24/7 Expert Support",
+        description: "Reach out for elite technical consulting and global support.",
+        url: 'https://smartsoftsolutions.org/contact',
     },
 };
 
@@ -39,7 +45,7 @@ export default function ContactPage() {
         },
         {
             title: "Digital Correspondence",
-            description: "smartsoft-solutions@outlook.com",
+            description: "support@smartsoftsolutions.org",
             subtext: "Expect a response within 2 business hours",
             icon: (
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -47,7 +53,7 @@ export default function ContactPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 13v.01M9 11v.01M15 11v.01" />
                 </svg>
             ),
-            link: "mailto:smartsoft-solutions@outlook.com",
+            link: "mailto:support@smartsoftsolutions.org",
             label: "Send Email"
         },
         {
@@ -68,7 +74,7 @@ export default function ContactPage() {
     const contactSchema = organization({
         name: 'SmartSoft Solutions Contact Hub',
         telephone: '+1-786-753-8470',
-        email: 'smartsoft-solutions@outlook.com',
+        email: 'support@smartsoftsolutions.org',
     });
 
     return (

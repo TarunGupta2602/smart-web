@@ -4,8 +4,14 @@ import { collectionPage, stringifySchema } from "@/lib/schema";
 export const metadata = {
     title: "Our Digital Portfolio | Creative Excellence Showcase",
     description: "Explore our diverse portfolio of award-winning digital projects, from e-commerce engines to custom enterprise apps. See how we craft digital excellence for global brands.",
+    keywords: ["Digital Portfolio", "Web Development Showcase", "Creative Design Projects", "Enterprise App Showcase", "Global Brand Excellence"],
     alternates: {
         canonical: 'https://smartsoftsolutions.org/portfolio',
+    },
+    openGraph: {
+        title: "Digital Portfolio | Creative Excellence",
+        description: "A showcase of our world-class digital engineering and design projects.",
+        url: 'https://smartsoftsolutions.org/portfolio',
     },
 };
 

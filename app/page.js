@@ -8,8 +8,15 @@ import { organization, webSite, stringifySchema } from "@/lib/schema";
 export const metadata = {
   title: "Engineering Excellence & Strategic Brand Growth",
   description: "Transform your business with SmartSoft Solutions. We specialize in digital engineering, high-end web development, and global marketing strategies.",
+  keywords: ["Digital Engineering Noida", "Digital Engineering USA", "Web Development Agency", "Strategic Brand Growth", "Software Solutions", "Technical Consulting"],
   alternates: {
     canonical: 'https://www.smartsoftsolutions.org',
+  },
+  openGraph: {
+    title: "SmartSoft Solutions | Engineering Excellence",
+    description: "Transform your business with our elite digital engineering and strategic marketing solutions.",
+    url: 'https://www.smartsoftsolutions.org',
+    images: [{ url: '/og-image.jpg' }],
   },
 };
 

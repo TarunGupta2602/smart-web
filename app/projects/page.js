@@ -4,8 +4,14 @@ import { itemList, stringifySchema } from "@/lib/schema";
 export const metadata = {
     title: "Strategic Case Studies | Impactful Technical Delivery",
     description: "Explore our successful projects in enterprise software, digital retail, and Fintech. See how SmartSoft Solutions delivers impactful results for global brands.",
+    keywords: ["Enterprise Software Case Studies", "Digital Retail Projects", "Fintech Solutions", "Technical Delivery Success", "Global Brand Projects"],
     alternates: {
         canonical: 'https://smartsoftsolutions.org/projects',
+    },
+    openGraph: {
+        title: "Our Success Stories | Case Studies",
+        description: "See how we've transformed businesses through high-impact technical delivery.",
+        url: 'https://smartsoftsolutions.org/projects',
     },
 };
 
