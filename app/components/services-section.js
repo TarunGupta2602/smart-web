@@ -4,46 +4,46 @@ import Link from "next/link";
 export default function ServicesSection() {
     const services = [
         {
-            title: "DIGITAL MARKETING",
-            description: "We provide fast Digital Marketing Services to power the speed of your Business. Get yourself Promoted",
+            title: "STRATEGIC SEO & MARKETING",
+            description: "Data-driven digital marketing and professional SEO services to increase your organic visibility and drive ROI.",
             icon: "/images/icon5.png"
         },
         {
-            title: "MOBILE FRIENDLY",
-            description: "We make website mobile, ipad friendly so that everyone can access it on any device easily",
+            title: "MOBILE APP DEVELOPMENT",
+            description: "High-performance iOS and Android applications built with responsive design for seamless cross-device experiences.",
             icon: "/images/icon4.png"
         },
         {
-            title: "WEBSITE DEVELOPMENT",
-            description: "Get your website designed & developed by us with full functionality in less time",
+            title: "E-COMMERCE ENGINEERING",
+            description: "Full-stack website development with secure payment gateways, inventory logic, and optimized checkout flows.",
             icon: "/images/icon3.png"
         },
         {
-            title: "GRAPHIC DESIGN",
-            description: "No need to worry about your website images and graphics we will take care of it as well",
+            title: "AWARD-WINNING UI / UX",
+            description: "Creative graphic design and user-centric interfaces that convert visitors into loyal brand advocates.",
             icon: "/images/icon2.png"
         }
     ];
 
     const detailedServices = [
         {
-            title: "SHOPPING STORE WEBSITES",
-            description: "We are experts in shopping store websites with full functionality from order system to payments and to shipping. You can have all of your products listed on website and your target customers can purchase them online. It applies to all industries and professions",
+            title: "CUSTOM SHOPPING STORE DEVELOPMENT",
+            description: "We are industry leaders in e-commerce website development. Our solutions feature real-time order tracking, multi-layered security, and scalable architecture designed for global retail expansion.",
             icon: "/images/p7.jpg"
         },
         {
-            title: "E-COMMERCE CATALOG WEBSITES",
-            description: "We have e-commerce technology to develop ecommerce catalog website with all product details. You can list your catalog with all necessary details. You select designs as per your business or industry needs & get yourself online",
+            title: "ENTERPRISE E-COMMERCE CATALOGS",
+            description: "Transform your product inventory with high-speed catalog websites. We specialize in headless commerce and high-traffic infrastructure for large-scale digital retail.",
             icon: "/images/p8.jpg"
         },
         {
-            title: "SMALL BUSINESS & PROFESSION WEBSITES",
-            description: "We can make websites as per your business needs. If you are professional or indivisual or small business then we are best for you in terms of Quality & Cost budget. we make websites for all industry and professions be it servies or goods.",
+            title: "SMALL BUSINESS BRANDING SOLUTIONS",
+            description: "Providing affordable yet premium web designing for professionals and small businesses. We focus on lead generation and localized SEO to put your brand on the map.",
             icon: "/images/p3.jpg"
         },
         {
-            title: "DIGITAL MARKETING & ANDROID IOS APPS",
-            description: "We can also do internet marketing of your business or profession. we can do digital marketing online like running your ads on google or bing or yahoo search engines. We also make android apps or ios apps for business or profession or services.",
+            title: "FULL-SCALE DIGITAL GROWTH ENGINES",
+            description: "Beyond development, we run high-octane Google and Bing ad campaigns. Our team integrates internet marketing with custom software to build a complete growth engine.",
             icon: "/images/p4.jpg"
         }
     ];
@@ -59,12 +59,11 @@ export default function ServicesSection() {
                         <span className="text-xs uppercase tracking-[0.2em] font-bold text-yellow-600">Enterprise Grade Solutions</span>
                     </div>
                     <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 uppercase tracking-tighter leading-[0.9]">
-                        PREMIUM DELIVERY at <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase">Lowest Prices</span>
+                        STRATEGIC DIGITAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase">solutions</span>
                     </h2>
                     <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium">
-                        We bridge the gap between complex engineering and user-centric design, providing the infrastructure
-                        that powers high-growth companies worldwide through specialized digital solutions.
+                        We provide elite web development, professional SEO, and high-performance digital marketing services
+                        to accelerate your business growth and dominate your industry landscape.
                     </p>
                 </div>
 

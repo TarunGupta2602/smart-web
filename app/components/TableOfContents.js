@@ -47,7 +47,7 @@ export default function TableOfContents({ content }) {
     if (headings.length < 2) return null;
 
     return (
-        <nav className="hidden lg:block sticky top-32 max-h-[80vh] overflow-auto">
+        <nav className="hidden lg:block max-h-[80vh] overflow-auto">
             <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">
                 Table of Contents
             </h4>

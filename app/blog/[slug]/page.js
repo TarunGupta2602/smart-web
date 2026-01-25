@@ -19,6 +19,20 @@ async function getBlogBySlug(slug) {
     return data
 }
 
+async function getRelatedBlogs(currentSlug, limit = 3) {
+    const { data, error } = await supabase
+        .from('blogs_site2')
+        .select('id, title, slug, image, date_posted, author')
+        .neq('slug', currentSlug)
+        .order('date_posted', { ascending: false })
+        .limit(limit)
+    if (error) {
+        console.error('Error fetching related blogs:', error)
+        return []
+    }
+    return data || []
+}
+
 export async function generateMetadata({ params }) {
     const { slug } = await params
     const blog = await getBlogBySlug(slug)
@@ -58,13 +72,17 @@ export async function generateMetadata({ params }) {
                 }
             ],
             publishedTime: blog.date_posted,
-            authors: blog.author ? [blog.author] : undefined,
+            modifiedTime: blog.updated_at || blog.date_posted,
+            authors: blog.author ? [blog.author] : ['SmartSoft Solutions'],
+            section: blog.category || 'Technology',
+            tags: blog.meta_keywords ? blog.meta_keywords.split(',').map(k => k.trim()) : undefined,
         },
         twitter: {
             card: 'summary_large_image',
             title,
             description,
-            images: blog.image ? [blog.image] : undefined
+            images: blog.image ? [blog.image] : undefined,
+            creator: '@SmartSoftSol', // Placeholder for twitter handle
         },
         keywords: blog.meta_keywords || undefined,
     }
@@ -98,14 +116,18 @@ export default async function BlogSlugPage({ params }) {
         description: plainDescription.slice(0, 160),
         author: blog.author,
         datePublished: blog.date_posted,
+        dateModified: blog.updated_at || blog.date_posted,
         image: blog.image,
-        url: canonicalUrl
+        url: canonicalUrl,
+        keywords: blog.meta_keywords
     });
 
     const faqSchema = faqs.length > 0 ? faqPage(faqs.map(f => ({
         q: f.question,
         a: f.answer
     }))) : null;
+
+    const relatedBlogs = await getRelatedBlogs(slug);
 
     return (
         <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -248,8 +270,8 @@ export default async function BlogSlugPage({ params }) {
                     </div>
 
                     {/* Sidebar */}
-                    <aside className="mt-8 lg:mt-0 lg:col-span-1">
-                        <div className="lg:sticky lg:top-28 space-y-4 sm:space-y-5">
+                    <aside className="mt-8 lg:mt-0 lg:col-span-1 border-l border-gray-100/50 pl-0 lg:pl-8">
+                        <div className="lg:sticky lg:top-32 space-y-8 z-10">
                             <TableOfContents content={content} />
                             <div className="p-4 sm:p-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl shadow-md">
                                 <div className="text-xs sm:text-sm font-semibold tracking-wide uppercase opacity-90">
@@ -313,6 +335,59 @@ export default async function BlogSlugPage({ params }) {
                         dangerouslySetInnerHTML={{ __html: stringifySchema(faqSchema) }}
                     />
                 )}
+
+                {/* Related Blogs Section */}
+                {relatedBlogs.length > 0 && (
+                    <section className="mt-16 pt-16 border-t border-gray-200">
+                        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 px-4 text-center">
+                            Related Articles You Might Like
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {relatedBlogs.map((item) => (
+                                <article key={item.id} className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                                    <Link href={`/blog/${item.slug}`} className="block relative h-48 sm:h-56 overflow-hidden">
+                                        <img
+                                            src={item.image || '/side-view-employee-using-printer.jpg'}
+                                            alt={item.title}
+                                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    </Link>
+                                    <div className="p-5 sm:p-6">
+                                        <div className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-2">
+                                            {item.author || 'Engineering'}
+                                        </div>
+                                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                                            <Link href={`/blog/${item.slug}`}>
+                                                {item.title}
+                                            </Link>
+                                        </h3>
+                                        <div className="flex items-center justify-between mt-auto">
+                                            <time className="text-xs text-gray-500 font-medium">
+                                                {new Date(item.date_posted).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                            </time>
+                                            <Link
+                                                href={`/blog/${item.slug}`}
+                                                className="text-sm font-bold text-blue-600 group-hover:translate-x-1 transition-transform"
+                                            >
+                                                Read More →
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+                )}
+
+                <div className="mt-16 text-center">
+                    <Link
+                        href="/blog"
+                        className="inline-flex items-center text-gray-600 hover:text-blue-600 font-medium transition-colors"
+                    >
+                        ← Back to Blog Home
+                    </Link>
+                </div>
             </div>
         </main>
     )

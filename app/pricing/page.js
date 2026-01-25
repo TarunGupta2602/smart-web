@@ -1,9 +1,21 @@
-
-
 import Image from "next/image";
 import Link from "next/link";
+import { localBusiness, stringifySchema } from "@/lib/schema";
+
+export const metadata = {
+    title: "Transparent Pricing & Scalable Infrastructure Plans",
+    description: "Choose the perfect digital infrastructure for your business. From individual brands to global e-commerce engines, we offer scalable pricing models.",
+    alternates: {
+        canonical: 'https://smartsoftsolutions.org/pricing',
+    },
+};
 
 export default function PricingPage() {
+    const pricingSchema = localBusiness({
+        name: 'SmartSoft Solutions Pricing',
+        description: 'Scalable digital infrastructure plans starting from $199.99'
+    });
+
     const plans = [
         {
             name: "Essential Lite",
@@ -59,6 +71,10 @@ export default function PricingPage() {
 
     return (
         <div className="min-h-screen bg-white text-slate-900 selection:bg-yellow-500 selection:text-black">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: stringifySchema(pricingSchema) }}
+            />
             {/* Cinematic Hero */}
             <section className="relative h-[65vh] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">

@@ -12,10 +12,10 @@ export default function HeroSlider() {
             id: 1,
             image: "/images/website-designing.png",
             content: {
-                mainHeadline: "WE CRAFT STUNNING",
-                highlightedWord: "WEBSITES",
+                mainHeadline: "PROFESSIONAL WEB",
+                highlightedWord: "DESIGNING",
                 subHeadline: "IN 48 HOURS.",
-                subtitle: "Any Creative Project is Unique. We Promise Quality Work and Rapid Delivery.",
+                subtitle: "Elite digital engineering and rapid web delivery. We create stunning, high-performance websites tailored to your unique business vision.",
                 cta: "Start Your Project"
             },
         },
@@ -23,10 +23,10 @@ export default function HeroSlider() {
             id: 2,
             image: "/images/website making.png",
             content: {
-                mainHeadline: "YOUR VISION OUR",
-                highlightedWord: "EXCELLENCE",
-                subHeadline: "IN DESIGN.",
-                subtitle: "Get E-Commerce Websites with Product Stores & Integrated Online Payment Systems.",
+                mainHeadline: "E-COMMERCE GROWTH",
+                highlightedWord: "EXPERTS",
+                subHeadline: "FOR RETAIL.",
+                subtitle: "Advanced shopping store websites with full functionality, integrated payment gateways, and secure inventory management.",
                 cta: "Explore Solutions"
             },
         },
@@ -34,10 +34,10 @@ export default function HeroSlider() {
             id: 3,
             image: "/images/domain.png",
             content: {
-                mainHeadline: "GET THE PERFECT",
-                highlightedWord: "DOMAIN",
-                subHeadline: "ONE STOP SHOP.",
-                subtitle: "All Domains Available (.com, .net, .org, .edu, .info). Choose As Per Your Business Need.",
+                mainHeadline: "STRATEGIC BRAND",
+                highlightedWord: "IDENTITY",
+                subHeadline: "GLOBAL REACH.",
+                subtitle: "Secure your digital footprint with premium domain services and strategic branding that scales your business globally.",
                 cta: "Find Your Domain"
             },
         },
@@ -45,10 +45,10 @@ export default function HeroSlider() {
             id: 4,
             image: "/images/webhosting.png",
             content: {
-                mainHeadline: "ULTRA SECURE",
+                mainHeadline: "ENTERPRISE CLOUD",
                 highlightedWord: "HOSTING",
-                subHeadline: "BUDGET PRICES.",
-                subtitle: "Enterprise Grade Website Hosting Available In Very Low Rates. All Servers Online 24/7.",
+                subHeadline: "MISSION CRITICAL.",
+                subtitle: "Scalable, ultra-secure hosting nodes with 99.9% uptime. Low-cost infrastructure for high-growth companies online 24/7.",
                 cta: "View Hosting Plans"
             },
         },
@@ -83,7 +83,7 @@ export default function HeroSlider() {
                 className="relative z-10 w-full h-full flex transition-transform duration-1000 cubic-bezier(0.4, 0, 0.2, 1)"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-                {slides.map((slide) => (
+                {slides.map((slide, index) => (
                     <div key={slide.id} className="w-full flex-shrink-0 h-full flex items-center px-4 md:px-12 lg:px-20">
                         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl">
 
@@ -95,7 +95,15 @@ export default function HeroSlider() {
                                 </div>
 
                                 <h2 className="text-3xl md:text-6xl lg:text-7xl font-black text-black mb-4 lg:mb-6 leading-[1] md:leading-[0.9] tracking-tighter uppercase">
-                                    {slide.content.mainHeadline} <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase block mt-1 lg:mt-2">{slide.content.highlightedWord}</span>
+                                    {index === 0 ? (
+                                        <h1 className="text-inherit font-inherit">
+                                            {slide.content.mainHeadline} <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase block mt-1 lg:mt-2">{slide.content.highlightedWord}</span>
+                                        </h1>
+                                    ) : (
+                                        <>
+                                            {slide.content.mainHeadline} <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase block mt-1 lg:mt-2">{slide.content.highlightedWord}</span>
+                                        </>
+                                    )}
                                     <span className="block mt-1 lg:mt-2">{slide.content.subHeadline}</span>
                                 </h2>
 

@@ -7,54 +7,34 @@ export default function FAQSection() {
 
     const faqs = [
         {
-            question: "How much does it cost to build a website?",
-            answer: "Our website plans start from just $199.99! We offer flexible pricing based on your specific needs and requirements. Whether you need a simple landing page or a complex e-commerce platform, we can customize a plan that fits your budget. Contact us for a detailed quote tailored to your project.",
+            question: "How much does it cost to build a professional website?",
+            answer: "Our professional website development plans start at just $199.99. We offer transparent, scalable pricing models for startups and established enterprises. Whether you need a high-conversion landing page or a complex e-commerce engine, our solutions are designed for maximum ROI and business growth.",
             icon: "💰"
         },
         {
-            question: "How long does it take to build a website?",
-            answer: "The timeline varies depending on the complexity of your project. A basic website can be completed in 1-2 weeks, while more complex websites with custom features may take 4-8 weeks. We'll provide you with a detailed timeline during our initial consultation and keep you updated throughout the development process.",
+            question: "What is the turnaround time for web design projects?",
+            answer: "We offer rapid 48-hour delivery for Essential plans. More complex, custom-engineered solutions typically take 2-4 weeks. Our agile development process ensures you go live as quickly as possible without compromising on performance or security architecture.",
             icon: "⏱️"
         },
         {
-            question: "Do you provide website maintenance and support?",
-            answer: "Yes! We offer comprehensive maintenance and support packages to keep your website running smoothly. This includes regular updates, security patches, content updates, bug fixes, and technical support. We're committed to ensuring your website remains secure, fast, and up-to-date.",
+            question: "Do you provide managed hosting and security support?",
+            answer: "Yes, we provide enterprise-grade managed cloud hosting with 99.9% uptime guarantees. Our support ecosystem includes proactive security patches, regular site backups, and 24/7 technical monitoring to ensure your digital assets remain secure and online.",
             icon: "🔧"
         },
         {
-            question: "Will my website be mobile-friendly and responsive?",
-            answer: "Absolutely! All websites we create are fully responsive and optimized for all devices including smartphones, tablets, and desktops. We follow modern web design standards to ensure your website looks great and functions perfectly on any screen size.",
+            question: "Are your websites mobile-responsive and SEO-optimized?",
+            answer: "Every platform we build is 100% mobile-responsive and follows a mobile-first design philosophy. We integrate advanced SEO architecture from the ground up, ensuring fast load times and optimized schema markup for better search engine ranking.",
             icon: "📱"
         },
         {
-            question: "Do you offer SEO services?",
-            answer: "Yes, we provide comprehensive SEO services to help your website rank higher in search engines. This includes on-page optimization, keyword research, meta tags, site speed optimization, and SEO-friendly content structure. We ensure your website is built with SEO best practices from the ground up.",
+            question: "What does your comprehensive SEO service include?",
+            answer: "Our SEO services include deep keyword research, technical on-page optimization, content strategy, and mobile speed enhancement. We focus on increasing your organic visibility and improving domain authority to drive sustainable business growth.",
             icon: "🚀"
         },
         {
-            question: "Can you help with domain and hosting?",
-            answer: "Yes! We provide domain registration and hosting services at the lowest possible cost. We can help you choose the perfect domain name for your business and set up reliable, secure hosting that ensures your website loads quickly and stays online 24/7.",
+            question: "Can you assist with domain registration and private servers?",
+            answer: "Absolutely. We are a one-stop shop for domain acquisition and private server configuration. We help you secure the perfect domain identity and set up mission-critical server nodes optimized for high traffic and global reach.",
             icon: "🌐"
-        },
-        {
-            question: "What industries do you serve?",
-            answer: "We serve all industries! From agriculture to aviation, banking to e-commerce, real estate to healthcare, and everything in between. Our team has experience working with diverse businesses and can create customized solutions for any industry or niche market.",
-            icon: "🏢"
-        },
-        {
-            question: "Will I be able to update my website content myself?",
-            answer: "Yes! We can build your website on user-friendly platforms like WordPress that allow you to easily update content, add images, and make changes without any technical knowledge. We also provide training and documentation to help you manage your website confidently.",
-            icon: "✏️"
-        },
-        {
-            question: "Do you provide e-commerce solutions?",
-            answer: "Absolutely! We specialize in creating powerful e-commerce websites with features like product catalogs, shopping carts, secure payment gateways, inventory management, and order tracking. We can help you sell your products online effectively and securely.",
-            icon: "🛒"
-        },
-        {
-            question: "What makes SmartSoft Solutions different from other web development companies?",
-            answer: "We combine affordability with quality! Our competitive pricing starting at $199.99, personalized service, quick turnaround times, and commitment to customer satisfaction set us apart. We treat every project as unique and work closely with you to ensure your vision becomes reality. Plus, we provide ongoing support to help your business grow.",
-            icon: "⭐"
         }
     ];
 

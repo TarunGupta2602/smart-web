@@ -1,12 +1,15 @@
-"use client";
+import PortfolioContent from "./PortfolioContent";
+import { collectionPage, stringifySchema } from "@/lib/schema";
 
-import { useState } from "react";
-import Image from "next/image";
+export const metadata = {
+    title: "Our Digital Portfolio | Creative Excellence Showcase",
+    description: "Explore our diverse portfolio of award-winning digital projects, from e-commerce engines to custom enterprise apps. See how we craft digital excellence for global brands.",
+    alternates: {
+        canonical: 'https://smartsoftsolutions.org/portfolio',
+    },
+};
 
 export default function PortfolioPage() {
-    const [selectedCategory, setSelectedCategory] = useState("all");
-    const [lightboxImage, setLightboxImage] = useState(null);
-
     const categories = [
         {
             id: "all", name: "All Work", icon: (
@@ -182,199 +185,18 @@ export default function PortfolioPage() {
         }
     ];
 
-    const filteredProjects = selectedCategory === "all"
-        ? projects
-        : projects.filter(project => project.category === selectedCategory);
+    const portfolioSchema = collectionPage({
+        name: 'SmartSoft Solutions Digital Portfolio',
+        description: 'A showcase of our digital excellence in software development and design.'
+    });
 
     return (
-        <div className="min-h-screen bg-white text-slate-900 selection:bg-yellow-500 selection:text-black">
-            {/* SEO Hero Section */}
-            <section className="relative h-[85vh] flex items-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/images/banner.jpg"
-                        alt="Portfolio Digital Agency Success"
-                        fill
-                        className="object-cover opacity-60 scale-105"
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-white"></div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white"></div>
-                </div>
-
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="max-w-5xl">
-                        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-slate-100 border border-black backdrop-blur-md mb-8">
-                            <span className="flex h-2 w-2 rounded-full bg-black animate-pulse"></span>
-                            <span className="text-xs uppercase tracking-[0.2em] font-bold text-black">Award Winning Digital Agency</span>
-                        </div>
-                        <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
-                            CRAFTING <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif">DIGITAL</span><br />
-                            EXCELLENCE.
-                        </h1>
-                        <p className="text-xl md:text-2xl text-black leading-relaxed mb-12 max-w-3xl">
-                            We bridge the gap between imagination and reality. Our portfolio represents the pinnacle of web development,
-                            SEO strategy, and conversion-focused design.
-                        </p>
-                        <div className="flex flex-wrap gap-6">
-                            <a href="#work" className="px-10 py-5 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-black uppercase text-sm tracking-widest rounded-full hover:scale-105 transition-all duration-500 shadow-[0_0_30px_rgba(234,179,8,0.3)]">
-                                View Projects
-                            </a>
-                            <a href="/contact" className="px-10 py-5 bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-200 font-black uppercase text-sm tracking-widest rounded-full transition-all duration-500">
-                                Contact Experts
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Scroll Indicator */}
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
-                    <span className="text-[10px] tracking-[0.3em] uppercase font-bold">Scroll to Explore</span>
-                    <div className="w-[1px] h-20 bg-gradient-to-b from-yellow-500 to-transparent"></div>
-                </div>
-            </section>
-
-            {/* Statistics / Value Prop */}
-            <section className="py-24 border-y border-slate-100 bg-slate-50">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-                        {[
-                            { val: "500+", label: "Projects Delivered", sub: "Global Excellence" },
-                            { val: "350+", label: "Trusted Partners", sub: "Long-term Value" },
-                            { val: "15+", label: "Niche Industries", sub: "Deep Expertise" },
-                            { val: "98%", label: "ROI Satisfaction", sub: "Quality Guaranteed" }
-                        ].map((stat, i) => (
-                            <div key={i} className="flex flex-col gap-2">
-                                <span className="text-4xl md:text-6xl font-black text-slate-900">{stat.val}</span>
-                                <span className="text-sm uppercase tracking-widest font-bold text-yellow-500">{stat.label}</span>
-                                <span className="text-xs text-slate-400 italic">{stat.sub}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Portfolio Navigation */}
-            <section id="work" className="sticky top-0 z-40 py-8 bg-white/80 backdrop-blur-xl border-b border-slate-200">
-                <div className="container mx-auto px-6">
-                    <div className="flex flex-wrap items-center justify-center gap-4">
-                        {categories.map((cat) => (
-                            <button
-                                key={cat.id}
-                                onClick={() => setSelectedCategory(cat.id)}
-                                className={`flex items-center gap-3 px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-500 ${selectedCategory === cat.id
-                                    ? 'bg-yellow-500 text-black shadow-[0_0_20px_rgba(234,179,8,0.4)]'
-                                    : 'bg-slate-100 text-slate-500 hover:text-slate-900 hover:bg-slate-200'}`}
-                            >
-                                {cat.icon}
-                                {cat.name}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Content Grid */}
-            <section className="py-24">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-                        {filteredProjects.map((proj, idx) => (
-                            <div
-                                key={proj.id}
-                                className="group relative flex flex-col gap-6 cursor-pointer"
-                                onClick={() => setLightboxImage(proj.image)}
-                            >
-                                {/* Premium Image Container */}
-                                <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-slate-100 border border-slate-200">
-                                    <Image
-                                        src={proj.image}
-                                        alt={proj.title}
-                                        fill
-                                        className="object-cover transition-all duration-[1s] ease-out group-hover:scale-110 group-hover:rotate-1"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
-
-                                    {/* Project Category Tag */}
-                                    <div className="absolute top-6 left-6 px-4 py-2 bg-white/60 backdrop-blur-md border border-slate-200 rounded-full">
-                                        <span className="text-[10px] font-black uppercase tracking-widest text-yellow-500">{proj.category}</span>
-                                    </div>
-
-                                    {/* Hover Action */}
-                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                                        <div className="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-500">
-                                            <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 4v16m8-8H4" /></svg>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Typography Content */}
-                                <div className="px-4">
-                                    <h3 className="text-2xl font-black mb-3 group-hover:text-yellow-500 transition-colors duration-300">
-                                        {proj.title}
-                                    </h3>
-                                    <p className="text-slate-600 text-sm leading-relaxed mb-6 line-clamp-3">
-                                        {proj.description}
-                                    </p>
-                                    <div className="flex flex-wrap gap-2">
-                                        {proj.tags.map((tag, i) => (
-                                            <span key={i} className="text-[10px] uppercase tracking-widest font-bold text-slate-500 border border-slate-200 px-3 py-1 rounded-full">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Bottom SEO Call to Action */}
-            <section className="py-32 relative overflow-hidden bg-slate-50 border-t border-slate-100">
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <h2 className="text-4xl md:text-7xl font-black mb-12 tracking-tighter uppercase leading-[0.9]">
-                            HAVE A PROJECT <span className="italic font-serif text-yellow-500">IN MIND?</span>
-                        </h2>
-                        <p className="text-xl text-slate-600 mb-16 max-w-2xl mx-auto">
-                            Join over 350+ worldwide brands that trust us to bring their digital vision to life.
-                            Let's discuss how we can skyrocket your business ROI today.
-                        </p>
-                        <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
-                            <a href="/contact" className="group px-12 py-6 bg-slate-900 text-white font-black uppercase tracking-[0.2em] rounded-full hover:bg-yellow-500 transition-all duration-500 flex items-center gap-4">
-                                Project Consultation
-                                <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                            </a>
-                            <div className="flex flex-col items-start gap-1">
-                                <span className="text-[10px] uppercase tracking-widest text-slate-400 font-black">Quick Call Assistance</span>
-                                <a href="tel:17867538470" className="text-2xl font-black text-slate-900 hover:text-yellow-500 transition-colors tracking-tight">
-                                    1-786-753-8470
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Premium Lightbox Modal */}
-            {lightboxImage && (
-                <div
-                    className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-2xl flex items-center justify-center p-8 transition-all duration-500 animate-in fade-in"
-                    onClick={() => setLightboxImage(null)}
-                >
-                    <button className="absolute top-10 right-10 w-16 h-16 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center border border-slate-200 transition-all text-slate-900">
-                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-                    </button>
-                    <div className="relative w-full h-full max-w-7xl max-h-[85vh] rounded-[3rem] overflow-hidden border border-slate-200 bg-slate-50 animate-in zoom-in duration-500">
-                        <Image
-                            src={lightboxImage}
-                            alt="Full View Project"
-                            fill
-                            className="object-contain p-4"
-                        />
-                    </div>
-                </div>
-            )}
-        </div>
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: stringifySchema(portfolioSchema) }}
+            />
+            <PortfolioContent categories={categories} projects={projects} />
+        </>
     );
 }
