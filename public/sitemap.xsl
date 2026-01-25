@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0" 
+<xsl:stylesheet version="1.0" 
                 xmlns:html="http://www.w3.org/TR/REC-html40"
                 xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -35,7 +35,7 @@
           }
           .header::after {
             content: '';
-            absolute: absolute;
+            position: absolute;
             top: 0; right: 0; bottom: 0; left: 0;
             background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent);
             pointer-events: none;
