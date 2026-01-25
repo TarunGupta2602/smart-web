@@ -1,9 +1,12 @@
-import { supabase } from "@/lib/supabaseClient";
+import { createClient } from '@supabase/supabase-js';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function sitemap() {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
     const siteUrl = 'https://www.smartsoftsolutions.org';
     const now = new Date();
 
@@ -19,13 +22,16 @@ export default async function sitemap() {
 
     let blogRoutes = [];
     try {
-        const { data: blogs } = await supabase
-            .from('blogs_site2')
-            .select('slug, updated_at, date_posted')
-            .order('date_posted', { ascending: false });
+        // Try both possible tables just in case
+        const [res1, res2] = await Promise.all([
+            supabase.from('blogs_site2').select('slug, updated_at, date_posted'),
+            supabase.from('blogs').select('slug, updated_at, date_posted')
+        ]);
 
-        if (blogs && blogs.length > 0) {
-            blogRoutes = blogs.map((blog) => ({
+        const allBlogs = [...(res1.data || []), ...(res2.data || [])];
+
+        if (allBlogs.length > 0) {
+            blogRoutes = allBlogs.map((blog) => ({
                 url: `${siteUrl}/blog/${blog.slug}`,
                 lastModified: new Date(blog.updated_at || blog.date_posted || now),
                 changeFrequency: 'monthly',
@@ -33,8 +39,16 @@ export default async function sitemap() {
             }));
         }
     } catch (error) {
-        console.error('Sitemap blog fetch error:', error);
+        console.error('Sitemap fetch error:', error);
     }
 
-    return [...staticRoutes, ...blogRoutes];
+    // Deduplicate and filter out any invalid blogs
+    const uniqueMap = new Map();
+    [...staticRoutes, ...blogRoutes].forEach(item => {
+        if (item.url && !uniqueMap.has(item.url)) {
+            uniqueMap.set(item.url, item);
+        }
+    });
+
+    return Array.from(uniqueMap.values());
 }
