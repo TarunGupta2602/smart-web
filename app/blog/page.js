@@ -42,7 +42,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: 'https://smartsoftsolutions.org/blog',
+        canonical: 'https://www.smartsoftsolutions.org/blog',
     },
 };
 

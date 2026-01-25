@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
     const rawDescription = blog.meta_description || blog.description || ''
     const description = stripMarkdown(rawDescription).slice(0, 160)
 
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || 'https://smartsoftsolutions.org').replace(/^\/+/, '').replace(/\/+$/, '').replace(/^"|"$/g, '')
+    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || 'https://www.smartsoftsolutions.org').replace(/^\/+/, '').replace(/\/+$/, '').replace(/^"|"$/g, '')
     const canonicalUrl = `${siteUrl}/blog/${blog.slug}`
 
     return {

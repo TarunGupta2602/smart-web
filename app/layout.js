@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://smartsoftsolutions.org'),
+  metadataBase: new URL('https://www.smartsoftsolutions.org'),
   title: {
     default: "SmartSoft Solutions | Digital Engineering & Strategic Growth",
     template: "%s | SmartSoft Solutions"
@@ -32,7 +32,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://smartsoftsolutions.org',
+    url: 'https://www.smartsoftsolutions.org',
     siteName: 'SmartSoft Solutions',
     images: [
       {
@@ -48,17 +48,6 @@ export const metadata = {
     title: 'SmartSoft Solutions | Digital Engineering',
     description: 'Elite digital engineering and strategic branding solutions.',
     images: ['/og-image.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
 };
 
