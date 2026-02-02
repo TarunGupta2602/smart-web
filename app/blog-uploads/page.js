@@ -7,1097 +7,1321 @@ import Image from 'next/image';
 import { faqPage, stringifySchema } from '@/lib/schema';
 
 const BlogForm = ({ initialData = null, onSuccess, onCancel, isEdit = false }) => {
-    const [formData, setFormData] = useState({
-        title: '',
-        author: '',
-        date_posted: '',
-        description: '',
-        content: '',
-        slug: '',
-        meta_title: '',
-        meta_description: '',
-        meta_keywords: '',
-        faqs: []
-    });
-    const [imageFile, setImageFile] = useState(null)
-    const [previewUrl, setPreviewUrl] = useState(null)
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
-    const [successMsg, setSuccessMsg] = useState(null)
-    const [activeTab, setActiveTab] = useState('edit')
-    const [isFullScreen, setIsFullScreen] = useState(false)
-    const descriptionTextareaRef = useRef(null)
-    const fullScreenTextareaRef = useRef(null)
+  const [formData, setFormData] = useState({
+    title: '',
+    author: '',
+    date_posted: '',
+    description: '',
+    content: '',
+    slug: '',
+    meta_title: '',
+    meta_description: '',
+    meta_keywords: '',
+    faqs: []
+  });
+  const [imageFile, setImageFile] = useState(null)
+  const [previewUrl, setPreviewUrl] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [successMsg, setSuccessMsg] = useState(null)
+  const [activeTab, setActiveTab] = useState('edit')
+  const [isFullScreen, setIsFullScreen] = useState(false)
+  const descriptionTextareaRef = useRef(null)
+  const fullScreenTextareaRef = useRef(null)
 
-    useEffect(() => {
-        const handleEscKey = (event) => {
-            if (event.key === 'Escape' && isFullScreen) {
-                setIsFullScreen(false);
-            }
-        };
-        document.addEventListener('keydown', handleEscKey);
-        return () => {
-            document.removeEventListener('keydown', handleEscKey);
-        };
-    }, [isFullScreen]);
-
-    useEffect(() => {
-        if (isFullScreen) {
-            document.body.style.overflow = 'hidden';
-            if (fullScreenTextareaRef.current) {
-                fullScreenTextareaRef.current.focus();
-                if (descriptionTextareaRef.current) {
-                    const cursorPos = descriptionTextareaRef.current.selectionStart;
-                    fullScreenTextareaRef.current.setSelectionRange(cursorPos, cursorPos);
-                }
-            }
-        } else {
-            document.body.style.overflow = '';
-            if (descriptionTextareaRef.current && fullScreenTextareaRef.current) {
-                const cursorPos = fullScreenTextareaRef.current.selectionStart;
-                setTimeout(() => {
-                    descriptionTextareaRef.current.focus();
-                    descriptionTextareaRef.current.setSelectionRange(cursorPos, cursorPos);
-                }, 0);
-            }
-        }
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, [isFullScreen]);
-
-    useEffect(() => {
-        if (initialData) {
-            let faqs = [];
-            if (Array.isArray(initialData.faqs)) {
-                faqs = initialData.faqs;
-            } else if (typeof initialData.faqs === 'string') {
-                try {
-                    const parsed = JSON.parse(initialData.faqs);
-                    if (Array.isArray(parsed)) faqs = parsed;
-                } catch {
-                    faqs = [];
-                }
-            }
-            setFormData({
-                ...initialData,
-                faqs,
-                date_posted: initialData.date_posted
-                    ? new Date(initialData.date_posted).toISOString().split('T')[0]
-                    : '',
-            });
-            if (initialData.image) setPreviewUrl(initialData.image);
-        }
-    }, [initialData]);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setFormData((prev) => ({ ...prev, [name]: value }))
-    }
-
-    const handleFullScreenChange = (e) => {
-        setFormData((prev) => ({ ...prev, description: e.target.value }));
-    }
-
-    const handleImageChange = (e) => {
-        const file = e.target.files[0]
-        if (file) {
-            setImageFile(file)
-            setPreviewUrl(URL.createObjectURL(file))
-        }
-    }
-
-    // Helper function to convert array data into markdown table
-    const arrayToMarkdownTable = (rows) => {
-        if (!rows || rows.length === 0) return '';
-
-        const headers = rows[0];
-        const headerRow = `| ${headers.join(' | ')} |`;
-        const separatorRow = `| ${headers.map(() => '---').join(' | ')} |`;
-        const bodyRows = rows.slice(1).map(row => `| ${row.join(' | ')} |`).join('\n');
-
-        return `${headerRow}\n${separatorRow}\n${bodyRows}\n`;
+  useEffect(() => {
+    const handleEscKey = (event) => {
+      if (event.key === 'Escape' && isFullScreen) {
+        setIsFullScreen(false);
+      }
     };
-
-    // Handle CSV file upload and convert to markdown table
-    const handleTableCsvUpload = (file) => {
-        const reader = new FileReader();
-        reader.onload = (evt) => {
-            try {
-                const csvText = evt.target.result;
-                const rows = csvText.split('\n')
-                    .map(row => row.split(',').map(cell => cell.trim()))
-                    .filter(row => row.some(cell => cell));
-                const markdownTable = arrayToMarkdownTable(rows);
-                insertMarkdown('custom', markdownTable, isFullScreen);
-            } catch (err) {
-                setError('Failed to parse CSV file. Ensure it’s a valid CSV.');
-            }
-        };
-        reader.readAsText(file);
+    document.addEventListener('keydown', handleEscKey);
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
     };
+  }, [isFullScreen]);
 
-    // Handle pasted table data and convert to markdown table
-    const handleTablePaste = () => {
-        const pastedText = prompt('Paste your table data (tab-separated or CSV format):');
-        if (!pastedText) return;
-
-        try {
-            const rows = pastedText.split('\n')
-                .map(row => row.split(/\t|,/).map(cell => cell.trim()))
-                .filter(row => row.some(cell => cell));
-            const markdownTable = arrayToMarkdownTable(rows);
-            insertMarkdown('custom', markdownTable, isFullScreen);
-        } catch (err) {
-            setError('Failed to parse pasted table data. Use tab-separated or CSV format.');
+  useEffect(() => {
+    if (isFullScreen) {
+      document.body.style.overflow = 'hidden';
+      if (fullScreenTextareaRef.current) {
+        fullScreenTextareaRef.current.focus();
+        if (descriptionTextareaRef.current) {
+          const cursorPos = descriptionTextareaRef.current.selectionStart;
+          fullScreenTextareaRef.current.setSelectionRange(cursorPos, cursorPos);
         }
-    };
-
-    const insertMarkdown = (syntax, placeholder = '', isFullScreenMode = false, url = '', rel = '') => {
-        const textarea = isFullScreenMode ? fullScreenTextareaRef.current : descriptionTextareaRef.current;
-        if (!textarea) return;
-
-        const start = textarea.selectionStart;
-        const end = textarea.selectionEnd;
-        const text = textarea.value;
-        const selectedText = text.substring(start, end) || placeholder;
-
-        const beforeText = text.substring(0, start);
-        const afterText = text.substring(end);
-
-        let newText;
-
-        switch (syntax) {
-            case 'h1':
-                newText = `${beforeText.replace(/(\n)?$/, '\n')}# ${selectedText}\n${afterText.replace(/^\n?/, '')}`;
-                break;
-            case 'h2':
-                newText = `${beforeText.replace(/(\n)?$/, '\n')}## ${selectedText}\n${afterText.replace(/^\n?/, '')}`;
-                break;
-            case 'h3':
-                newText = `${beforeText.replace(/(\n)?$/, '\n')}### ${selectedText}\n${afterText.replace(/^\n?/, '')}`;
-                break;
-            case 'h4':
-                newText = `${beforeText.replace(/(\n)?$/, '\n')}#### ${selectedText}\n${afterText.replace(/^\n?/, '')}`;
-                break;
-            case 'bold':
-                newText = `${beforeText}**${selectedText}**${afterText}`
-                break
-            case 'italic':
-                newText = `${beforeText}_${selectedText}_${afterText}`
-                break
-            case 'strikethrough':
-                newText = `${beforeText}~~${selectedText}~~${afterText}`
-                break
-            case 'link':
-                newText = rel === 'nofollow'
-                    ? `${beforeText}[${selectedText}](url "nofollow")${afterText}`
-                    : `${beforeText}[${selectedText}](url)${afterText}`;
-                break
-            case 'image':
-                newText = `${beforeText}![${selectedText}](${url || 'image-url'})${afterText}`;
-                break
-            case 'code':
-                newText = `${beforeText}\`${selectedText}\`${afterText}`
-                break
-            case 'codeblock':
-                newText = `${beforeText}\n\`\`\`\n${selectedText}\n\`\`\`\n${afterText}`
-                break
-            case 'quote':
-                newText = `${beforeText}> ${selectedText}${afterText}`
-                break
-            case 'list':
-                newText = `${beforeText}${selectedText
-                    .split('\n')
-                    .map(line => line ? `- ${line}` : '')
-                    .join('\n')}${afterText}`;
-                break;
-            case 'numbered':
-                newText = `${beforeText}${selectedText
-                    .split('\n')
-                    .map((line, i) => line ? `${i + 1}. ${line}` : '')
-                    .join('\n')}${afterText}`;
-                break;
-            case 'checkbox':
-                newText = `${beforeText}\n- [ ] ${selectedText}\n- [ ] Task 2\n- [x] Completed task${afterText}`
-                break
-            case 'hr':
-                newText = `${beforeText}\n\n---\n\n${selectedText}${afterText}`
-                break
-            case 'table':
-                newText = `${beforeText}\n| Header 1 | Header 2 |\n| -------- | -------- |\n| Cell 1   | Cell 2   |\n| Cell 3   | Cell 4   |\n${afterText}`
-                break
-            case 'custom':
-                newText = `${beforeText}${selectedText}${afterText}`;
-                break
-            default:
-                newText = text
-        }
-
-        setFormData({ ...formData, description: newText });
-
+      }
+    } else {
+      document.body.style.overflow = '';
+      if (descriptionTextareaRef.current && fullScreenTextareaRef.current) {
+        const cursorPos = fullScreenTextareaRef.current.selectionStart;
         setTimeout(() => {
-            if (document.activeElement === textarea) {
-                textarea.focus();
-                const newCursorPos = start + newText.length - text.length;
-                textarea.setSelectionRange(newCursorPos, newCursorPos);
-            }
+          descriptionTextareaRef.current.focus();
+          descriptionTextareaRef.current.setSelectionRange(cursorPos, cursorPos);
         }, 0);
-    };
-
-    const toggleFullScreen = () => {
-        setIsFullScreen(prev => !prev);
-    };
-
-    // Helper to format Supabase errors for better debugging
-    const formatError = (err) => {
-        if (!err) return '';
-        if (typeof err === 'string') return err;
-        try {
-            const parts = [];
-            if (err.message) parts.push(err.message);
-            if (err.details) parts.push(err.details);
-            if (err.hint) parts.push(`hint: ${err.hint}`);
-            if (err.code) parts.push(`code: ${err.code}`);
-            return parts.join(' \n') || JSON.stringify(err);
-        } catch (e) {
-            return JSON.stringify(err);
-        }
-    };
-
-    const uploadImage = async (file) => {
-        const ext = file.name.split('.').pop().toLowerCase()
-        const allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif']
-        if (!allowed.includes(ext)) {
-            throw new Error('Invalid image format.')
-        }
-
-        const fileName = `${Date.now()}.${ext}`
-        const filePath = `public/${fileName}`
-
-        const { error: uploadError } = await supabase.storage
-            .from('blog-images')
-            .upload(filePath, file)
-
-        if (uploadError) throw uploadError
-
-        const { data: urlData } = supabase
-            .storage
-            .from('blog-images')
-            .getPublicUrl(filePath)
-
-        return urlData.publicUrl
+      }
     }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError(null);
-        setSuccessMsg(null);
-        setLoading(true);
-
-        try {
-            let imageUrl = previewUrl;
-            if (imageFile) {
-                imageUrl = await uploadImage(imageFile);
-            }
-
-            if (isEdit && initialData) {
-                const { data, error } = await supabase
-                    .from('blogs_site2')
-                    .update({
-                        ...formData,
-                        image: imageUrl,
-                        date_posted: formData.date_posted || new Date().toISOString().split('T')[0],
-                    })
-                    .eq('id', initialData.id)
-                    .select()
-                    .single();
-
-                if (error) {
-                    console.error('Supabase update error:', error);
-                    setError(formatError(error));
-                    setLoading(false);
-                    return;
-                }
-                setSuccessMsg('Blog post updated successfully!');
-                if (onSuccess) onSuccess(data);
-            } else {
-                const { data, error } = await supabase
-                    .from('blogs_site2')
-                    .insert([
-                        {
-                            ...formData,
-                            image: imageUrl,
-                            date_posted: formData.date_posted || new Date().toISOString().split('T')[0],
-                        },
-                    ])
-                    .select()
-                    .single();
-
-                if (error) {
-                    console.error('Supabase insert error:', error);
-                    setError(formatError(error));
-                    setLoading(false);
-                    return;
-                }
-                setSuccessMsg('Blog post created successfully!');
-                setFormData({
-                    title: '',
-                    author: '',
-                    date_posted: '',
-                    description: '',
-                    content: '',
-                    slug: '',
-                    meta_title: '',
-                    meta_description: '',
-                    meta_keywords: '',
-                    faqs: []
-                });
-                setImageFile(null);
-                setPreviewUrl(null);
-                if (onSuccess) onSuccess(data);
-            }
-        } catch (err) {
-            console.error('Unexpected error in handleSubmit:', err);
-            setError(formatError(err) || 'Something went wrong.');
-        } finally {
-            setLoading(false);
-        }
-    }
-
-    const markdownComponents = {
-        h1: ({ node, ...props }) => <h1 className="text-2xl font-bold my-3" {...props} />,
-        h2: ({ node, ...props }) => <h2 className="text-xl font-bold my-2" {...props} />,
-        h3: ({ node, ...props }) => <h3 className="text-lg font-bold my-2" {...props} />,
-        h4: ({ node, ...props }) => <h4 className="text-base font-semibold my-2" {...props} />,
-        p: ({ node, ...props }) => <p className="my-2 text-gray-800" {...props} />,
-        ul: ({ node, ...props }) => <ul className="list-disc ml-5 my-2" {...props} />,
-        ol: ({ node, ...props }) => <ol className="list-decimal ml-5 my-2" {...props} />,
-        li: ({ node, ...props }) => <li className="my-1" {...props} />,
-        a: ({ node, ...props }) => <a className="text-blue-600 hover:underline" {...props} target="_blank" rel={props.title === 'nofollow' ? 'nofollow' : 'noopener noreferrer'} />,
-        blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-3 text-gray-700" {...props} />,
-        code: ({ node, inline, ...props }) => inline
-            ? <code className="bg-gray-100 px-1 py-0.5 rounded text-pink-600 font-mono text-sm" {...props} />
-            : <code className="block bg-gray-100 p-3 rounded-md font-mono text-sm my-3 overflow-auto" {...props} />,
-        table: ({ node, ...props }) => <table className="border-collapse border border-gray-300 my-3" {...props} />,
-        th: ({ node, ...props }) => <th className="border border-gray-300 px-4 py-2 bg-gray-100 font-semibold" {...props} />,
-        td: ({ node, ...props }) => <td className="border border-gray-300 px-4 py-2" {...props} />,
-        tr: ({ node, ...props }) => <tr className="border border-gray-300" {...props} />
+    return () => {
+      document.body.style.overflow = '';
     };
+  }, [isFullScreen]);
 
-    const MarkdownToolbar = ({ isFullScreen = false }) => (
-        <div className={`bg-gray-50 rounded-t-md border border-gray-300 border-b-0 ${isFullScreen ? 'border-0 shadow-lg' : ''}`}>
-            <div className="flex flex-wrap border-b border-gray-200">
-                <div className="flex border-r border-gray-200 p-1">
-                    <button
-                        type="button"
-                        onClick={() => insertMarkdown('h1', 'Heading 1', isFullScreen)}
-                        className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                        title="Heading 1"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8.637 13V3.669H7.379V7.62H2.758V3.67H1.5V13h1.258V8.728h4.62V13h1.259zm5.329 0V3.669h-1.244L10.5 5.316v1.265l2.16-1.565h.062V13h1.244z" />
-                        </svg>
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => insertMarkdown('h2', 'Heading 2', isFullScreen)}
-                        className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                        title="Heading 2"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M7.638 13V3.669H6.38V7.62H1.759V3.67H.5V13h1.258V8.728h4.62V13h1.259zm3.022-6.733v-.048c0-.889.63-1.668 1.716-1.668.957 0 1.675.608 1.675 1.572 0 .855-.554 1.504-1.067 2.085l-3.513 3.999V13H15.5v-1.094h-4.245v-.075l2.481-2.844c.875-.998 1.586-1.784 1.586-2.953 0-1.463-1.155-2.556-2.919-2.556-1.941 0-2.966 1.326-2.966 2.74v.049h1.223z" />
-                        </svg>
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => insertMarkdown('h3', 'Heading 3', isFullScreen)}
-                        className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                        title="Heading 3"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M7.637 13V3.669H6.379V7.62H1.758V3.67H.5V13h1.258V8.728h4.62V13h1.259zm3.625-4.272h1.018c1.142 0 1.935.67 1.949 1.674.013 1.005-.78 1.737-2.01 1.73-1.08-.007-1.853-.588-1.935-1.32H9.108c.069 1.327 1.224 2.386 3.083 2.386 1.935 0 3.343-1.155 3.309-2.789-.027-1.51-1.251-2.16-2.037-2.249v-.068c.704-.123 1.764-.91 1.723-2.229-.035-1.353-1.176-2.4-2.954-2.385-1.873.006-2.857 1.162-2.898 2.358h1.196c.062-.69.711-1.299 1.696-1.299.998 0 1.695.622 1.695 1.525.007.922-.718 1.592-1.695 1.592h-.964v1.074z" />
-                        </svg>
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => insertMarkdown('h4', 'Heading 4', isFullScreen)}
-                        className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                        title="Heading 4"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <text x="2" y="15" fontSize="14" fontWeight="bold">H4</text>
-                        </svg>
-                    </button>
-                </div>
-
-                <div className="flex border-r border-gray-200 p-1">
-                    <button
-                        type="button"
-                        onClick={() => insertMarkdown('bold', 'Bold text', isFullScreen)}
-                        className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                        title="Bold"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z" />
-                        </svg>
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => insertMarkdown('italic', 'Italic text', isFullScreen)}
-                        className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                        title="Italic"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M7.991 11.674 9.53 4.455c.123-.595.246-.71 1.347-.807l.11-.52H7.211l-.11.52c1.06.096 1.128.212 1.005.807L6.57 11.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z" />
-                        </svg>
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => insertMarkdown('strikethrough', 'Strikethrough text', isFullScreen)}
-                        className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                        title="Strikethrough"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M6.333 5.686c0 .31.083.581.27.814H5.166a2.776 2.776 0 0 1-.099-.76c0-1.627 1.436-2.768 3.48-2.768 1.969 0 3.39 1.175 3.445 2.85h-1.23c-.11-1.08-.964-1.743-2.25-1.743-1.23 0-2.18.602-2.18 1.607zm2.194 7.478c-2.153 0-3.589-1.107-3.705-2.81h1.23c.144 1.06 1.129 1.703 2.544 1.703 1.34 0 2.31-.705 2.31-1.675 0-.827-.547-1.374-1.914-1.675L8.046 8.5H1v-1h14v1h-3.504c.468.437.675.994.675 1.697 0 1.826-1.436 2.967-3.644 2.967z" />
-                        </svg>
-                    </button>
-                </div>
-
-                <div className="flex border-r border-gray-200 p-1">
-                    <button
-                        type="button"
-                        onClick={() => insertMarkdown('list', '', isFullScreen)}
-                        className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                        title="Bullet List"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path fillRule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                        </svg>
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => insertMarkdown('numbered', '', isFullScreen)}
-                        className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                        title="Numbered List"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path fillRule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z" />
-                            <path d="M1.713 11.865v-.474H2c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 0 1-.492.594v.033a.615.615 0 0 1 .569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V9H1.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 0 0-.342.338v.041zM2.564 5h-.635V2.924h-.031l-.598.42v-.567l.629-.443h.635V5z" />
-                        </svg>
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => insertMarkdown('checkbox', '', isFullScreen)}
-                        className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                        title="Task List"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                            <path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <div className="flex flex-wrap p-1 justify-between">
-                <div className="flex flex-1 flex-wrap">
-                    <div className="flex border-r border-gray-200 pr-1">
-                        <button
-                            type="button"
-                            onClick={() => insertMarkdown('link', 'Do follow link', isFullScreen, '', 'dofollow')}
-                            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                            title="Do Follow Link"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                            </svg>
-                            <span className="ml-1 text-xs">Do Follow</span>
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => insertMarkdown('link', 'No follow link', isFullScreen, '', 'nofollow')}
-                            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                            title="No Follow Link"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                            </svg>
-                            <span className="ml-1 text-xs">No Follow</span>
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => document.getElementById('markdown-image-upload').click()}
-                            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                            title="Image"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div className="flex border-r border-gray-200 px-1">
-                        <button
-                            type="button"
-                            onClick={() => insertMarkdown('quote', 'blockquote', isFullScreen)}
-                            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                            title="Blockquote"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm5 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm-5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm.79-5.373c.112-.078.26-.17.444-.275L3.524 6c-.122.074-.272.17-.452.287-.18.117-.35.26-.51.428a2.425 2.425 0 0 0-.398.562c-.11.207-.164.438-.164.692 0 .36.072.65.217.873.144.219.385.328.72.328.215 0 .383-.07.504-.211a.697.697 0 0 0 .188-.463c0-.23-.07-.404-.211-.521-.137-.121-.326-.182-.568-.182h-.282c.024-.203.065-.37.123-.498a1.38 1.38 0 0 1 .252-.37 1.94 1.94 0 0 1 .346-.298zm2.167 0c.113-.078.262-.17.445-.275L5.692 6c-.122.074-.272.17-.452.287-.18.117-.35.26-.51.428a2.425 2.425 0 0 0-.398.562c-.11.207-.164.438-.164.692 0 .36.072.65.217.873.144.219.385.328.72.328.215 0 .383-.07.504-.211a.697.697 0 0 0 .188-.463c0-.23-.07-.404-.211-.521-.137-.121-.326-.182-.568-.182h-.282a1.75 1.75 0 0 1 .118-.492c.058-.13.144-.254.257-.375a1.94 1.94 0 0 1 .346-.3z" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div className="flex border-r border-gray-200 px-1">
-                        <button
-                            type="button"
-                            onClick={() => insertMarkdown('code', 'code', isFullScreen)}
-                            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                            title="Inline Code"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8l-3.147-3.146z" />
-                            </svg>
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => insertMarkdown('codeblock', 'code block', isFullScreen)}
-                            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                            title="Code Block"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div className="flex pl-1">
-                        <button
-                            type="button"
-                            onClick={() => insertMarkdown('hr', '', isFullScreen)}
-                            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                            title="Horizontal Rule"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 0 1 0 2H1a1 1 0 0 1-1-1z" />
-                            </svg>
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => insertMarkdown('table', '', isFullScreen)}
-                            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                            title="Insert Default Table"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z" />
-                            </svg>
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => document.getElementById('markdown-table-upload').click()}
-                            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                            title="Upload Table (CSV)"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M8 11a.5.5 0 0 0 .5-.5V6.707l1.146 1.147a.5.5 0 0 0 .708-.708l-2-2a.5.5 0 0 0-.708 0l-2 2a.5.5 0 1 0 .708.708L7.5 6.707V10.5a.5.5 0 0 0 .5.5z" />
-                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2z" />
-                            </svg>
-                        </button>
-                        <button
-                            type="button"
-                            onClick={handleTablePaste}
-                            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
-                            title="Paste Table"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M8.5 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6.5L8.5 1zM4 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3h-4V0H4z" />
-                                <path d="M5 4h2v2H5V4zm3 0h2v2H8V4zm-3 3h2v2H5V7zm3 0h2v2H8V7z" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <div className="flex items-center pr-1">
-                    <button
-                        type="button"
-                        onClick={toggleFullScreen}
-                        className="p-1.5 bg-gray-200 hover:bg-blue-100 rounded text-gray-700 hover:text-blue-700 transition-colors flex items-center"
-                        title={isFullScreen ? "Exit Full Screen" : "Full Screen Editor"}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            {isFullScreen ? (
-                                <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5zM0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zm10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4z" />
-                            ) : (
-                                <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z" />
-                            )}
-                        </svg>
-                        <span className="ml-1 text-sm font-medium hidden sm:inline">
-                            {isFullScreen ? "Exit" : "Full Screen"}
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-
-
-
-    const handleFaqJsonUpload = (file) => {
-        const reader = new FileReader();
-        reader.onload = evt => {
-            try {
-                let content = evt.target.result;
-                const scriptMatch = content.match(/<script[^>]*>([\s\S]*?)<\/script>/i);
-                if (scriptMatch && scriptMatch[1]) {
-                    content = scriptMatch[1].trim();
-                }
-                const json = JSON.parse(content);
-                if (Array.isArray(json) && json.every(f => f.question && f.answer)) {
-                    setFormData(f => ({ ...f, faqs: json }));
-                    setError(null);
-                } else {
-                    const faqsFromScript = parseJsonLdFaq(json);
-                    if (faqsFromScript && faqsFromScript.length) {
-                        setFormData(f => ({ ...f, faqs: faqsFromScript }));
-                        setError(null);
-                    } else {
-                        setError('Invalid FAQ JSON. Must be an array of {question, answer} or a valid FAQPage JSON-LD object.');
-                    }
-                }
-            } catch (err) {
-                setError('Invalid JSON file. Ensure it contains valid JSON or a valid FAQPage JSON-LD script.');
-                console.error(err);
-            }
-        };
-        reader.readAsText(file);
-    };
-
-    const parseJsonLdFaq = (json) => {
+  useEffect(() => {
+    if (initialData) {
+      console.log('BlogForm initialData:', initialData);
+      let faqs = [];
+      if (Array.isArray(initialData.faqs)) {
+        faqs = initialData.faqs;
+      } else if (typeof initialData.faqs === 'string') {
         try {
-            if (json['@context'] === 'https://schema.org' && json['@type'] === 'FAQPage' && Array.isArray(json.mainEntity)) {
-                return json.mainEntity
-                    .filter(item => item['@type'] === 'Question' && item.name && item.acceptedAnswer && item.acceptedAnswer.text)
-                    .map(item => ({
-                        question: item.name,
-                        answer: item.acceptedAnswer.text
-                    }));
-            }
-            return [];
+          const parsed = JSON.parse(initialData.faqs);
+          if (Array.isArray(parsed)) faqs = parsed;
         } catch {
-            return [];
+          faqs = [];
         }
+      }
+      setFormData({
+        ...initialData,
+        faqs,
+        date_posted: initialData.date_posted
+          ? new Date(initialData.date_posted).toISOString().split('T')[0]
+          : '',
+      });
+      if (initialData.image) {
+        console.log('Setting previewUrl to:', initialData.image);
+        setPreviewUrl(initialData.image);
+      }
+    }
+  }, [initialData]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleFullScreenChange = (e) => {
+    setFormData((prev) => ({ ...prev, description: e.target.value }));
+  }
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      setImageFile(file)
+      setPreviewUrl(URL.createObjectURL(file))
+    }
+  }
+
+  // Helper function to convert array data into markdown table
+  const arrayToMarkdownTable = (rows) => {
+    if (!rows || rows.length === 0) return '';
+
+    const headers = rows[0];
+    const headerRow = `| ${headers.join(' | ')} |`;
+    const separatorRow = `| ${headers.map(() => '---').join(' | ')} |`;
+    const bodyRows = rows.slice(1).map(row => `| ${row.join(' | ')} |`).join('\n');
+
+    return `${headerRow}\n${separatorRow}\n${bodyRows}\n`;
+  };
+
+  // Handle CSV file upload and convert to markdown table
+  const handleTableCsvUpload = (file) => {
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      try {
+        const csvText = evt.target.result;
+        const rows = csvText.split('\n')
+          .map(row => row.split(',').map(cell => cell.trim()))
+          .filter(row => row.some(cell => cell));
+        const markdownTable = arrayToMarkdownTable(rows);
+        insertMarkdown('custom', markdownTable, isFullScreen);
+      } catch (err) {
+        setError('Failed to parse CSV file. Ensure it’s a valid CSV.');
+      }
     };
+    reader.readAsText(file);
+  };
 
-    return (
-        <div className="p-6 max-w-4xl mx-auto bg-white my-8">
-            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 pb-4">
-                {isEdit ? 'Update Blog Post' : 'Create Blog Post'}
-            </h2>
+  // Handle pasted table data and convert to markdown table
+  const handleTablePaste = () => {
+    const pastedText = prompt('Paste your table data (tab-separated or CSV format):');
+    if (!pastedText) return;
 
-            {(successMsg || error) && (
-                <div className={`mb-4 p-3 rounded-md ${successMsg ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
-                    {successMsg || error}
-                </div>
-            )}
+    try {
+      const rows = pastedText.split('\n')
+        .map(row => row.split(/\t|,/).map(cell => cell.trim()))
+        .filter(row => row.some(cell => cell));
+      const markdownTable = arrayToMarkdownTable(rows);
+      insertMarkdown('custom', markdownTable, isFullScreen);
+    } catch (err) {
+      setError('Failed to parse pasted table data. Use tab-separated or CSV format.');
+    }
+  };
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
-                        <input
-                            type="text"
-                            name="title"
-                            placeholder="Enter blog title"
-                            value={formData.title}
-                            onChange={handleChange}
-                            required
-                            className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Author</label>
-                        <input
-                            type="text"
-                            name="author"
-                            placeholder="Enter author name"
-                            value={formData.author}
-                            onChange={handleChange}
-                            required
-                            className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
-                </div>
+  const insertMarkdown = (syntax, placeholder = '', isFullScreenMode = false, url = '', rel = '') => {
+    const textarea = isFullScreenMode ? fullScreenTextareaRef.current : descriptionTextareaRef.current;
+    if (!textarea) return;
 
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Date Posted</label>
-                    <input
-                        type="date"
-                        name="date_posted"
-                        value={formData.date_posted}
-                        onChange={handleChange}
-                        className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    />
-                </div>
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const text = textarea.value;
+    const selectedText = text.substring(start, end) || placeholder;
 
-                <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Slug</label>
-                        <input
-                            type="text"
-                            name="slug"
-                            placeholder="Enter URL-friendly slug"
-                            value={formData.slug}
-                            onChange={handleChange}
-                            required
-                            className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Meta Title</label>
-                        <input
-                            type="text"
-                            name="meta_title"
-                            placeholder="Enter meta title for SEO"
-                            value={formData.meta_title}
-                            onChange={handleChange}
-                            className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
-                </div>
+    const beforeText = text.substring(0, start);
+    const afterText = text.substring(end);
 
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Meta Description</label>
-                    <textarea
-                        name="meta_description"
-                        placeholder="Enter meta description for SEO"
-                        value={formData.meta_description}
-                        onChange={handleChange}
-                        rows="3"
-                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    />
-                </div>
+    let newText;
 
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Meta Keywords</label>
-                    <input
-                        type="text"
-                        name="meta_keywords"
-                        placeholder="Enter meta keywords (comma-separated)"
-                        value={formData.meta_keywords}
-                        onChange={handleChange}
-                        className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    />
-                </div>
+    switch (syntax) {
+      case 'h1':
+        newText = `${beforeText.replace(/(\n)?$/, '\n')}# ${selectedText}\n${afterText.replace(/^\n?/, '')}`;
+        break;
+      case 'h2':
+        newText = `${beforeText.replace(/(\n)?$/, '\n')}## ${selectedText}\n${afterText.replace(/^\n?/, '')}`;
+        break;
+      case 'h3':
+        newText = `${beforeText.replace(/(\n)?$/, '\n')}### ${selectedText}\n${afterText.replace(/^\n?/, '')}`;
+        break;
+      case 'h4':
+        newText = `${beforeText.replace(/(\n)?$/, '\n')}#### ${selectedText}\n${afterText.replace(/^\n?/, '')}`;
+        break;
+      case 'bold':
+        newText = `${beforeText}**${selectedText}**${afterText}`
+        break
+      case 'italic':
+        newText = `${beforeText}_${selectedText}_${afterText}`
+        break
+      case 'strikethrough':
+        newText = `${beforeText}~~${selectedText}~~${afterText}`
+        break
+      case 'link':
+        newText = rel === 'nofollow'
+          ? `${beforeText}[${selectedText}](url "nofollow")${afterText}`
+          : `${beforeText}[${selectedText}](url)${afterText}`;
+        break
+      case 'image':
+        newText = `${beforeText}![${selectedText}](${url || 'image-url'})${afterText}`;
+        break
+      case 'code':
+        newText = `${beforeText}\`${selectedText}\`${afterText}`
+        break
+      case 'codeblock':
+        newText = `${beforeText}\n\`\`\`\n${selectedText}\n\`\`\`\n${afterText}`
+        break
+      case 'quote':
+        newText = `${beforeText}> ${selectedText}${afterText}`
+        break
+      case 'list':
+        newText = `${beforeText}${selectedText
+          .split('\n')
+          .map(line => line ? `- ${line}` : '')
+          .join('\n')}${afterText}`;
+        break;
+      case 'numbered':
+        newText = `${beforeText}${selectedText
+          .split('\n')
+          .map((line, i) => line ? `${i + 1}. ${line}` : '')
+          .join('\n')}${afterText}`;
+        break;
+      case 'checkbox':
+        newText = `${beforeText}\n- [ ] ${selectedText}\n- [ ] Task 2\n- [x] Completed task${afterText}`
+        break
+      case 'hr':
+        newText = `${beforeText}\n\n---\n\n${selectedText}${afterText}`
+        break
+      case 'table':
+        newText = `${beforeText}\n| Header 1 | Header 2 |\n| -------- | -------- |\n| Cell 1   | Cell 2   |\n| Cell 3   | Cell 4   |\n${afterText}`
+        break
+      case 'custom':
+        newText = `${beforeText}${selectedText}${afterText}`;
+        break
+      default:
+        newText = text
+    }
 
-                <div className="flex md:hidden mb-2 border-b">
-                    <button
-                        type="button"
-                        onClick={() => setActiveTab('edit')}
-                        className={`px-4 py-2 ${activeTab === 'edit'
-                            ? 'border-b-2 border-blue-500 text-blue-600'
-                            : 'text-gray-500'}`}
-                    >
-                        Edit
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => setActiveTab('preview')}
-                        className={`px-4 py-2 ${activeTab === 'preview'
-                            ? 'border-b-2 border-blue-500 text-blue-600'
-                            : 'text-gray-500'}`}
-                    >
-                        Preview
-                    </button>
-                </div>
+    setFormData({ ...formData, description: newText });
 
-                <div className="flex flex-col md:flex-row gap-6">
-                    <div className={`${activeTab === 'edit' ? 'block' : 'hidden'} md:block md:w-1/2`}>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Description (Markdown)
-                        </label>
+    setTimeout(() => {
+      if (document.activeElement === textarea) {
+        textarea.focus();
+        const newCursorPos = start + newText.length - text.length;
+        textarea.setSelectionRange(newCursorPos, newCursorPos);
+      }
+    }, 0);
+  };
 
-                        <MarkdownToolbar isFullScreen={false} />
+  const toggleFullScreen = () => {
+    setIsFullScreen(prev => !prev);
+  };
 
-                        <textarea
-                            ref={descriptionTextareaRef}
-                            name="description"
-                            placeholder="Write markdown content here..."
-                            value={formData.description}
-                            onChange={handleChange}
-                            rows="12"
-                            className="w-full p-3 border border-gray-300 rounded-b-md font-mono focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-inner"
-                        />
-                    </div>
+  // Helper to format Supabase errors for better debugging
+  const formatError = (err) => {
+    if (!err) return '';
+    if (typeof err === 'string') return err;
+    try {
+      const parts = [];
+      if (err.message) parts.push(err.message);
+      if (err.details) parts.push(err.details);
+      if (err.hint) parts.push(`hint: ${err.hint}`);
+      if (err.code) parts.push(`code: ${err.code}`);
+      return parts.join(' \n') || JSON.stringify(err);
+    } catch (e) {
+      return JSON.stringify(err);
+    }
+  };
 
-                    <div className={`${activeTab === 'preview' ? 'block' : 'hidden'} md:block md:w-1/2`}>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Preview
-                        </label>
-                        <div className="border border-gray-300 rounded-md p-4 h-[422px] overflow-auto bg-white prose prose-sm max-w-none shadow-inner">
-                            {formData.description ? (
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkGfm]}
-                                    components={markdownComponents}
-                                >
-                                    {formData.description}
-                                </ReactMarkdown>
-                            ) : (
-                                <p className="text-gray-400 italic">Preview will appear here...</p>
-                            )}
-                        </div>
-                    </div>
-                </div>
+  const uploadImage = async (file) => {
+    const ext = file.name.split('.').pop().toLowerCase()
+    const allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif']
+    if (!allowed.includes(ext)) {
+      throw new Error('Invalid image format.')
+    }
 
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Additional Content</label>
-                    <textarea
-                        name="content"
-                        placeholder="Additional content or notes"
-                        value={formData.content}
-                        onChange={handleChange}
-                        rows="4"
-                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    />
-                </div>
+    const fileName = `${Date.now()}.${ext}`
+    const filePath = `public/${fileName}`
 
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Featured Image</label>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageChange}
-                            className="hidden"
-                            id="image-upload"
-                        />
-                        <label
-                            htmlFor="image-upload"
-                            className="cursor-pointer inline-block px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md"
-                        >
-                            Choose Image
-                        </label>
-                        <span className="block mt-1 text-sm text-gray-500">
-                            Supported formats: JPG, PNG, GIF, WEBP
-                        </span>
-                    </div>
-                    {previewUrl && (
-                        <div className="mt-3">
-                            <p className="text-sm font-medium text-gray-700 mb-1">Image Preview</p>
-                            <div className="border rounded-md p-2 bg-gray-50">
-                                <Image
-                                    src={previewUrl}
-                                    alt="Preview"
-                                    width={400}
-                                    height={256}
-                                    className="max-h-64 mx-auto rounded object-contain"
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        setImageFile(null);
-                                        setPreviewUrl(null);
-                                    }}
-                                    className="mt-2 px-3 py-1 text-sm text-red-600 hover:bg-red-50 rounded"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                        </div>
-                    )}
-                </div>
+    const { error: uploadError } = await supabase.storage
+      .from('blog-images')
+      .upload(filePath, file)
 
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">FAQs</label>
-                    <div className="flex items-center gap-3 mb-2">
-                        <input
-                            type="file"
-                            accept="application/json"
-                            id="faq-json-upload"
-                            className="hidden"
-                            onChange={e => {
-                                const file = e.target.files[0];
-                                if (!file) return;
-                                handleFaqJsonUpload(file);
-                            }}
-                        />
-                        <label
-                            htmlFor="faq-json-upload"
-                            className="px-3 py-1 bg-blue-100 text-blue-700 rounded cursor-pointer hover:bg-blue-200"
-                        >
-                            Upload FAQs JSON/Script
-                        </label>
-                        <span className="text-xs text-gray-500">
-                            Upload <code>[{"{question, answer}"}]</code> or <code>FAQPage script</code>
-                        </span>
-                    </div>
-                    {formData.faqs.map((faq, idx) => (
-                        <div key={idx} className="mb-2 flex gap-2">
-                            <input
-                                type="text"
-                                placeholder="Question"
-                                value={faq.question}
-                                onChange={e => {
-                                    const newFaqs = [...formData.faqs];
-                                    newFaqs[idx].question = e.target.value;
-                                    setFormData(f => ({ ...f, faqs: newFaqs }));
-                                }}
-                                className="flex-1 p-2 border border-gray-300 rounded"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Answer"
-                                value={faq.answer}
-                                onChange={e => {
-                                    const newFaqs = [...formData.faqs];
-                                    newFaqs[idx].answer = e.target.value;
-                                    setFormData(f => ({ ...f, faqs: newFaqs }));
-                                }}
-                                className="flex-1 p-2 border border-gray-300 rounded"
-                            />
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    setFormData(f => ({
-                                        ...f,
-                                        faqs: f.faqs.filter((_, i) => i !== idx)
-                                    }));
-                                }}
-                                className="px-2 text-red-600"
-                                title="Remove FAQ"
-                            >✕</button>
-                        </div>
-                    ))}
-                    <button
-                        type="button"
-                        onClick={() => setFormData(f => ({
-                            ...f,
-                            faqs: [...f.faqs, { question: '', answer: '' }]
-                        }))}
-                        className="mt-2 px-3 py-1 bg-blue-100 text-blue-700 rounded"
-                    >
-                        Add FAQ
-                    </button>
-                </div>
+    if (uploadError) throw uploadError
 
-                <div className="flex justify-center pt-4">
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="px-8 py-3 font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:opacity-50"
-                    >
-                        {loading ? (
-                            <span className="flex items-center">
-                                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                </svg>
-                                {isEdit ? 'Updating...' : 'Submitting...'}
-                            </span>
-                        ) : isEdit ? 'Update Post' : 'Submit Post'}
-                    </button>
-                    {onCancel && (
-                        <button
-                            type="button"
-                            onClick={onCancel}
-                            className="ml-4 px-8 py-3 font-medium rounded-lg text-gray-700 bg-gray-200 hover:bg-gray-300"
-                        >
-                            Cancel
-                        </button>
-                    )}
-                </div>
-            </form>
+    const { data: urlData } = supabase
+      .storage
+      .from('blog-images')
+      .getPublicUrl(filePath)
 
-            {isFullScreen && (
-                <div className="fixed inset-0 bg-white z-50 flex flex-col">
-                    <div className="bg-white p-4 shadow-xl flex items-center justify-between">
-                        <h3 className="text-lg font-medium">Markdown Editor</h3>
-                        <button
-                            onClick={toggleFullScreen}
-                            className="p-2 rounded-md hover:bg-gray-200 focus:outline-none"
-                            title="Close"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                            </svg>
-                        </button>
-                    </div>
+    return urlData.publicUrl
+  }
 
-                    <div className="flex-1 flex flex-col md:flex-row p-4 gap-4 overflow-auto">
-                        <div className="flex-1 flex flex-col">
-                            <MarkdownToolbar isFullScreen={true} />
-                            <textarea
-                                ref={fullScreenTextareaRef}
-                                value={formData.description}
-                                onChange={handleFullScreenChange}
-                                className="flex-1 p-4 border border-gray-300 font-mono focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-inner"
-                                placeholder="Write markdown content here..."
-                            />
-                        </div>
-                        <div className="hidden md:block md:w-1/2 bg-white border border-gray-300 rounded-md overflow-auto p-4 prose prose-sm max-w-none">
-                            <ReactMarkdown
-                                remarkPlugins={[remarkGfm]}
-                                components={markdownComponents}
-                            >
-                                {formData.description || 'Preview will appear here...'}
-                            </ReactMarkdown>
-                        </div>
-                    </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+    setSuccessMsg(null);
+    setLoading(true);
 
-                    <div className="bg-gray-100 p-4 flex justify-end">
-                        <button
-                            onClick={toggleFullScreen}
-                            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium"
-                        >
-                            Apply & Close
-                        </button>
-                    </div>
-                </div>
-            )}
+    try {
+      let imageUrl = previewUrl;
+      if (imageFile) {
+        imageUrl = await uploadImage(imageFile);
+      }
 
-            <input
-                type="file"
-                accept="image/*"
-                id="markdown-image-upload"
-                style={{ display: 'none' }}
-                onChange={async (e) => {
-                    const file = e.target.files[0];
-                    if (!file) return;
-                    try {
-                        const alt = prompt('Enter image alt text:') || 'image';
-                        const url = await uploadImage(file);
-                        insertMarkdown('image', alt, isFullScreen, url);
-                    } catch (err) {
-                        setError(err.message || 'Image upload failed.');
-                    }
-                    e.target.value = '';
-                }}
-            />
-            <input
-                type="file"
-                accept=".csv"
-                id="markdown-table-upload"
-                style={{ display: 'none' }}
-                onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (!file) return;
-                    handleTableCsvUpload(file);
-                    e.target.value = '';
-                }}
-            />
-            {formData.faqs && formData.faqs.length > 0 && (
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: stringifySchema(faqPage(formData.faqs)) }}
-                />
-            )}
+      if (isEdit && initialData) {
+        const { data, error } = await supabase
+          .from('blogs_site2')
+          .update({
+            ...formData,
+            image: imageUrl,
+            date_posted: formData.date_posted || new Date().toISOString().split('T')[0],
+          })
+          .eq('id', initialData.id)
+          .select()
+          .single();
+
+        if (error) {
+          console.error('Supabase update error:', error);
+          setError(formatError(error));
+          setLoading(false);
+          return;
+        }
+        setSuccessMsg('Blog post updated successfully!');
+        if (onSuccess) onSuccess(data);
+      } else {
+        const { data, error } = await supabase
+          .from('blogs_site2')
+          .insert([
+            {
+              ...formData,
+              image: imageUrl,
+              date_posted: formData.date_posted || new Date().toISOString().split('T')[0],
+            },
+          ])
+          .select()
+          .single();
+
+        if (error) {
+          console.error('Supabase insert error:', error);
+          setError(formatError(error));
+          setLoading(false);
+          return;
+        }
+        setSuccessMsg('Blog post created successfully!');
+        setFormData({
+          title: '',
+          author: '',
+          date_posted: '',
+          description: '',
+          content: '',
+          slug: '',
+          meta_title: '',
+          meta_description: '',
+          meta_keywords: '',
+          faqs: []
+        });
+        setImageFile(null);
+        setPreviewUrl(null);
+        if (onSuccess) onSuccess(data);
+      }
+    } catch (err) {
+      console.error('Unexpected error in handleSubmit:', err);
+      setError(formatError(err) || 'Something went wrong.');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const markdownComponents = {
+    h1: ({ node, ...props }) => <h1 className="text-2xl font-bold my-3" {...props} />,
+    h2: ({ node, ...props }) => <h2 className="text-xl font-bold my-2" {...props} />,
+    h3: ({ node, ...props }) => <h3 className="text-lg font-bold my-2" {...props} />,
+    h4: ({ node, ...props }) => <h4 className="text-base font-semibold my-2" {...props} />,
+    p: ({ node, ...props }) => <p className="my-2 text-gray-800" {...props} />,
+    ul: ({ node, ...props }) => <ul className="list-disc ml-5 my-2" {...props} />,
+    ol: ({ node, ...props }) => <ol className="list-decimal ml-5 my-2" {...props} />,
+    li: ({ node, ...props }) => <li className="my-1" {...props} />,
+    a: ({ node, ...props }) => <a className="text-blue-600 hover:underline" {...props} target="_blank" rel={props.title === 'nofollow' ? 'nofollow' : 'noopener noreferrer'} />,
+    blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-3 text-gray-700" {...props} />,
+    code: ({ node, inline, ...props }) => inline
+      ? <code className="bg-gray-100 px-1 py-0.5 rounded text-pink-600 font-mono text-sm" {...props} />
+      : <code className="block bg-gray-100 p-3 rounded-md font-mono text-sm my-3 overflow-auto" {...props} />,
+    table: ({ node, ...props }) => <table className="border-collapse border border-gray-300 my-3" {...props} />,
+    th: ({ node, ...props }) => <th className="border border-gray-300 px-4 py-2 bg-gray-100 font-semibold" {...props} />,
+    td: ({ node, ...props }) => <td className="border border-gray-300 px-4 py-2" {...props} />,
+    tr: ({ node, ...props }) => <tr className="border border-gray-300" {...props} />
+  };
+
+  const MarkdownToolbar = ({ isFullScreen = false }) => (
+    <div className={`bg-gray-50 rounded-t-md border border-gray-300 border-b-0 ${isFullScreen ? 'border-0 shadow-lg' : ''}`}>
+      <div className="flex flex-wrap border-b border-gray-200">
+        <div className="flex border-r border-gray-200 p-1">
+          <button
+            type="button"
+            onClick={() => insertMarkdown('h1', 'Heading 1', isFullScreen)}
+            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+            title="Heading 1"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8.637 13V3.669H7.379V7.62H2.758V3.67H1.5V13h1.258V8.728h4.62V13h1.259zm5.329 0V3.669h-1.244L10.5 5.316v1.265l2.16-1.565h.062V13h1.244z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => insertMarkdown('h2', 'Heading 2', isFullScreen)}
+            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+            title="Heading 2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M7.638 13V3.669H6.38V7.62H1.759V3.67H.5V13h1.258V8.728h4.62V13h1.259zm3.022-6.733v-.048c0-.889.63-1.668 1.716-1.668.957 0 1.675.608 1.675 1.572 0 .855-.554 1.504-1.067 2.085l-3.513 3.999V13H15.5v-1.094h-4.245v-.075l2.481-2.844c.875-.998 1.586-1.784 1.586-2.953 0-1.463-1.155-2.556-2.919-2.556-1.941 0-2.966 1.326-2.966 2.74v.049h1.223z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => insertMarkdown('h3', 'Heading 3', isFullScreen)}
+            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+            title="Heading 3"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M7.637 13V3.669H6.379V7.62H1.758V3.67H.5V13h1.258V8.728h4.62V13h1.259zm3.625-4.272h1.018c1.142 0 1.935.67 1.949 1.674.013 1.005-.78 1.737-2.01 1.73-1.08-.007-1.853-.588-1.935-1.32H9.108c.069 1.327 1.224 2.386 3.083 2.386 1.935 0 3.343-1.155 3.309-2.789-.027-1.51-1.251-2.16-2.037-2.249v-.068c.704-.123 1.764-.91 1.723-2.229-.035-1.353-1.176-2.4-2.954-2.385-1.873.006-2.857 1.162-2.898 2.358h1.196c.062-.69.711-1.299 1.696-1.299.998 0 1.695.622 1.695 1.525.007.922-.718 1.592-1.695 1.592h-.964v1.074z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => insertMarkdown('h4', 'Heading 4', isFullScreen)}
+            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+            title="Heading 4"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <text x="2" y="15" fontSize="14" fontWeight="bold">H4</text>
+            </svg>
+          </button>
         </div>
-    )
+
+        <div className="flex border-r border-gray-200 p-1">
+          <button
+            type="button"
+            onClick={() => insertMarkdown('bold', 'Bold text', isFullScreen)}
+            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+            title="Bold"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => insertMarkdown('italic', 'Italic text', isFullScreen)}
+            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+            title="Italic"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M7.991 11.674 9.53 4.455c.123-.595.246-.71 1.347-.807l.11-.52H7.211l-.11.52c1.06.096 1.128.212 1.005.807L6.57 11.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => insertMarkdown('strikethrough', 'Strikethrough text', isFullScreen)}
+            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+            title="Strikethrough"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M6.333 5.686c0 .31.083.581.27.814H5.166a2.776 2.776 0 0 1-.099-.76c0-1.627 1.436-2.768 3.48-2.768 1.969 0 3.39 1.175 3.445 2.85h-1.23c-.11-1.08-.964-1.743-2.25-1.743-1.23 0-2.18.602-2.18 1.607zm2.194 7.478c-2.153 0-3.589-1.107-3.705-2.81h1.23c.144 1.06 1.129 1.703 2.544 1.703 1.34 0 2.31-.705 2.31-1.675 0-.827-.547-1.374-1.914-1.675L8.046 8.5H1v-1h14v1h-3.504c.468.437.675.994.675 1.697 0 1.826-1.436 2.967-3.644 2.967z" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="flex border-r border-gray-200 p-1">
+          <button
+            type="button"
+            onClick={() => insertMarkdown('list', '', isFullScreen)}
+            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+            title="Bullet List"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path fillRule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => insertMarkdown('numbered', '', isFullScreen)}
+            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+            title="Numbered List"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path fillRule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z" />
+              <path d="M1.713 11.865v-.474H2c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 0 1-.492.594v.033a.615.615 0 0 1 .569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V9H1.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 0 0-.342.338v.041zM2.564 5h-.635V2.924h-.031l-.598.42v-.567l.629-.443h.635V5z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => insertMarkdown('checkbox', '', isFullScreen)}
+            className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+            title="Task List"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+              <path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap p-1 justify-between">
+        <div className="flex flex-1 flex-wrap">
+          <div className="flex border-r border-gray-200 pr-1">
+            <button
+              type="button"
+              onClick={() => insertMarkdown('link', 'Do follow link', isFullScreen, '', 'dofollow')}
+              className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+              title="Do Follow Link"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+              </svg>
+              <span className="ml-1 text-xs">Do Follow</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => insertMarkdown('link', 'No follow link', isFullScreen, '', 'nofollow')}
+              className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+              title="No Follow Link"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+              </svg>
+              <span className="ml-1 text-xs">No Follow</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => document.getElementById('markdown-image-upload').click()}
+              className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+              title="Image"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z" />
+              </svg>
+            </button>
+          </div>
+
+          <div className="flex border-r border-gray-200 px-1">
+            <button
+              type="button"
+              onClick={() => insertMarkdown('quote', 'blockquote', isFullScreen)}
+              className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+              title="Blockquote"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm5 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm-5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm.79-5.373c.112-.078.26-.17.444-.275L3.524 6c-.122.074-.272.17-.452.287-.18.117-.35.26-.51.428a2.425 2.425 0 0 0-.398.562c-.11.207-.164.438-.164.692 0 .36.072.65.217.873.144.219.385.328.72.328.215 0 .383-.07.504-.211a.697.697 0 0 0 .188-.463c0-.23-.07-.404-.211-.521-.137-.121-.326-.182-.568-.182h-.282c.024-.203.065-.37.123-.498a1.38 1.38 0 0 1 .252-.37 1.94 1.94 0 0 1 .346-.298zm2.167 0c.113-.078.262-.17.445-.275L5.692 6c-.122.074-.272.17-.452.287-.18.117-.35.26-.51.428a2.425 2.425 0 0 0-.398.562c-.11.207-.164.438-.164.692 0 .36.072.65.217.873.144.219.385.328.72.328.215 0 .383-.07.504-.211a.697.697 0 0 0 .188-.463c0-.23-.07-.404-.211-.521-.137-.121-.326-.182-.568-.182h-.282a1.75 1.75 0 0 1 .118-.492c.058-.13.144-.254.257-.375a1.94 1.94 0 0 1 .346-.3z" />
+              </svg>
+            </button>
+          </div>
+
+          <div className="flex border-r border-gray-200 px-1">
+            <button
+              type="button"
+              onClick={() => insertMarkdown('code', 'code', isFullScreen)}
+              className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+              title="Inline Code"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8l-3.147-3.146z" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => insertMarkdown('codeblock', 'code block', isFullScreen)}
+              className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+              title="Code Block"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z" />
+              </svg>
+            </button>
+          </div>
+
+          <div className="flex pl-1">
+            <button
+              type="button"
+              onClick={() => insertMarkdown('hr', '', isFullScreen)}
+              className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+              title="Horizontal Rule"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 0 1 0 2H1a1 1 0 0 1-1-1z" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => insertMarkdown('table', '', isFullScreen)}
+              className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+              title="Insert Default Table"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => document.getElementById('markdown-table-upload').click()}
+              className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+              title="Upload Table (CSV)"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 11a.5.5 0 0 0 .5-.5V6.707l1.146 1.147a.5.5 0 0 0 .708-.708l-2-2a.5.5 0 0 0-.708 0l-2 2a.5.5 0 1 0 .708.708L7.5 6.707V10.5a.5.5 0 0 0 .5.5z" />
+                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2z" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={handleTablePaste}
+              className="p-1.5 hover:bg-blue-50 rounded text-gray-700 hover:text-blue-600 transition-colors"
+              title="Paste Table"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.5 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6.5L8.5 1zM4 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3h-4V0H4z" />
+                <path d="M5 4h2v2H5V4zm3 0h2v2H8V4zm-3 3h2v2H5V7zm3 0h2v2H8V7z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div className="flex items-center pr-1">
+          <button
+            type="button"
+            onClick={toggleFullScreen}
+            className="p-1.5 bg-gray-200 hover:bg-blue-100 rounded text-gray-700 hover:text-blue-700 transition-colors flex items-center"
+            title={isFullScreen ? "Exit Full Screen" : "Full Screen Editor"}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              {isFullScreen ? (
+                <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5zM0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zm10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4z" />
+              ) : (
+                <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z" />
+              )}
+            </svg>
+            <span className="ml-1 text-sm font-medium hidden sm:inline">
+              {isFullScreen ? "Exit" : "Full Screen"}
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+
+
+  const handleFaqJsonUpload = (file) => {
+    const reader = new FileReader();
+    reader.onload = evt => {
+      try {
+        let content = evt.target.result;
+        const scriptMatch = content.match(/<script[^>]*>([\s\S]*?)<\/script>/i);
+        if (scriptMatch && scriptMatch[1]) {
+          content = scriptMatch[1].trim();
+        }
+        const json = JSON.parse(content);
+        if (Array.isArray(json) && json.every(f => f.question && f.answer)) {
+          setFormData(f => ({ ...f, faqs: json }));
+          setError(null);
+        } else {
+          const faqsFromScript = parseJsonLdFaq(json);
+          if (faqsFromScript && faqsFromScript.length) {
+            setFormData(f => ({ ...f, faqs: faqsFromScript }));
+            setError(null);
+          } else {
+            setError('Invalid FAQ JSON. Must be an array of {question, answer} or a valid FAQPage JSON-LD object.');
+          }
+        }
+      } catch (err) {
+        setError('Invalid JSON file. Ensure it contains valid JSON or a valid FAQPage JSON-LD script.');
+        console.error(err);
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  const parseJsonLdFaq = (json) => {
+    try {
+      if (json['@context'] === 'https://schema.org' && json['@type'] === 'FAQPage' && Array.isArray(json.mainEntity)) {
+        return json.mainEntity
+          .filter(item => item['@type'] === 'Question' && item.name && item.acceptedAnswer && item.acceptedAnswer.text)
+          .map(item => ({
+            question: item.name,
+            answer: item.acceptedAnswer.text
+          }));
+      }
+      return [];
+    } catch {
+      return [];
+    }
+  };
+
+  return (
+    <div className="p-6 max-w-4xl mx-auto bg-white my-8">
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 pb-4">
+        {isEdit ? 'Update Blog Post' : 'Create Blog Post'}
+      </h2>
+
+      {(successMsg || error) && (
+        <div className={`mb-4 p-3 rounded-md ${successMsg ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
+          {successMsg || error}
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+            <input
+              type="text"
+              name="title"
+              placeholder="Enter blog title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+              className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Author</label>
+            <input
+              type="text"
+              name="author"
+              placeholder="Enter author name"
+              value={formData.author}
+              onChange={handleChange}
+              required
+              className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Date Posted</label>
+          <input
+            type="date"
+            name="date_posted"
+            value={formData.date_posted}
+            onChange={handleChange}
+            className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Slug</label>
+            <input
+              type="text"
+              name="slug"
+              placeholder="Enter URL-friendly slug"
+              value={formData.slug}
+              onChange={handleChange}
+              required
+              className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Meta Title</label>
+            <input
+              type="text"
+              name="meta_title"
+              placeholder="Enter meta title for SEO"
+              value={formData.meta_title}
+              onChange={handleChange}
+              className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Meta Description</label>
+          <textarea
+            name="meta_description"
+            placeholder="Enter meta description for SEO"
+            value={formData.meta_description}
+            onChange={handleChange}
+            rows="3"
+            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Meta Keywords</label>
+          <input
+            type="text"
+            name="meta_keywords"
+            placeholder="Enter meta keywords (comma-separated)"
+            value={formData.meta_keywords}
+            onChange={handleChange}
+            className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+
+        <div className="flex md:hidden mb-2 border-b">
+          <button
+            type="button"
+            onClick={() => setActiveTab('edit')}
+            className={`px-4 py-2 ${activeTab === 'edit'
+              ? 'border-b-2 border-blue-500 text-blue-600'
+              : 'text-gray-500'}`}
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('preview')}
+            className={`px-4 py-2 ${activeTab === 'preview'
+              ? 'border-b-2 border-blue-500 text-blue-600'
+              : 'text-gray-500'}`}
+          >
+            Preview
+          </button>
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-6">
+          <div className={`${activeTab === 'edit' ? 'block' : 'hidden'} md:block md:w-1/2`}>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Description (Markdown)
+            </label>
+
+            <MarkdownToolbar isFullScreen={false} />
+
+            <textarea
+              ref={descriptionTextareaRef}
+              name="description"
+              placeholder="Write markdown content here..."
+              value={formData.description}
+              onChange={handleChange}
+              rows="12"
+              className="w-full p-3 border border-gray-300 rounded-b-md font-mono focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-inner"
+            />
+          </div>
+
+          <div className={`${activeTab === 'preview' ? 'block' : 'hidden'} md:block md:w-1/2`}>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Preview
+            </label>
+            <div className="border border-gray-300 rounded-md p-4 h-[422px] overflow-auto bg-white prose prose-sm max-w-none shadow-inner">
+              {formData.description ? (
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={markdownComponents}
+                >
+                  {formData.description}
+                </ReactMarkdown>
+              ) : (
+                <p className="text-gray-400 italic">Preview will appear here...</p>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Additional Content</label>
+          <textarea
+            name="content"
+            placeholder="Additional content or notes"
+            value={formData.content}
+            onChange={handleChange}
+            rows="4"
+            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Featured Image</label>
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="hidden"
+              id="image-upload"
+            />
+            <label
+              htmlFor="image-upload"
+              className="cursor-pointer inline-block px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md"
+            >
+              Choose Image
+            </label>
+            <span className="block mt-1 text-sm text-gray-500">
+              Supported formats: JPG, PNG, GIF, WEBP
+            </span>
+          </div>
+          {previewUrl && (
+            <div className="mt-3">
+              <p className="text-sm font-medium text-gray-700 mb-1">Image Preview</p>
+              <div className="border rounded-md p-2 bg-gray-50">
+                <Image
+                  src={previewUrl}
+                  alt="Preview"
+                  width={400}
+                  height={256}
+                  className="max-h-64 mx-auto rounded object-contain"
+                  unoptimized={true}
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setImageFile(null);
+                    setPreviewUrl(null);
+                  }}
+                  className="mt-2 px-3 py-1 text-sm text-red-600 hover:bg-red-50 rounded"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">FAQs</label>
+          <div className="flex items-center gap-3 mb-2">
+            <input
+              type="file"
+              accept="application/json"
+              id="faq-json-upload"
+              className="hidden"
+              onChange={e => {
+                const file = e.target.files[0];
+                if (!file) return;
+                handleFaqJsonUpload(file);
+              }}
+            />
+            <label
+              htmlFor="faq-json-upload"
+              className="px-3 py-1 bg-blue-100 text-blue-700 rounded cursor-pointer hover:bg-blue-200"
+            >
+              Upload FAQs JSON/Script
+            </label>
+            <span className="text-xs text-gray-500">
+              Upload <code>[{"{question, answer}"}]</code> or <code>FAQPage script</code>
+            </span>
+          </div>
+          {formData.faqs.map((faq, idx) => (
+            <div key={idx} className="mb-2 flex gap-2">
+              <input
+                type="text"
+                placeholder="Question"
+                value={faq.question}
+                onChange={e => {
+                  const newFaqs = [...formData.faqs];
+                  newFaqs[idx].question = e.target.value;
+                  setFormData(f => ({ ...f, faqs: newFaqs }));
+                }}
+                className="flex-1 p-2 border border-gray-300 rounded"
+              />
+              <input
+                type="text"
+                placeholder="Answer"
+                value={faq.answer}
+                onChange={e => {
+                  const newFaqs = [...formData.faqs];
+                  newFaqs[idx].answer = e.target.value;
+                  setFormData(f => ({ ...f, faqs: newFaqs }));
+                }}
+                className="flex-1 p-2 border border-gray-300 rounded"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  setFormData(f => ({
+                    ...f,
+                    faqs: f.faqs.filter((_, i) => i !== idx)
+                  }));
+                }}
+                className="px-2 text-red-600"
+                title="Remove FAQ"
+              >✕</button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={() => setFormData(f => ({
+              ...f,
+              faqs: [...f.faqs, { question: '', answer: '' }]
+            }))}
+            className="mt-2 px-3 py-1 bg-blue-100 text-blue-700 rounded"
+          >
+            Add FAQ
+          </button>
+        </div>
+
+        <div className="flex justify-center pt-4">
+          <button
+            type="submit"
+            disabled={loading}
+            className="px-8 py-3 font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:opacity-50"
+          >
+            {loading ? (
+              <span className="flex items-center">
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                {isEdit ? 'Updating...' : 'Submitting...'}
+              </span>
+            ) : isEdit ? 'Update Post' : 'Submit Post'}
+          </button>
+          {onCancel && (
+            <button
+              type="button"
+              onClick={onCancel}
+              className="ml-4 px-8 py-3 font-medium rounded-lg text-gray-700 bg-gray-200 hover:bg-gray-300"
+            >
+              Cancel
+            </button>
+          )}
+        </div>
+      </form>
+
+      {isFullScreen && (
+        <div className="fixed inset-0 bg-white z-50 flex flex-col">
+          <div className="bg-white p-4 shadow-xl flex items-center justify-between">
+            <h3 className="text-lg font-medium">Markdown Editor</h3>
+            <button
+              onClick={toggleFullScreen}
+              className="p-2 rounded-md hover:bg-gray-200 focus:outline-none"
+              title="Close"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </button>
+          </div>
+
+          <div className="flex-1 flex flex-col md:flex-row p-4 gap-4 overflow-auto">
+            <div className="flex-1 flex flex-col">
+              <MarkdownToolbar isFullScreen={true} />
+              <textarea
+                ref={fullScreenTextareaRef}
+                value={formData.description}
+                onChange={handleFullScreenChange}
+                className="flex-1 p-4 border border-gray-300 font-mono focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-inner"
+                placeholder="Write markdown content here..."
+              />
+            </div>
+            <div className="hidden md:block md:w-1/2 bg-white border border-gray-300 rounded-md overflow-auto p-4 prose prose-sm max-w-none">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={markdownComponents}
+              >
+                {formData.description || 'Preview will appear here...'}
+              </ReactMarkdown>
+            </div>
+          </div>
+
+          <div className="bg-gray-100 p-4 flex justify-end">
+            <button
+              onClick={toggleFullScreen}
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium"
+            >
+              Apply & Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      <input
+        type="file"
+        accept="image/*"
+        id="markdown-image-upload"
+        style={{ display: 'none' }}
+        onChange={async (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+          try {
+            const alt = prompt('Enter image alt text:') || 'image';
+            const url = await uploadImage(file);
+            insertMarkdown('image', alt, isFullScreen, url);
+          } catch (err) {
+            setError(err.message || 'Image upload failed.');
+          }
+          e.target.value = '';
+        }}
+      />
+      <input
+        type="file"
+        accept=".csv"
+        id="markdown-table-upload"
+        style={{ display: 'none' }}
+        onChange={(e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+          handleTableCsvUpload(file);
+          e.target.value = '';
+        }}
+      />
+      {formData.faqs && formData.faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: stringifySchema(faqPage(formData.faqs)) }}
+        />
+      )}
+    </div>
+  )
 }
 
-export default BlogForm
+const BlogList = ({ onEdit, onDelete }) => {
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchBlogs = async () => {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from('blogs_site2')
+      .select('id, title, author, date_posted, slug, image')
+      .order('date_posted', { ascending: false });
+
+    console.log('Fetched blogs data:', data);
+
+    if (error) {
+      setError(error.message);
+    } else {
+      setBlogs(data);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  if (loading) return <div className="text-center py-10">Loading blogs...</div>;
+  if (error) return <div className="text-center py-10 text-red-600">Error: {error}</div>;
+
+  return (
+    <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+      <div className="overflow-x-auto">
+        <table className="w-full text-left border-collapse">
+          <thead>
+            <tr className="bg-gray-50 border-b border-gray-200">
+              <th className="px-6 py-4 text-sm font-semibold text-gray-700">Image</th>
+              <th className="px-6 py-4 text-sm font-semibold text-gray-700">Title</th>
+              <th className="px-6 py-4 text-sm font-semibold text-gray-700">Author</th>
+              <th className="px-6 py-4 text-sm font-semibold text-gray-700">Date</th>
+              <th className="px-6 py-4 text-sm font-semibold text-gray-700 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {blogs.length === 0 ? (
+              <tr>
+                <td colSpan="5" className="px-6 py-10 text-center text-gray-500 italic">No blogs found.</td>
+              </tr>
+            ) : (
+              blogs.map((blog) => (
+                <tr key={blog.id} className="hover:bg-gray-50 transition-colors">
+                  <td className="px-6 py-4">
+                    {blog.image ? (
+                      <div className="w-16 h-10 rounded border border-gray-100 overflow-hidden bg-gray-50">
+                        <Image
+                          src={blog.image}
+                          alt={blog.title}
+                          width={64}
+                          height={40}
+                          className="w-full h-full object-cover"
+                          unoptimized={true}
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-16 h-10 bg-gray-100 rounded flex items-center justify-center text-gray-400">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                    )}
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="text-sm font-medium text-gray-900 line-clamp-1">{blog.title}</div>
+                    <div className="text-xs text-gray-500 font-mono">{blog.slug}</div>
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-600">{blog.author}</td>
+                  <td className="px-6 py-4 text-sm text-gray-600">
+                    {blog.date_posted ? new Date(blog.date_posted).toLocaleDateString() : 'N/A'}
+                  </td>
+                  <td className="px-6 py-4 text-right space-x-2">
+                    <button
+                      onClick={() => onEdit(blog)}
+                      className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-blue-600 bg-blue-50 rounded-md hover:bg-blue-100 transition-colors"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => onDelete(blog.id)}
+                      className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-red-600 bg-red-50 rounded-md hover:bg-red-100 transition-colors"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+const BlogManagement = () => {
+  const [view, setView] = useState('list'); // 'list' or 'form'
+  const [editingBlog, setEditingBlog] = useState(null);
+  const [message, setMessage] = useState(null);
+
+  const handleDelete = async (id) => {
+    if (!confirm('Are you sure you want to delete this blog post?')) return;
+
+    try {
+      const { error } = await supabase
+        .from('blogs_site2')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+
+      setMessage({ type: 'success', text: 'Blog deleted successfully!' });
+      // Reload is handled by the component re-fetch when we stay on list
+      // But we need to force BlogList to refresh if we stay here
+      // For simplicity, we just trigger a view refresh or the list component will fetch on mount if we toggled
+      // Actually, since BlogList is a child, we can just let it handle its own state or force a re-render
+      // Better to use state in parent or use a key to force refresh
+      setView('list-refresh');
+      setTimeout(() => setView('list'), 10);
+    } catch (err) {
+      console.error('Delete error:', err);
+      setMessage({ type: 'error', text: `Failed to delete: ${err.message}` });
+    }
+  };
+
+  const handleEdit = (blog) => {
+    // Fetch full blog data for editing
+    const fetchFullBlog = async () => {
+      const { data, error } = await supabase
+        .from('blogs_site2')
+        .select('*')
+        .eq('id', blog.id)
+        .single();
+
+      if (error) {
+        setMessage({ type: 'error', text: `Error fetching details: ${error.message}` });
+      } else {
+        setEditingBlog(data);
+        setView('form');
+      }
+    };
+    fetchFullBlog();
+  };
+
+  const handleCreateNew = () => {
+    setEditingBlog(null);
+    setView('form');
+  };
+
+  const handleFormSuccess = () => {
+    setView('list');
+    setEditingBlog(null);
+    setMessage({ type: 'success', text: 'Blog saved successfully!' });
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Blog Management</h1>
+            <p className="mt-2 text-sm text-gray-600">
+              Manage your blog posts, create new content, or edit existing entries.
+            </p>
+          </div>
+          <div className="flex space-x-4">
+            {view === 'list' ? (
+              <button
+                onClick={handleCreateNew}
+                className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              >
+                Create New Post
+              </button>
+            ) : (
+              <button
+                onClick={() => setView('list')}
+                className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              >
+                Back to List
+              </button>
+            )}
+          </div>
+        </div>
+
+        {message && (
+          <div className={`mb-6 p-4 rounded-md flex justify-between items-center ${message.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+            <p className="text-sm font-medium">{message.text}</p>
+            <button onClick={() => setMessage(null)} className="text-current hover:opacity-70">✕</button>
+          </div>
+        )}
+
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100">
+          {view === 'list' && (
+            <BlogList onEdit={handleEdit} onDelete={handleDelete} />
+          )}
+          {view === 'form' && (
+            <BlogForm
+              initialData={editingBlog}
+              isEdit={!!editingBlog}
+              onSuccess={handleFormSuccess}
+              onCancel={() => setView('list')}
+            />
+          )}
+          {view === 'list-refresh' && (
+            <div className="text-center py-10 text-gray-500">Refreshing...</div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BlogManagement;
