@@ -15,6 +15,8 @@ export default async function sitemap() {
         { path: 'pricing', priority: 0.8, changefreq: 'weekly' },
         { path: 'portfolio', priority: 0.8, changefreq: 'weekly' },
         { path: 'blog', priority: 0.8, changefreq: 'weekly' },
+        // Add favicon.ico explicitly for Google
+        { path: 'favicon.ico', priority: 0.5, changefreq: 'yearly' },
     ];
 
     const staticUrls = staticPages.map(({ path, priority, changefreq }) => ({
