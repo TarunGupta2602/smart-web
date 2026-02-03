@@ -15,6 +15,10 @@ export default async function sitemap() {
         { path: 'pricing', priority: 0.8, changefreq: 'weekly' },
         { path: 'portfolio', priority: 0.8, changefreq: 'weekly' },
         { path: 'blog', priority: 0.8, changefreq: 'weekly' },
+        { path: 'privacy-policy', priority: 0.6, changefreq: 'yearly' },
+        { path: 'terms-of-service', priority: 0.6, changefreq: 'yearly' },
+        { path: 'refund-policy', priority: 0.6, changefreq: 'yearly' },
+        { path: 'cookie-policy', priority: 0.6, changefreq: 'yearly' },
         // Add favicon.ico explicitly for Google
         { path: 'favicon.ico', priority: 0.5, changefreq: 'yearly' },
     ];

@@ -30,6 +30,10 @@ export default function Navbar() {
         { name: "Pricing", href: "/pricing" },
         { name: "Blogs", href: "/blog" },
         { name: "About Us", href: "/about" },
+        { name: "Privacy Policy", href: "/privacy-policy" },
+        { name: "Terms of Service", href: "/terms-of-service" },
+        { name: "Refund Policy", href: "/refund-policy" },
+        { name: "Cookie Policy", href: "/cookie-policy" },
     ];
 
     return (

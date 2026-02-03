@@ -28,14 +28,26 @@ export default function Footer() {
                     <div className="col-span-1">
                         <h3 className="text-lg font-bold text-white mb-6">Quick Links</h3>
                         <ul className="space-y-4">
-                            {['Home', 'Portfolio', 'Projects', 'Pricing', 'Blogs', 'About', 'Contact'].map((item) => (
-                                <li key={item}>
+                            {[
+                                { name: 'Home', href: '/' },
+                                { name: 'Portfolio', href: '/portfolio' },
+                                { name: 'Projects', href: '/projects' },
+                                { name: 'Pricing', href: '/pricing' },
+                                { name: 'Blogs', href: '/blog' },
+                                { name: 'About', href: '/about' },
+                                { name: 'Contact', href: '/contact' },
+                                { name: 'Privacy Policy', href: '/privacy-policy' },
+                                { name: 'Terms of Service', href: '/terms-of-service' },
+                                { name: 'Refund Policy', href: '/refund-policy' },
+                                { name: 'Cookie Policy', href: '/cookie-policy' },
+                            ].map((item) => (
+                                <li key={item.name}>
                                     <Link
-                                        href={item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "")}`}
+                                        href={item.href}
                                         className="text-gray-300 hover:text-yellow-400 transition-colors flex items-center group"
                                     >
                                         <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                                        {item}
+                                        {item.name}
                                     </Link>
                                 </li>
                             ))}
