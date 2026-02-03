@@ -1,18 +1,32 @@
 import PortfolioContent from "./PortfolioContent";
-import { collectionPage, stringifySchema } from "@/lib/schema";
+import { collectionPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 
 export const metadata = {
-    title: "Our Digital Portfolio | Creative Excellence Showcase",
-    description: "Explore our diverse portfolio of award-winning digital projects, from e-commerce engines to custom enterprise apps. See how we craft digital excellence for global brands.",
-    keywords: ["Digital Portfolio", "Web Development Showcase", "Creative Design Projects", "Enterprise App Showcase", "Global Brand Excellence"],
+    title: "Our Digital Portfolio | Creative Excellence Showcase | SmartSoft Solutions",
+    description: "Explore our diverse portfolio of award-winning digital projects, from e-commerce engines to custom enterprise apps. See how we craft digital excellence for global brands. Discover our creative process and results.",
+    keywords: ["Digital Portfolio", "Web Development Showcase", "Creative Design Projects", "Enterprise App Showcase", "Global Brand Excellence", "Portfolio SmartSoft Solutions", "Digital Project Gallery"],
     alternates: {
         canonical: 'https://smartsoftsolutions.org/portfolio',
     },
     openGraph: {
-        title: "Digital Portfolio | Creative Excellence",
-        description: "A showcase of our world-class digital engineering and design projects.",
+        title: "Digital Portfolio | Creative Excellence | SmartSoft Solutions",
+        description: "A showcase of our world-class digital engineering and design projects. Explore our creative process and results.",
         url: 'https://smartsoftsolutions.org/portfolio',
+        images: [
+          { url: '/images/banner.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions Portfolio' },
+          { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
+        ],
+        type: 'website',
+        siteName: 'SmartSoft Solutions',
+        locale: 'en_US',
     },
+    twitter: {
+        card: 'summary_large_image',
+        site: '@SmartSoftSolutions',
+        title: 'Digital Portfolio | Creative Excellence | SmartSoft Solutions',
+        description: 'A showcase of our world-class digital engineering and design projects. Explore our creative process and results.',
+        images: ['/images/banner.jpg']
+    }
 };
 
 export default function PortfolioPage() {
@@ -43,6 +57,10 @@ export default function PortfolioPage() {
             )
         }
     ];
+        const breadcrumbSchema = breadcrumbList([
+            { name: 'Home', url: 'https://smartsoftsolutions.org/' },
+            { name: 'Portfolio', url: 'https://smartsoftsolutions.org/portfolio' }
+        ]);
 
     const projects = [
         {
@@ -191,16 +209,13 @@ export default function PortfolioPage() {
         }
     ];
 
-    const portfolioSchema = collectionPage({
-        name: 'SmartSoft Solutions Digital Portfolio',
-        description: 'A showcase of our digital excellence in software development and design.'
-    });
+    const portfolioSchema = collectionPage(projects.map(p => `https://smartsoftsolutions.org/portfolio#${p.title.toLowerCase().replace(/ /g, '-')}`), "SmartSoft Solutions Portfolio");
 
     return (
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: stringifySchema(portfolioSchema) }}
+                dangerouslySetInnerHTML={{ __html: stringifySchema([portfolioSchema, breadcrumbSchema]) }}
             />
             <PortfolioContent categories={categories} projects={projects} />
         </>

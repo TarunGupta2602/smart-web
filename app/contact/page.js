@@ -1,18 +1,32 @@
 import ContactContent from "./ContactContent";
-import { organization, stringifySchema } from "@/lib/schema";
+import { organization, breadcrumbList, stringifySchema } from "@/lib/schema";
 
 export const metadata = {
-    title: "Contact Our Technical Experts | 24/7 Global Support",
-    description: "Get in touch with SmartSoft Solutions for expert digital engineering consulting. Available 24/7 via call, email, or WhatsApp for global software support.",
-    keywords: ["Contact Technical Experts", "24/7 Support", "Software Consulting", "Global Digital Support", "Noida Technical Hub"],
+    title: "Contact SmartSoft Solutions | 24/7 Technical Experts & Global Support",
+    description: "Get in touch with SmartSoft Solutions for expert digital engineering consulting. Available 24/7 via call, email, or WhatsApp for global software support. Fast response and global reach.",
+    keywords: ["Contact Technical Experts", "24/7 Support", "Software Consulting", "Global Digital Support", "Noida Technical Hub", "Contact SmartSoft Solutions", "Customer Support", "Business Inquiry"],
     alternates: {
         canonical: 'https://smartsoftsolutions.org/contact',
     },
     openGraph: {
-        title: "Contact SmartSoft Solutions | 24/7 Expert Support",
+        title: "Contact SmartSoft Solutions | 24/7 Expert Support & Inquiry",
         description: "Reach out for elite technical consulting and global support.",
         url: 'https://smartsoftsolutions.org/contact',
+        images: [
+          { url: '/images/about-us-banner.jpg', width: 1200, height: 630, alt: 'Contact SmartSoft Solutions' },
+          { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
+        ],
+    type: 'website',
+        siteName: 'SmartSoft Solutions',
+        locale: 'en_US',
     },
+    twitter: {
+        card: 'summary_large_image',
+        site: '@SmartSoftSolutions',
+        title: 'Contact SmartSoft Solutions | 24/7 Expert Support & Inquiry',
+        description: 'Reach out for elite technical consulting, business inquiries, and global support.',
+        images: ['/images/about-us-banner.jpg']
+    }
 };
 
 export default function ContactPage() {
@@ -77,11 +91,16 @@ export default function ContactPage() {
         email: 'support@smartsoftsolutions.org',
     });
 
+    const breadcrumbSchema = breadcrumbList([
+      { name: 'Home', url: 'https://smartsoftsolutions.org/' },
+      { name: 'Contact', url: 'https://smartsoftsolutions.org/contact' }
+    ]);
+
     return (
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: stringifySchema(contactSchema) }}
+                dangerouslySetInnerHTML={{ __html: stringifySchema([contactSchema, breadcrumbSchema]) }}
             />
             <ContactContent contactMethods={contactMethods} />
         </>

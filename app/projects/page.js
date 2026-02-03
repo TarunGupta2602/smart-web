@@ -1,18 +1,33 @@
+
 import ProjectsContent from "./ProjectsContent";
-import { itemList, stringifySchema } from "@/lib/schema";
+import { itemList, breadcrumbList, stringifySchema } from "@/lib/schema";
 
 export const metadata = {
-    title: "Strategic Case Studies | Impactful Technical Delivery",
-    description: "Explore our successful projects in enterprise software, digital retail, and Fintech. See how SmartSoft Solutions delivers impactful results for global brands.",
-    keywords: ["Enterprise Software Case Studies", "Digital Retail Projects", "Fintech Solutions", "Technical Delivery Success", "Global Brand Projects"],
+    title: "Strategic Case Studies | Impactful Technical Delivery | SmartSoft Solutions",
+    description: "Explore our successful projects in enterprise software, digital retail, and Fintech. See how SmartSoft Solutions delivers impactful results for global brands. Discover our technical delivery and business impact.",
+    keywords: ["Enterprise Software Case Studies", "Digital Retail Projects", "Fintech Solutions", "Technical Delivery Success", "Global Brand Projects", "SmartSoft Solutions Projects", "Case Studies"],
     alternates: {
         canonical: 'https://smartsoftsolutions.org/projects',
     },
     openGraph: {
-        title: "Our Success Stories | Case Studies",
-        description: "See how we've transformed businesses through high-impact technical delivery.",
+        title: "Our Success Stories | Case Studies | SmartSoft Solutions",
+        description: "See how we've transformed businesses through high-impact technical delivery. Discover our technical delivery and business impact.",
         url: 'https://smartsoftsolutions.org/projects',
+        images: [
+          { url: '/images/banner.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions Projects' },
+          { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
+        ],
+        type: 'website',
+        siteName: 'SmartSoft Solutions',
+        locale: 'en_US',
     },
+    twitter: {
+        card: 'summary_large_image',
+        site: '@SmartSoftSolutions',
+        title: 'Our Success Stories | Case Studies | SmartSoft Solutions',
+        description: 'See how we\'ve transformed businesses through high-impact technical delivery. Discover our technical delivery and business impact.',
+        images: ['/images/banner.jpg']
+    }
 };
 
 export default function ProjectsPage() {
@@ -42,6 +57,10 @@ export default function ProjectsPage() {
             tags: ["Cybersecurity", "PostgreSQL", "Dedicated Auth"]
         }
     ];
+    const breadcrumbSchema = breadcrumbList([
+        { name: 'Home', url: 'https://smartsoftsolutions.org/' },
+        { name: 'Projects', url: 'https://smartsoftsolutions.org/projects' }
+    ]);
 
     const techStack = [
         { name: "Frontend Mastery", description: "Crafting fluid pixels with React, Next.js, and advanced CSS animations.", icon: "🎨" },
@@ -56,7 +75,7 @@ export default function ProjectsPage() {
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: stringifySchema(projectSchema) }}
+                dangerouslySetInnerHTML={{ __html: stringifySchema([projectSchema, breadcrumbSchema]) }}
             />
             <ProjectsContent caseStudies={caseStudies} techStack={techStack} />
         </>
