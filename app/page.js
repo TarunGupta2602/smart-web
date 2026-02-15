@@ -3,7 +3,7 @@ import ServicesSection from "./components/services-section";
 import PricingIndustriesSection from "./components/pricing-industries-section";
 import ClientsSection from "./components/clients-section";
 import FAQSection from "./components/faq-section";
-import { organization, webSite, breadcrumbList, stringifySchema } from "@/lib/schema";
+import { breadcrumbList, stringifySchema } from "@/lib/schema";
 
 export const metadata = {
   title: "SmartSoft Solutions | Engineering Excellence & Strategic Brand Growth",
@@ -36,22 +36,15 @@ export const metadata = {
 };
 
 export default function Homepage() {
-  const orgSchema = organization({
-    logo: '/images/logo.png',
-    description: 'SmartSoft Solutions is a leading digital engineering firm and one-stop shop for web development, software solutions, and brand marketing.'
-  });
-  const siteSchema = webSite({
-    description: 'SmartSoft Solutions - Digital Engineering & Growth Experts'
-  });
   const breadcrumbSchema = breadcrumbList([
-    { name: 'Home', url: 'https://smartsoftsolutions.org/' }
+    { name: 'Home', url: 'https://www.smartsoftsolutions.org/' }
   ]);
 
   return (
     <div>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: stringifySchema([orgSchema, siteSchema, breadcrumbSchema]) }}
+        dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }}
       />
       <HeroSlider />
       <ServicesSection />

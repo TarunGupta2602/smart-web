@@ -1,20 +1,36 @@
+import Breadcrumb from "../components/Breadcrumb";
+import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
+
+const SITE_URL = 'https://www.smartsoftsolutions.org';
+
 export const metadata = {
   title: "Privacy Policy | SmartSoft Solutions",
   description: "Read our privacy policy to understand how SmartSoft Solutions collects, uses, and protects your information.",
-  alternates: { canonical: 'https://smartsoftsolutions.org/privacy-policy' },
+  alternates: { canonical: `${SITE_URL}/privacy-policy` },
   openGraph: {
     title: "Privacy Policy | SmartSoft Solutions",
     description: "How we collect, use, and protect your data.",
-    url: 'https://smartsoftsolutions.org/privacy-policy',
-    type: 'article',
+    url: `${SITE_URL}/privacy-policy`,
+    type: 'website',
     siteName: 'SmartSoft Solutions',
     locale: 'en_US',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions' }],
   },
+  twitter: { card: 'summary_large_image', title: "Privacy Policy | SmartSoft Solutions", description: "How we collect, use, and protect your data." },
 };
 
 export default function PrivacyPolicyPage() {
+  const breadcrumbSchema = breadcrumbList([
+    { name: 'Home', url: `${SITE_URL}/` },
+    { name: 'Privacy Policy', url: `${SITE_URL}/privacy-policy` }
+  ], SITE_URL);
+  const webPageSchema = webPage({ name: 'Privacy Policy', description: 'How SmartSoft Solutions collects, uses, and protects your information.', url: `${SITE_URL}/privacy-policy` });
+  const breadcrumbItems = [{ name: 'Home', url: '/' }, { name: 'Privacy Policy', url: '/privacy-policy' }];
+
   return (
     <div className="container mx-auto px-6 py-16 max-w-3xl">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: stringifySchema([breadcrumbSchema, webPageSchema]) }} />
+      <Breadcrumb items={breadcrumbItems} className="mb-6" />
       <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
       <p className="mb-4">Your privacy is important to us. This Privacy Policy explains how SmartSoft Solutions collects, uses, and protects your personal information when you use our website and services.</p>
       <h2 className="text-2xl font-semibold mt-8 mb-2">Information We Collect</h2>

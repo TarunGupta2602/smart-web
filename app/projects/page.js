@@ -1,18 +1,20 @@
-
 import ProjectsContent from "./ProjectsContent";
+import Breadcrumb from "../components/Breadcrumb";
 import { itemList, breadcrumbList, stringifySchema } from "@/lib/schema";
+
+const SITE_URL = 'https://www.smartsoftsolutions.org';
 
 export const metadata = {
     title: "Strategic Case Studies | Impactful Technical Delivery | SmartSoft Solutions",
     description: "Explore our successful projects in enterprise software, digital retail, and Fintech. See how SmartSoft Solutions delivers impactful results for global brands. Discover our technical delivery and business impact.",
     keywords: ["Enterprise Software Case Studies", "Digital Retail Projects", "Fintech Solutions", "Technical Delivery Success", "Global Brand Projects", "SmartSoft Solutions Projects", "Case Studies"],
     alternates: {
-        canonical: 'https://smartsoftsolutions.org/projects',
+        canonical: `${SITE_URL}/projects`,
     },
     openGraph: {
         title: "Our Success Stories | Case Studies | SmartSoft Solutions",
         description: "See how we've transformed businesses through high-impact technical delivery. Discover our technical delivery and business impact.",
-        url: 'https://smartsoftsolutions.org/projects',
+        url: `${SITE_URL}/projects`,
         images: [
           { url: '/images/banner.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions Projects' },
           { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
@@ -58,9 +60,14 @@ export default function ProjectsPage() {
         }
     ];
     const breadcrumbSchema = breadcrumbList([
-        { name: 'Home', url: 'https://smartsoftsolutions.org/' },
-        { name: 'Projects', url: 'https://smartsoftsolutions.org/projects' }
-    ]);
+        { name: 'Home', url: `${SITE_URL}/` },
+        { name: 'Projects', url: `${SITE_URL}/projects` }
+    ], SITE_URL);
+
+    const breadcrumbItems = [
+        { name: 'Home', url: '/' },
+        { name: 'Projects', url: '/projects' }
+    ];
 
     const techStack = [
         { name: "Frontend Mastery", description: "Crafting fluid pixels with React, Next.js, and advanced CSS animations.", icon: "🎨" },
@@ -77,6 +84,7 @@ export default function ProjectsPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: stringifySchema([projectSchema, breadcrumbSchema]) }}
             />
+            <Breadcrumb items={breadcrumbItems} className="container mx-auto px-6 pt-4 pb-2" />
             <ProjectsContent caseStudies={caseStudies} techStack={techStack} />
         </>
     );

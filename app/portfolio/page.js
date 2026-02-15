@@ -1,17 +1,20 @@
 import PortfolioContent from "./PortfolioContent";
+import Breadcrumb from "../components/Breadcrumb";
 import { collectionPage, breadcrumbList, stringifySchema } from "@/lib/schema";
+
+const SITE_URL = 'https://www.smartsoftsolutions.org';
 
 export const metadata = {
     title: "Our Digital Portfolio | Creative Excellence Showcase | SmartSoft Solutions",
     description: "Explore our diverse portfolio of award-winning digital projects, from e-commerce engines to custom enterprise apps. See how we craft digital excellence for global brands. Discover our creative process and results.",
     keywords: ["Digital Portfolio", "Web Development Showcase", "Creative Design Projects", "Enterprise App Showcase", "Global Brand Excellence", "Portfolio SmartSoft Solutions", "Digital Project Gallery"],
     alternates: {
-        canonical: 'https://smartsoftsolutions.org/portfolio',
+        canonical: `${SITE_URL}/portfolio`,
     },
     openGraph: {
         title: "Digital Portfolio | Creative Excellence | SmartSoft Solutions",
         description: "A showcase of our world-class digital engineering and design projects. Explore our creative process and results.",
-        url: 'https://smartsoftsolutions.org/portfolio',
+        url: `${SITE_URL}/portfolio`,
         images: [
           { url: '/images/banner.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions Portfolio' },
           { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
@@ -57,10 +60,15 @@ export default function PortfolioPage() {
             )
         }
     ];
-        const breadcrumbSchema = breadcrumbList([
-            { name: 'Home', url: 'https://smartsoftsolutions.org/' },
-            { name: 'Portfolio', url: 'https://smartsoftsolutions.org/portfolio' }
-        ]);
+    const breadcrumbSchema = breadcrumbList([
+        { name: 'Home', url: `${SITE_URL}/` },
+        { name: 'Portfolio', url: `${SITE_URL}/portfolio` }
+    ], SITE_URL);
+
+    const breadcrumbItems = [
+        { name: 'Home', url: '/' },
+        { name: 'Portfolio', url: '/portfolio' }
+    ];
 
     const projects = [
         {
@@ -217,6 +225,7 @@ export default function PortfolioPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: stringifySchema([portfolioSchema, breadcrumbSchema]) }}
             />
+            <Breadcrumb items={breadcrumbItems} className="container mx-auto px-6 pt-4 pb-2" />
             <PortfolioContent categories={categories} projects={projects} />
         </>
     );

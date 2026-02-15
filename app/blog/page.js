@@ -1,10 +1,13 @@
-// app/blog/page.tsx
+// app/blog/page.js
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import BlogListClient from '../components/BlogListClient';
 import Pagination from '../components/Pagination';
+import Breadcrumb from '../components/Breadcrumb';
 import { breadcrumbList, stringifySchema } from '@/lib/schema';
+
+const SITE_URL = 'https://www.smartsoftsolutions.org';
 
 // Revalidate every 30 minutes (1800 seconds)
 // This is usually perfect balance for blog listing page
@@ -32,17 +35,21 @@ export const metadata = {
         description:
             'Expert insights on digital engineering, brand growth, and software logic from the SmartSoft Solutions team.',
         type: 'website',
-        url: 'https://smartsoftsolutions.org/blog',
+        url: `${SITE_URL}/blog`,
+        siteName: 'SmartSoft Solutions',
+        locale: 'en_US',
         images: [
-            {
-                url: '/og-blog-listing.jpg',
-                width: 1200,
-                height: 630,
-            },
+            { url: '/og-blog-listing.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions Blog' },
         ],
     },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'SmartSoft Solutions Blog – Engineering Excellence',
+        description: 'Expert insights on digital engineering, brand growth, and software logic from the SmartSoft Solutions team.',
+        images: ['/og-blog-listing.jpg'],
+    },
     alternates: {
-        canonical: 'https://www.smartsoftsolutions.org/blog',
+        canonical: `${SITE_URL}/blog`,
     },
 };
 
@@ -78,9 +85,14 @@ export default async function BlogPage(props) {
     const totalPages = Math.ceil(count / limit);
 
     const breadcrumbSchema = breadcrumbList([
+        { name: 'Home', url: `${SITE_URL}/` },
+        { name: 'Blog', url: `${SITE_URL}/blog` }
+    ], SITE_URL);
+
+    const breadcrumbItems = [
         { name: 'Home', url: '/' },
         { name: 'Blog', url: '/blog' }
-    ]);
+    ];
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
@@ -89,6 +101,7 @@ export default async function BlogPage(props) {
                 dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }}
             />
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+                <Breadcrumb items={breadcrumbItems} className="mb-6" />
                 {/* Hero Section */}
                 <header className="text-center mb-12 lg:mb-16">
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight mb-5">
@@ -105,10 +118,10 @@ export default async function BlogPage(props) {
                         Ready to scale your digital presence?
                     </p>
                     <Link
-                        href="tel:+17867538470"
+                        href="tel:+17077084062"
                         className="inline-flex items-center px-8 py-4 bg-white text-blue-700 font-bold text-lg rounded-xl shadow-2xl hover:bg-gray-50 hover:scale-105 transition-all duration-300"
                     >
-                        Call Our Consultants: +1-786-753-8470 →
+                        Call Our Consultants: +1-707-708-4062 →
                     </Link>
                 </div>
 
@@ -139,7 +152,7 @@ export default async function BlogPage(props) {
                 />
                 <div className="mt-10 text-gray-700 max-w-3xl">
                     <p>
-                        📞 Need immediate help? Call <strong>+1-786-753-8470</strong> and get fast,
+                        📞 Need immediate help? Call <strong>+1-707-708-4062</strong> and get fast,
                         reliable digital engineering support from SmartSoft Solutions experts.
                     </p>
                 </div>

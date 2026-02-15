@@ -1,17 +1,33 @@
 import AboutContent from "./AboutContent";
-import { organization, stringifySchema } from "@/lib/schema";
+import Breadcrumb from "../components/Breadcrumb";
+import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
+
+const SITE_URL = 'https://www.smartsoftsolutions.org';
 
 export const metadata = {
     title: "About Us | Our Story & Thinking",
     description: "Learn about SmartSoft Solutions, our core philosophy, global reach, and our commitment to building world-class digital products with a customer-first approach.",
     keywords: ["Core Philosophy", "Global Reach", "Digital Product Story", "Customer-First Approach", "Software Engineering Expertise"],
     alternates: {
-        canonical: 'https://smartsoftsolutions.org/about',
+        canonical: `${SITE_URL}/about`,
     },
     openGraph: {
         title: "About SmartSoft Solutions | Our Philosophy",
         description: "Discover the driving force behind our elite digital engineering solutions.",
-        url: 'https://smartsoftsolutions.org/about',
+        url: `${SITE_URL}/about`,
+        type: 'website',
+        siteName: 'SmartSoft Solutions',
+        locale: 'en_US',
+        images: [
+            { url: '/images/about-us-banner.jpg', width: 1200, height: 630, alt: 'About SmartSoft Solutions' },
+            { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "About SmartSoft Solutions | Our Philosophy",
+        description: "Discover the driving force behind our elite digital engineering solutions.",
+        images: ['/images/about-us-banner.jpg'],
     },
 };
 
@@ -59,17 +75,29 @@ export default function AboutPage() {
         { img: "/images/about-img8.jpg", name: "DevOps Lead" },
     ];
 
-    const aboutSchema = organization({
-        name: 'SmartSoft Solutions - About Us',
-        description: 'SmartSoft Solutions is dedicated to continuous delivery and trust, building world-class products that drive customer satisfaction and shareholder value.'
+    const aboutPageSchema = webPage({
+        name: 'About SmartSoft Solutions',
+        description: 'SmartSoft Solutions is dedicated to continuous delivery and trust, building world-class products that drive customer satisfaction and shareholder value.',
+        url: `${SITE_URL}/about`,
     });
+
+    const breadcrumbSchema = breadcrumbList([
+        { name: 'Home', url: `${SITE_URL}/` },
+        { name: 'About', url: `${SITE_URL}/about` }
+    ], SITE_URL);
+
+    const breadcrumbItems = [
+        { name: 'Home', url: '/' },
+        { name: 'About', url: '/about' }
+    ];
 
     return (
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: stringifySchema(aboutSchema) }}
+                dangerouslySetInnerHTML={{ __html: stringifySchema([aboutPageSchema, breadcrumbSchema]) }}
             />
+            <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2" />
             <AboutContent expertiseItems={expertiseItems} team={team} />
         </>
     );

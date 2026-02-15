@@ -1,18 +1,33 @@
 import Image from "next/image";
 import Link from "next/link";
-import { localBusiness, stringifySchema } from "@/lib/schema";
+import Breadcrumb from "./components/Breadcrumb";
+import { localBusiness, webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
+
+const SITE_URL = 'https://www.smartsoftsolutions.org';
 
 export const metadata = {
     title: "Transparent Pricing & Scalable Infrastructure Plans",
     description: "Choose the perfect digital infrastructure for your business. From individual brands to global e-commerce engines, we offer scalable pricing models.",
     keywords: ["Web Development Pricing", "E-commerce Infrastructure Cost", "Scalable Growth Plans", "Digital Solution Tiers", "Affordable Tech Investment"],
     alternates: {
-        canonical: 'https://smartsoftsolutions.org/pricing',
+        canonical: `${SITE_URL}/pricing`,
     },
     openGraph: {
         title: "SmartSoft Solutions Pricing | Scalable Models",
         description: "Expert infrastructure tiers tailored for every business stage.",
-        url: 'https://smartsoftsolutions.org/pricing',
+        url: `${SITE_URL}/pricing`,
+        type: 'website',
+        siteName: 'SmartSoft Solutions',
+        locale: 'en_US',
+        images: [
+            { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions Pricing' },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "SmartSoft Solutions Pricing | Scalable Models",
+        description: "Expert infrastructure tiers tailored for every business stage.",
+        images: ['/og-image.jpg'],
     },
 };
 
@@ -75,12 +90,29 @@ export default function PricingPage() {
         }
     ];
 
+    const breadcrumbSchema = breadcrumbList([
+        { name: 'Home', url: `${SITE_URL}/` },
+        { name: 'Pricing', url: `${SITE_URL}/pricing` }
+    ], SITE_URL);
+
+    const pricingPageSchema = webPage({
+        name: 'SmartSoft Solutions Pricing',
+        description: 'Transparent pricing and scalable digital infrastructure plans. From individual brands to global e-commerce.',
+        url: `${SITE_URL}/pricing`,
+    });
+
+    const breadcrumbItems = [
+        { name: 'Home', url: '/' },
+        { name: 'Pricing', url: '/pricing' }
+    ];
+
     return (
         <div className="min-h-screen bg-white text-slate-900 selection:bg-yellow-500 selection:text-black">
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: stringifySchema(pricingSchema) }}
+                dangerouslySetInnerHTML={{ __html: stringifySchema([pricingSchema, breadcrumbSchema, pricingPageSchema]) }}
             />
+            <Breadcrumb items={breadcrumbItems} className="container mx-auto px-6 pt-4 pb-2" />
             {/* Cinematic Hero */}
             <section className="relative h-[65vh] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">

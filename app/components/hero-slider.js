@@ -119,7 +119,7 @@ export default function HeroSlider() {
                                         {slide.content.cta}
                                     </Link>
                                     <a
-                                        href="tel:17867538470"
+                                        href="tel:17077084062"
                                         className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-black uppercase text-xs md:text-sm tracking-widest rounded-full hover:scale-105 transition-all duration-500 shadow-[0_0_30px_rgba(234,179,8,0.3)]"
                                     >
                                         Call Us Now

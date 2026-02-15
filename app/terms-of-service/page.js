@@ -1,20 +1,36 @@
+import Breadcrumb from "../components/Breadcrumb";
+import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
+
+const SITE_URL = 'https://www.smartsoftsolutions.org';
+
 export const metadata = {
   title: "Terms of Service | SmartSoft Solutions",
   description: "Review the terms and conditions for using SmartSoft Solutions' website and services.",
-  alternates: { canonical: 'https://smartsoftsolutions.org/terms-of-service' },
+  alternates: { canonical: `${SITE_URL}/terms-of-service` },
   openGraph: {
     title: "Terms of Service | SmartSoft Solutions",
     description: "The rules and guidelines for using our website and services.",
-    url: 'https://smartsoftsolutions.org/terms-of-service',
-    type: 'article',
+    url: `${SITE_URL}/terms-of-service`,
+    type: 'website',
     siteName: 'SmartSoft Solutions',
     locale: 'en_US',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions' }],
   },
+  twitter: { card: 'summary_large_image', title: "Terms of Service | SmartSoft Solutions", description: "The rules and guidelines for using our website and services." },
 };
 
 export default function TermsOfServicePage() {
+  const breadcrumbSchema = breadcrumbList([
+    { name: 'Home', url: `${SITE_URL}/` },
+    { name: 'Terms of Service', url: `${SITE_URL}/terms-of-service` }
+  ], SITE_URL);
+  const webPageSchema = webPage({ name: 'Terms of Service', description: 'Terms and conditions for using SmartSoft Solutions website and services.', url: `${SITE_URL}/terms-of-service` });
+  const breadcrumbItems = [{ name: 'Home', url: '/' }, { name: 'Terms of Service', url: '/terms-of-service' }];
+
   return (
     <div className="container mx-auto px-6 py-16 max-w-3xl">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: stringifySchema([breadcrumbSchema, webPageSchema]) }} />
+      <Breadcrumb items={breadcrumbItems} className="mb-6" />
       <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
       <p className="mb-4">By accessing or using the SmartSoft Solutions website and services, you agree to be bound by these Terms of Service. Please read them carefully.</p>
       <h2 className="text-2xl font-semibold mt-8 mb-2">Use of Our Services</h2>

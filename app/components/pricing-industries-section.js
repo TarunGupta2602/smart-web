@@ -41,8 +41,8 @@ export default function PricingIndustriesSection() {
                     </p>
                     <p className="text-base md:text-lg text-gray-600 mb-2">
                         Call Now{" "}
-                        <a href="tel:17867538470" className="font-bold text-gray-900 hover:text-yellow-500 transition-colors text-xl">
-                            1-786-753-8470
+                        <a href="tel:17077084062" className="font-bold text-gray-900 hover:text-yellow-500 transition-colors text-xl">
+                            1-707-708-4062
                         </a>{" "}
                         <span className="text-sm">(Toll Free)</span>
                     </p>

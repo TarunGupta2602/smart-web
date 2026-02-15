@@ -1,20 +1,36 @@
+import Breadcrumb from "../components/Breadcrumb";
+import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
+
+const SITE_URL = 'https://www.smartsoftsolutions.org';
+
 export const metadata = {
   title: "Cookie Policy | SmartSoft Solutions",
   description: "Learn how SmartSoft Solutions uses cookies and similar technologies on our website.",
-  alternates: { canonical: 'https://smartsoftsolutions.org/cookie-policy' },
+  alternates: { canonical: `${SITE_URL}/cookie-policy` },
   openGraph: {
     title: "Cookie Policy | SmartSoft Solutions",
     description: "How we use cookies and your choices.",
-    url: 'https://smartsoftsolutions.org/cookie-policy',
-    type: 'article',
+    url: `${SITE_URL}/cookie-policy`,
+    type: 'website',
     siteName: 'SmartSoft Solutions',
     locale: 'en_US',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions' }],
   },
+  twitter: { card: 'summary_large_image', title: "Cookie Policy | SmartSoft Solutions", description: "How we use cookies and your choices." },
 };
 
 export default function CookiePolicyPage() {
+  const breadcrumbSchema = breadcrumbList([
+    { name: 'Home', url: `${SITE_URL}/` },
+    { name: 'Cookie Policy', url: `${SITE_URL}/cookie-policy` }
+  ], SITE_URL);
+  const webPageSchema = webPage({ name: 'Cookie Policy', description: 'How SmartSoft Solutions uses cookies and similar technologies.', url: `${SITE_URL}/cookie-policy` });
+  const breadcrumbItems = [{ name: 'Home', url: '/' }, { name: 'Cookie Policy', url: '/cookie-policy' }];
+
   return (
     <div className="container mx-auto px-6 py-16 max-w-3xl">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: stringifySchema([breadcrumbSchema, webPageSchema]) }} />
+      <Breadcrumb items={breadcrumbItems} className="mb-6" />
       <h1 className="text-4xl font-bold mb-8">Cookie Policy</h1>
       <p className="mb-4">This Cookie Policy explains how SmartSoft Solutions uses cookies and similar technologies to recognize you when you visit our website.</p>
       <h2 className="text-2xl font-semibold mt-8 mb-2">What Are Cookies?</h2>

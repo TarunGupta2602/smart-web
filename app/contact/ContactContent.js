@@ -142,15 +142,15 @@ export default function ContactContent({ contactMethods }) {
                             Stop waiting for the perfect moment. Create it today by reaching out to our senior technical consultants.
                         </p>
                         <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
-                            <a href="tel:17867538470" className="group px-12 py-8 bg-slate-900 text-white font-black uppercase tracking-[0.2em] rounded-full hover:bg-yellow-500 transition-all duration-500 flex items-center gap-6 shadow-xl">
+                            <a href="tel:17077084062" className="group px-12 py-8 bg-slate-900 text-white font-black uppercase tracking-[0.2em] rounded-full hover:bg-yellow-500 transition-all duration-500 flex items-center gap-6 shadow-xl">
                                 <span className="text-xl">📞</span>
-                                Call 1-786-753-8470
+                                Call 1-707-708-4062
                             </a>
                             <a href="mailto:support@smartsoftsolutions.org" className="group px-12 py-8 bg-white text-slate-900 border border-slate-200 font-black uppercase tracking-[0.2em] rounded-full hover:bg-yellow-500 transition-all duration-500 flex items-center gap-6 shadow-lg">
                                 <span className="text-xl">✉️</span>
                                 Email Us
                             </a>
-                            <a href="https://wa.me/17867538470" className="group px-12 py-8 bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/30 font-black uppercase tracking-[0.2em] rounded-full hover:bg-[#25D366] hover:text-white transition-all duration-500 flex items-center gap-6">
+                            <a href="https://wa.me/17077084062" className="group px-12 py-8 bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/30 font-black uppercase tracking-[0.2em] rounded-full hover:bg-[#25D366] hover:text-white transition-all duration-500 flex items-center gap-6">
                                 <span className="text-xl">💬</span>
                                 WhatsApp Chat
                             </a>

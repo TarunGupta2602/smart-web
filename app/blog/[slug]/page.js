@@ -232,10 +232,10 @@ export default async function BlogSlugPage({ params }) {
                                     </div>
                                     <div className="flex-shrink-0">
                                         <a
-                                            href="tel:+17867538470"
+                                            href="tel:+17077084062"
                                             className="inline-flex items-center justify-center bg-blue-600 text-white px-4 sm:px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all"
                                         >
-                                            Call +1-786-753-8470
+                                            Call +1-707-708-4062
                                         </a>
                                     </div>
                                 </div>
@@ -282,10 +282,10 @@ export default async function BlogSlugPage({ params }) {
                                 </p>
                                 <div className="mt-4">
                                     <a
-                                        href="tel:+17867538470"
+                                        href="tel:+17077084062"
                                         className="w-full inline-flex items-center justify-center text-sm font-bold px-4 py-2.5 rounded-lg bg-white text-blue-600 shadow-md hover:bg-blue-50 hover:shadow-lg transition-all"
                                     >
-                                        Call +1-786-753-8470
+                                        Call +1-707-708-4062
                                     </a>
                                 </div>
                             </div>
@@ -325,7 +325,7 @@ export default async function BlogSlugPage({ params }) {
                 />
                 <div className="mt-10 text-gray-700 max-w-3xl">
                     <p>
-                        📞 Need immediate help? Call <strong>+1-786-753-8470</strong> and get fast,
+                        📞 Need immediate help? Call <strong>+1-707-708-4062</strong> and get fast,
                         reliable digital engineering support from SmartSoft Solutions experts.
                     </p>
                 </div>

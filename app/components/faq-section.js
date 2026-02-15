@@ -143,11 +143,11 @@ export default function FAQSection() {
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                                 <a
-                                    href="tel:17867538470"
+                                    href="tel:17077084062"
                                     className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-full font-bold text-base uppercase hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                                 >
                                     <span className="text-xl">📞</span>
-                                    Call: 1-786-753-8470
+                                    Call: 1-707-708-4062
                                 </a>
                                 <a
                                     href="/contact"

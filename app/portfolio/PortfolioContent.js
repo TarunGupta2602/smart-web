@@ -172,8 +172,8 @@ export default function PortfolioContent({ categories, projects }) {
                             </a>
                             <div className="flex flex-col items-start gap-1">
                                 <span className="text-[10px] uppercase tracking-widest text-slate-400 font-black">Quick Call Assistance</span>
-                                <a href="tel:17867538470" className="text-2xl font-black text-slate-900 hover:text-yellow-500 transition-colors tracking-tight">
-                                    1-786-753-8470
+                                <a href="tel:17077084062" className="text-2xl font-black text-slate-900 hover:text-yellow-500 transition-colors tracking-tight">
+                                    1-707-708-4062
                                 </a>
                             </div>
                         </div>

@@ -272,9 +272,9 @@ export default function AboutContent({ expertiseItems, team }) {
                                 <svg className="w-6 h-6 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                             </Link>
                             <div className="flex flex-col gap-4">
-                                <a href="tel:17867538470" className="group px-8 py-4 bg-white text-gray-900 border border-gray-200 font-black uppercase tracking-[0.2em] rounded-full hover:bg-gray-50 transition-all duration-500 flex items-center gap-4 shadow-md">
+                                <a href="tel:17077084062" className="group px-8 py-4 bg-white text-gray-900 border border-gray-200 font-black uppercase tracking-[0.2em] rounded-full hover:bg-gray-50 transition-all duration-500 flex items-center gap-4 shadow-md">
                                     <svg className="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5.5A2.5 2.5 0 015.5 3h1.8a1 1 0 01.9.6l.8 2.5a1 1 0 01-.6 1.2l-1.5.8a11 11 0 005 5l.8-1.5a1 1 0 011.2-.6l2.5.8a1 1 0 01.6.9v1.8a2.5 2.5 0 01-2.5 2.5h-1C8.5 21 3 15.5 3 8.35v-2.85z" /></svg>
-                                    1-786-753-8470
+                                    1-707-708-4062
                                 </a>
                                 <a href="mailto:support@smartsoftsolutions.org" className="group px-8 py-4 bg-white text-gray-900 border border-gray-200 font-black uppercase tracking-[0.2em] rounded-full hover:bg-gray-50 transition-all duration-500 flex items-center gap-4 shadow-md">
                                     <svg className="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>

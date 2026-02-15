@@ -132,7 +132,7 @@ export default function ProjectsContent({ caseStudies, techStack }) {
                                 Launch Your Project
                                 <svg className="w-6 h-6 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                             </Link>
-                            <a href="tel:17867538470" className="group px-12 py-8 bg-transparent text-slate-900 border border-slate-200 font-black uppercase tracking-[0.2em] rounded-full hover:bg-slate-50 transition-all duration-500 flex items-center gap-6">
+                            <a href="tel:17077084062" className="group px-12 py-8 bg-transparent text-slate-900 border border-slate-200 font-black uppercase tracking-[0.2em] rounded-full hover:bg-slate-50 transition-all duration-500 flex items-center gap-6">
                                 Technical Briefing 📞
                             </a>
                         </div>
