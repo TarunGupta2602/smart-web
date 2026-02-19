@@ -1,6 +1,5 @@
-// app/blog/page.js
 import Link from 'next/link';
-import { Suspense } from 'react';
+import { Suspense, cache } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import BlogListClient from '../components/BlogListClient';
 import Pagination from '../components/Pagination';
@@ -10,7 +9,6 @@ import { breadcrumbList, stringifySchema } from '@/lib/schema';
 const SITE_URL = 'https://www.smartsoftsolutions.org';
 
 // Revalidate every 30 minutes (1800 seconds)
-// This is usually perfect balance for blog listing page
 export const revalidate = 1800;
 
 // Optional: if you want even stronger caching (but less fresh)
@@ -51,9 +49,20 @@ export const metadata = {
     alternates: {
         canonical: `${SITE_URL}/blog`,
     },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
 };
 
-async function getBlogs(page = 1, limit = 12) {
+const getBlogs = cache(async (page = 1, limit = 12) => {
     try {
         const from = (page - 1) * limit;
         const to = from + limit - 1;
@@ -74,7 +83,7 @@ async function getBlogs(page = 1, limit = 12) {
         console.error('Unexpected error fetching blogs:', err);
         return { data: [], count: 0 };
     }
-}
+});
 
 export default async function BlogPage(props) {
     const searchParams = await props.searchParams;

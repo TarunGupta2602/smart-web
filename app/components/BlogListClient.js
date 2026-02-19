@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import BlogContentClient from './BlogContentClient'
 
 export default function BlogListClient({ blogs = [] }) {
@@ -62,8 +63,15 @@ export default function BlogListClient({ blogs = [] }) {
                 <section className="mb-8 bg-white rounded-lg overflow-hidden shadow-lg border">
                     <div className="md:flex">
                         {hero.image && (
-                            <div className="md:w-1/3 h-56 md:h-auto overflow-hidden">
-                                <img src={hero.image} alt={hero.title} className="w-full h-full object-cover" />
+                            <div className="md:w-1/3 h-56 md:h-auto overflow-hidden relative min-h-[250px] aspect-video">
+                                <Image
+                                    src={hero.image}
+                                    alt={hero.title}
+                                    fill
+                                    unoptimized={true}
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                />
                             </div>
                         )}
                         <div className="p-6 md:flex-1">
@@ -86,8 +94,15 @@ export default function BlogListClient({ blogs = [] }) {
                     <li key={b.id} className="bg-white shadow-sm hover:shadow-lg transform transition hover:-translate-y-1 rounded-lg overflow-hidden">
                         <Link href={`/blog/${b.slug}`} className="block group" aria-label={`Read ${b.title}`}>
                             {b.image ? (
-                                <div className="h-44 md:h-48 w-full overflow-hidden bg-gray-100">
-                                    <img src={b.image} alt={b.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform" />
+                                <div className="h-44 md:h-48 w-full overflow-hidden bg-gray-100 relative aspect-video">
+                                    <Image
+                                        src={b.image}
+                                        alt={b.title}
+                                        fill
+                                        unoptimized={true}
+                                        className="object-cover transform group-hover:scale-105 transition-transform"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    />
                                 </div>
                             ) : (
                                 <div className="h-44 md:h-48 w-full bg-linear-to-r from-gray-100 to-gray-50" />
