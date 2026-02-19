@@ -1,7 +1,7 @@
-export const dynamic = 'force-dynamic'
-
+import { cache } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { supabase } from '@/lib/supabaseClient'
 import BlogContentClient from '@/app/components/BlogContentClient'
 
@@ -9,7 +9,9 @@ import TableOfContents from '@/app/components/TableOfContents'
 import { stripMarkdown, estimateReadTime } from '@/lib/utils'
 import { breadcrumbList, article, faqPage, stringifySchema } from '@/lib/schema'
 
-async function getBlogBySlug(slug) {
+export const revalidate = 3600; // Revalidate every hour
+
+const getBlogBySlug = cache(async (slug) => {
     if (!slug) return null
     const { data, error } = await supabase.from('blogs_site2').select('*').eq('slug', slug).single()
     if (error) {
@@ -17,7 +19,7 @@ async function getBlogBySlug(slug) {
         return null
     }
     return data
-}
+})
 
 async function getRelatedBlogs(currentSlug, limit = 3) {
     const { data, error } = await supabase
@@ -42,13 +44,24 @@ export async function generateMetadata({ params }) {
     const rawDescription = blog.meta_description || blog.description || ''
     const description = stripMarkdown(rawDescription).slice(0, 160)
 
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || 'https://www.smartsoftsolutions.org').replace(/^\/+/, '').replace(/\/+$/, '').replace(/^"|"$/g, '')
+    const siteUrl = 'https://www.smartsoftsolutions.org'
     const canonicalUrl = `${siteUrl}/blog/${blog.slug}`
 
     return {
         title,
         description,
         alternates: { canonical: canonicalUrl },
+        robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                'max-video-preview': -1,
+                'max-image-preview': 'large',
+                'max-snippet': -1,
+            },
+        },
         openGraph: {
             title,
             description,
@@ -82,7 +95,7 @@ export async function generateMetadata({ params }) {
             title,
             description,
             images: blog.image ? [blog.image] : undefined,
-            creator: '@SmartSoftSol', // Placeholder for twitter handle
+            creator: '@SmartSoftSol',
         },
         keywords: blog.meta_keywords || undefined,
     }
@@ -90,7 +103,12 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogSlugPage({ params }) {
     const { slug } = await params
-    const blog = await getBlogBySlug(slug)
+
+    const [blog, relatedBlogs] = await Promise.all([
+        getBlogBySlug(slug),
+        getRelatedBlogs(slug)
+    ])
+
     if (!blog) return notFound()
 
     const faqs = Array.isArray(blog.faqs) ? blog.faqs : []
@@ -98,7 +116,7 @@ export default async function BlogSlugPage({ params }) {
     // Prefer main 'content' for the article body; fall back to 'description' if no content exists
     const content = blog.content || blog.description || ''
     const plainDescription = stripMarkdown(blog.meta_description || blog.description || '')
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || 'https://smartsoftsolutions.org').replace(/^\/+/, '').replace(/\/+$/, '').replace(/^"|"$/g, '')
+    const siteUrl = 'https://www.smartsoftsolutions.org'
     const canonicalUrl = `${siteUrl}/blog/${blog.slug}`
     const readTime = estimateReadTime(stripMarkdown(content || ''))
 
@@ -126,8 +144,6 @@ export default async function BlogSlugPage({ params }) {
         q: f.question,
         a: f.answer
     }))) : null;
-
-    const relatedBlogs = await getRelatedBlogs(slug);
 
     return (
         <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -203,11 +219,16 @@ export default async function BlogSlugPage({ params }) {
 
                         {/* Featured Image */}
                         {blog.image && (
-                            <figure className="mb-6 sm:mb-8 rounded-2xl overflow-hidden shadow-md border border-gray-100 bg-white">
-                                <img
+                            <figure className="mb-6 sm:mb-8 rounded-2xl overflow-hidden shadow-md border border-gray-100 bg-white relative min-h-[200px] flex items-center justify-center">
+                                <Image
                                     src={blog.image}
                                     alt={blog.title}
-                                    className="w-full h-60 sm:h-72 md:h-80 lg:h-96 object-cover"
+                                    width={1200}
+                                    height={675}
+                                    priority
+                                    unoptimized={true}
+                                    className="w-full h-auto object-cover"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
                                 />
                             </figure>
                         )}
@@ -346,10 +367,11 @@ export default async function BlogSlugPage({ params }) {
                             {relatedBlogs.map((item) => (
                                 <article key={item.id} className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                                     <Link href={`/blog/${item.slug}`} className="block relative h-48 sm:h-56 overflow-hidden">
-                                        <img
+                                        <Image
                                             src={item.image || '/side-view-employee-using-printer.jpg'}
                                             alt={item.title}
-                                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                            fill
+                                            className="object-cover transform group-hover:scale-105 transition-transform duration-500"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                     </Link>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Breadcrumb from "./components/Breadcrumb";
+import Breadcrumb from "../components/Breadcrumb";
 import { localBusiness, webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 
 const SITE_URL = 'https://www.smartsoftsolutions.org';

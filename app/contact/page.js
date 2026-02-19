@@ -1,5 +1,5 @@
 import ContactContent from "./ContactContent";
-import Breadcrumb from "./components/Breadcrumb";
+import Breadcrumb from "../components/Breadcrumb";
 import { organization, breadcrumbList, stringifySchema } from "@/lib/schema";
 
 const SITE_URL = 'https://www.smartsoftsolutions.org';
@@ -19,8 +19,8 @@ export const metadata = {
         siteName: 'SmartSoft Solutions',
         locale: 'en_US',
         images: [
-          { url: '/images/about-us-banner.jpg', width: 1200, height: 630, alt: 'Contact SmartSoft Solutions' },
-          { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
+            { url: '/images/about-us-banner.jpg', width: 1200, height: 630, alt: 'Contact SmartSoft Solutions' },
+            { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
         ],
     },
     twitter: {
@@ -95,13 +95,13 @@ export default function ContactPage() {
     });
 
     const breadcrumbSchema = breadcrumbList([
-      { name: 'Home', url: `${SITE_URL}/` },
-      { name: 'Contact', url: `${SITE_URL}/contact` }
+        { name: 'Home', url: `${SITE_URL}/` },
+        { name: 'Contact', url: `${SITE_URL}/contact` }
     ], SITE_URL);
 
     const breadcrumbItems = [
-      { name: 'Home', url: '/' },
-      { name: 'Contact', url: '/contact' }
+        { name: 'Home', url: '/' },
+        { name: 'Contact', url: '/contact' }
     ];
 
     return (
