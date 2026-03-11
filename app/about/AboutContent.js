@@ -13,8 +13,8 @@ export default function AboutContent({ expertiseItems, team }) {
 
     return (
         <div className="min-h-screen bg-white text-gray-900 selection:bg-yellow-500 selection:text-black">
-            {/* Cinematic Hero Section - PRESERVED DARK THEME */}
-            <section className="relative h-[80vh] flex items-center overflow-hidden bg-[#0a0a0b]">
+            {/* Cinematic Hero Section - Responsive */}
+            <section className="relative min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-center overflow-hidden bg-[#0a0a0b]">
                 <div className="absolute inset-0 z-0">
                     <Image
                         src="/images/banner.jpg"
@@ -25,20 +25,18 @@ export default function AboutContent({ expertiseItems, team }) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-white"></div>
                     <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white"></div>
-
                 </div>
-
-                <div className="container mx-auto px-6 relative z-10 text-center lg:text-left">
-                    <div className="max-w-6xl">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left w-full">
+                    <div className="max-w-6xl mx-auto">
                         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-yellow-400 border border-yellow-500/20 backdrop-blur-md mb-8">
                             <span className="flex h-2 w-2 rounded-full bg-black animate-pulse"></span>
                             <span className="text-xs uppercase tracking-[0.2em] font-bold text-black">Global Digital Solutions Provider</span>
                         </div>
-                        <h1 className="text-4xl md:text-8xl font-black mb-8 leading-[1] lg:leading-[0.8] tracking-tighter uppercase whitespace-pre-line text-black">
+                        <h1 className="text-3xl md:text-6xl lg:text-8xl font-black mb-8 leading-[1.1] lg:leading-[0.8] tracking-tighter uppercase whitespace-pre-line text-black">
                             GET TO KNOW ABOUT US & <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase block mt-2">OUR THINKING.</span>
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-orange-500 italic font-serif lowercase block mt-2">OUR THINKING.</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-black leading-relaxed max-w-4xl mx-auto lg:mx-0">
+                        <p className="text-base md:text-lg lg:text-xl text-black leading-relaxed max-w-4xl mx-auto lg:mx-0">
                             We bridge the gap between complex engineering and user-centric design, providing the infrastructure
                             that powers high-growth companies worldwide.
                         </p>
@@ -46,48 +44,47 @@ export default function AboutContent({ expertiseItems, team }) {
                 </div>
             </section>
 
-            {/* Comprehensive Expertise & One-Stop Solutions - WHITE THEME */}
-            <section className="py-32 bg-white text-gray-900">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-                        <div className="relative group">
-                            <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-gray-100 shadow-2xl">
+            {/* Comprehensive Expertise & One-Stop Solutions - Responsive Grid */}
+            <section className="py-20 md:py-28 bg-white text-gray-900">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-start">
+                        <div className="relative group mb-12 lg:mb-0">
+                            <div className="relative aspect-square rounded-3xl overflow-hidden border border-gray-100 shadow-2xl">
                                 <Image
                                     src="/neww.png"
                                     alt="Expert Digital Engineering in Action"
                                     fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-[2s]"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                                <div className="absolute bottom-12 left-12 right-12">
-                                    <div className="bg-white/90 backdrop-blur-md border border-gray-100 p-8 rounded-3xl shadow-xl">
+                                <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent"></div>
+                                <div className="absolute bottom-8 left-8 right-8">
+                                    <div className="bg-white/90 backdrop-blur-md border border-gray-100 p-6 md:p-8 rounded-2xl md:rounded-3xl shadow-xl">
                                         <p className="text-orange-600 font-black uppercase text-xs tracking-widest mb-4">Core Capability</p>
-                                        <h3 className="text-gray-900 text-lg font-bold leading-tight uppercase">Scalable Architecture & Infrastructure Optimization.</h3>
+                                        <h3 className="text-gray-900 text-base md:text-lg font-bold leading-tight uppercase">Scalable Architecture & Infrastructure Optimization.</h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div className="space-y-10">
+                        <div className="space-y-8 md:space-y-10">
                             <div className="inline-block px-4 py-2 bg-yellow-500 text-black font-black uppercase text-[10px] tracking-widest rounded-md">The One-Stop Shop Solution</div>
-                            <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter uppercase text-gray-900">
+                            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black mb-6 md:mb-8 leading-tight tracking-tighter uppercase text-gray-900">
                                 LEADING WEB DEVELOPMENT <br />
                                 <span className="italic font-serif text-orange-600">ENTERPRISE.</span>
                             </h2>
                             <div className="prose max-w-none">
-                                <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                                <p className="text-base md:text-xl text-gray-600 leading-relaxed mb-6 md:mb-8">
                                     We possess deep expertise in Advanced Website Development, Professional UI/UX Design, Custom Software Engineering,
                                     and Strategic Digital Marketing. As a premier web designing agency, we specialize in building high-conversion platforms
                                     that integrate Android/iOS App Development and Enterprise-Grade Cloud Hosting.
                                 </p>
-                                <p className="text-lg text-gray-500 leading-relaxed">
+                                <p className="text-base md:text-lg text-gray-500 leading-relaxed">
                                     Our unique capability to serve as a comprehensive digital solutions provider removes
-                                    technological bottlenecks and vendor fragmentation. We are your reliable partner for **Agile Development**,
+                                    technological bottlenecks and vendor fragmentation. We are your reliable partner for <b>Agile Development</b>,
                                     Secure API Integrations, and Global Brand Scaling.
                                 </p>
                             </div>
-                            <div className="grid grid-cols-2 gap-6 pt-6">
-                                <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
+                            <div className="grid grid-cols-2 gap-4 md:gap-6 pt-4 md:pt-6">
+                                <div className="p-4 md:p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
                                     <div className="text-orange-600 mb-2">
                                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
@@ -95,7 +92,7 @@ export default function AboutContent({ expertiseItems, team }) {
                                     </div>
                                     <h4 className="font-bold uppercase text-[10px] tracking-widest text-gray-500">Lowest Price Guarantee</h4>
                                 </div>
-                                <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
+                                <div className="p-4 md:p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
                                     <div className="text-orange-600 mb-2">
                                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-11V7a4 4 0 00-8 0v4h8z" />
@@ -109,43 +106,41 @@ export default function AboutContent({ expertiseItems, team }) {
                 </div>
             </section>
 
-            {/* World Class Commitment Section - LIGHT BACKGROUND */}
-            <section className="py-32 bg-gray-50 border-y border-gray-100 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
-
-                <div className="container mx-auto px-6">
-                    <div className="max-w-4xl mx-auto text-center mb-24">
-                        <h2 className="text-4xl md:text-7xl font-black mb-8 leading-[0.9] tracking-tighter uppercase text-gray-900">
+            {/* World Class Commitment Section - Responsive */}
+            <section className="py-20 md:py-28 bg-gray-50 border-y border-gray-100 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-75 md:w-125 h-75 md:h-125 bg-orange-500/5 rounded-full blur-[80px] md:blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
+                        <h2 className="text-2xl md:text-5xl lg:text-7xl font-black mb-6 md:mb-8 leading-[1.1] md:leading-[0.9] tracking-tighter uppercase text-gray-900">
                             BUILDING WORLD CLASS <br />
                             <span className="italic font-serif text-orange-600 uppercase">PRODUCTS.</span>
                         </h2>
-                        <p className="text-xl text-gray-600 leading-relaxed">
+                        <p className="text-base md:text-xl text-gray-600 leading-relaxed">
                             We are committed to build world class products based on its philosophy that great products help building successful companies.
                             This is designed to drive customer satisfaction, making the workplace a fun place for our employees
                             and creating significant shareholder value.
                         </p>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <div className="p-12 rounded-[3.5rem] bg-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
-                            <div className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center text-black mb-10 shadow-lg">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                        <div className="p-8 md:p-12 rounded-3xl md:rounded-[3.5rem] bg-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
+                            <div className="w-12 md:w-16 h-12 md:h-16 bg-yellow-400 rounded-2xl flex items-center justify-center text-black mb-6 md:mb-10 shadow-lg">
                                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                                 </svg>
                             </div>
-                            <h3 className="text-2xl font-black mb-6 uppercase tracking-tight text-gray-900">Global Connectivity</h3>
+                            <h3 className="text-lg md:text-2xl font-black mb-4 md:mb-6 uppercase tracking-tight text-gray-900">Global Connectivity</h3>
                             <p className="text-gray-500 leading-relaxed">
                                 Our mission is to create an environment that helps companies to capitalize on the diversity of its people
                                 and the inclusion of ideas and solutions to meet the needs of its increasing global and diverse customer base.
                             </p>
                         </div>
-                        <div className="p-12 rounded-[3.5rem] bg-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
-                            <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center text-white mb-10 shadow-lg">
+                        <div className="p-8 md:p-12 rounded-3xl md:rounded-[3.5rem] bg-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
+                            <div className="w-12 md:w-16 h-12 md:h-16 bg-orange-500 rounded-2xl flex items-center justify-center text-white mb-6 md:mb-10 shadow-lg">
                                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.5-7 3 3 3.5 1.3 2.1 5m1.3.6a4 4 0 11-8 1.3" />
                                 </svg>
                             </div>
-                            <h3 className="text-2xl font-black mb-6 uppercase tracking-tight text-gray-900">Passion & Capabilities</h3>
+                            <h3 className="text-lg md:text-2xl font-black mb-4 md:mb-6 uppercase tracking-tight text-gray-900">Passion & Capabilities</h3>
                             <p className="text-gray-500 leading-relaxed">
                                 With thousands of successful projects delivered across the world, we believe in giving life to your
                                 brand through our experience, passion and capabilities.
@@ -214,7 +209,7 @@ export default function AboutContent({ expertiseItems, team }) {
                                         fill
                                         className="object-cover group-hover:scale-105 transition-transform duration-[2s]"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-yellow-500/10 to-transparent"></div>
+                                    <div className="absolute inset-0 bg-linear-to-tr from-yellow-500/10 to-transparent"></div>
                                 </div>
                             </div>
                             <div className="absolute -bottom-6 -right-6 lg:-bottom-12 lg:-right-12 bg-white border border-gray-100 p-10 rounded-3xl shadow-2xl text-center">
@@ -226,7 +221,7 @@ export default function AboutContent({ expertiseItems, team }) {
                 </div>
             </section>
 
-           
+
 
             {/* Final Reassurance CTA - LIGHT THEME */}
             <section className="py-32 relative overflow-hidden bg-white">

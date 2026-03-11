@@ -106,36 +106,38 @@ export default function ServicesSection() {
                     </Link>
                 </div>
 
-                {/* Detailed Services Grid */}
+                {/* Detailed Services Grid - Improved UI */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     {detailedServices.map((service, index) => (
                         <div
                             key={index}
-                            className="group relative bg-white rounded-3xl p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.1)] transition-all duration-700 hover:-translate-y-3 overflow-hidden border border-slate-100 flex flex-col md:flex-row items-center gap-8"
+                            className="group relative bg-white rounded-3xl p-8 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_30px_70px_rgba(234,179,8,0.15)] transition-all duration-700 hover:-translate-y-3 overflow-hidden border-2 border-slate-100 hover:border-yellow-400 flex flex-col md:flex-row items-center gap-8"
                         >
                             <div className="relative w-full md:w-2/5 aspect-4/6 overflow-hidden rounded-2xl md:rounded-3xl shrink-0">
                                 <img
                                     src={service.icon}
                                     alt={service.title}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:rotate-1"
                                 />
-                                <div className="absolute inset-0 bg-linear-to-t from-slate-900/20 to-transparent"></div>
+                                <div className="absolute inset-0 bg-linear-to-t from-yellow-400/10 to-transparent"></div>
                             </div>
 
-                            <div className="flex-1">
-                                <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-4 md:mb-6 uppercase leading-tight tracking-tighter group-hover:text-yellow-600 transition-colors duration-500">
+                            <div className="flex-1 flex flex-col justify-center">
+                                <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-3 md:mb-5 uppercase leading-tight tracking-tighter group-hover:text-yellow-600 transition-colors duration-500">
                                     {service.title}
                                 </h3>
 
-                                <div className="flex gap-1 mb-4 md:mb-6">
+                                <div className="flex gap-1 mb-3 md:mb-5">
                                     <div className="h-1.5 rounded-full bg-yellow-500 w-12 group-hover:w-20 transition-all duration-700"></div>
                                     <div className="h-1.5 rounded-full bg-yellow-500 w-2"></div>
                                 </div>
 
-                                <p className="text-base text-slate-600 leading-relaxed font-medium">
+                                <p className="text-base md:text-lg text-slate-700 leading-relaxed font-medium">
                                     {service.description}
                                 </p>
                             </div>
+                            {/* Decorative border highlight */}
+                            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-400 via-orange-400 to-transparent opacity-10 group-hover:opacity-30 transition-opacity"></div>
                         </div>
                     ))}
                 </div>
