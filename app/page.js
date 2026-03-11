@@ -41,22 +41,29 @@ export default function Homepage() {
   ]);
 
   return (
-    <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }}
-      />
-      {/* HeroSlider: Update content for web/app/content writing focus */}
-      <HeroSlider />
-      {/* ServicesSection: Only show Website Development, App Development, Content Writing */}
-      <ServicesSection />
-      {/* PricingIndustriesSection: Update text to focus on web/app/content writing for USA small business */}
-      <PricingIndustriesSection />
-      {/* ClientsSection: Keep as is, but update text to reflect web/app/content writing */}
-      <ClientsSection />
-      {/* FAQSection: Update questions/answers to only web/app/content writing */}
-      <FAQSection />
-    </div>
+    <main className="bg-white min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }}
+        />
+        <section className="mb-12 md:mb-16 lg:mb-20">
+          <HeroSlider />
+        </section>
+        <section className="mb-12 md:mb-16 lg:mb-20">
+          <ServicesSection />
+        </section>
+        <section className="mb-12 md:mb-16 lg:mb-20">
+          <PricingIndustriesSection />
+        </section>
+        <section className="mb-12 md:mb-16 lg:mb-20">
+          <ClientsSection />
+        </section>
+        <section className="mb-12 md:mb-16 lg:mb-20">
+          <FAQSection />
+        </section>
+      </div>
+    </main>
   );
 // ...existing code...
 }
