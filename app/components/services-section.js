@@ -149,7 +149,7 @@ export default function ServicesSection() {
                                 </div>
                             </div>
 
-                            {/* Accent highlight */}
+                            {/* Accent new me  highlight */}
                             <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
                     ))}
