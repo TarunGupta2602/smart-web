@@ -34,7 +34,7 @@ export const metadata = {
 
 export default function ContactPage() {
     const contactMethods = [
-        
+
         {
             title: "Voice Assistance",
             description: "+1-707-708-4062",
@@ -61,19 +61,7 @@ export default function ContactPage() {
             link: "mailto:support@smartsoftsolutions.org",
             label: "Send Email"
         },
-        {
-            title: "Global WhatsApp",
-            description: "+1-707-708-4062",
-            subtext: "Chat with our development leads",
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 21a9 9 0 10-9-9 8.9 8.9 0 001.5 5L3 21l4-1.5a8.9 8.9 0 005 1.5z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1zm5 0a.5.5 0 001 0V9a.5.5 0 00-1 0v1zM9 14h6s-1 2-3 2-3-2-3-2z" />
-                </svg>
-            ),
-            link: "https://wa.me/17077084062",
-            label: "Open WhatsApp"
-        }
+
     ];
 
     const contactSchema = organization({

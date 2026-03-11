@@ -56,7 +56,7 @@ export default function ContactContent({ contactMethods }) {
     return (
         <div className="min-h-screen bg-white text-slate-900 selection:bg-yellow-500 selection:text-black">
             {/* Modern Cinematic Hero Section */}
-            <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-slate-950">
+            <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-white">
                 {/* Dynamic Background Elements */}
                 <div className="absolute inset-0 z-0">
                     <Image
@@ -84,18 +84,11 @@ export default function ContactContent({ contactMethods }) {
                             <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 via-orange-500 to-yellow-500 italic font-serif lowercase pr-4">ideas</span>
                             into <span className="text-yellow-500">Reality</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-slate-400 leading-relaxed max-w-3xl mx-auto font-medium mb-12">
+                        <p className="text-xl md:text-2xl text-black leading-relaxed max-w-3xl mx-auto font-medium mb-12">
                             Step into the future of digital engineering. Whether you're a startup or an established enterprise, our USA-based experts are ready to accelerate your growth.
                         </p>
 
-                        <div className="flex flex-wrap justify-center gap-6">
-                            <a href="#form" className="px-10 py-5 bg-yellow-500 text-black font-black uppercase tracking-widest text-sm rounded-full hover:bg-white transition-all duration-500 shadow-[0_0_40px_rgba(234,179,8,0.3)] hover:scale-105">
-                                Start a Conversation
-                            </a>
-                            <a href="tel:17077084062" className="px-10 py-5 bg-white/5 text-white border border-white/10 backdrop-blur-xl font-black uppercase tracking-widest text-sm rounded-full hover:bg-white/10 transition-all duration-500 flex items-center gap-3">
-                                <span>📞</span> Quick Call
-                            </a>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -221,23 +214,17 @@ export default function ContactContent({ contactMethods }) {
                             <div className="grid grid-cols-2 gap-6 relative z-10">
                                 <div className="space-y-6 pt-20">
                                     <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-white/10 group">
-                                        <Image src="/images/about-img2.jpg" alt="Team Work" fill className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" />
+                                        <Image src="/neww.png" alt="Team Work" fill className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" />
                                         <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-transparent transition-colors duration-700"></div>
                                     </div>
                                     <div className="relative aspect-[3/4] rounded-[3rem] overflow-hidden border border-white/10 group">
-                                        <Image src="/images/about-img3.jpg" alt="Studio" fill className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" />
+                                        <Image src="/contnetw-removebg-preview.png" alt="Studio" fill className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" />
                                         <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-transparent transition-colors duration-700"></div>
                                     </div>
                                 </div>
                                 <div className="space-y-6">
-                                    <div className="relative aspect-[3/4] rounded-[3rem] overflow-hidden border border-white/10 group">
-                                        <Image src="/images/about-img4.jpg" alt="Brainstorming" fill className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" />
-                                        <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-transparent transition-colors duration-700"></div>
-                                    </div>
-                                    <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-white/10 group">
-                                        <Image src="/images/about-img5.jpg" alt="Office" fill className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" />
-                                        <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-transparent transition-colors duration-700"></div>
-                                    </div>
+
+
                                 </div>
                             </div>
 
@@ -256,7 +243,7 @@ export default function ContactContent({ contactMethods }) {
                             <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-10">
                                 <span className="text-[10px] uppercase tracking-[0.2em] font-black text-white/60">The SmartSoft Edge</span>
                             </div>
-                            <h2 className="text-5xl md:text-8xl font-black mb-12 leading-[0.85] tracking-tighter uppercase">
+                            <h2 className="text-5xl md:text-7xl font-black mb-12 leading-[0.85] tracking-tighter uppercase">
                                 Engineering <br />
                                 <span className="text-yellow-500 italic font-serif lowercase pr-4">excellence</span>
                                 Beyond <span className="text-yellow-500">Limits</span>
@@ -308,13 +295,7 @@ export default function ContactContent({ contactMethods }) {
                                 </div>
                                 <span className="text-2xl group-hover/cta:rotate-12 transition-transform">📞</span>
                             </a>
-                            <a href="https://wa.me/17077084062" className="flex items-center justify-between gap-10 px-10 py-8 bg-white border border-slate-200 text-slate-900 rounded-[2rem] hover:border-yellow-500 transition-all duration-500 group/cta shadow-sm">
-                                <div className="text-left">
-                                    <span className="block text-[8px] uppercase tracking-widest font-black opacity-60 mb-1">Direct Chat</span>
-                                    <span className="block font-black tracking-tight text-lg">WhatsApp Experts</span>
-                                </div>
-                                <span className="text-2xl group-hover/cta:rotate-12 transition-transform">💬</span>
-                            </a>
+
                         </div>
 
                         <a href="mailto:support@smartsoftsolutions.org" className="inline-block mt-12 text-xs font-black uppercase tracking-[0.4em] text-slate-400 hover:text-yellow-600 transition-colors">
