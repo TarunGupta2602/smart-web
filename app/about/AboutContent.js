@@ -53,7 +53,7 @@ export default function AboutContent({ expertiseItems, team }) {
                         <div className="relative group">
                             <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-gray-100 shadow-2xl">
                                 <Image
-                                    src="/images/about-img.jpg"
+                                    src="/neww.png"
                                     alt="Expert Digital Engineering in Action"
                                     fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-[2s]"
@@ -209,7 +209,7 @@ export default function AboutContent({ expertiseItems, team }) {
                             <div className="relative aspect-square rounded-full overflow-hidden border-8 border-gray-50 p-4 shadow-xl">
                                 <div className="relative w-full h-full rounded-full overflow-hidden">
                                     <Image
-                                        src="/images/about-img7.jpg"
+                                        src="/customerfirst.png"
                                         alt="Quality Assurance"
                                         fill
                                         className="object-cover group-hover:scale-105 transition-transform duration-[2s]"
@@ -226,33 +226,7 @@ export default function AboutContent({ expertiseItems, team }) {
                 </div>
             </section>
 
-            {/* Elite Team Showcase - LIGHT THEME */}
-            <section className="py-32 bg-gray-50 border-t border-gray-100">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-20">
-                        <h2 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter leading-tight text-gray-900">THE LEADERSHIP <span className="italic font-serif text-orange-600 uppercase">GRID.</span></h2>
-                        <p className="text-gray-500 font-bold uppercase tracking-[0.2em] text-sm">Dedicated to continuous delivery and trust</p>
-                    </div>
-
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                        {team.map((member, i) => (
-                            <div key={i} className="group relative aspect-[3/4] rounded-3xl overflow-hidden border border-gray-200 shadow-md">
-                                <Image
-                                    src={member.img}
-                                    alt={member.name}
-                                    fill
-                                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                    <h4 className="text-lg font-black text-white">{member.name}</h4>
-                                    <div className="h-0.5 w-10 bg-yellow-500 mt-2"></div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+           
 
             {/* Final Reassurance CTA - LIGHT THEME */}
             <section className="py-32 relative overflow-hidden bg-white">

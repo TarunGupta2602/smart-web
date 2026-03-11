@@ -4,47 +4,37 @@ import Link from "next/link";
 export default function ServicesSection() {
     const services = [
         {
-            title: "STRATEGIC SEO & MARKETING",
-            description: "Data-driven digital marketing and professional SEO services to increase your organic visibility and drive ROI.",
-            icon: "/images/icon5.png"
+            title: "Website Development",
+            description: "Custom websites for small businesses and startups. Fast, secure, and SEO-optimized.",
+            icon: "/images/webicon.png"
         },
         {
-            title: "MOBILE APP DEVELOPMENT",
-            description: "High-performance iOS and Android applications built with responsive design for seamless cross-device experiences.",
+            title: "Mobile App Development",
+            description: "Affordable mobile apps for iOS & Android. Launch your app quickly with expert support.",
             icon: "/images/icon4.png"
         },
         {
-            title: "E-COMMERCE ENGINEERING",
-            description: "Full-stack website development with secure payment gateways, inventory logic, and optimized checkout flows.",
-            icon: "/images/icon3.png"
-        },
-        {
-            title: "AWARD-WINNING UI / UX",
-            description: "Creative graphic design and user-centric interfaces that convert visitors into loyal brand advocates.",
+            title: "Content Writing",
+            description: "Professional content writing for websites, blogs, and marketing. Grow your brand and engage your audience.",
             icon: "/images/icon2.png"
         }
     ];
 
     const detailedServices = [
         {
-            title: "CUSTOM SHOPPING STORE DEVELOPMENT",
-            description: "We are industry leaders in e-commerce website development. Our solutions feature real-time order tracking, multi-layered security, and scalable architecture designed for global retail expansion.",
-            icon: "/images/p7.jpg"
+            title: "Website Development",
+            description: "We build responsive, SEO-friendly websites that help your business grow online. Get a site that looks great and performs fast.",
+            icon: "/images/website.jpg"
         },
         {
-            title: "ENTERPRISE E-COMMERCE CATALOGS",
-            description: "Transform your product inventory with high-speed catalog websites. We specialize in headless commerce and high-traffic infrastructure for large-scale digital retail.",
-            icon: "/images/p8.jpg"
+            title: "Mobile App Development",
+            description: "Our team creates mobile apps for iOS and Android, tailored to your business needs. Launch your app quickly and reach more customers.",
+            icon: "/images/mobileapp.png"
         },
         {
-            title: "SMALL BUSINESS BRANDING SOLUTIONS",
-            description: "Providing affordable yet premium web designing for professionals and small businesses. We focus on lead generation and localized SEO to put your brand on the map.",
-            icon: "/images/p3.jpg"
-        },
-        {
-            title: "FULL-SCALE DIGITAL GROWTH ENGINES",
-            description: "Beyond development, we run high-octane Google and Bing ad campaigns. Our team integrates internet marketing with custom software to build a complete growth engine.",
-            icon: "/images/p4.jpg"
+            title: "Content Writing",
+            description: "Get high-quality content for your website, blog, or marketing. We help you connect with your audience and boost your brand.",
+            icon: "/images/content.jpg"
         }
     ];
 
@@ -59,7 +49,7 @@ export default function ServicesSection() {
                         <span className="text-xs uppercase tracking-[0.2em] font-bold text-yellow-600">Enterprise Grade Solutions</span>
                     </div>
                     <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 uppercase tracking-tighter leading-[0.9]">
-                        STRATEGIC DIGITAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase">solutions</span>
+                        STRATEGIC DIGITAL <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-orange-500 italic font-serif lowercase">solutions</span>
                     </h2>
                     <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium">
                         We provide elite web development, professional SEO, and high-performance digital marketing services
@@ -126,13 +116,13 @@ export default function ServicesSection() {
                         >
                             <div className="relative z-10 flex flex-col md:flex-row gap-10 items-center">
                                 {/* Simplified Image Container */}
-                                <div className="flex-shrink-0 w-full md:w-2/5 aspect-[4/6] relative overflow-hidden rounded-3xl">
+                                <div className="shrink-0 w-full md:w-2/5 aspect-4/6 relative overflow-hidden rounded-3xl">
                                     <img
                                         src={service.icon}
                                         alt={service.title}
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
+                                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/20 to-transparent"></div>
                                 </div>
 
                                 {/* Content Section */}

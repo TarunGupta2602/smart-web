@@ -34,19 +34,7 @@ export const metadata = {
 
 export default function ContactPage() {
     const contactMethods = [
-        {
-            title: "Visit Our Hub",
-            description: "H-25, Basement Floor, Sector 63, Noida, 201301",
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 21s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 7.2c0 7.3-8 11.8-8 11.8z" />
-                    <circle cx="12" cy="9.2" r="3" strokeWidth={1} />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 21v-2m0-12v.01M12 11v.01" />
-                </svg>
-            ),
-            link: "https://goo.gl/maps/xyz",
-            label: "Get Directions"
-        },
+        
         {
             title: "Voice Assistance",
             description: "+1-707-708-4062",

@@ -248,7 +248,7 @@ export default async function BlogSlugPage({ params }) {
                                             Need help right away?
                                         </strong>
                                         <div className="text-xs sm:text-sm text-gray-700 mt-1">
-                                            Call our technicians for fast remote printer support.
+                                            Call our technicians for fast remote  support.
                                         </div>
                                     </div>
                                     <div className="flex-shrink-0">

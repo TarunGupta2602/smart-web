@@ -12,46 +12,35 @@ export default function HeroSlider() {
             id: 1,
             image: "/images/website-designing.png",
             content: {
-                mainHeadline: "PROFESSIONAL WEB",
-                highlightedWord: "DESIGNING",
-                subHeadline: "IN 48 HOURS.",
-                subtitle: "Elite digital engineering and rapid web delivery. We create stunning, high-performance websites tailored to your unique business vision.",
-                cta: "Start Your Project"
+                mainHeadline: "WEBSITE",
+                highlightedWord: "DEVELOPMENT",
+                subHeadline: "FOR SMALL BUSINESS",
+                subtitle: "Custom, fast, and SEO-optimized websites for USA startups and small businesses.",
+                cta: "Get Started"
             },
         },
         {
             id: 2,
             image: "/images/website making.png",
             content: {
-                mainHeadline: "E-COMMERCE GROWTH",
-                highlightedWord: "EXPERTS",
-                subHeadline: "FOR RETAIL.",
-                subtitle: "Advanced shopping store websites with full functionality, integrated payment gateways, and secure inventory management.",
-                cta: "Explore Solutions"
+                mainHeadline: "MOBILE APP",
+                highlightedWord: "DEVELOPMENT",
+                subHeadline: "LAUNCH YOUR APP",
+                subtitle: "Affordable, high-performance mobile apps for iOS & Android. Quick delivery, expert support.",
+                cta: "Request a Quote"
             },
         },
         {
             id: 3,
-            image: "/images/domain.png",
+            image: "/contnetw-removebg-preview.png",
             content: {
-                mainHeadline: "STRATEGIC BRAND",
-                highlightedWord: "IDENTITY",
-                subHeadline: "GLOBAL REACH.",
-                subtitle: "Secure your digital footprint with premium domain services and strategic branding that scales your business globally.",
-                cta: "Find Your Domain"
+                mainHeadline: "CONTENT",
+                highlightedWord: "WRITING",
+                subHeadline: "BOOST YOUR BRAND",
+                subtitle: "Professional content writing for websites, blogs, and marketing. Engage and convert your audience.",
+                cta: "Contact Us"
             },
-        },
-        {
-            id: 4,
-            image: "/images/webhosting.png",
-            content: {
-                mainHeadline: "ENTERPRISE CLOUD",
-                highlightedWord: "HOSTING",
-                subHeadline: "MISSION CRITICAL.",
-                subtitle: "Scalable, ultra-secure hosting nodes with 99.9% uptime. Low-cost infrastructure for high-growth companies online 24/7.",
-                cta: "View Hosting Plans"
-            },
-        },
+        }
     ];
 
     useEffect(() => {
@@ -63,7 +52,7 @@ export default function HeroSlider() {
     }, [slides.length]);
 
     return (
-        <section className="relative w-full h-[650px] md:h-[700px] lg:h-[800px] overflow-hidden bg-[#0a0a0b]">
+        <section className="relative w-full h-150 md:h-175 lg:h-200 overflow-hidden bg-[#0a0a0b] flex items-center justify-center">
             {/* Background Image with Cinematic Overlay */}
             <div className="absolute inset-0 z-0">
                 <Image
@@ -80,7 +69,7 @@ export default function HeroSlider() {
 
             {/* Slides Container */}
             <div
-                className="relative z-10 w-full h-full flex transition-transform duration-1000 cubic-bezier(0.4, 0, 0.2, 1)"
+                className="relative z-10 w-full h-full flex items-center transition-transform duration-1000 cubic-bezier(0.4, 0, 0.2, 1)"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
                 {slides.map((slide, index) => (
@@ -128,7 +117,7 @@ export default function HeroSlider() {
                             </div>
 
                             {/* Image Section */}
-                            <div className="relative h-[220px] sm:h-[280px] md:h-[450px] lg:h-[550px] w-full flex items-center justify-center order-1 lg:order-2">
+                            <div className="relative h-55 sm:h-70 md:h-112 lg:h-138 w-full flex items-center justify-center order-1 lg:order-2">
                                 <div className="relative w-full h-full transform hover:scale-105 transition-transform duration-700">
                                     <Image
                                         src={slide.image}

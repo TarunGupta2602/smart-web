@@ -11,20 +11,15 @@ export default function AboutPage() {
     }, []);
 
     const skills = [
-        { name: "Html/Html5/CSS/PHP", percentage: 99 },
-        { name: "Wordpress Modules/Plugins", percentage: 100 },
-        { name: "Drupal/Joomla", percentage: 98 },
-        { name: "Hosting Servers/ Domains", percentage: 100 },
-        { name: "Content Writing", percentage: 90 },
-        { name: "Graphics Designing", percentage: 90 },
-        { name: "Software Development", percentage: 100 },
-        { name: "Cloud Services", percentage: 100 }
+        { name: "Website Development (HTML, CSS, JS, React, Next.js)", percentage: 99 },
+        { name: "Mobile App Development (Android, iOS, React Native)", percentage: 98 },
+        { name: "Content Writing (SEO, Blogs, Copywriting)", percentage: 95 }
     ];
 
     return (
         <div className="min-h-screen">
             {/* Hero Banner */}
-            <div className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden">
+            <div className="relative h-100 md:h-125 lg:h-150 flex items-center justify-center overflow-hidden">
                 <Image
                     src="/images/about-us-banner.jpg"
                     alt="About Us Banner"
@@ -59,21 +54,15 @@ export default function AboutPage() {
                         <div className="order-2 lg:order-1">
                             <div className="prose prose-lg max-w-none">
                                 <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6">
-                                    We Are A Development Company. We Have Expertise In Website Development & Designing, Website Making Company,
-                                    Software Development, Graphics Designing, Android Apps Development, Digital Marketing, Internet Marketing,
-                                    Brand Marketing, Product Marketing Etc. We Make Websites At Lowest Possible Price. We Also Provide Domain
-                                    And Hosting Servers At Lowest Cost.
+                                    SmartSoft Solutions is dedicated to empowering startups and small businesses in the USA with world-class website development, mobile app development, and professional content writing services. Our team combines technical expertise and creative vision to deliver digital solutions that help your business stand out and grow online.
                                 </p>
                                 <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6">
-                                    Our unique capability to serve as the one-stop shop solutions provider for its customers. Our ability in
-                                    being a complete solutions provider removes the hassle of managing multiple vendors, logistics, and
-                                    technological bottlenecks. It gives our customers the peace of mind that they have chosen a reliable,
-                                    long-term partner capable of solving their development needs as their businesses grow.
+                                    We believe in transparent communication, reliable delivery, and building lasting partnerships. By focusing on your unique needs, we ensure every project is tailored for maximum impact, whether you need a modern website, a custom mobile app, or compelling content that drives results.
                                 </p>
                             </div>
                         </div>
                         <div className="order-1 lg:order-2">
-                            <div className="relative h-[300px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+                            <div className="relative h-75 md:h-100 lg:h-125 rounded-2xl overflow-hidden shadow-2xl">
                                 <Image
                                     src="/images/about-img.jpg"
                                     alt="About SmartSoft Solutions"
@@ -86,7 +75,7 @@ export default function AboutPage() {
 
                     {/* Mission & Vision */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-                        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 md:p-10 rounded-2xl shadow-lg border-l-4 border-yellow-400">
+                        <div className="bg-linear-to-br from-yellow-50 to-yellow-100 p-8 md:p-10 rounded-2xl shadow-lg border-l-4 border-yellow-400">
                             <div className="flex items-center mb-6">
                                 <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center mr-4">
                                     <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,13 +85,11 @@ export default function AboutPage() {
                                 <h3 className="text-2xl md:text-3xl font-black text-gray-900 uppercase">Our Mission</h3>
                             </div>
                             <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                                We are committed to build world class products based on its philosophy that great products help building
-                                successful companies. This is designed to drive customer satisfaction, making the workplace a fun place for
-                                our employees and creating significant shareholder value.
+                                Our mission is to help small businesses and startups in the USA thrive by providing affordable, high-quality web and app development, and content writing services. We are committed to delivering solutions that drive growth, enhance online presence, and create lasting value for our clients.
                             </p>
                         </div>
 
-                        <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 md:p-10 rounded-2xl shadow-lg border-l-4 border-gray-400">
+                        <div className="bg-linear-to-br from-gray-50 to-gray-100 p-8 md:p-10 rounded-2xl shadow-lg border-l-4 border-gray-400">
                             <div className="flex items-center mb-6">
                                 <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center mr-4">
                                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,8 +100,7 @@ export default function AboutPage() {
                                 <h3 className="text-2xl md:text-3xl font-black text-gray-900 uppercase">Our Vision</h3>
                             </div>
                             <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                                Our mission is to create an environment that helps companies to capitalize on the diversity of its people
-                                and the inclusion of ideas and solutions to meet the needs of its increasing global and diverse customer base.
+                                To be the trusted digital partner for small businesses across the USA, recognized for our integrity, innovation, and ability to turn ideas into impactful digital solutions. We envision a future where every business, regardless of size, can access the tools and expertise needed to succeed online.
                             </p>
                         </div>
                     </div>
@@ -126,32 +112,24 @@ export default function AboutPage() {
                         </h3>
                         <div className="space-y-6">
                             <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                                With thousands of successful projects delivered across the world, we believe in giving life to your brand
-                                through our experience, passion and capabilities. We take pride in our ability to deliver excellent software
-                                solutions to our clients around the world.
+                                We are passionate about helping small businesses achieve their goals through technology and content. Every project is handled with care, creativity, and a focus on measurable results. Our clients trust us to deliver solutions that are not only functional, but also elevate their brand and connect with their audience.
                             </p>
                             <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                                As a corporate principle we believe in winning repeat business from our existing customers through our
-                                hard-work and dedication. We realize that any inefficiency and loss to our customer's business is our loss,
-                                and we take this loss personally.
+                                We value long-term relationships, honest communication, and continuous improvement. Your success is our priority, and we are committed to going the extra mile to ensure your satisfaction.
                             </p>
                             <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                                Our strict adherence to internal processes, guidelines, and the use of a premier quality assurance team
-                                ensures that our customers stay happy while we deliver the highest caliber of software development and
-                                customer service. Our culture, passion for quality, and the simple "customer comes first" philosophy ensures
-                                that clients can depend on us to continuously deliver on the promises we make.
+                                With a proven track record and a customer-first mindset, SmartSoft Solutions is your reliable partner for web development, app development, and content writing in the USA.
                             </p>
                         </div>
                     </div>
 
                     {/* Skills Section */}
-                    <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 md:p-12 lg:p-16 rounded-3xl shadow-2xl">
+                    <div className="bg-linear-to-br from-gray-900 to-gray-800 p-8 md:p-12 lg:p-16 rounded-3xl shadow-2xl">
                         <h3 className="text-3xl md:text-4xl font-black text-white mb-4 text-center uppercase">
                             OUR <span className="text-yellow-400">SKILLS</span>
                         </h3>
                         <p className="text-base md:text-lg text-gray-300 text-center mb-12 max-w-3xl mx-auto">
-                            We have expertise in all kinds of technology which is required in development of projects,
-                            here are some of our main skillsets.
+                            Our core skills are focused on website development, mobile app development, and content writing. We use the latest technologies and best practices to deliver outstanding results for small businesses and startups.
                         </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -163,7 +141,7 @@ export default function AboutPage() {
                                     </div>
                                     <div className="h-3 bg-gray-700 rounded-full overflow-hidden">
                                         <div
-                                            className="h-full bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full transition-all duration-1000 ease-out"
+                                            className="h-full bg-linear-to-r from-yellow-400 to-yellow-500 rounded-full transition-all duration-1000 ease-out"
                                             style={{ width: isVisible ? `${skill.percentage}%` : '0%' }}
                                         ></div>
                                     </div>

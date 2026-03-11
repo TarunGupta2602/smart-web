@@ -2,58 +2,40 @@ import Link from "next/link";
 
 export default function PricingIndustriesSection() {
     const industries = [
-        { name: "AGRICULTURE & RELATED INDUSTRY", icon: "🌾" },
-        { name: "AVIATION AND AIRLINE SERVICES", icon: "✈️" },
-        { name: "BANKING, LOANS & FINANCE", icon: "🏦" },
-        { name: "EDUCATION & TRAINING CENTER", icon: "🎓" },
-        { name: "E-COMMERCE & ONLINE RETAIL", icon: "🛒" },
-        { name: "REAL ESTATE & CONSTRUCTION", icon: "🏗️" },
-        { name: "SPORTS GOODS & SERVICES", icon: "⚽" },
-        { name: "EVENT MANAGEMENT", icon: "🎉" },
-        { name: "GAMING & ONLINE GAMING", icon: "🎮" },
-        { name: "MEDICAL & HEALTHCARE", icon: "⚕️" },
-        { name: "LEGAL CONSULTANT & LAWYER", icon: "⚖️" },
-        { name: "ENTERTAINMENT & BROADCAST", icon: "🎬" },
-        { name: "TRANSPORT & CAR RENTAL", icon: "🚗" },
-        { name: "SMALL BUSINESS & INDIVIDUAL", icon: "💼" }
+        { name: "Small Business Websites", icon: "�" },
+        { name: "Startup Web Solutions", icon: "🚀" },
+        { name: "Mobile App Development", icon: "📱" },
+        { name: "Content Writing", icon: "✍️" }
     ];
 
     return (
-        <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-16 md:py-20 lg:py-24 bg-linear-to-b from-white to-gray-50">
             <div className="container mx-auto px-6">
 
                 {/* Pricing Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <div className="inline-block bg-yellow-400 px-8 py-3 rounded-full mb-6">
                         <p className="text-sm md:text-base font-bold text-gray-900 uppercase tracking-wide">
-                            Special Offer
+                            Affordable Website & App Packages
                         </p>
                     </div>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 uppercase leading-tight">
-                        GET A WEBSITE IN{" "}
-                        <span className="relative inline-block">
-                            <span className="text-yellow-500">$199.99</span>
-                            <div className="absolute -bottom-2 left-0 right-0 h-3 bg-yellow-200 -z-10"></div>
-                        </span>
+                        LAUNCH YOUR WEBSITE OR APP FROM <span className="text-yellow-500">$199.99</span>
                     </h2>
                     <p className="text-lg md:text-xl text-gray-700 mb-4 max-w-3xl mx-auto">
-                        Our Website Plan Starts From <span className="font-bold text-yellow-500 text-2xl">$199.99</span>
+                        Our plans are designed for USA small businesses and startups. Get a custom website, mobile app, or content writing service at a transparent price.
                     </p>
                     <p className="text-base md:text-lg text-gray-600 mb-2">
-                        Call Now{" "}
-                        <a href="tel:17077084062" className="font-bold text-gray-900 hover:text-yellow-500 transition-colors text-xl">
-                            1-707-708-4062
-                        </a>{" "}
-                        <span className="text-sm">(Toll Free)</span>
+                        Call Now <a href="tel:17077084062" className="font-bold text-gray-900 hover:text-yellow-500 transition-colors text-xl">1-707-708-4062</a> <span className="text-sm">(Toll Free)</span>
                     </p>
                     <p className="text-base md:text-lg text-gray-600 mb-10 max-w-3xl mx-auto">
-                        We Make Website In Your Budget. Our Plans Can Be Customised As Per Your Needs.
+                        We deliver fast, SEO-optimized websites and apps. Plans can be customized for your needs.
                     </p>
                     <Link
                         href="/pricing"
-                        className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-12 py-5 rounded-full font-bold text-lg uppercase shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                        className="inline-block bg-linear-to-r from-yellow-400 to-yellow-500 text-gray-900 px-12 py-5 rounded-full font-bold text-lg uppercase shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                     >
-                        Check Our Price & Plans - Get Quote
+                        Get Your Quote
                     </Link>
                 </div>
 
@@ -71,7 +53,7 @@ export default function PricingIndustriesSection() {
                     </div>
 
                     {/* Industries Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {industries.map((industry, index) => (
                             <div
                                 key={index}
@@ -90,18 +72,18 @@ export default function PricingIndustriesSection() {
                     </div>
 
                     {/* Bottom CTA */}
-                    <div className="mt-16 text-center bg-gradient-to-r from-yellow-50 to-orange-50 p-8 md:p-12 rounded-3xl border-2 border-yellow-200">
+                    <div className="mt-16 text-center bg-linear-to-r from-yellow-50 to-orange-50 p-8 md:p-12 rounded-3xl border-2 border-yellow-200">
                         <p className="text-xl md:text-2xl text-gray-800 mb-6 font-bold">
-                            Don't see your industry? <span className="text-yellow-600">We serve ALL industries!</span>
+                            Need a custom website, app, or content writing? <span className="text-yellow-600">We serve USA small businesses and startups!</span>
                         </p>
                         <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                            Every business is unique. Contact us to discuss how we can create the perfect solution for your specific industry needs.
+                            Contact us to discuss your project and get a free consultation from our experts.
                         </p>
                         <Link
                             href="/contact"
                             className="inline-block bg-gray-900 text-white px-10 py-4 rounded-full font-bold text-base uppercase hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                         >
-                            Contact Us For Your Industry
+                            Contact Us
                         </Link>
                     </div>
                 </div>

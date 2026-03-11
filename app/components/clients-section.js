@@ -21,10 +21,10 @@ export default function ClientsSection() {
                 {/* Header */}
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4 uppercase">
-                        OUR <span className="text-yellow-500">TRUSTED CLIENTS</span>
+                        CLIENTS <span className="text-yellow-500">WEBSITE & APP SUCCESS</span>
                     </h2>
                     <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
-                        We are proud to have served these amazing companies and organizations
+                        We help USA small businesses and startups launch custom websites, mobile apps, and professional content. See some of our happy clients below.
                     </p>
                 </div>
 
@@ -40,7 +40,7 @@ export default function ClientsSection() {
                             {clients.map((client, index) => (
                                 <div
                                     key={index}
-                                    className="flex-shrink-0 mx-6 md:mx-8 lg:mx-12"
+                                    className="shrink-0 mx-6 md:mx-8 lg:mx-12"
                                 >
                                     <div className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-4 md:p-6 flex items-center justify-center border border-gray-200">
                                         <img
@@ -75,7 +75,7 @@ export default function ClientsSection() {
                 {/* Bottom Text */}
                 <div className="text-center mt-12">
                     <p className="text-lg md:text-xl font-bold text-gray-800">
-                        Join hundreds of satisfied clients who trust us with their digital presence
+                        Join hundreds of satisfied clients who trust us for website, app, and content writing services.
                     </p>
                 </div>
 
