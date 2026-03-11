@@ -107,37 +107,50 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Detailed Services Grid - Improved UI */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {detailedServices.map((service, index) => (
                         <div
                             key={index}
-                            className="group relative bg-white rounded-3xl p-8 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_30px_70px_rgba(234,179,8,0.15)] transition-all duration-700 hover:-translate-y-3 overflow-hidden border-2 border-slate-100 hover:border-yellow-400 flex flex-col md:flex-row items-center gap-8"
+                            className="group relative bg-white rounded-[2.5rem] p-4 shadow-[0_15px_60px_-15px_rgba(0,0,0,0.08)] hover:shadow-[0_40px_80px_-20px_rgba(234,179,8,0.2)] transition-all duration-700 hover:-translate-y-4 border border-slate-100 hover:border-yellow-400/50 flex flex-col h-full overflow-hidden"
                         >
-                            <div className="relative w-full md:w-2/5 aspect-4/6 overflow-hidden rounded-2xl md:rounded-3xl shrink-0">
+                            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[2rem] mb-8">
                                 <img
                                     src={service.icon}
                                     alt={service.title}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:rotate-1"
+                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-2"
                                 />
-                                <div className="absolute inset-0 bg-linear-to-t from-yellow-400/10 to-transparent"></div>
+                                <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>
+                                <div className="absolute top-4 left-4">
+                                    <div className="bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full shadow-lg">
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">Premium Service</span>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="flex-1 flex flex-col justify-center">
-                                <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-3 md:mb-5 uppercase leading-tight tracking-tighter group-hover:text-yellow-600 transition-colors duration-500">
+                            <div className="flex-1 px-6 pb-10 flex flex-col items-center text-center">
+                                <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-4 uppercase leading-none tracking-tighter group-hover:text-yellow-600 transition-colors duration-500">
                                     {service.title}
                                 </h3>
 
-                                <div className="flex gap-1 mb-3 md:mb-5">
-                                    <div className="h-1.5 rounded-full bg-yellow-500 w-12 group-hover:w-20 transition-all duration-700"></div>
-                                    <div className="h-1.5 rounded-full bg-yellow-500 w-2"></div>
+                                <div className="flex gap-1.5 mb-6 justify-center">
+                                    <div className="h-1 rounded-full bg-yellow-500 w-12 group-hover:w-20 transition-all duration-700"></div>
+                                    <div className="h-1 rounded-full bg-yellow-500 w-1.5"></div>
                                 </div>
 
-                                <p className="text-base md:text-lg text-slate-700 leading-relaxed font-medium">
+                                <p className="text-base text-slate-600 leading-relaxed font-medium">
                                     {service.description}
                                 </p>
+
+                                <div className="mt-8 pt-8 border-t border-slate-50 w-full group/btn">
+                                    <Link href="/contact" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-900 group-hover:text-yellow-600 transition-colors">
+                                        Learn More
+                                        <svg className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                    </Link>
+                                </div>
                             </div>
-                            {/* Decorative border highlight */}
-                            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-400 via-orange-400 to-transparent opacity-10 group-hover:opacity-30 transition-opacity"></div>
+
+                            {/* Accent highlight */}
+                            <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
                     ))}
                 </div>

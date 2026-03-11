@@ -3,6 +3,7 @@ import ServicesSection from "./components/services-section";
 import PricingIndustriesSection from "./components/pricing-industries-section";
 import ClientsSection from "./components/clients-section";
 import FAQSection from "./components/faq-section";
+import TestimonialsSection from "./components/testimonials-section";
 import { breadcrumbList, stringifySchema } from "@/lib/schema";
 
 export const metadata = {
@@ -39,24 +40,7 @@ export default function Homepage() {
   const breadcrumbSchema = breadcrumbList([
     { name: 'Home', url: 'https://www.smartsoftsolutions.org/' }
   ]);
-  const testimonials = [
-    {
-      quote: "SmartSoft Solutions delivered our website in just 48 hours. The process was smooth and the result exceeded our expectations!",
-      name: "Sarah M., Startup Founder"
-    },
-    {
-      quote: "The mobile app they built for us is fast, reliable, and beautifully designed. Highly recommended for small businesses.",
-      name: "James T., Small Business Owner"
-    },
-    {
-      quote: "Their content writing team helped us boost our online presence and attract more customers. Great service and communication.",
-      name: "Priya S., Marketing Lead"
-    },
-    {
-      quote: "Affordable, professional, and always available for support. We trust SmartSoft for all our digital needs.",
-      name: "Michael D., Agency Partner"
-    }
-  ];
+
   return (
     <main className="bg-white min-h-screen">
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,39 +48,23 @@ export default function Homepage() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }}
         />
-        <section className="mb-12 md:mb-16 lg:mb-20">
+        <section className="mb-2 md:mb-6 lg:mb-2">
           <HeroSlider />
         </section>
-        <section className="mb-12 md:mb-16 lg:mb-20">
+        <section className="mb-2 md:mb-6 lg:mb-2">
           <ServicesSection />
         </section>
-        <section className="mb-12 md:mb-16 lg:mb-20">
+        <section className="mb-2 md:mb-6 lg:mb-2">
           <PricingIndustriesSection />
         </section>
-        <section className="mb-12 md:mb-16 lg:mb-20">
+        <section className="mb-2 md:mb-6 lg:mb-2">
           <ClientsSection />
         </section>
-        <section className="mb-12 md:mb-16 lg:mb-20">
+        <section className="mb-2 md:mb-6 lg:mb-2">
           <FAQSection />
         </section>
-        {/* Testimonials Section */}
-        <section className="mb-12 md:mb-16 lg:mb-24 bg-yellow-50 border border-yellow-100 rounded-3xl shadow-xl py-16">
-          <div className="max-w-4xl mx-auto text-center px-4">
-            <div className="w-full">
-              <h2 className="text-3xl md:text-5xl font-black text-yellow-700 mb-10 uppercase tracking-tighter">What Our Clients Say</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {testimonials.map((t, idx) => (
-                  <div key={idx} className="bg-white rounded-2xl shadow-md p-8 border border-yellow-100 flex flex-col items-center justify-center">
-                    <p className="text-lg md:text-xl text-gray-800 font-medium mb-6 italic">"{t.quote}"</p>
-                    <span className="text-sm font-bold text-yellow-700 uppercase tracking-widest">{t.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <TestimonialsSection />
       </div>
     </main>
   );
-// ...existing code...
 }
