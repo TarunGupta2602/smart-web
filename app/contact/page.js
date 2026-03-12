@@ -86,7 +86,7 @@ export default function ContactPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: stringifySchema([contactSchema, breadcrumbSchema]) }}
             />
-            <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2" />
+            <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 " />
             <ContactContent contactMethods={contactMethods} />
         </>
     );

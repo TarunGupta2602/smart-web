@@ -96,29 +96,30 @@ export default function ContactContent({ contactMethods }) {
             {/* Contact Methods - Precision Grid */}
             <section className="py-32 relative z-20 -mt-24">
                 <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
                         {contactMethods.map((method, index) => (
                             <a
                                 key={index}
                                 href={method.link}
-                                className="group relative bg-white border border-slate-100 p-12 rounded-[2.5rem] hover:border-yellow-400/50 transition-all duration-700 hover:-translate-y-4 overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(234,179,8,0.15)]"
+                                className="group relative bg-white border border-slate-100 p-10 md:p-14 rounded-[3rem] hover:border-yellow-400/50 transition-all duration-700 hover:-translate-y-4 overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(234,179,8,0.15)] flex flex-col items-center text-center"
                             >
                                 <div className="absolute top-0 right-0 -mr-12 -mt-12 w-48 h-48 bg-yellow-500/5 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-colors duration-700"></div>
 
-                                <div className="relative z-10">
-                                    <div className="w-20 h-20 bg-slate-50 rounded-3xl flex items-center justify-center text-slate-900 mb-10 border border-slate-100 group-hover:bg-yellow-500 group-hover:text-black transition-all duration-700 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl group-hover:shadow-yellow-500/20">
+                                <div className="relative z-10 w-full">
+                                    <div className="w-24 h-24 bg-slate-50 rounded-[2rem] flex items-center justify-center text-slate-900 mb-10 border border-slate-100 group-hover:bg-yellow-500 group-hover:text-black transition-all duration-700 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl group-hover:shadow-yellow-500/20 mx-auto">
                                         {method.icon}
                                     </div>
-                                    <h3 className="text-xs uppercase tracking-[0.3em] font-black text-slate-400 mb-3 group-hover:text-yellow-600 transition-colors">{method.title}</h3>
-                                    <p className="text-2xl font-black text-slate-900 mb-5 leading-none tracking-tight">{method.description}</p>
-                                    {method.subtext && <p className="text-xs text-slate-500 font-bold italic mb-8 uppercase tracking-widest">{method.subtext}</p>}
+                                    <h3 className="text-xs uppercase tracking-[0.3em] font-black text-slate-400 mb-4 group-hover:text-yellow-600 transition-colors">{method.title}</h3>
+                                    <p className="text-2xl md:text-3xl font-black text-slate-900 mb-6 leading-none tracking-tight break-all">{method.description}</p>
+                                    {method.subtext && <p className="text-sm text-slate-500 font-bold italic mb-10 uppercase tracking-widest">{method.subtext}</p>}
 
-                                    <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-yellow-600">
-                                        <span className="w-8 h-[1px] bg-yellow-300 group-hover:w-12 transition-all duration-700"></span>
+                                    <div className="flex items-center justify-center gap-4 text-[11px] font-black uppercase tracking-[0.3em] text-yellow-600">
+                                        <span className="w-8 h-[1px] bg-yellow-300 group-hover:w-16 transition-all duration-700"></span>
                                         {method.label}
+                                        <span className="w-8 h-[1px] bg-yellow-300 group-hover:w-16 transition-all duration-700"></span>
                                     </div>
                                 </div>
-                                <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                             </a>
                         ))}
                     </div>
