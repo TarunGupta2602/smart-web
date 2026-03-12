@@ -27,7 +27,8 @@ export default function Navbar() {
         { name: "Home", href: "/" },
         { name: "Projects", href: "/projects" },
         { name: "Pricing", href: "/pricing" },
-        { name: "NYC Services", href: "/website-development-services-in-NewYork" },
+        { name: "NYC Services", href: "/website-development-services-in-new-york" },
+        { name: "LA Services", href: "/app-development-services-in-los-angeles" },
         { name: "Blogs", href: "/blog" },
         { name: "About Us", href: "/about" },
     ];
