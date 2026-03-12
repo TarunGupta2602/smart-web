@@ -16,8 +16,8 @@ export const metadata = {
         description: "See how we've transformed businesses through high-impact technical delivery. Discover our technical delivery and business impact.",
         url: `${SITE_URL}/projects`,
         images: [
-          { url: '/images/banner.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions Projects' },
-          { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
+            { url: '/images/banner.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions Projects' },
+            { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
         ],
         type: 'website',
         siteName: 'SmartSoft Solutions',
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
         { name: "Mobile Innovation", description: "Native and hybrid app development for iOS and Android ecosystems.", icon: "📱" }
     ];
 
-    const projectSchema = itemList(caseStudies.map(s => `https://smartsoftsolutions.org/projects#${s.title.toLowerCase().replace(/ /g, '-')}`), "SmartSoft Solutions Case Studies");
+    const projectSchema = itemList(caseStudies.map(s => `https://www.smartsoftsolutions.org/projects#${s.title.toLowerCase().replace(/ /g, '-')}`), "SmartSoft Solutions Case Studies");
 
     return (
         <>

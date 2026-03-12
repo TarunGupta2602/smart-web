@@ -13,12 +13,12 @@ export const metadata = {
     "Website Development USA", "Mobile App Development USA", "Content Writing Services USA", "Small Business Websites", "Startup Web Solutions", "SEO Web Design", "Affordable App Development", "Professional Content Writing", "Fast Website Launch", "Custom Web Development"
   ],
   alternates: {
-    canonical: 'https://smartsoftsolutions.org',
+    canonical: 'https://www.smartsoftsolutions.org',
   },
   openGraph: {
     title: "SmartSoft Solutions | Website & App Development for USA Small Business",
     description: "Get custom websites, mobile apps, and content writing services for your small business or startup. Fast delivery, SEO-focused, and affordable pricing.",
-    url: 'https://smartsoftsolutions.org',
+    url: 'https://www.smartsoftsolutions.org',
     images: [
       { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions - Website & App Development' },
       { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
