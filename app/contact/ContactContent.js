@@ -299,8 +299,8 @@ export default function ContactContent({ contactMethods }) {
 
                         </div>
 
-                        <a href="mailto:support@smartsoftsolutions.org" className="inline-block mt-12 text-xs font-black uppercase tracking-[0.4em] text-slate-400 hover:text-yellow-600 transition-colors">
-                            support@smartsoftsolutions.org
+                        <a href="mailto:smartsoft.solutions0@gmail.com" className="inline-block mt-12 text-xs font-black uppercase tracking-[0.4em] text-slate-400 hover:text-yellow-600 transition-colors">
+                            smartsoft.solutions0@gmail.com
                         </a>
                     </div>
                 </div>

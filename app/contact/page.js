@@ -50,7 +50,7 @@ export default function ContactPage() {
         },
         {
             title: "Digital Correspondence",
-            description: "support@smartsoftsolutions.org",
+            description: "smartsoft.solutions0@gmail.com",
             subtext: "Expect a response within 2 business hours",
             icon: (
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,7 +58,7 @@ export default function ContactPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 13v.01M9 11v.01M15 11v.01" />
                 </svg>
             ),
-            link: "mailto:support@smartsoftsolutions.org",
+            link: "mailto:smartsoft.solutions0@gmail.com",
             label: "Send Email"
         },
 
@@ -67,7 +67,7 @@ export default function ContactPage() {
     const contactSchema = organization({
         name: 'SmartSoft Solutions Contact Hub',
         telephone: '+1-707-708-4062',
-        email: 'support@smartsoftsolutions.org',
+        email: 'smartsoft.solutions0@gmail.com',
     });
 
     const breadcrumbSchema = breadcrumbList([

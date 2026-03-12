@@ -40,7 +40,7 @@ export default function RefundPolicyPage() {
         <li>Custom software and digital products may not be eligible for refunds once delivered.</li>
       </ul>
       <h2 className="text-2xl font-semibold mt-8 mb-2">How to Request a Refund</h2>
-      <p className="mb-4">To request a refund, contact us at support@smartsoftsolutions.org with your order details and reason for the request. We will review and respond within 5 business days.</p>
+      <p className="mb-4">To request a refund, contact us at smartsoft.solutions0@gmail.com with your order details and reason for the request. We will review and respond within 5 business days.</p>
       <h2 className="text-2xl font-semibold mt-8 mb-2">Exceptions</h2>
       <p className="mb-4">Refunds are not provided for change of mind or services already rendered in full. Please contact us for any concerns or clarifications.</p>
       <p className="text-sm text-gray-500 mt-8">Effective date: February 3, 2026</p>
