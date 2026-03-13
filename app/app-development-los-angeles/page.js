@@ -3,7 +3,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import { service, breadcrumbList, stringifySchema } from "@/lib/schema";
 
 const SITE_URL = 'https://www.smartsoftsolutions.org';
-const PAGE_URL = `${SITE_URL}/app-development-services-in-los-angeles`;
+const PAGE_URL = `${SITE_URL}/app-development-los-angeles`;
 
 export const metadata = {
     title: "App Development Services in Los Angeles | SmartSoft Solutions",
@@ -52,14 +52,12 @@ export default function AppServicePage() {
 
     const breadcrumbSchema = breadcrumbList([
         { name: 'Home', url: '/' },
-        { name: 'Services', url: '#' },
-        { name: 'App Development LA', url: '/app-development-services-in-los-angeles' }
+        { name: 'App Development LA', url: '/app-development-los-angeles' }
     ]);
 
     const breadcrumbItems = [
         { name: 'Home', url: '/' },
-        { name: 'Services', url: '/' },
-        { name: 'App Development LA', url: '/app-development-services-in-los-angeles' }
+        { name: 'App Development LA', url: '/app-development-los-angeles' }
     ];
 
     return (

@@ -3,7 +3,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import { service, breadcrumbList, stringifySchema } from "@/lib/schema";
 
 const SITE_URL = 'https://www.smartsoftsolutions.org';
-const PAGE_URL = `${SITE_URL}/website-development-services-in-new-york`;
+const PAGE_URL = `${SITE_URL}/website-development-new-york`;
 
 export const metadata = {
     title: "Website Development Services in New York City | SmartSoft Solutions",
@@ -52,14 +52,12 @@ export default function ServicePage() {
 
     const breadcrumbSchema = breadcrumbList([
         { name: 'Home', url: '/' },
-        { name: 'Services', url: '#' },
-        { name: 'Website Development NYC', url: '/website-development-services-in-new-york' }
+        { name: 'Website Development NYC', url: '/website-development-new-york' }
     ]);
 
     const breadcrumbItems = [
         { name: 'Home', url: '/' },
-        { name: 'Services', url: '/' },
-        { name: 'Website Development NYC', url: '/website-development-services-in-new-york' }
+        { name: 'Website Development NYC', url: '/website-development-new-york' }
     ];
 
     return (
