@@ -17,7 +17,7 @@ export const metadata = {
         url: `${SITE_URL}/projects`,
         images: [
             { url: '/images/banner.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions Projects' },
-            { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
+            { url: '/favicon.ico', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
         ],
         type: 'website',
         siteName: 'SmartSoft Solutions',

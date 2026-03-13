@@ -102,7 +102,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: stringifySchema([
-              organization({ logo: '/images/logo.png', description: 'SmartSoft Solutions is a leading digital engineering firm and one-stop shop for web development, software solutions, and brand marketing.' }),
+              organization({ logo: '/favicon.ico', description: 'SmartSoft Solutions is a leading digital engineering firm and one-stop shop for web development, software solutions, and brand marketing.' }),
               webSite({ url: 'https://www.smartsoftsolutions.org', description: 'SmartSoft Solutions - Digital Engineering & Strategic Growth Experts' }),
             ]),
           }}

@@ -14,12 +14,15 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="lg:col-span-4 space-y-8">
                         <div>
-                            <Link href="/" className="inline-block group mb-6">
+                            <Link href="/" className="inline-flex items-center gap-3 group mb-6">
                                 <img
-                                    src="/images/logo.png"
-                                    alt="SmartSoft Solutions"
-                                    className="h-10 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
+                                    src="/favicon.ico"
+                                    alt="SmartSoft"
+                                    className="h-12 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
                                 />
+                                <span className="text-2xl font-black tracking-tighter text-white group-hover:text-yellow-500 transition-colors uppercase">
+                                    SmartSoft <span className="text-yellow-500 group-hover:text-white italic font-serif lowercase">Solutions</span>
+                                </span>
                             </Link>
                             <p className="text-zinc-400 text-sm leading-relaxed max-w-sm">
                                 Elevating digital presence for USA businesses. We craft high-performance websites and apps that drive growth and build lasting impact.

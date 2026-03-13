@@ -42,12 +42,15 @@ export default function Navbar() {
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-2 group">
+                <Link href="/" className="flex items-center gap-3 group">
                     <img
-                        src="/images/logo.png"
-                        alt="SmartSoft Solutions"
-                        className="h-10 w-auto object-contain"
+                        src="/favicon.ico"
+                        alt="SmartSoft"
+                        className="h-12 w-auto object-contain"
                     />
+                    <span className="text-2xl font-black tracking-tighter text-slate-900 group-hover:text-yellow-500 transition-colors uppercase">
+                        SmartSoft <span className="text-yellow-500 group-hover:text-slate-900 italic font-serif lowercase">Solutions</span>
+                    </span>
                 </Link>
 
                 {/* Desktop Menu */}
