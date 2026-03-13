@@ -1,13 +1,14 @@
 import AppServiceContent from "./AppServiceContent";
 import Breadcrumb from "../components/Breadcrumb";
-import { service, breadcrumbList, stringifySchema } from "@/lib/schema";
+import { service, breadcrumbList, faqPage, stringifySchema } from "@/lib/schema";
+import { laData } from "@/lib/seoData";
 
 const SITE_URL = 'https://www.smartsoftsolutions.org';
 const PAGE_URL = `${SITE_URL}/app-development-los-angeles`;
 
 export const metadata = {
-    title: "App Development Services in Los Angeles | SmartSoft Solutions",
-    description: "Looking for expert app development services in Los Angeles? SmartSoft Solutions builds high-performance, secure, and scalable mobile applications for Android and iOS systems.",
+    title: "Elite App Development Services in Los Angeles | SmartSoft Solutions",
+    description: "Launch your visionary mobile app with elite engineering in Los Angeles. SmartSoft Solutions builds high-performance, secure, and world-class iOS and Android applications.",
     keywords: [
         "App Development Services in Los Angeles",
         "Mobile App Development LA",
@@ -64,7 +65,7 @@ export default function AppServicePage() {
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: stringifySchema([serviceSchema, breadcrumbSchema]) }}
+                dangerouslySetInnerHTML={{ __html: stringifySchema([serviceSchema, breadcrumbSchema, faqPage(laData.faqs)]) }}
             />
             <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 " />
             <AppServiceContent />

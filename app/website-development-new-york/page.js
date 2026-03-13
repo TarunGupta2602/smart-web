@@ -1,13 +1,14 @@
 import ServiceContent from "./ServiceContent";
 import Breadcrumb from "../components/Breadcrumb";
-import { service, breadcrumbList, stringifySchema } from "@/lib/schema";
+import { service, breadcrumbList, faqPage, stringifySchema } from "@/lib/schema";
+import { nycData } from "@/lib/seoData";
 
 const SITE_URL = 'https://www.smartsoftsolutions.org';
 const PAGE_URL = `${SITE_URL}/website-development-new-york`;
 
 export const metadata = {
-    title: "Website Development Services in New York City | SmartSoft Solutions",
-    description: "Looking for professional website development services in New York City? SmartSoft Solutions builds fast, responsive, and SEO-optimized websites for businesses and startups in NYC.",
+    title: "Elite Website Development New York City | SmartSoft Solutions",
+    description: "Scale your revenue with premier website development services in New York City. SmartSoft Solutions engineers high-performance, SEO-dominant platforms for NYC businesses.",
     keywords: [
         "Website Development Services in New York City",
         "Web Development NYC",
@@ -64,7 +65,7 @@ export default function ServicePage() {
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: stringifySchema([serviceSchema, breadcrumbSchema]) }}
+                dangerouslySetInnerHTML={{ __html: stringifySchema([serviceSchema, breadcrumbSchema, faqPage(nycData.faqs)]) }}
             />
             <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 " />
             <ServiceContent />
