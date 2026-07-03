@@ -7,20 +7,26 @@ import TestimonialsSection from "./components/testimonials-section";
 import { breadcrumbList, stringifySchema } from "@/lib/schema";
 
 export const metadata = {
-  title: "SmartSoft Solutions | Website & App Development for USA Small Business",
-  description: "SmartSoft Solutions specializes in website development, mobile app development, and professional content writing for USA small businesses and startups. Get fast, secure, and SEO-optimized digital solutions to grow your business online.",
+  title: "SmartSoft Solutions | Bookkeeping, Accounting, Payroll & Tax Services for USA & Canada Small Business",
+  description: "SmartSoft Solutions offers professional bookkeeping, accounting, invoicing, payroll processing, and tax preparation services for small businesses across the USA and Canada. CPA-supervised, accurate, affordable, and fully remote.",
   keywords: [
-    "Website Development USA", "Mobile App Development USA", "Content Writing Services USA", "Small Business Websites", "Startup Web Solutions", "SEO Web Design", "Affordable App Development", "Professional Content Writing", "Fast Website Launch", "Custom Web Development"
+    "bookkeeping services USA", "accounting services USA", "payroll services USA", "tax preparation USA",
+    "invoicing services USA", "small business bookkeeper", "online accounting firm USA",
+    "bookkeeping services Canada", "payroll processing Canada", "tax filing USA Canada",
+    "QuickBooks bookkeeper", "virtual accountant USA", "CPA services small business",
+    "accounts payable receivable USA", "IRS tax preparation service", "business accounting USA",
+    "remote bookkeeping USA", "affordable accounting services", "monthly bookkeeping service",
+    "tax return preparation USA Canada"
   ],
   alternates: {
     canonical: 'https://www.smartsoftsolutions.org',
   },
   openGraph: {
-    title: "SmartSoft Solutions | Website & App Development for USA Small Business",
-    description: "Get custom websites, mobile apps, and content writing services for your small business or startup. Fast delivery, SEO-focused, and affordable pricing.",
+    title: "SmartSoft Solutions | Bookkeeping, Accounting, Payroll & Tax Services USA & Canada",
+    description: "Get expert bookkeeping, accounting, invoicing, payroll & tax services for your small business. Serving USA and Canada. CPA-supervised, fast, and affordable.",
     url: 'https://www.smartsoftsolutions.org',
     images: [
-      { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions - Website & App Development' },
+      { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions - Bookkeeping & Accounting Services USA Canada' },
       { url: '/favicon.ico', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
     ],
     type: 'website',
@@ -30,8 +36,8 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@SmartSoftSolutions',
-    title: 'SmartSoft Solutions | Website & App Development for USA Small Business',
-    description: 'Get custom websites, mobile apps, and content writing services for your small business or startup. Fast delivery, SEO-focused, and affordable pricing.',
+    title: 'SmartSoft Solutions | Bookkeeping, Accounting & Payroll Services USA Canada',
+    description: 'Expert bookkeeping, accounting, payroll, invoicing & tax services for USA & Canada small businesses. CPA-supervised and affordable.',
     images: ['/og-image.jpg']
   }
 };

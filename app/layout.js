@@ -17,11 +17,18 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL('https://www.smartsoftsolutions.org'),
   title: {
-    default: "SmartSoft Solutions | Digital Engineering & Strategic Growth",
+    default: "SmartSoft Solutions | Bookkeeping, Accounting, Payroll & Tax Services USA & Canada",
     template: "%s | SmartSoft Solutions"
   },
-  description: "Elite digital engineering, high-performance web architecture, and strategic branding solutions. SmartSoft Solutions empowers businesses with world-class software and ROI-driven digital marketing.",
-  keywords: ["Digital Engineering", "Software Development", "Web Design", "SEO Strategy", "Brand Growth", "Cloud Infrastructure"],
+  description: "SmartSoft Solutions provides professional bookkeeping, accounting, invoicing, payroll processing, and tax preparation services for small businesses in the USA and Canada. Accurate, affordable, and CPA-supervised financial services.",
+  keywords: [
+    "bookkeeping services USA", "accounting firm USA", "payroll services USA", "tax preparation USA",
+    "invoicing services", "online bookkeeper", "small business accounting USA", "QuickBooks bookkeeping",
+    "CPA accounting services", "payroll processing Canada", "bookkeeping services Canada",
+    "tax filing USA Canada", "IRS tax preparation", "accounting services small business",
+    "virtual bookkeeper USA", "remote accounting services", "business tax preparation",
+    "payroll management", "accounts receivable", "accounts payable", "financial reporting"
+  ],
   authors: [{ name: "SmartSoft Solutions" }],
   creator: "SmartSoft Solutions",
   publisher: "SmartSoft Solutions",
@@ -35,21 +42,21 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://www.smartsoftsolutions.org',
     siteName: 'SmartSoft Solutions',
-    title: 'SmartSoft Solutions | Digital Engineering & Strategic Growth',
-    description: 'Elite digital engineering, high-performance web architecture, and strategic branding solutions. SmartSoft Solutions empowers businesses with world-class software and ROI-driven digital marketing.',
+    title: 'SmartSoft Solutions | Bookkeeping, Accounting, Payroll & Tax Services',
+    description: 'Professional bookkeeping, accounting, invoicing, payroll, and tax preparation services for small businesses across USA and Canada. CPA-supervised, accurate, and affordable.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'SmartSoft Solutions - Engineering Excellence',
+        alt: 'SmartSoft Solutions - Bookkeeping & Accounting Services USA Canada',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SmartSoft Solutions | Digital Engineering',
-    description: 'Elite digital engineering and strategic branding solutions.',
+    title: 'SmartSoft Solutions | Bookkeeping, Accounting & Payroll Services USA',
+    description: 'Trusted bookkeeping, accounting, payroll, invoicing & tax services for USA & Canada small businesses.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -71,6 +78,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="google-site-verification" content="2XUc_M2JA9i0tn_jLcEAgvJykTx-E0-BgqFoef2Oma8" />
         <meta name="geo.region" content="US" />
+        <meta name="geo.region" content="CA" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -102,8 +110,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: stringifySchema([
-              organization({ logo: '/favicon.ico', description: 'SmartSoft Solutions is a leading digital engineering firm and one-stop shop for web development, software solutions, and brand marketing.' }),
-              webSite({ url: 'https://www.smartsoftsolutions.org', description: 'SmartSoft Solutions - Digital Engineering & Strategic Growth Experts' }),
+              organization({ logo: '/favicon.ico', description: 'SmartSoft Solutions is a trusted provider of bookkeeping, accounting, invoicing, payroll management, and tax preparation services for small businesses in the USA and Canada.' }),
+              webSite({ url: 'https://www.smartsoftsolutions.org', description: 'SmartSoft Solutions - Professional Bookkeeping, Accounting, Payroll & Tax Services for USA & Canada' }),
             ]),
           }}
         />

@@ -1,31 +1,62 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import Link from "next/link";
 
-export default function ContactContent({ contactMethods }) {
-    const [form, setForm] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        service: "Website Development",
-        message: ""
-    });
+const contactMethods = [
+    {
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6">
+                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+        ),
+        title: "Call Us",
+        description: "+1-707-708-4062",
+        subtext: "Mon–Fri, 9am–6pm EST",
+        label: "Call Now",
+        link: "tel:17077084062"
+    },
+    {
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6">
+                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+        ),
+        title: "Email Us",
+        description: "smartsoftsols@gmail.com",
+        subtext: "Response within 2 business hours",
+        label: "Send Email",
+        link: "mailto:smartsoftsols@gmail.com"
+    },
+    {
+        icon: (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                <path d="M11.5 0C5.149 0 0 5.149 0 11.5c0 2.01.524 3.898 1.436 5.537L0 23l6.148-1.611A11.456 11.456 0 0011.5 23C17.851 23 23 17.851 23 11.5S17.851 0 11.5 0zm0 21.012a9.497 9.497 0 01-4.84-1.318l-.346-.207-3.586.94.957-3.498-.228-.36A9.488 9.488 0 012.012 11.5C2.012 6.254 6.254 2.012 11.5 2.012S20.988 6.254 20.988 11.5 16.746 21.012 11.5 21.012z" />
+            </svg>
+        ),
+        title: "WhatsApp",
+        description: "+1-707-708-4062",
+        subtext: "Chat with us instantly",
+        label: "Open Chat",
+        link: "https://wa.me/17077084062"
+    }
+];
+
+export default function ContactContent() {
+    const [form, setForm] = useState({ name: "", email: "", phone: "", service: "Bookkeeping", message: "" });
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
 
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
+    const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         setError("");
         setSuccess("");
-        // Basic validation
         if (!form.name || !form.email || !form.service || !form.message) {
             setError("Please fill in all required fields.");
             setLoading(false);
@@ -33,288 +64,240 @@ export default function ContactContent({ contactMethods }) {
         }
         try {
             const { error: supabaseError } = await supabase.from("contact_inquiries").insert([
-                {
-                    name: form.name,
-                    email: form.email,
-                    phone: form.phone,
-                    service: form.service,
-                    message: form.message
-                }
+                { name: form.name, email: form.email, phone: form.phone, service: form.service, message: form.message }
             ]);
             if (supabaseError) {
                 setError("Submission failed. Please try again.");
             } else {
-                setSuccess("Thank you! Your inquiry has been submitted.");
-                setForm({ name: "", email: "", phone: "", service: "Website Development", message: "" });
+                setSuccess("Thank you! A financial expert will follow up within 2 business hours.");
+                setForm({ name: "", email: "", phone: "", service: "Bookkeeping", message: "" });
             }
-        } catch (err) {
+        } catch {
             setError("Submission failed. Please try again.");
         }
         setLoading(false);
     };
 
     return (
-        <div className="min-h-screen bg-white text-slate-900 selection:bg-yellow-500 selection:text-black">
-            {/* Modern Cinematic Hero Section */}
-            <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-white">
-                {/* Dynamic Background Elements */}
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/images/banner.jpg"
-                        alt="Contact SmartSoft Solutions"
-                        fill
-                        className="object-cover opacity-20 scale-105"
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-linear-to-b from-slate-950/20 via-slate-950/80 to-white"></div>
+        <div className="min-h-screen bg-white text-slate-900">
 
-                    {/* Animated Glows */}
-                    <div className="absolute top-1/4 -left-20 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px] animate-pulse"></div>
-                    <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-orange-500/10 rounded-full blur-[120px] animate-pulse delay-1000"></div>
+            {/* ─── HERO ─────────────────────────────────────────────── */}
+            <section className="relative bg-slate-950 text-white py-24 overflow-hidden">
+                <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-yellow-500/8 rounded-full blur-[140px] animate-pulse" />
+                    <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-500/8 rounded-full blur-[120px] animate-pulse delay-1000" />
                 </div>
-
-                <div className="container mx-auto px-6 relative z-10 pt-20">
-                    <div className="max-w-5xl mx-auto text-center">
-                        <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-10 shadow-2xl">
-                            <span className="flex h-2.5 w-2.5 rounded-full bg-yellow-500 animate-pulse"></span>
-                            <span className="text-[10px] uppercase tracking-[0.3em] font-black text-white/80">Connect with the Elite</span>
-                        </div>
-                        <h1 className="text-6xl md:text-9xl font-black mb-10 leading-[0.8] tracking-tighter uppercase text-white">
-                            Transforming <br />
-                            <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 via-orange-500 to-yellow-500 italic font-serif lowercase pr-4">ideas</span>
-                            into <span className="text-yellow-500">Reality</span>
-                        </h1>
-                        <p className="text-xl md:text-2xl text-black leading-relaxed max-w-3xl mx-auto font-medium mb-12">
-                            Step into the future of digital engineering. Whether you're a startup or an established enterprise, our USA-based experts are ready to accelerate your growth.
-                        </p>
-
-
+                <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/30 mb-8">
+                        <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-400 animate-pulse" />
+                        <span className="text-[10px] uppercase tracking-[0.2em] font-black text-yellow-400">Free Consultation Available</span>
                     </div>
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white mb-6 leading-[0.95]">
+                        LET'S FIX YOUR <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase">books & taxes.</span>
+                    </h1>
+                    <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                        Whether you need clean books, stress-free payroll, or a full tax strategy — our CPA-supervised team is ready to help your USA or Canada business today.
+                    </p>
                 </div>
             </section>
 
-            {/* Contact Methods - Precision Grid */}
-            <section className="py-32 relative z-20 -mt-24">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-                        {contactMethods.map((method, index) => (
+            {/* ─── CONTACT METHOD CARDS ─────────────────────────────── */}
+            <section className="py-20 bg-slate-50">
+                <div className="container mx-auto px-6 max-w-5xl">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {contactMethods.map((method, i) => (
                             <a
-                                key={index}
+                                key={i}
                                 href={method.link}
-                                className="group relative bg-white border border-slate-100 p-10 md:p-14 rounded-[3rem] hover:border-yellow-400/50 transition-all duration-700 hover:-translate-y-4 overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(234,179,8,0.15)] flex flex-col items-center text-center"
+                                target={method.link.startsWith("http") ? "_blank" : undefined}
+                                rel={method.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                                className="group relative bg-white border-2 border-slate-100 hover:border-yellow-400 p-8 rounded-[2.5rem] transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-xl flex flex-col items-center text-center overflow-hidden"
                             >
-                                <div className="absolute top-0 right-0 -mr-12 -mt-12 w-48 h-48 bg-yellow-500/5 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-colors duration-700"></div>
-
-                                <div className="relative z-10 w-full">
-                                    <div className="w-24 h-24 bg-slate-50 rounded-[2rem] flex items-center justify-center text-slate-900 mb-10 border border-slate-100 group-hover:bg-yellow-500 group-hover:text-black transition-all duration-700 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl group-hover:shadow-yellow-500/20 mx-auto">
-                                        {method.icon}
-                                    </div>
-                                    <h3 className="text-xs uppercase tracking-[0.3em] font-black text-slate-400 mb-4 group-hover:text-yellow-600 transition-colors">{method.title}</h3>
-                                    <p className="text-2xl md:text-3xl font-black text-slate-900 mb-6 leading-none tracking-tight break-all">{method.description}</p>
-                                    {method.subtext && <p className="text-sm text-slate-500 font-bold italic mb-10 uppercase tracking-widest">{method.subtext}</p>}
-
-                                    <div className="flex items-center justify-center gap-4 text-[11px] font-black uppercase tracking-[0.3em] text-yellow-600">
-                                        <span className="w-8 h-[1px] bg-yellow-300 group-hover:w-16 transition-all duration-700"></span>
-                                        {method.label}
-                                        <span className="w-8 h-[1px] bg-yellow-300 group-hover:w-16 transition-all duration-700"></span>
-                                    </div>
+                                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="w-14 h-14 rounded-2xl bg-slate-900 group-hover:bg-yellow-400 flex items-center justify-center text-white group-hover:text-slate-900 transition-all duration-300 mb-5 shadow-lg">
+                                    {method.icon}
                                 </div>
-                                <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                                <span className="text-[9px] uppercase tracking-[0.25em] font-black text-slate-400 mb-2">{method.title}</span>
+                                <p className="text-lg font-black text-slate-900 mb-2 break-all">{method.description}</p>
+                                {method.subtext && <p className="text-xs text-slate-500 font-medium mb-5">{method.subtext}</p>}
+                                <span className="text-[9px] font-black uppercase tracking-widest text-yellow-600 flex items-center gap-1">
+                                    {method.label}
+                                    <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
+                                </span>
                             </a>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Inquiry Form - Glassmorphism Design */}
-            <section id="form" className="py-24 bg-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-yellow-50 rounded-full blur-[120px] -mr-[25vw] -mt-[25vw] opacity-50"></div>
-                <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-slate-50 rounded-full blur-[100px] -ml-[20vw] -mb-[20vw] opacity-50"></div>
+            {/* ─── FORM + SIDEBAR ───────────────────────────────────── */}
+            <section id="form" className="py-24 bg-white">
+                <div className="container mx-auto px-6 max-w-6xl">
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
 
-                <div className="container mx-auto px-6 max-w-5xl relative z-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-20">
-                        <div className="lg:col-span-2 flex flex-col justify-center">
-                            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 mb-8 self-start">
-                                <span className="text-[10px] uppercase tracking-[0.2em] font-black text-yellow-700">Get a Quote</span>
+                        {/* Left sidebar copy */}
+                        <div className="lg:col-span-2 lg:sticky lg:top-28">
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 mb-6">
+                                <span className="text-[9px] uppercase tracking-[0.2em] font-black text-yellow-700">No Obligation</span>
                             </div>
-                            <h2 className="text-5xl md:text-7xl font-black text-slate-900 mb-10 uppercase tracking-tighter leading-[0.8]">
-                                Let's Discuss Your <span className="text-yellow-500">Vision</span>
+                            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-slate-900 mb-6 leading-[0.95]">
+                                GET A FREE <span className="text-yellow-500 italic font-serif lowercase">consultation.</span>
                             </h2>
-                            <p className="text-lg text-slate-600 leading-relaxed font-medium mb-12">
-                                Fill out the form and our technical leadership will get back to you within 2 business hours for a detailed consultation.
+                            <p className="text-sm text-slate-600 font-medium leading-relaxed mb-8">
+                                Tell us what you need. We'll review your situation and send a custom, flat-rate proposal — typically within 2 business hours.
                             </p>
 
-                            <div className="space-y-6">
-                                <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white text-xs">✓</div>
-                                    <span className="font-bold text-slate-800 uppercase text-xs tracking-widest">Free Technical Audit</span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white text-xs">✓</div>
-                                    <span className="font-bold text-slate-800 uppercase text-xs tracking-widest">No-Obligation Quote</span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white text-xs">✓</div>
-                                    <span className="font-bold text-slate-800 uppercase text-xs tracking-widest">24/7 Global Support</span>
-                                </div>
+                            <div className="space-y-3 mb-10">
+                                {[
+                                    { label: "Bookkeeping Diagnostic", sub: "Free 30-minute review of your books" },
+                                    { label: "Flat-rate Proposal", sub: "No hidden fees, ever" },
+                                    { label: "USA & Canada Compliance", sub: "IRS authorized · CRA compliant" },
+                                ].map((item) => (
+                                    <div key={item.label} className="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                                        <div className="w-7 h-7 rounded-full bg-yellow-500 flex items-center justify-center text-white text-xs font-black shrink-0 mt-0.5">✓</div>
+                                        <div>
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-900 block">{item.label}</span>
+                                            <span className="text-[10px] text-slate-500">{item.sub}</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Trust badges */}
+                            <div className="flex flex-wrap gap-2">
+                                {["IRS Authorized", "CPA Supervised", "QuickBooks Pro", "CRA Compliant"].map((b) => (
+                                    <span key={b} className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-slate-900 text-yellow-400 border border-slate-800">
+                                        {b}
+                                    </span>
+                                ))}
                             </div>
                         </div>
 
+                        {/* Form */}
                         <div className="lg:col-span-3">
-                            <form onSubmit={handleSubmit} className="bg-white rounded-[3rem] shadow-[0_30px_100px_-20px_rgba(0,0,0,0.1)] p-10 md:p-14 space-y-8 border border-slate-100 relative group/form">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                    <div className="relative">
-                                        <label className="block text-[10px] font-black uppercase tracking-widest mb-3 text-slate-400 pl-4" htmlFor="name">Full Name*</label>
-                                        <input type="text" name="name" id="name" value={form.name} onChange={handleChange} placeholder="John Doe" required className="w-full p-5 rounded-2xl bg-slate-50 border border-slate-100 focus:border-yellow-500 focus:ring-0 focus:bg-white text-slate-900 font-bold transition-all" />
+                            <form
+                                onSubmit={handleSubmit}
+                                className="bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 p-8 md:p-12 space-y-6 relative"
+                            >
+                                {/* Subtle top accent bar */}
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-t-[2.5rem]" />
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div>
+                                        <label className="block text-[9px] font-black uppercase tracking-[0.2em] mb-2 text-slate-400" htmlFor="name">Full Name *</label>
+                                        <input type="text" name="name" id="name" value={form.name} onChange={handleChange} placeholder="John Doe" required
+                                            className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-yellow-500 focus:ring-0 focus:bg-white text-slate-900 font-semibold text-sm transition-all outline-none" />
                                     </div>
-                                    <div className="relative">
-                                        <label className="block text-[10px] font-black uppercase tracking-widest mb-3 text-slate-400 pl-4" htmlFor="email">Email Address*</label>
-                                        <input type="email" name="email" id="email" value={form.email} onChange={handleChange} placeholder="john@company.com" required className="w-full p-5 rounded-2xl bg-slate-50 border border-slate-100 focus:border-yellow-500 focus:ring-0 focus:bg-white text-slate-900 font-bold transition-all" />
+                                    <div>
+                                        <label className="block text-[9px] font-black uppercase tracking-[0.2em] mb-2 text-slate-400" htmlFor="email">Email Address *</label>
+                                        <input type="email" name="email" id="email" value={form.email} onChange={handleChange} placeholder="john@company.com" required
+                                            className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-yellow-500 focus:ring-0 focus:bg-white text-slate-900 font-semibold text-sm transition-all outline-none" />
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                    <div className="relative">
-                                        <label className="block text-[10px] font-black uppercase tracking-widest mb-3 text-slate-400 pl-4" htmlFor="phone">Phone Number</label>
-                                        <input type="tel" name="phone" id="phone" value={form.phone} onChange={handleChange} placeholder="+1 (707) 000-0000" className="w-full p-5 rounded-2xl bg-slate-50 border border-slate-100 focus:border-yellow-500 focus:ring-0 focus:bg-white text-slate-900 font-bold transition-all" />
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div>
+                                        <label className="block text-[9px] font-black uppercase tracking-[0.2em] mb-2 text-slate-400" htmlFor="phone">Phone Number</label>
+                                        <input type="tel" name="phone" id="phone" value={form.phone} onChange={handleChange} placeholder="+1 (707) 000-0000"
+                                            className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-yellow-500 focus:ring-0 focus:bg-white text-slate-900 font-semibold text-sm transition-all outline-none" />
                                     </div>
-                                    <div className="relative">
-                                        <label className="block text-[10px] font-black uppercase tracking-widest mb-3 text-slate-400 pl-4" htmlFor="service">Interested Service*</label>
-                                        <select name="service" id="service" value={form.service} onChange={handleChange} required className="w-full p-5 rounded-2xl bg-slate-50 border border-slate-100 focus:border-yellow-500 focus:ring-0 focus:bg-white text-slate-900 font-black transition-all appearance-none cursor-pointer">
-                                            <option>Website Development</option>
-                                            <option>Mobile App Development</option>
-                                            <option>Content Writing</option>
+                                    <div>
+                                        <label className="block text-[9px] font-black uppercase tracking-[0.2em] mb-2 text-slate-400" htmlFor="service">Service Needed *</label>
+                                        <select name="service" id="service" value={form.service} onChange={handleChange} required
+                                            className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-yellow-500 focus:ring-0 focus:bg-white text-slate-900 font-semibold text-sm transition-all outline-none cursor-pointer appearance-none">
+                                            <option value="Bookkeeping">Bookkeeping</option>
+                                            <option value="Accounting & Reporting">Accounting & Reporting</option>
+                                            <option value="Invoicing & Billing">Invoicing & Billing</option>
+                                            <option value="Payroll Processing">Payroll Processing</option>
+                                            <option value="Tax Preparation">Tax Preparation</option>
+                                            <option value="Financial Consulting">Financial Consulting</option>
                                         </select>
                                     </div>
                                 </div>
+
                                 <div>
-                                    <label className="block text-[10px] font-black uppercase tracking-widest mb-3 text-slate-400 pl-4" htmlFor="message">Your Message*</label>
-                                    <textarea name="message" id="message" value={form.message} onChange={handleChange} placeholder="Tell us about your project goals..." required rows={5} className="w-full p-5 rounded-2xl bg-slate-50 border border-slate-100 focus:border-yellow-500 focus:ring-0 focus:bg-white text-slate-900 font-bold transition-all" />
+                                    <label className="block text-[9px] font-black uppercase tracking-[0.2em] mb-2 text-slate-400" htmlFor="message">Your Message *</label>
+                                    <textarea name="message" id="message" value={form.message} onChange={handleChange}
+                                        placeholder="Tell us briefly about your business and what you need help with..."
+                                        required rows={5}
+                                        className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-yellow-500 focus:ring-0 focus:bg-white text-slate-900 font-semibold text-sm transition-all outline-none resize-none" />
                                 </div>
 
-                                {error && <div className="p-4 bg-red-50 text-red-600 rounded-2xl border border-red-100 text-sm font-bold flex items-center gap-3"><span>❌</span> {error}</div>}
-                                {success && <div className="p-4 bg-green-50 text-green-600 rounded-2xl border border-green-100 text-sm font-bold flex items-center gap-3"><span>✅</span> {success}</div>}
+                                {error && (
+                                    <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-bold">
+                                        ⚠ {error}
+                                    </div>
+                                )}
+                                {success && (
+                                    <div className="p-4 rounded-xl bg-green-50 border border-green-200 text-green-700 text-xs font-bold">
+                                        ✓ {success}
+                                    </div>
+                                )}
 
-                                <button type="submit" disabled={loading} className="w-full py-6 bg-slate-900 text-white font-black rounded-2xl text-sm uppercase tracking-[0.3em] hover:bg-yellow-500 hover:text-black transition-all duration-500 shadow-xl disabled:opacity-50 group-hover/form:scale-[1.02]">
-                                    {loading ? "Transmitting..." : "Send Secret Message"}
+                                <button type="submit" disabled={loading}
+                                    className="w-full py-4 bg-slate-900 hover:bg-yellow-500 text-white hover:text-slate-900 font-black rounded-2xl text-xs uppercase tracking-[0.25em] transition-all duration-300 disabled:opacity-50 shadow-lg hover:shadow-yellow-200">
+                                    {loading ? "Sending..." : "Request Free Consultation →"}
                                 </button>
 
-                                <div className="absolute -bottom-1 -left-1 -right-1 h-3 bg-yellow-500 rounded-b-[3rem] opacity-0 group-hover/form:opacity-100 transition-opacity duration-700 -z-10"></div>
+                                <p className="text-center text-[10px] text-slate-400 font-medium">
+                                    No spam. No obligation. Your data is 256-bit SSL encrypted.
+                                </p>
                             </form>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Premium Why Us Section */}
-            <section className="py-40 bg-slate-950 text-white overflow-hidden relative">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[150vw] h-[1px] bg-linear-to-r from-transparent via-white/20 to-transparent"></div>
-
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-                        <div className="order-2 lg:order-1 relative">
-                            <div className="grid grid-cols-2 gap-6 relative z-10">
-                                <div className="space-y-6 pt-20">
-                                    <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-white/10 group">
-                                        <Image src="/neww.png" alt="Team Work" fill className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" />
-                                        <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-transparent transition-colors duration-700"></div>
-                                    </div>
-                                    <div className="relative aspect-[3/4] rounded-[3rem] overflow-hidden border border-white/10 group">
-                                        <Image src="/contnetw-removebg-preview.png" alt="Studio" fill className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" />
-                                        <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-transparent transition-colors duration-700"></div>
-                                    </div>
-                                </div>
-                                <div className="space-y-6">
-
-
-                                </div>
+            {/* ─── SECURITY SECTION ─────────────────────────────────── */}
+            <section className="py-20 bg-slate-950 text-white">
+                <div className="container mx-auto px-6 max-w-5xl">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6">
+                                <span className="text-[9px] uppercase tracking-[0.2em] font-black text-yellow-400">Your Data is Safe</span>
                             </div>
-
-                            {/* Stats Badge */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                                <div className="bg-yellow-500 text-black w-40 h-40 rounded-full flex flex-col items-center justify-center border-[10px] border-slate-950 shadow-2xl animate-spin-slow">
-                                    <div className="animate-none flex flex-col items-center">
-                                        <span className="text-4xl font-black">99%</span>
-                                        <span className="text-[8px] uppercase font-black tracking-[0.2em] max-w-[80px] text-center leading-tight">Elite Satisfaction Rate</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="order-1 lg:order-2">
-                            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-10">
-                                <span className="text-[10px] uppercase tracking-[0.2em] font-black text-white/60">The SmartSoft Edge</span>
-                            </div>
-                            <h2 className="text-5xl md:text-7xl font-black mb-12 leading-[0.85] tracking-tighter uppercase">
-                                Engineering <br />
-                                <span className="text-yellow-500 italic font-serif lowercase pr-4">excellence</span>
-                                Beyond <span className="text-yellow-500">Limits</span>
+                            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-5 leading-none">
+                                BANK LEVEL <span className="text-yellow-500 italic font-serif">SECURITY.</span>
                             </h2>
-                            <p className="text-xl text-slate-400 mb-16 leading-relaxed font-medium">
-                                We don't just build software. We craft digital legacies. Our methodology combines rapid USA-based engineering with global scalability.
+                            <p className="text-slate-400 text-sm leading-relaxed mb-8">
+                                All spreadsheets, bank logs, payroll records, and tax files are protected with 256-bit encryption and stored on secure, audited cloud platforms. We maintain strict CPA supervisor access controls — your financial data never leaves our encrypted environment.
                             </p>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+                            <div className="grid grid-cols-2 gap-4">
                                 {[
-                                    { t: "Agile Engineering", d: "Hyper-fast delivery cycles without compromising on precision." },
-                                    { t: "Future-Proof UI", d: "Interactions designed to evolve with tomorrow's web standards." },
-                                    { t: "SEO Dominance", d: "Inherent architectural optimization for maximum visibility." },
-                                    { t: "24/7 Ops", d: "Global support infrastructure at your reach, anytime." }
-                                ].map((item, i) => (
-                                    <div key={i} className="group/item">
-                                        <div className="flex items-center gap-4 mb-4">
-                                            <div className="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-500 group-hover/item:bg-yellow-500 group-hover/item:text-black transition-all">
-                                                <span className="text-[10px] font-black">{i + 1}</span>
-                                            </div>
-                                            <h4 className="text-lg font-black uppercase tracking-tight">{item.t}</h4>
-                                        </div>
-                                        <p className="text-sm text-slate-500 font-medium leading-relaxed">{item.d}</p>
+                                    { title: "256-Bit SSL", sub: "End-to-end encrypted" },
+                                    { title: "CPA Monitored", sub: "Strict access control" },
+                                    { title: "IRS Compliant", sub: "Authorized e-File provider" },
+                                    { title: "CRA Certified", sub: "Canada Revenue Compliant" },
+                                ].map((item) => (
+                                    <div key={item.title} className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                                        <span className="text-[9px] font-black uppercase tracking-widest text-yellow-400 block mb-1">✓ {item.title}</span>
+                                        <span className="text-[10px] text-slate-500">{item.sub}</span>
                                     </div>
                                 ))}
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
 
-            {/* Atomic CTA Section */}
-            <section className="py-40 bg-white relative overflow-hidden">
-                <div className="container mx-auto px-6 text-center relative z-10">
-                    <div className="max-w-4xl mx-auto backdrop-blur-md p-10 md:p-20 rounded-[4rem] border border-slate-100 bg-slate-50/30">
-                        <h2 className="text-6xl md:text-9xl font-black mb-10 tracking-tighter uppercase leading-[0.8] text-slate-900">
-                            Ignite Your <br />
-                            <span className="text-yellow-500">Growth</span>
-                        </h2>
-                        <p className="text-2xl text-slate-500 mb-16 max-w-2xl mx-auto font-medium">
-                            Join the ranks of elite startups who have scaled with our engineering prowess. Your digital empire starts here.
-                        </p>
-
-                        <div className="flex flex-col lg:flex-row gap-6 justify-center">
-                            <a href="tel:17077084062" className="flex items-center justify-between gap-10 px-10 py-8 bg-slate-900 text-white rounded-[2rem] hover:bg-yellow-500 hover:text-black transition-all duration-500 group/cta">
-                                <div className="text-left">
-                                    <span className="block text-[8px] uppercase tracking-widest font-black opacity-60 mb-1">Instant Access</span>
-                                    <span className="block font-black tracking-tight text-lg">+1-707-708-4062</span>
+                        {/* SVG Shield Visual */}
+                        <div className="flex justify-center">
+                            <div className="relative">
+                                <div className="absolute inset-0 bg-yellow-500/20 rounded-[3rem] blur-3xl scale-110" />
+                                <div className="relative w-64 h-64 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-[3rem] flex items-center justify-center shadow-2xl">
+                                    <div className="absolute inset-3 bg-slate-950 rounded-[2.5rem] flex flex-col items-center justify-center gap-3">
+                                        <svg viewBox="0 0 64 64" fill="none" className="w-16 h-16">
+                                            <path d="M32 4L8 14v16c0 13.3 10.2 25.7 24 29 13.8-3.3 24-15.7 24-29V14L32 4z" fill="#F59E0B" fillOpacity="0.2" stroke="#F59E0B" strokeWidth="2" />
+                                            <path d="M22 32l6 6 12-12" stroke="#F59E0B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                        <span className="text-[9px] font-black uppercase tracking-widest text-white">Protected</span>
+                                        <span className="text-[8px] uppercase text-slate-400 tracking-wide">IRS & CRA Secure</span>
+                                    </div>
                                 </div>
-                                <span className="text-2xl group-hover/cta:rotate-12 transition-transform">📞</span>
-                            </a>
-
+                            </div>
                         </div>
-
-                        <a href="mailto:smartsoft.solutions0@gmail.com" className="inline-block mt-12 text-xs font-black uppercase tracking-[0.4em] text-slate-400 hover:text-yellow-600 transition-colors">
-                            smartsoft.solutions0@gmail.com
-                        </a>
                     </div>
                 </div>
             </section>
 
-            <style jsx>{`
-                @keyframes spin-slow {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                }
-                .animate-spin-slow {
-                    animation: spin-slow 20s linear infinite;
-                }
-            `}</style>
         </div>
     );
 }

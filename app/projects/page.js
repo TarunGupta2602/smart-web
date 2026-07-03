@@ -1,64 +1,69 @@
 import ProjectsContent from "./ProjectsContent";
 import Breadcrumb from "../components/Breadcrumb";
-import { itemList, breadcrumbList, stringifySchema } from "@/lib/schema";
+import { localBusiness, breadcrumbList, stringifySchema } from "@/lib/schema";
 
 const SITE_URL = 'https://www.smartsoftsolutions.org';
 
 export const metadata = {
-    title: "Strategic Case Studies | Impactful Technical Delivery | SmartSoft Solutions",
-    description: "Explore our successful projects in enterprise software, digital retail, and Fintech. See how SmartSoft Solutions delivers impactful results for global brands. Discover our technical delivery and business impact.",
-    keywords: ["Enterprise Software Case Studies", "Digital Retail Projects", "Fintech Solutions", "Technical Delivery Success", "Global Brand Projects", "SmartSoft Solutions Projects", "Case Studies"],
+    title: "Financial Case Studies & Success Stories | SmartSoft Solutions",
+    description: "Read our business bookkeeping, payroll optimization, and CPA tax preparation case studies. Learn how we helped SMBs save thousands in deductions and hours of audit risk.",
+    keywords: ["bookkeeping case study", "payroll integration success", "small business tax savings", "CPA supervision outcome", "accounting consulting stories"],
     alternates: {
         canonical: `${SITE_URL}/projects`,
     },
     openGraph: {
-        title: "Our Success Stories | Case Studies | SmartSoft Solutions",
-        description: "See how we've transformed businesses through high-impact technical delivery. Discover our technical delivery and business impact.",
+        title: "Financial Case Studies & Success Stories | SmartSoft Solutions",
+        description: "Read our bookkeeping clean-up, payroll setup, and tax optimization stories.",
         url: `${SITE_URL}/projects`,
-        images: [
-            { url: '/images/banner.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions Projects' },
-            { url: '/favicon.ico', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
-        ],
         type: 'website',
         siteName: 'SmartSoft Solutions',
         locale: 'en_US',
+        images: [
+            { url: '/favicon.ico', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
+        ],
     },
     twitter: {
         card: 'summary_large_image',
         site: '@SmartSoftSolutions',
-        title: 'Our Success Stories | Case Studies | SmartSoft Solutions',
-        description: 'See how we\'ve transformed businesses through high-impact technical delivery. Discover our technical delivery and business impact.',
-        images: ['/images/banner.jpg']
+        title: 'Financial Case Studies & Success Stories | SmartSoft Solutions',
+        description: 'Read our bookkeeping clean-up, payroll setup, and tax optimization stories.',
+        images: ['/favicon.ico']
     }
 };
 
 export default function ProjectsPage() {
-    const caseStudies = [
+    const projects = [
         {
-            title: "Global Supply Chain Optimizer",
-            category: "Enterprise Software",
-            image: "/images/po4.png",
-            challenge: "Simplifying complex logistics across 12 countries with real-time tracking.",
-            outcome: "35% increase in operational efficiency and 20% reduction in fuel costs.",
-            tags: ["React Native", "Node.js", "AWS Cloud"]
+            title: "Retail Inventory & Bookkeeping Cleanup",
+            category: "Bookkeeping & Accounting",
+            timeline: "6 Weeks",
+            result: "$12,450 tax savings",
+            description: "A fast-growing multi-location retail business in California had incomplete books, leading to severe audit liabilities. We performed a comprehensive ledger reconciliation, restored historical transaction records over two years, and synced their point-of-sale directly with QuickBooks Online. This resulted in finding over $12k in unrecognized deductible expenses and clean accounts for current operations.",
+            tags: ["Bookkeeping", "QuickBooks", "Retail", "CPA Supervised"]
         },
         {
-            title: "Apex E-Commerce Ecosystem",
-            category: "Digital Retail",
-            image: "/images/p9.jpg",
-            challenge: "Migrating a legacy retail brand to a high-speed, headless commerce architecture.",
-            outcome: "150% growth in mobile conversions within the first quarter.",
-            tags: ["Next.js", "Shopify API", "Tailwind"]
+            title: "Multistate Payroll Automation",
+            category: "Payroll Processing",
+            timeline: "4 Weeks",
+            result: "Zero payroll errors",
+            description: "A technology startup with 45 remote employees across 3 US states and 2 Canadian provinces was struggling with manual salary calculations and conflicting state/provincial tax deposits. We implemented automated direct-deposit payroll processing, configured statutory tax withholdings (W-2 and T4 equivalents), and built regular reporting dashboards.",
+            tags: ["Payroll", "Compliance", "USA & Canada", "Automation"]
         },
         {
-            title: "Secure FinTech Gateway",
-            category: "Financial Services",
-            image: "/images/p4.jpg",
-            challenge: "Architecting a multi-layered encryption system for global transactions.",
-            outcome: "Zero security breaches reported over 5 million processed transactions.",
-            tags: ["Cybersecurity", "PostgreSQL", "Dedicated Auth"]
+            title: "Corporate Tax Optimization & Filing",
+            category: "Tax Preparation",
+            timeline: "3 Weeks",
+            result: "$40,000+ deductions",
+            description: "An e-commerce business was facing a complex corporate tax filing deadline with unorganized shipping and procurement records. Under CPA supervision, we reviewed their tax categories, audited all business deductions, and prepared a meticulous corporate return. We maximized tax deductions by over $40,000 and e-filed the return with certified IRS/CRA approval ahead of schedule.",
+            tags: ["Tax Preparation", "e-File", "CPA Checked", "E-commerce"]
         }
     ];
+
+    const projectSchema = localBusiness({
+        name: 'SmartSoft Solutions Case Studies',
+        description: 'Read our detailed case studies on corporate bookkeeping cleanup, payroll automation, and small business tax optimization.'
+    });
+
     const breadcrumbSchema = breadcrumbList([
         { name: 'Home', url: `${SITE_URL}/` },
         { name: 'Projects', url: `${SITE_URL}/projects` }
@@ -66,17 +71,8 @@ export default function ProjectsPage() {
 
     const breadcrumbItems = [
         { name: 'Home', url: '/' },
-        { name: 'Projects', url: '/projects' }
+        { name: 'Case Studies', url: '/projects' }
     ];
-
-    const techStack = [
-        { name: "Frontend Mastery", description: "Crafting fluid pixels with React, Next.js, and advanced CSS animations.", icon: "🎨" },
-        { name: "Backend Robustness", description: "Scalable architectures built on Node.js, Python, and Go for high loads.", icon: "⚙️" },
-        { name: "Cloud Excellence", description: "Zero-downtime deployments using AWS, Azure, and Google Cloud Platform.", icon: "☁️" },
-        { name: "Mobile Innovation", description: "Native and hybrid app development for iOS and Android ecosystems.", icon: "📱" }
-    ];
-
-    const projectSchema = itemList(caseStudies.map(s => `https://www.smartsoftsolutions.org/projects#${s.title.toLowerCase().replace(/ /g, '-')}`), "SmartSoft Solutions Case Studies");
 
     return (
         <>
@@ -84,8 +80,8 @@ export default function ProjectsPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: stringifySchema([projectSchema, breadcrumbSchema]) }}
             />
-            <Breadcrumb items={breadcrumbItems} className="container mx-auto px-6 pt-4 pb-2" />
-            <ProjectsContent caseStudies={caseStudies} techStack={techStack} />
+            <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2" />
+            <ProjectsContent projects={projects} />
         </>
     );
 }

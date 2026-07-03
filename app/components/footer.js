@@ -1,10 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
-
-
 
     return (
         <footer className="bg-zinc-950 text-zinc-400 pt-20 pb-10 border-t border-zinc-800/50">
@@ -17,7 +14,7 @@ export default function Footer() {
                             <Link href="/" className="inline-flex items-center gap-3 group mb-6">
                                 <img
                                     src="/favicon.ico"
-                                    alt="SmartSoft"
+                                    alt="SmartSoft Solutions - Bookkeeping & Accounting"
                                     className="h-12 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
                                 />
                                 <span className="text-2xl font-black tracking-tighter text-white group-hover:text-yellow-500 transition-colors uppercase">
@@ -25,11 +22,15 @@ export default function Footer() {
                                 </span>
                             </Link>
                             <p className="text-zinc-400 text-sm leading-relaxed max-w-sm">
-                                Elevating digital presence for USA businesses. We craft high-performance websites and apps that drive growth and build lasting impact.
+                                Professional bookkeeping, accounting, invoicing, payroll, and tax services for small businesses across the USA and Canada. CPA-supervised, accurate, and affordable.
                             </p>
-                        </div>
-                        <div className="flex space-x-5">
-
+                            <div className="mt-4 flex flex-wrap gap-2">
+                                {["IRS Authorized", "CRA Compliant", "QuickBooks Pro"].map((badge) => (
+                                    <span key={badge} className="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800">
+                                        ✓ {badge}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
@@ -39,13 +40,35 @@ export default function Footer() {
                         <ul className="space-y-4">
                             {[
                                 { name: 'Home', href: '/' },
-                                { name: 'Projects', href: '/projects' },
+                                { name: 'Services', href: '/services' },
                                 { name: 'Pricing', href: '/pricing' },
-                                { name: 'NYC Services', href: '/website-development-new-york' },
-                                { name: 'LA Services', href: '/app-development-los-angeles' },
                                 { name: 'Blogs', href: '/blog' },
                                 { name: 'About', href: '/about' },
                                 { name: 'Contact', href: '/contact' },
+                            ].map((item) => (
+                                <li key={item.name}>
+                                    <Link
+                                        href={item.href}
+                                        className="text-sm hover:text-white transition-colors duration-200"
+                                    >
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Services Links */}
+                    <div className="lg:col-span-2">
+                        <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Our Services</h3>
+                        <ul className="space-y-4">
+                            {[
+                                { name: 'Bookkeeping', href: '/services/bookkeeping' },
+                                { name: 'Accounting', href: '/services/accounting' },
+                                { name: 'Invoicing', href: '/services/invoicing' },
+                                { name: 'Payroll', href: '/services/payroll' },
+                                { name: 'Tax Preparation', href: '/services/tax-preparation' },
+                                { name: 'Financial Consulting', href: '/services/financial-consulting' },
                             ].map((item) => (
                                 <li key={item.name}>
                                     <Link
@@ -70,10 +93,7 @@ export default function Footer() {
                                 { name: 'Cookie Policy', href: '/cookie-policy' },
                             ].map((item) => (
                                 <li key={item.name}>
-                                    <Link
-                                        href={item.href}
-                                        className="text-sm hover:text-white transition-colors duration-200"
-                                    >
+                                    <Link href={item.href} className="text-sm hover:text-white transition-colors duration-200">
                                         {item.name}
                                     </Link>
                                 </li>
@@ -81,14 +101,14 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Newsletter / CTA */}
-                    <div className="lg:col-span-4">
+                    {/* CTA Column */}
+                    <div className="lg:col-span-2">
                         <div className="relative group overflow-hidden bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 transition-all duration-300 hover:border-zinc-700">
-                            <div className="absolute top-0 right-0 -tranzinc-y-1/2 tranzinc-x-1/2 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
-                            <h3 className="text-white font-bold text-lg mb-2 relative z-10">Get a Free Quote</h3>
+                            <h3 className="text-white font-bold text-lg mb-2 relative z-10">Book Free Consultation</h3>
                             <p className="text-xs text-zinc-500 mb-6 relative z-10">
-                                Modern solutions for American startups & small businesses. Delivery in as fast as 48 hours.
+                                Expert bookkeeping, payroll & tax services for USA & Canada businesses.
                             </p>
 
                             <div className="space-y-4 relative z-10">
@@ -113,14 +133,14 @@ export default function Footer() {
                         &copy; {currentYear} SmartSoft Solutions Inc. All rights reserved.
                         <span className="hidden md:inline mx-2">•</span>
                         <br className="md:hidden" />
-                        Built with Excellence for USA Small Businesses.
+                        Professional Bookkeeping, Accounting, Payroll &amp; Tax Services — USA &amp; Canada.
                     </p>
                     <div className="flex items-center space-x-6 text-xs text-zinc-500">
                         <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
                         <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms</Link>
                         <div className="flex items-center bg-zinc-900 px-3 py-1 rounded-full border border-zinc-800">
                             <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-2 animate-pulse"></span>
-                            System Status: Optimized
+                            Available for New Clients
                         </div>
                     </div>
                 </div>

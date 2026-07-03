@@ -13,6 +13,13 @@ export default async function sitemap() {
         { path: 'contact', priority: 0.8, changefreq: 'weekly' },
         { path: 'projects', priority: 0.8, changefreq: 'weekly' },
         { path: 'pricing', priority: 0.8, changefreq: 'weekly' },
+        { path: 'services', priority: 0.9, changefreq: 'weekly' },
+        { path: 'services/bookkeeping', priority: 0.8, changefreq: 'weekly' },
+        { path: 'services/accounting', priority: 0.8, changefreq: 'weekly' },
+        { path: 'services/invoicing', priority: 0.8, changefreq: 'weekly' },
+        { path: 'services/payroll', priority: 0.8, changefreq: 'weekly' },
+        { path: 'services/tax-preparation', priority: 0.8, changefreq: 'weekly' },
+        { path: 'services/financial-consulting', priority: 0.8, changefreq: 'weekly' },
         { path: 'website-development-new-york', priority: 0.8, changefreq: 'weekly' },
         { path: 'app-development-los-angeles', priority: 0.8, changefreq: 'weekly' },
 

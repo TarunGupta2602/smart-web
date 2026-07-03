@@ -4,40 +4,40 @@ import React from 'react';
 
 const testimonials = [
     {
-        quote: "SmartSoft Solutions delivered our website in just 48 hours. The process was smooth and the result exceeded our expectations!",
-        name: "Sarah M.",
-        role: "Startup Founder",
-        initials: "SM"
+        quote: "SmartSoft Solutions handles all our bookkeeping and payroll. We went from spending 10 hours a week on finances to less than 30 minutes reviewing their reports. Absolutely worth every penny.",
+        name: "Jessica M.",
+        role: "Restaurant Owner, Texas",
+        initials: "JM"
     },
     {
-        quote: "The mobile app they built for us is fast, reliable, and beautifully designed. Highly recommended for small businesses.",
-        name: "James T.",
-        role: "Small Business Owner",
-        initials: "JT"
+        quote: "As a freelancer, taxes used to terrify me. SmartSoft filed my federal and state returns, found deductions I never knew about, and saved me over $3,000. I can't recommend them enough!",
+        name: "David R.",
+        role: "Freelance Designer, California",
+        initials: "DR"
     },
     {
-        quote: "Their content writing team helped us boost our online presence and attract more customers. Great service and communication.",
-        name: "Priya S.",
-        role: "Marketing Lead",
-        initials: "PS"
+        quote: "We have 12 employees across two states. SmartSoft manages our entire payroll, including W-2s and tax deposits. Zero errors, always on time. It's a huge relief for our HR team.",
+        name: "Karen S.",
+        role: "Small Business Owner, New York",
+        initials: "KS"
     },
     {
-        quote: "Affordable, professional, and always available for support. We trust SmartSoft for all our digital needs.",
-        name: "Michael D.",
-        role: "Agency Partner",
-        initials: "MD"
+        quote: "Professional, responsive, and accurate. Our monthly financial statements are always clear and delivered on time. Our accountant is actually impressed by how organized our books are now.",
+        name: "Michael T.",
+        role: "E-commerce Entrepreneur, Ontario, Canada",
+        initials: "MT"
     },
     {
-        quote: "The best experience I've had with a development agency. They really understand small business needs.",
-        name: "Emma L.",
-        role: "E-commerce Owner",
-        initials: "EL"
+        quote: "They set up QuickBooks for our construction company and now handle all our invoicing and accounts receivable. Cash flow has never been better — we get paid 40% faster now.",
+        name: "Chris W.",
+        role: "Contractor, Florida",
+        initials: "CW"
     },
     {
-        quote: "Technical expertise combined with great design. Our conversion rate increased significantly after the launch.",
-        name: "Robert K.",
-        role: "Tech Startup CEO",
-        initials: "RK"
+        quote: "SmartSoft filed our Canadian corporate taxes and HST returns. Fully CRA compliant. They understood the nuances of Canadian tax law perfectly. Great service for Canadian small businesses!",
+        name: "Priya N.",
+        role: "Startup Founder, British Columbia, Canada",
+        initials: "PN"
     }
 ];
 
@@ -46,10 +46,10 @@ export default function TestimonialsSection() {
         <section className="py-24 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 mb-16 text-center">
                 <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tighter uppercase italic">
-                    Trusted by <span className="text-blue-600">Innovators</span>
+                    Trusted by <span className="text-yellow-500">Business Owners</span>
                 </h2>
                 <p className="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
-                    Don't just take our word for it. Here's what our clients have to say about working with SmartSoft Solutions.
+                    Real results from real clients across the USA and Canada. Here's what business owners say about our bookkeeping, payroll, and tax services.
                 </p>
             </div>
 
@@ -61,7 +61,7 @@ export default function TestimonialsSection() {
                             className="mx-4 w-[350px] md:w-[450px] flex-shrink-0 bg-white rounded-3xl p-8 border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group/card"
                         >
                             <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 font-bold mr-4 border border-blue-100">
+                                <div className="w-12 h-12 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-600 font-bold mr-4 border border-yellow-200">
                                     {t.initials}
                                 </div>
                                 <div>
@@ -70,7 +70,7 @@ export default function TestimonialsSection() {
                                 </div>
                             </div>
                             <p className="text-gray-700 text-lg leading-relaxed flex-grow whitespace-normal italic font-medium">
-                                "{t.quote}"
+                                &ldquo;{t.quote}&rdquo;
                             </p>
                             <div className="mt-6 flex text-yellow-400">
                                 {[...Array(5)].map((_, i) => (

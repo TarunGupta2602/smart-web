@@ -4,20 +4,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { supabase } from '@/lib/supabaseClient'
 import BlogContentClient from '@/app/components/BlogContentClient'
-
 import TableOfContents from '@/app/components/TableOfContents'
 import { stripMarkdown, estimateReadTime } from '@/lib/utils'
 import { breadcrumbList, article, faqPage, stringifySchema } from '@/lib/schema'
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
 const getBlogBySlug = cache(async (slug) => {
     if (!slug) return null
     const { data, error } = await supabase.from('blogs_site2').select('*').eq('slug', slug).single()
-    if (error) {
-        console.error('Error fetching blog:', error)
-        return null
-    }
+    if (error) { console.error('Error fetching blog:', error); return null }
     return data
 })
 
@@ -28,10 +24,7 @@ async function getRelatedBlogs(currentSlug, limit = 3) {
         .neq('slug', currentSlug)
         .order('date_posted', { ascending: false })
         .limit(limit)
-    if (error) {
-        console.error('Error fetching related blogs:', error)
-        return []
-    }
+    if (error) { console.error('Error fetching related blogs:', error); return [] }
     return data || []
 }
 
@@ -43,7 +36,6 @@ export async function generateMetadata({ params }) {
     const title = blog.meta_title || blog.title
     const rawDescription = blog.meta_description || blog.description || ''
     const description = stripMarkdown(rawDescription).slice(0, 160)
-
     const siteUrl = 'https://www.smartsoftsolutions.org'
     const canonicalUrl = `${siteUrl}/blog/${blog.slug}`
 
@@ -51,52 +43,18 @@ export async function generateMetadata({ params }) {
         title,
         description,
         alternates: { canonical: canonicalUrl },
-        robots: {
-            index: true,
-            follow: true,
-            googleBot: {
-                index: true,
-                follow: true,
-                'max-video-preview': -1,
-                'max-image-preview': 'large',
-                'max-snippet': -1,
-            },
-        },
+        robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
         openGraph: {
-            title,
-            description,
-            type: 'article',
-            locale: 'en_US',
-            url: canonicalUrl,
+            title, description, type: 'article', locale: 'en_US', url: canonicalUrl,
             siteName: 'SmartSoft Solutions',
-            images: blog.image ? [
-                {
-                    url: blog.image,
-                    width: 1200,
-                    height: 630,
-                    alt: title,
-                }
-            ] : [
-                {
-                    url: `${siteUrl}/side-view-employee-using-printer.jpg`,
-                    width: 1200,
-                    height: 630,
-                    alt: title,
-                }
-            ],
+            images: blog.image ? [{ url: blog.image, width: 1200, height: 630, alt: title }] : [{ url: `${siteUrl}/favicon.ico`, width: 512, height: 512, alt: title }],
             publishedTime: blog.date_posted,
             modifiedTime: blog.updated_at || blog.date_posted,
             authors: blog.author ? [blog.author] : ['SmartSoft Solutions'],
-            section: blog.category || 'Technology',
+            section: blog.category || 'Finance',
             tags: blog.meta_keywords ? blog.meta_keywords.split(',').map(k => k.trim()) : undefined,
         },
-        twitter: {
-            card: 'summary_large_image',
-            title,
-            description,
-            images: blog.image ? [blog.image] : undefined,
-            creator: '@SmartSoftSol',
-        },
+        twitter: { card: 'summary_large_image', title, description, images: blog.image ? [blog.image] : undefined, creator: '@SmartSoftSol' },
         keywords: blog.meta_keywords || undefined,
     }
 }
@@ -104,16 +62,10 @@ export async function generateMetadata({ params }) {
 export default async function BlogSlugPage({ params }) {
     const { slug } = await params
 
-    const [blog, relatedBlogs] = await Promise.all([
-        getBlogBySlug(slug),
-        getRelatedBlogs(slug)
-    ])
-
+    const [blog, relatedBlogs] = await Promise.all([getBlogBySlug(slug), getRelatedBlogs(slug)])
     if (!blog) return notFound()
 
     const faqs = Array.isArray(blog.faqs) ? blog.faqs : []
-
-    // Prefer main 'content' for the article body; fall back to 'description' if no content exists
     const content = blog.content || blog.description || ''
     const plainDescription = stripMarkdown(blog.meta_description || blog.description || '')
     const siteUrl = 'https://www.smartsoftsolutions.org'
@@ -121,97 +73,102 @@ export default async function BlogSlugPage({ params }) {
     const readTime = estimateReadTime(stripMarkdown(content || ''))
 
     const breadcrumbs = [
-        { name: 'Home', url: `${siteUrl}` },
+        { name: 'Home', url: siteUrl },
         { name: 'Blog', url: `${siteUrl}/blog` },
         { name: blog.title, url: canonicalUrl }
     ]
 
-    // Schema generation
-    const breadcrumbSchema = breadcrumbList(breadcrumbs, siteUrl);
-
+    const breadcrumbSchema = breadcrumbList(breadcrumbs, siteUrl)
     const articleSchema = article({
         headline: blog.title,
         description: plainDescription.slice(0, 160),
         author: blog.author,
         datePublished: blog.date_posted,
         dateModified: blog.updated_at || blog.date_posted,
-        image: blog.image,
-        url: canonicalUrl,
+        image: blog.image, url: canonicalUrl,
         keywords: blog.meta_keywords
-    });
-
-    const faqSchema = faqs.length > 0 ? faqPage(faqs.map(f => ({
-        q: f.question,
-        a: f.answer
-    }))) : null;
+    })
+    const faqSchema = faqs.length > 0 ? faqPage(faqs.map(f => ({ q: f.question, a: f.answer }))) : null
 
     return (
-        <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
-                <nav className="text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6" aria-label="Breadcrumb">
-                    <ol className="inline-flex flex-wrap items-center gap-1 sm:gap-2">
-                        {breadcrumbs.map((b, i) => (
-                            <li key={i} className="inline-flex items-center">
-                                {i !== 0 && <span className="mx-1 text-gray-400">/</span>}
-                                {i < breadcrumbs.length - 1 ? (
-                                    <Link href={b.url} className="text-blue-600 hover:text-blue-700 hover:underline transition-colors">
-                                        {b.name}
-                                    </Link>
-                                ) : (
-                                    <span className="text-gray-900 font-semibold truncate max-w-[160px] sm:max-w-xs">
-                                        {b.name}
-                                    </span>
-                                )}
-                            </li>
-                        ))}
-                    </ol>
-                </nav>
+        <main className="min-h-screen bg-white">
 
-                {/* Breadcrumb JSON-LD */}
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }} />
+            {/* ── Breadcrumb bar ─────────────────────────────────── */}
+            <div className="bg-slate-950 border-b border-white/5">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+                    <nav aria-label="Breadcrumb">
+                        <ol className="inline-flex flex-wrap items-center gap-1 text-xs">
+                            {breadcrumbs.map((b, i) => (
+                                <li key={i} className="inline-flex items-center">
+                                    {i !== 0 && <span className="mx-2 text-slate-600">/</span>}
+                                    {i < breadcrumbs.length - 1 ? (
+                                        <Link href={b.url.replace(siteUrl, '')} className="text-slate-400 hover:text-yellow-400 transition-colors font-medium">
+                                            {b.name}
+                                        </Link>
+                                    ) : (
+                                        <span className="text-slate-300 font-semibold truncate max-w-[180px] sm:max-w-xs">{b.name}</span>
+                                    )}
+                                </li>
+                            ))}
+                        </ol>
+                    </nav>
+                </div>
+            </div>
 
-                <div className="lg:grid lg:grid-cols-3 lg:gap-10 xl:gap-12">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }} />
+
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+                <div className="lg:grid lg:grid-cols-3 lg:gap-12 xl:gap-16">
+
+                    {/* ── Main Content ──────────────────────────── */}
                     <div className="lg:col-span-2">
-                        {/* Hero / Title */}
-                        {/* Hero / Title */}
-                        <header className="mb-6 sm:mb-8">
-                            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-gray-900 mb-4">
+
+                        {/* Article Header */}
+                        <header className="mb-8">
+                            {/* Category chip */}
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 mb-5">
+                                <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-400" />
+                                <span className="text-[9px] font-black uppercase tracking-widest text-yellow-700">
+                                    {blog.category || 'Financial Insights'}
+                                </span>
+                            </div>
+
+                            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-slate-900 mb-5">
                                 {blog.title}
                             </h1>
-                            <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-gray-600">
+
+                            {/* Author + meta row */}
+                            <div className="flex flex-wrap items-center gap-4">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-semibold shadow-sm">
-                                        {(blog.author || 'P').slice(0, 1)}
+                                    <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-yellow-400 font-black text-sm shadow-md">
+                                        {(blog.author || 'S').slice(0, 1)}
                                     </div>
                                     <div>
-                                        <div className="font-medium text-gray-900">{blog.author}</div>
-                                        <div className="text-[11px] sm:text-xs text-gray-500">
-                                            {new Date(blog.date_posted).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })} • {readTime} min read
+                                        <div className="text-sm font-bold text-slate-900">{blog.author || 'SmartSoft Solutions'}</div>
+                                        <div className="text-[11px] text-slate-500">
+                                            {new Date(blog.date_posted).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                                            {' '}&bull;{' '}{readTime} min read
                                         </div>
                                     </div>
                                 </div>
+                                <div className="ml-auto flex items-center gap-2">
+                                    <span className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-slate-900 text-yellow-400">{readTime} min</span>
+                                </div>
                             </div>
 
+                            {/* Description preview */}
                             {(blog.meta_description || blog.description) && (
-                                <div className="mt-5 max-w-3xl">
-                                    <div className="bg-white/80 backdrop-blur-sm p-4 sm:p-5 rounded-xl border border-gray-100 shadow-sm">
-                                        {/* Render full meta_description/description as sanitized markdown to preserve lists, spacing, and headings */}
-                                        <BlogContentClient
-                                            content={blog.meta_description || blog.description}
-                                            wrapperClass="prose max-w-none prose-sm sm:prose base:text-gray-700"
-                                            allowLinks={true}
-                                        />
-                                    </div>
+                                <div className="mt-6 p-5 rounded-2xl bg-slate-50 border border-slate-100">
+                                    <BlogContentClient
+                                        content={blog.meta_description || blog.description}
+                                        wrapperClass="prose max-w-none prose-sm text-slate-700"
+                                        allowLinks={true}
+                                    />
                                     {blog.content && (
-                                        <div className="mt-3">
-                                            <a
-                                                href="#article-content"
-                                                className="inline-flex items-center text-xs sm:text-sm text-blue-600 font-medium hover:text-blue-700 hover:underline"
-                                            >
-                                                Read full article
-                                                <span className="ml-1">→</span>
-                                            </a>
-                                        </div>
+                                        <a href="#article-content" className="inline-flex items-center gap-1 text-xs font-black uppercase tracking-widest text-yellow-600 hover:text-yellow-700 mt-3 transition-colors">
+                                            Read full article
+                                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
+                                        </a>
                                     )}
                                 </div>
                             )}
@@ -219,14 +176,10 @@ export default async function BlogSlugPage({ params }) {
 
                         {/* Featured Image */}
                         {blog.image && (
-                            <figure className="mb-6 sm:mb-8 rounded-2xl overflow-hidden shadow-md border border-gray-100 bg-white relative min-h-[200px] flex items-center justify-center">
+                            <figure className="mb-8 rounded-3xl overflow-hidden border border-slate-100 shadow-lg bg-slate-50">
                                 <Image
-                                    src={blog.image}
-                                    alt={blog.title}
-                                    width={1200}
-                                    height={675}
-                                    priority
-                                    unoptimized={true}
+                                    src={blog.image} alt={blog.title}
+                                    width={1200} height={675} priority unoptimized={true}
                                     className="w-full h-auto object-cover"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
                                 />
@@ -236,50 +189,47 @@ export default async function BlogSlugPage({ params }) {
                         {/* Article Body */}
                         <article
                             id="article-content"
-                            className="prose prose-sm sm:prose-base lg:prose-lg max-w-none bg-white/90 backdrop-blur-sm rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 md:p-8"
+                            className="prose prose-sm sm:prose-base lg:prose-lg max-w-none bg-white rounded-3xl border border-slate-100 shadow-sm p-6 md:p-10
+                            prose-headings:font-black prose-headings:tracking-tight prose-headings:text-slate-900
+                            prose-a:text-yellow-600 prose-a:no-underline hover:prose-a:text-yellow-700
+                            prose-strong:text-slate-900 prose-blockquote:border-yellow-400 prose-blockquote:text-slate-600"
                         >
                             <BlogContentClient content={content} />
 
                             {/* Inline CTA */}
-                            <div className="mt-8 p-4 sm:p-5 rounded-xl shadow-sm border border-blue-100 bg-gradient-to-r from-blue-50 via-white to-blue-50">
+                            <div className="mt-10 p-6 rounded-2xl bg-slate-950 border border-slate-800 not-prose">
                                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                                     <div>
-                                        <strong className="block text-gray-900 text-sm sm:text-base">
-                                            Need help right away?
-                                        </strong>
-                                        <div className="text-xs sm:text-sm text-gray-700 mt-1">
-                                            Call our technicians for fast remote  support.
-                                        </div>
+                                        <p className="text-white font-black uppercase tracking-tight text-sm mb-1">Need expert financial help?</p>
+                                        <p className="text-slate-400 text-xs">Talk to our CPA-supervised team today — free consultation.</p>
                                     </div>
-                                    <div className="flex-shrink-0">
-                                        <a
-                                            href="tel:+17077084062"
-                                            className="inline-flex items-center justify-center bg-blue-600 text-white px-4 sm:px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all"
-                                        >
-                                            Call +1-707-708-4062
-                                        </a>
-                                    </div>
+                                    <a
+                                        href="tel:+17077084062"
+                                        className="shrink-0 inline-flex items-center gap-2 px-5 py-3 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black uppercase text-[10px] tracking-widest rounded-full transition-all"
+                                    >
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                                        +1-707-708-4062
+                                    </a>
                                 </div>
                             </div>
 
                             {/* FAQs */}
                             {faqs.length > 0 && (
-                                <section className="mt-10">
-                                    <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-gray-900">
-                                        Frequently asked questions
+                                <section className="mt-10 not-prose">
+                                    <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900 mb-6">
+                                        Frequently Asked <span className="text-yellow-500">Questions</span>
                                     </h2>
                                     <div className="space-y-3">
                                         {faqs.map((f, i) => (
-                                            <details
-                                                key={i}
-                                                className="group border border-gray-200 rounded-xl bg-gray-50/80 px-4 py-3 sm:px-5 sm:py-4 transition-colors hover:border-blue-300"
-                                            >
-                                                <summary className="font-medium cursor-pointer list-none flex items-center justify-between gap-2 text-sm sm:text-base text-gray-900">
+                                            <details key={i} className="group border-2 border-slate-100 hover:border-yellow-300 rounded-2xl bg-white px-5 py-4 transition-all">
+                                                <summary className="font-black cursor-pointer list-none flex items-center justify-between gap-3 text-sm text-slate-900">
                                                     <span>{f.question}</span>
-                                                    <span className="text-xs text-gray-500 group-open:hidden">+</span>
-                                                    <span className="text-xs text-gray-500 hidden group-open:inline">−</span>
+                                                    <span className="w-6 h-6 rounded-full bg-slate-100 group-hover:bg-yellow-400 flex items-center justify-center text-xs text-slate-700 group-hover:text-slate-900 transition-all shrink-0 font-black">
+                                                        <span className="group-open:hidden">+</span>
+                                                        <span className="hidden group-open:inline">−</span>
+                                                    </span>
                                                 </summary>
-                                                <div className="mt-3 text-xs sm:text-sm text-gray-700 leading-relaxed">
+                                                <div className="mt-4 text-sm text-slate-600 leading-relaxed">
                                                     <BlogContentClient content={f.answer || ''} />
                                                 </div>
                                             </details>
@@ -290,109 +240,108 @@ export default async function BlogSlugPage({ params }) {
                         </article>
                     </div>
 
-                    {/* Sidebar */}
-                    <aside className="mt-8 lg:mt-0 lg:col-span-1 border-l border-gray-100/50 pl-0 lg:pl-8">
-                        <div className="lg:sticky lg:top-32 space-y-8 z-10">
+                    {/* ── Sidebar ───────────────────────────────── */}
+                    <aside className="mt-10 lg:mt-0 lg:col-span-1">
+                        <div className="lg:sticky lg:top-28 space-y-6">
+
                             <TableOfContents content={content} />
-                            <div className="p-4 sm:p-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl shadow-md">
-                                <div className="text-xs sm:text-sm font-semibold tracking-wide uppercase opacity-90">
-                                    Need professional help?
-                                </div>
-                                <p className="mt-2 text-sm sm:text-base text-blue-50">
-                                    Talk to our technical architects and scale your business today.
-                                </p>
-                                <div className="mt-4">
+
+                            {/* CTA Card */}
+                            <div className="bg-slate-950 rounded-3xl p-6 relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400/10 rounded-full blur-3xl pointer-events-none" />
+                                <div className="relative z-10">
+                                    <div className="text-[9px] font-black uppercase tracking-widest text-yellow-400 mb-2">Free Consultation</div>
+                                    <p className="text-white font-black text-sm mb-1">Ready to outsource your books?</p>
+                                    <p className="text-slate-400 text-xs mb-5 leading-relaxed">CPA-supervised bookkeeping, payroll & tax services for USA & Canada businesses.</p>
                                     <a
                                         href="tel:+17077084062"
-                                        className="w-full inline-flex items-center justify-center text-sm font-bold px-4 py-2.5 rounded-lg bg-white text-blue-600 shadow-md hover:bg-blue-50 hover:shadow-lg transition-all"
+                                        className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black uppercase text-[10px] tracking-widest rounded-2xl transition-all"
                                     >
-                                        Call +1-707-708-4062
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                                        Call Now
                                     </a>
+                                    <Link
+                                        href="/contact"
+                                        className="w-full mt-3 flex items-center justify-center px-4 py-3 bg-white/10 hover:bg-white/20 border border-white/10 text-white font-black uppercase text-[10px] tracking-widest rounded-2xl transition-all"
+                                    >
+                                        Book a Consultation
+                                    </Link>
                                 </div>
                             </div>
 
-                            <div className="p-4 sm:p-5 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                                <div className="text-xs sm:text-sm font-semibold mb-3 text-gray-900">
-                                    Quick links
-                                </div>
-                                <ul className="space-y-2 text-xs sm:text-sm">
-                                    <li>
-                                        <Link href="/pricing" className="text-blue-600 hover:text-blue-700 hover:underline">
-                                            Pricing & Plans
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/portfolio" className="text-blue-600 hover:text-blue-700 hover:underline">
-                                            Our Portfolio
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/about" className="text-blue-600 hover:text-blue-700 hover:underline">
-                                            About SmartSoft
-                                        </Link>
-                                    </li>
+                            {/* Quick Links */}
+                            <div className="bg-white rounded-3xl border-2 border-slate-100 p-6">
+                                <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-4">Our Services</div>
+                                <ul className="space-y-2">
+                                    {[
+                                        { name: "Bookkeeping", href: "/services/bookkeeping" },
+                                        { name: "Accounting", href: "/services/accounting" },
+                                        { name: "Payroll Processing", href: "/services/payroll" },
+                                        { name: "Tax Preparation", href: "/services/tax-preparation" },
+                                        { name: "Financial Consulting", href: "/services/financial-consulting" },
+                                        { name: "Pricing & Plans", href: "/pricing" },
+                                    ].map((item) => (
+                                        <li key={item.name}>
+                                            <Link href={item.href} className="flex items-center justify-between text-xs font-bold text-slate-700 hover:text-yellow-600 transition-colors py-1 group">
+                                                {item.name}
+                                                <svg className="w-3 h-3 text-slate-300 group-hover:text-yellow-400 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
+                                            </Link>
+                                        </li>
+                                    ))}
                                 </ul>
+                            </div>
+
+                            {/* Trust badges */}
+                            <div className="flex flex-wrap gap-2">
+                                {["IRS Authorized", "CPA Supervised", "QuickBooks Pro"].map((b) => (
+                                    <span key={b} className="text-[8px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-slate-950 text-yellow-400">
+                                        {b}
+                                    </span>
+                                ))}
                             </div>
                         </div>
                     </aside>
                 </div>
 
-                {/* Article JSON-LD for better SEO */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: stringifySchema(articleSchema)
-                    }}
-                />
-                <div className="mt-10 text-gray-700 max-w-3xl">
-                    <p>
-                        📞 Need immediate help? Call <strong>+1-707-708-4062</strong> and get fast,
-                        reliable digital engineering support from SmartSoft Solutions experts.
-                    </p>
-                </div>
-                {faqSchema && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{ __html: stringifySchema(faqSchema) }}
-                    />
-                )}
+                {/* JSON-LD schemas */}
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: stringifySchema(articleSchema) }} />
+                {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: stringifySchema(faqSchema) }} />}
 
-                {/* Related Blogs Section */}
+                {/* Related Blogs */}
                 {relatedBlogs.length > 0 && (
-                    <section className="mt-16 pt-16 border-t border-gray-200">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 px-4 text-center">
-                            Related Articles You Might Like
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <section className="mt-20 pt-16 border-t border-slate-100">
+                        <div className="flex items-end justify-between mb-10">
+                            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter text-slate-900">
+                                Related <span className="text-yellow-500 italic font-serif lowercase">Articles</span>
+                            </h2>
+                            <Link href="/blog" className="text-[9px] font-black uppercase tracking-widest text-slate-500 hover:text-yellow-600 transition-colors flex items-center gap-1">
+                                All Posts
+                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
+                            </Link>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {relatedBlogs.map((item) => (
-                                <article key={item.id} className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                                    <Link href={`/blog/${item.slug}`} className="block relative h-48 sm:h-56 overflow-hidden">
-                                        <Image
-                                            src={item.image || '/side-view-employee-using-printer.jpg'}
-                                            alt={item.title}
-                                            fill
-                                            className="object-cover transform group-hover:scale-105 transition-transform duration-500"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <article key={item.id} className="group bg-white rounded-3xl border-2 border-slate-100 hover:border-yellow-300 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                                    <Link href={`/blog/${item.slug}`} className="block relative h-44 overflow-hidden bg-slate-100">
+                                        {item.image ? (
+                                            <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                                        ) : (
+                                            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
+                                                <span className="text-yellow-400 font-black text-4xl opacity-20">$</span>
+                                            </div>
+                                        )}
                                     </Link>
-                                    <div className="p-5 sm:p-6">
-                                        <div className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-2">
-                                            {item.author || 'Engineering'}
-                                        </div>
-                                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
-                                            <Link href={`/blog/${item.slug}`}>
-                                                {item.title}
-                                            </Link>
+                                    <div className="p-5">
+                                        <div className="text-[9px] font-black uppercase tracking-widest text-yellow-600 mb-2">{item.author || 'SmartSoft Editorial'}</div>
+                                        <h3 className="text-base font-black text-slate-900 mb-3 group-hover:text-yellow-600 transition-colors line-clamp-2">
+                                            <Link href={`/blog/${item.slug}`}>{item.title}</Link>
                                         </h3>
-                                        <div className="flex items-center justify-between mt-auto">
-                                            <time className="text-xs text-gray-500 font-medium">
+                                        <div className="flex items-center justify-between">
+                                            <time className="text-[10px] text-slate-400 font-medium">
                                                 {new Date(item.date_posted).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                             </time>
-                                            <Link
-                                                href={`/blog/${item.slug}`}
-                                                className="text-sm font-bold text-blue-600 group-hover:translate-x-1 transition-transform"
-                                            >
-                                                Read More →
+                                            <Link href={`/blog/${item.slug}`} className="text-[10px] font-black uppercase tracking-widest text-yellow-600 hover:text-yellow-700 flex items-center gap-1 group-hover:gap-2 transition-all">
+                                                Read →
                                             </Link>
                                         </div>
                                     </div>
@@ -402,12 +351,11 @@ export default async function BlogSlugPage({ params }) {
                     </section>
                 )}
 
+                {/* Back to Blog */}
                 <div className="mt-16 text-center">
-                    <Link
-                        href="/blog"
-                        className="inline-flex items-center text-gray-600 hover:text-blue-600 font-medium transition-colors"
-                    >
-                        ← Back to Blog Home
+                    <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-slate-500 hover:text-yellow-600 transition-colors">
+                        <svg className="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
+                        Back to Blog
                     </Link>
                 </div>
             </div>

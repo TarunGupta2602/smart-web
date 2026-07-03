@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
@@ -25,10 +24,8 @@ export default function Navbar() {
 
     const navLinks = [
         { name: "Home", href: "/" },
-        { name: "Projects", href: "/projects" },
+        { name: "Services", href: "/services" },
         { name: "Pricing", href: "/pricing" },
-        { name: "NYC Services", href: "/website-development-new-york" },
-        { name: "LA Services", href: "/app-development-los-angeles" },
         { name: "Blogs", href: "/blog" },
         { name: "About Us", href: "/about" },
     ];
@@ -45,7 +42,7 @@ export default function Navbar() {
                 <Link href="/" className="flex items-center gap-3 group">
                     <img
                         src="/favicon.ico"
-                        alt="SmartSoft"
+                        alt="SmartSoft Solutions - Bookkeeping & Accounting"
                         className="h-12 w-auto object-contain"
                     />
                     <span className="text-2xl font-black tracking-tighter text-slate-900 group-hover:text-yellow-500 transition-colors uppercase">
@@ -71,7 +68,7 @@ export default function Navbar() {
                         href="/contact"
                         className="px-6 py-2.5 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-semibold text-sm shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 transform active:scale-95"
                     >
-                        Get A Quote
+                        Free Consultation
                     </Link>
                 </div>
 
@@ -115,7 +112,7 @@ export default function Navbar() {
                                 className="mt-4 px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold text-lg shadow-lg"
                                 onClick={() => setIsOpen(false)}
                             >
-                                Get A Quote
+                                Free Consultation
                             </Link>
                             <a href="mailto:smartsoft.solutions0@gmail.com" className="text-gray-600 text-sm font-semibold flex items-center gap-2 hover:text-yellow-500 transition-colors">
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>

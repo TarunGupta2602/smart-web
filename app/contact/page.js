@@ -5,82 +5,35 @@ import { organization, breadcrumbList, stringifySchema } from "@/lib/schema";
 const SITE_URL = 'https://www.smartsoftsolutions.org';
 
 export const metadata = {
-    title: "Contact SmartSoft Solutions | 24/7 Technical Experts & Global Support",
-    description: "Get in touch with SmartSoft Solutions for expert digital engineering consulting. Available 24/7 via call, email, or WhatsApp for global software support. Fast response and global reach.",
-    keywords: ["Contact Technical Experts", "24/7 Support", "Software Consulting", "Global Digital Support", "Noida Technical Hub", "Contact SmartSoft Solutions", "Customer Support", "Business Inquiry"],
+    title: "Free Bookkeeping & Tax Consultation | Contact SmartSoft Solutions",
+    description: "Get a free financial consultation for your small business. Contact our accounting team for bookkeeping, payroll setup, or IRS/CRA tax return filings. Available via phone & email.",
+    keywords: ["bookkeeping consultation", "outsource business accounting", "payroll service quote", "tax preparation help", "CPA supervised bookkeeping email", "USA Canada accountant phone number"],
     alternates: {
         canonical: `${SITE_URL}/contact`,
     },
     openGraph: {
-        title: "Contact SmartSoft Solutions | 24/7 Expert Support & Inquiry",
-        description: "Reach out for elite technical consulting and global support.",
+        title: "Free Bookkeeping & Tax Consultation | SmartSoft Solutions",
+        description: "Speak with our accounting professionals to build a customized bookkeeping, payroll, or tax prep plan.",
         url: `${SITE_URL}/contact`,
         type: 'website',
         siteName: 'SmartSoft Solutions',
         locale: 'en_US',
         images: [
-            { url: '/images/about-us-banner.jpg', width: 1200, height: 630, alt: 'Contact SmartSoft Solutions' },
             { url: '/favicon.ico', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
         ],
     },
     twitter: {
         card: 'summary_large_image',
         site: '@SmartSoftSolutions',
-        title: 'Contact SmartSoft Solutions | 24/7 Expert Support & Inquiry',
-        description: 'Reach out for elite technical consulting, business inquiries, and global support.',
-        images: ['/images/about-us-banner.jpg']
+        title: 'Free Bookkeeping & Tax Consultation | SmartSoft Solutions',
+        description: 'Speak with our accounting professionals to build a customized bookkeeping, payroll, or tax prep plan.',
+        images: ['/favicon.ico']
     }
 };
 
 export default function ContactPage() {
-    const contactMethods = [
-
-        {
-            title: "Voice Assistance",
-            description: "+1-707-708-4062",
-            subtext: "Toll Free Support Available 24/7",
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 5.5A2.5 2.5 0 015.5 3h1.8a1 1 0 01.9.6l.8 2.5a1 1 0 01-.6 1.2l-1.5.8a11 11 0 005 5l.8-1.5a1 1 0 011.2-.6l2.5.8a1 1 0 01.6.9v1.8a2.5 2.5 0 01-2.5 2.5h-1C8.5 21 3 15.5 3 8.35v-2.85z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 7a3 3 0 013 3m0-6a6 6 0 016 6" />
-                </svg>
-            ),
-            link: "tel:17077084062",
-            label: "Start Call"
-        },
-        {
-            title: "Digital Correspondence",
-            description: "smartsoft.solutions0@gmail.com",
-            subtext: "Expect a response within 2 business hours",
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 13v.01M9 11v.01M15 11v.01" />
-                </svg>
-            ),
-            link: "mailto:smartsoft.solutions0@gmail.com",
-            label: "Send Email"
-        },
-        {
-            title: "Digital Correspondence",
-            description: "smartsoft-solutions@outlook.com",
-            subtext: "Expect a response within 2 business hours",
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 13v.01M9 11v.01M15 11v.01" />
-                </svg>
-            ),
-            link: "mailto:smartsoft-solutions@outlook.com",
-            label: "Send Email"
-        },
-
-    ];
-
     const contactSchema = organization({
-        name: 'SmartSoft Solutions Contact Hub',
-        telephone: '+1-707-708-4062',
-        email: 'smartsoft.solutions0@gmail.com',
+        name: 'SmartSoft Solutions'
     });
 
     const breadcrumbSchema = breadcrumbList([
@@ -100,7 +53,8 @@ export default function ContactPage() {
                 dangerouslySetInnerHTML={{ __html: stringifySchema([contactSchema, breadcrumbSchema]) }}
             />
             <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 " />
-            <ContactContent contactMethods={contactMethods} />
+            <ContactContent />
         </>
     );
 }
+
