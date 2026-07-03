@@ -122,7 +122,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         <Navbar />
-        <main className="min-h-screen pt-20">
+        <main className="min-h-screen">
           {children}
         </main>
         <Footer />
