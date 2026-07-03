@@ -1128,7 +1128,14 @@ const BlogList = ({ onEdit, onDelete }) => {
   };
 
   useEffect(() => {
-    fetchBlogs();
+    let active = true;
+    const handle = setTimeout(() => {
+      if (active) fetchBlogs();
+    }, 0);
+    return () => {
+      active = false;
+      clearTimeout(handle);
+    };
   }, []);
 
   if (loading) return <div className="text-center py-10">Loading blogs...</div>;

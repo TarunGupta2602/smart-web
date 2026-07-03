@@ -7,7 +7,14 @@ export default function AboutPage() {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        setIsVisible(true);
+        let active = true;
+        const handle = requestAnimationFrame(() => {
+            if (active) setIsVisible(true);
+        });
+        return () => {
+            active = false;
+            cancelAnimationFrame(handle);
+        };
     }, []);
 
     const skills = [

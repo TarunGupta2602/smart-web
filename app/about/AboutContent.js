@@ -1,15 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function AboutContent({ expertiseItems, team }) {
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        setIsVisible(true);
-    }, []);
-
     return (
         <div className="min-h-screen bg-white text-gray-900 selection:bg-yellow-500 selection:text-black">
 

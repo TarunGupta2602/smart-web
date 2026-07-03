@@ -37,10 +37,23 @@ const contactMethods = [
             </svg>
         ),
         title: "WhatsApp",
-        description: "+1-707-708-4062",
+        description: "+91-7456096455",
         subtext: "Chat with us instantly",
         label: "Open Chat",
-        link: "https://wa.me/17077084062"
+        link: "https://wa.me/917456096455"
+    },
+    {
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6">
+                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+        ),
+        title: "Head Office",
+        description: "24 Ranchlands Bay NW",
+        subtext: "Calgary, AB T3G 1S4, Canada",
+        label: "View on Map",
+        link: "https://maps.google.com/?q=24+Ranchlands+Bay+NW+Calgary+AB+T3G+1S4+Canada"
     }
 ];
 
@@ -93,7 +106,7 @@ export default function ContactContent() {
                         <span className="text-[10px] uppercase tracking-[0.2em] font-black text-yellow-400">Free Consultation Available</span>
                     </div>
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white mb-6 leading-[0.95]">
-                        LET'S FIX YOUR <br />
+                        LET&apos;S FIX YOUR <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase">books & taxes.</span>
                     </h1>
                     <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
@@ -104,8 +117,8 @@ export default function ContactContent() {
 
             {/* ─── CONTACT METHOD CARDS ─────────────────────────────── */}
             <section className="py-20 bg-slate-50">
-                <div className="container mx-auto px-6 max-w-5xl">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="container mx-auto px-6 max-w-6xl">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {contactMethods.map((method, i) => (
                             <a
                                 key={i}
@@ -145,7 +158,7 @@ export default function ContactContent() {
                                 GET A FREE <span className="text-yellow-500 italic font-serif lowercase">consultation.</span>
                             </h2>
                             <p className="text-sm text-slate-600 font-medium leading-relaxed mb-8">
-                                Tell us what you need. We'll review your situation and send a custom, flat-rate proposal — typically within 2 business hours.
+                                Tell us what you need. We&apos;ll review your situation and send a custom, flat-rate proposal — typically within 2 business hours.
                             </p>
 
                             <div className="space-y-3 mb-10">

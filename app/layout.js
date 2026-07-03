@@ -79,6 +79,8 @@ export default function RootLayout({ children }) {
         <meta name="google-site-verification" content="2XUc_M2JA9i0tn_jLcEAgvJykTx-E0-BgqFoef2Oma8" />
         <meta name="geo.region" content="US" />
         <meta name="geo.region" content="CA" />
+        <meta property="og:see_also" content="https://www.facebook.com/profile.php?id=100078081377940" />
+        <link rel="me" href="https://www.facebook.com/profile.php?id=100078081377940" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -110,7 +112,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: stringifySchema([
-              organization({ logo: '/favicon.ico', description: 'SmartSoft Solutions is a trusted provider of bookkeeping, accounting, invoicing, payroll management, and tax preparation services for small businesses in the USA and Canada.' }),
+              organization({
+                logo: '/favicon.ico',
+                description: 'SmartSoft Solutions is a trusted provider of bookkeeping, accounting, invoicing, payroll management, and tax preparation services for small businesses in the USA and Canada.',
+                sameAs: ['https://www.facebook.com/profile.php?id=100078081377940'],
+              }),
               webSite({ url: 'https://www.smartsoftsolutions.org', description: 'SmartSoft Solutions - Professional Bookkeeping, Accounting, Payroll & Tax Services for USA & Canada' }),
             ]),
           }}

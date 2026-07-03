@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
@@ -10,14 +11,7 @@ export default function Navbar() {
     const pathname = usePathname();
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 20) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        };
-
+        const handleScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -26,102 +20,162 @@ export default function Navbar() {
         { name: "Home", href: "/" },
         { name: "Services", href: "/services" },
         { name: "Pricing", href: "/pricing" },
-        { name: "Blogs", href: "/blog" },
-        { name: "About Us", href: "/about" },
+        { name: "Blog", href: "/blog" },
+        { name: "About", href: "/about" },
     ];
 
     return (
-        <nav
-            className={`fixed w-full z-50 transition-all duration-300 ${scrolled
-                ? "bg-white lg:bg-white/90 lg:backdrop-blur-md shadow-lg py-3"
-                : "bg-white lg:bg-transparent py-5"
-                }`}
-        >
-            <div className="container mx-auto px-6 flex justify-between items-center">
-                {/* Logo */}
-                <Link href="/" className="flex items-center gap-3 group">
-                    <img
-                        src="/favicon.ico"
-                        alt="SmartSoft Solutions - Bookkeeping & Accounting"
-                        className="h-12 w-auto object-contain"
-                    />
-                    <span className="text-2xl font-black tracking-tighter text-slate-900 group-hover:text-yellow-500 transition-colors uppercase">
-                        SmartSoft <span className="text-yellow-500 group-hover:text-slate-900 italic font-serif lowercase">Solutions</span>
-                    </span>
-                </Link>
-
-                {/* Desktop Menu */}
-                <div className="hidden lg:flex items-center space-x-8">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className={`text-sm font-semibold tracking-wide transition-all duration-300 hover:text-yellow-500 relative group py-2 ${pathname === link.href ? "text-yellow-500" : "text-gray-700"
-                                }`}
-                        >
-                            {link.name}
-                            <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400 transform origin-left transition-transform duration-300 ${pathname === link.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}></span>
-                        </Link>
-                    ))}
-
-                    <Link
-                        href="/contact"
-                        className="px-6 py-2.5 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-semibold text-sm shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 transform active:scale-95"
-                    >
-                        Free Consultation
+        <>
+            <nav
+                className={`fixed w-full z-50 transition-all duration-300 ${scrolled
+                        ? "bg-slate-950/95 backdrop-blur-xl shadow-2xl shadow-black/30 py-3 border-b border-white/5"
+                        : "bg-slate-950/90 backdrop-blur-md py-4 border-b border-white/10"
+                    }`}
+            >
+                <div className="max-w-7xl mx-auto px-5 sm:px-6 flex justify-between items-center">
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center gap-3 group shrink-0">
+                        <Image
+                            src="/favicon.ico"
+                            alt="SmartSoft Solutions"
+                            width={40}
+                            height={40}
+                            className="object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
+                        />
+                        <span className="text-xl font-black tracking-tighter text-white group-hover:text-yellow-400 transition-colors uppercase leading-tight">
+                            SmartSoft{" "}
+                            <span className="text-yellow-400 group-hover:text-white italic font-serif lowercase transition-colors">
+                                Solutions
+                            </span>
+                        </span>
                     </Link>
-                </div>
 
-                {/* Mobile Menu Button */}
-                <button
-                    className="lg:hidden text-gray-700 focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition-colors"
-                    onClick={() => setIsOpen(!isOpen)}
-                    aria-label="Toggle menu"
-                >
-                    <div className="w-6 flex flex-col items-end gap-1.5">
-                        <span className={`h-0.5 w-full bg-current transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
-                        <span className={`h-0.5 w-full bg-current transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
-                        <span className={`h-0.5 w-full bg-current transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-                    </div>
-                </button>
-
-                {/* Mobile Menu */}
-                <div className={`fixed inset-0 z-40 bg-white lg:hidden transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
-                    <div className="flex flex-col h-full pt-24 px-6 relative">
-                        <button
-                            onClick={() => setIsOpen(false)}
-                            className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-100"
-                        >
-                            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-                        </button>
-
-                        <div className="flex flex-col space-y-6 items-center">
-                            {navLinks.map((link) => (
+                    {/* Desktop Nav */}
+                    <div className="hidden lg:flex items-center gap-8">
+                        {navLinks.map((link) => {
+                            const isActive = pathname === link.href;
+                            return (
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className={`text-xl font-bold transition-colors duration-300 ${pathname === link.href ? "text-yellow-500" : "text-gray-800"
+                                    className={`relative text-[11px] font-black uppercase tracking-[0.15em] transition-colors duration-200 py-1.5 group ${isActive ? "text-yellow-400" : "text-slate-300 hover:text-white"
                                         }`}
-                                    onClick={() => setIsOpen(false)}
                                 >
                                     {link.name}
+                                    <span
+                                        className={`absolute bottom-0 left-0 h-0.5 bg-yellow-400 transition-all duration-300 rounded-full ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                                            }`}
+                                    />
                                 </Link>
-                            ))}
-                            <Link
-                                href="/contact"
-                                className="mt-4 px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold text-lg shadow-lg"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                Free Consultation
-                            </Link>
-                            <a href="mailto:smartsoft.solutions0@gmail.com" className="text-gray-600 text-sm font-semibold flex items-center gap-2 hover:text-yellow-500 transition-colors">
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                                smartsoft.solutions0@gmail.com
-                            </a>
-                        </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* Desktop CTA */}
+                    <div className="hidden lg:flex items-center gap-3">
+                        <a
+                            href="tel:17077084062"
+                            className="hidden xl:flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors"
+                        >
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                            +1-707-708-4062
+                        </a>
+                        <Link
+                            href="/contact"
+                            className="px-5 py-2.5 rounded-full bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black text-[10px] uppercase tracking-widest shadow-lg shadow-yellow-400/20 hover:shadow-yellow-300/30 transition-all duration-200 hover:scale-105 active:scale-95"
+                        >
+                            Free Consultation
+                        </Link>
+                    </div>
+
+                    {/* Mobile Hamburger */}
+                    <button
+                        className="lg:hidden flex flex-col justify-center gap-1.5 w-9 h-9 rounded-lg hover:bg-white/10 items-center transition-colors"
+                        onClick={() => setIsOpen(!isOpen)}
+                        aria-label="Toggle menu"
+                        id="mobile-menu-button"
+                    >
+                        <span className={`h-0.5 w-5 bg-white rounded-full transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+                        <span className={`h-0.5 w-5 bg-white rounded-full transition-all duration-300 ${isOpen ? "opacity-0 scale-x-0" : ""}`} />
+                        <span className={`h-0.5 w-5 bg-white rounded-full transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+                    </button>
+                </div>
+            </nav>
+
+            {/* Mobile Drawer */}
+            <div
+                className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                    }`}
+            >
+                {/* Backdrop */}
+                <div
+                    className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                    onClick={() => setIsOpen(false)}
+                />
+                {/* Drawer Panel */}
+                <div
+                    className={`absolute right-0 top-0 h-full w-[300px] bg-slate-950 border-l border-white/10 shadow-2xl flex flex-col transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"
+                        }`}
+                >
+                    {/* Drawer Header */}
+                    <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
+                        <span className="text-sm font-black uppercase tracking-widest text-yellow-400">
+                            Menu
+                        </span>
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+                            aria-label="Close menu"
+                        >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                    </div>
+
+                    {/* Nav Links */}
+                    <nav className="flex-1 px-6 py-8 space-y-1">
+                        {navLinks.map((link) => {
+                            const isActive = pathname === link.href;
+                            return (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className={`flex items-center justify-between py-3.5 px-4 rounded-xl text-sm font-black uppercase tracking-widest transition-all ${isActive
+                                            ? "bg-yellow-400/10 text-yellow-400 border border-yellow-400/20"
+                                            : "text-slate-300 hover:bg-white/5 hover:text-white border border-transparent"
+                                        }`}
+                                >
+                                    {link.name}
+                                    {isActive && (
+                                        <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                                    )}
+                                </Link>
+                            );
+                        })}
+                    </nav>
+
+                    {/* Drawer Footer */}
+                    <div className="px-6 py-6 border-t border-white/10 space-y-3">
+                        <Link
+                            href="/contact"
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center justify-center w-full py-3.5 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black text-[11px] uppercase tracking-widest transition-all"
+                        >
+                            Free Consultation
+                        </Link>
+                        <a
+                            href="tel:17077084062"
+                            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white font-bold text-xs transition-all"
+                        >
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                            +1-707-708-4062
+                        </a>
                     </div>
                 </div>
             </div>
-        </nav>
+
+            {/* Spacer for fixed navbar */}
+            <div className="h-[65px] lg:h-[73px]" />
+        </>
     );
 }

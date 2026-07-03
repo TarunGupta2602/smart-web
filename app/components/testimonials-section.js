@@ -49,7 +49,7 @@ export default function TestimonialsSection() {
                     Trusted by <span className="text-yellow-500">Business Owners</span>
                 </h2>
                 <p className="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
-                    Real results from real clients across the USA and Canada. Here's what business owners say about our bookkeeping, payroll, and tax services.
+                    Real results from real clients across the USA and Canada. Here&apos;s what business owners say about our bookkeeping, payroll, and tax services.
                 </p>
             </div>
 

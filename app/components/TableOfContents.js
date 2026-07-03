@@ -4,18 +4,11 @@ import React, { useEffect, useState } from 'react';
 import { slugify, stripMarkdown } from '@/lib/utils';
 
 export default function TableOfContents({ content }) {
-    const [headings, setHeadings] = useState([]);
-    const [activeId, setActiveId] = useState('');
-
-    useEffect(() => {
-        if (!content) return;
-
-        // Regex to match # headings
-        // Matches ## Heading or ### Heading
+    const headings = React.useMemo(() => {
+        if (!content) return [];
         const regex = /^(#{2,3})\s+(.+)$/gm;
         const items = [];
         let match;
-
         while ((match = regex.exec(content)) !== null) {
             const level = match[1].length; // 2 or 3
             const text = match[2];
@@ -23,12 +16,17 @@ export default function TableOfContents({ content }) {
             const id = slugify(cleanText);
             items.push({ id, text: cleanText, level });
         }
+        return items;
+    }, [content]);
 
-        setHeadings(items);
+    const [activeId, setActiveId] = useState('');
+
+    useEffect(() => {
+        if (headings.length === 0) return;
 
         // Scroll spy logic
         const handleScroll = () => {
-            const headingElements = items.map(h => document.getElementById(h.id));
+            const headingElements = headings.map(h => document.getElementById(h.id));
             const scrollPosition = window.scrollY + 100; // offset
 
             let currentId = '';
@@ -42,7 +40,7 @@ export default function TableOfContents({ content }) {
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [content]);
+    }, [headings]);
 
     if (headings.length < 2) return null;
 
