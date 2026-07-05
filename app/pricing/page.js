@@ -19,14 +19,14 @@ export const metadata = {
         siteName: 'SmartSoft Solutions',
         locale: 'en_US',
         images: [
-            { url: '/favicon.ico', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' },
+            { url: '/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' },
         ],
     },
     twitter: {
         card: 'summary_large_image',
         title: "Bookkeeping & Accounting Service Pricing | USA & Canada",
         description: "Compare flat-rate bookkeeping, payroll, and business tax packages starting at $49/month.",
-        images: ['/favicon.ico'],
+        images: ['/logo.png'],
     },
 };
 

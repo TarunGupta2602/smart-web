@@ -16,7 +16,7 @@ export const metadata = {
         description: "Maximize your refund and assure absolute accounting compliance under CPA-supervised tax preparation.",
         url: `${SITE_URL}/services/tax-preparation`,
         type: 'website',
-        images: [{ url: '/favicon.ico', width: 512, height: 512 }]
+        images: [{ url: '/logo.png', width: 512, height: 512 }]
     }
 };
 

@@ -16,7 +16,7 @@ export const metadata = {
         description: "Streamline client billing workflows, trace outstanding balances, and accelerate revenue collections.",
         url: `${SITE_URL}/services/invoicing`,
         type: 'website',
-        images: [{ url: '/favicon.ico', width: 512, height: 512 }]
+        images: [{ url: '/logo.png', width: 512, height: 512 }]
     }
 };
 

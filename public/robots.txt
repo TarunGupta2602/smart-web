@@ -5,6 +5,7 @@ Allow: /
 # Disallow specific paths (if any exist)
 Disallow: /api/
 Disallow: /private/
+Disallow: /blog-uploads
 
 # Sitemap location
 Sitemap: https://www.smartsoftsolutions.org/sitemap.xml

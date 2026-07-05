@@ -16,7 +16,7 @@ export const metadata = {
         description: "Accurate payroll processing, IRS/CRA deposit schedules, W-2/T4 filings, and hourly/salary Direct Deposit.",
         url: `${SITE_URL}/services/payroll`,
         type: 'website',
-        images: [{ url: '/favicon.ico', width: 512, height: 512 }]
+        images: [{ url: '/logo.png', width: 512, height: 512 }]
     }
 };
 

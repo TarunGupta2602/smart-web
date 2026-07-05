@@ -16,7 +16,7 @@ export const metadata = {
         description: "Accurate monthly bookkeeping and reconciliation services supervised by senior CPAs.",
         url: `${SITE_URL}/services/bookkeeping`,
         type: 'website',
-        images: [{ url: '/favicon.ico', width: 512, height: 512 }]
+        images: [{ url: '/logo.png', width: 512, height: 512 }]
     }
 };
 

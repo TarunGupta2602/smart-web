@@ -20,9 +20,6 @@ export default async function sitemap() {
         { path: 'services/payroll', priority: 0.8, changefreq: 'weekly' },
         { path: 'services/tax-preparation', priority: 0.8, changefreq: 'weekly' },
         { path: 'services/financial-consulting', priority: 0.8, changefreq: 'weekly' },
-        { path: 'website-development-new-york', priority: 0.8, changefreq: 'weekly' },
-        { path: 'app-development-los-angeles', priority: 0.8, changefreq: 'weekly' },
-
         { path: 'blog', priority: 0.8, changefreq: 'weekly' },
         { path: 'privacy-policy', priority: 0.6, changefreq: 'yearly' },
         { path: 'terms-of-service', priority: 0.6, changefreq: 'yearly' },

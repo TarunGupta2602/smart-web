@@ -16,7 +16,7 @@ export const metadata = {
         description: "Scale with confidence using certified financial reports, end-of-year calculations, and CPA audits.",
         url: `${SITE_URL}/services/accounting`,
         type: 'website',
-        images: [{ url: '/favicon.ico', width: 512, height: 512 }]
+        images: [{ url: '/logo.png', width: 512, height: 512 }]
     }
 };
 

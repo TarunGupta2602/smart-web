@@ -27,7 +27,7 @@ export const metadata = {
     url: 'https://www.smartsoftsolutions.org',
     images: [
       { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions - Bookkeeping & Accounting Services USA Canada' },
-      { url: '/favicon.ico', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
+      { url: '/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
     ],
     type: 'website',
     siteName: 'SmartSoft Solutions',

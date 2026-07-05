@@ -32,11 +32,6 @@ export const metadata = {
   authors: [{ name: "SmartSoft Solutions" }],
   creator: "SmartSoft Solutions",
   publisher: "SmartSoft Solutions",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -70,6 +65,11 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
+  other: {
+    category: 'Bookkeeping & Accounting Services',
+    classification: 'Business / Financial Services',
+    telephone: '+1-707-708-4062',
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -79,6 +79,9 @@ export default function RootLayout({ children }) {
         <meta name="google-site-verification" content="2XUc_M2JA9i0tn_jLcEAgvJykTx-E0-BgqFoef2Oma8" />
         <meta name="geo.region" content="US" />
         <meta name="geo.region" content="CA" />
+        <meta name="category" content="Bookkeeping & Accounting Services" />
+        <meta name="classification" content="Business / Financial Services" />
+        <meta name="telephone" content="+1-707-708-4062" />
         <meta property="og:see_also" content="https://www.facebook.com/profile.php?id=100078081377940" />
         <link rel="me" href="https://www.facebook.com/profile.php?id=100078081377940" />
         {/* Google Tag Manager */}

@@ -39,6 +39,10 @@ export async function generateMetadata({ params }) {
     const siteUrl = 'https://www.smartsoftsolutions.org'
     const canonicalUrl = `${siteUrl}/blog/${blog.slug}`
 
+    const category = blog.category || 'Bookkeeping & Accounting Services'
+    const classification = blog.classification || 'Business / Financial Services'
+    const phoneNumber = blog.phone_number || '+1-707-708-4062'
+
     return {
         title,
         description,
@@ -51,11 +55,16 @@ export async function generateMetadata({ params }) {
             publishedTime: blog.date_posted,
             modifiedTime: blog.updated_at || blog.date_posted,
             authors: blog.author ? [blog.author] : ['SmartSoft Solutions'],
-            section: blog.category || 'Finance',
+            section: category,
             tags: blog.meta_keywords ? blog.meta_keywords.split(',').map(k => k.trim()) : undefined,
         },
         twitter: { card: 'summary_large_image', title, description, images: blog.image ? [blog.image] : undefined, creator: '@SmartSoftSol' },
         keywords: blog.meta_keywords || undefined,
+        other: {
+            category,
+            classification,
+            telephone: phoneNumber,
+        },
     }
 }
 

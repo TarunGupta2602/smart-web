@@ -16,7 +16,7 @@ export const metadata = {
         description: "Optimize cash flow balances, analyze budget models, and accelerate growth with strategic advisory.",
         url: `${SITE_URL}/services/financial-consulting`,
         type: 'website',
-        images: [{ url: '/favicon.ico', width: 512, height: 512 }]
+        images: [{ url: '/logo.png', width: 512, height: 512 }]
     }
 };
 

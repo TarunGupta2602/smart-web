@@ -19,14 +19,14 @@ export const metadata = {
         siteName: 'SmartSoft Solutions',
         locale: 'en_US',
         images: [
-            { url: '/favicon.ico', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
+            { url: '/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
         ],
     },
     twitter: {
         card: 'summary_large_image',
         title: 'Financial Services Hub | SmartSoft Solutions',
         description: 'Scale your business with our absolute compliance solutions: bookkeeping, payroll, and corporate tax prep.',
-        images: ['/favicon.ico']
+        images: ['/logo.png']
     }
 };
 
