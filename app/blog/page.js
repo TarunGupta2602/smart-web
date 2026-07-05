@@ -25,13 +25,13 @@ export const metadata = {
         url: `${SITE_URL}/blog`,
         siteName: 'SmartSoft Solutions',
         locale: 'en_US',
-        images: [{ url: '/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Blog' }],
+        images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions Blog' }],
     },
     twitter: {
         card: 'summary_large_image',
         title: 'Financial Insights Blog | SmartSoft Solutions',
         description: 'Expert guides on bookkeeping, payroll, and tax services for small businesses.',
-        images: ['/logo.png'],
+        images: ['/og-image.jpg'],
     },
     alternates: { canonical: `${SITE_URL}/blog` },
     robots: {

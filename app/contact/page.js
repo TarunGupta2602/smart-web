@@ -19,7 +19,7 @@ export const metadata = {
         siteName: 'SmartSoft Solutions',
         locale: 'en_US',
         images: [
-            { url: '/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
+            { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions' }
         ],
     },
     twitter: {
@@ -27,7 +27,7 @@ export const metadata = {
         site: '@SmartSoftSolutions',
         title: 'Free Bookkeeping & Tax Consultation | SmartSoft Solutions',
         description: 'Speak with our accounting professionals to build a customized bookkeeping, payroll, or tax prep plan.',
-        images: ['/logo.png']
+        images: ['/og-image.jpg']
     }
 };
 
