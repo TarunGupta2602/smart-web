@@ -62,6 +62,9 @@ const BlogForm = ({ initialData = null, onSuccess, onCancel, isEdit = false }) =
     meta_title: '',
     meta_description: '',
     meta_keywords: '',
+    category: '',
+    classification: '',
+    phone_number: '',
     faqs: []
   });
   const [imageFile, setImageFile] = useState(null)
@@ -398,6 +401,9 @@ const BlogForm = ({ initialData = null, onSuccess, onCancel, isEdit = false }) =
           meta_title: '',
           meta_description: '',
           meta_keywords: '',
+          category: '',
+          classification: '',
+          phone_number: '',
           faqs: []
         });
         setImageFile(null);
@@ -840,6 +846,42 @@ const BlogForm = ({ initialData = null, onSuccess, onCancel, isEdit = false }) =
             onChange={handleChange}
             className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+            <input
+              type="text"
+              name="category"
+              placeholder="e.g. Bookkeeping, Tax Prep"
+              value={formData.category}
+              onChange={handleChange}
+              className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Classification</label>
+            <input
+              type="text"
+              name="classification"
+              placeholder="e.g. Business / Financial Services"
+              value={formData.classification}
+              onChange={handleChange}
+              className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+            <input
+              type="tel"
+              name="phone_number"
+              placeholder="+1-707-708-4062"
+              value={formData.phone_number}
+              onChange={handleChange}
+              className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
         </div>
 
         <div className="flex md:hidden mb-2 border-b">

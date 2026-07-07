@@ -19,14 +19,14 @@ export const metadata = {
         siteName: 'SmartSoft Solutions',
         locale: 'en_US',
         images: [
-            { url: '/favicon.ico', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' },
+            { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions' },
         ],
     },
     twitter: {
         card: 'summary_large_image',
         title: "About SmartSoft Solutions | Bookkeeping & Accounting Experts",
         description: "Meet the experts behind our CPA-supervised financial, payroll, and compliance services.",
-        images: ['/favicon.ico'],
+        images: ['/og-image.jpg'],
     },
 };
 

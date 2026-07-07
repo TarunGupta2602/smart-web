@@ -19,7 +19,7 @@ export const metadata = {
         siteName: 'SmartSoft Solutions',
         locale: 'en_US',
         images: [
-            { url: '/favicon.ico', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' }
+            { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions' }
         ],
     },
     twitter: {
@@ -27,7 +27,7 @@ export const metadata = {
         site: '@SmartSoftSolutions',
         title: 'Financial Case Studies & Success Stories | SmartSoft Solutions',
         description: 'Read our bookkeeping clean-up, payroll setup, and tax optimization stories.',
-        images: ['/favicon.ico']
+        images: ['/og-image.jpg']
     }
 };
 
