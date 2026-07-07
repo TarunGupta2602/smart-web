@@ -5,6 +5,51 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Image from 'next/image';
 import { faqPage, stringifySchema } from '@/lib/schema';
+import { slugify, stripMarkdown } from '@/lib/utils';
+
+const ALLOWED_BLOG_FIELDS = ['title', 'author', 'date_posted', 'description', 'content', 'slug', 'meta_title', 'meta_description', 'meta_keywords', 'faqs', 'image'];
+
+const sanitizeBlogPayload = (data = {}) => {
+  const payload = {};
+
+  ALLOWED_BLOG_FIELDS.forEach((field) => {
+    if (field in data) {
+      payload[field] = data[field];
+    }
+  });
+
+  const title = (payload.title || '').toString().trim();
+  const slug = (payload.slug || '').toString().trim();
+  const contentText = stripMarkdown(payload.content || payload.description || '').replace(/\s+/g, ' ').trim();
+
+  if (!payload.date_posted) {
+    payload.date_posted = new Date().toISOString().split('T')[0];
+  }
+
+  if (!payload.slug) {
+    payload.slug = slugify(title || payload.meta_title || 'blog-post');
+  }
+
+  if (!payload.meta_title) {
+    payload.meta_title = title || 'SmartSoft Solutions Blog';
+  }
+
+  if (!payload.meta_description) {
+    payload.meta_description = contentText || `Learn more about ${title || 'this topic'} from SmartSoft Solutions.`;
+  }
+
+  if (!payload.meta_keywords) {
+    payload.meta_keywords = title
+      ? `${title}, bookkeeping, accounting, payroll, tax preparation, financial strategy`
+      : 'bookkeeping, accounting, payroll, tax preparation, small business finance';
+  }
+
+  if (payload.faqs === undefined) {
+    payload.faqs = [];
+  }
+
+  return payload;
+};
 
 const BlogForm = ({ initialData = null, onSuccess, onCancel, isEdit = false }) => {
   const [formData, setFormData] = useState({
@@ -80,8 +125,10 @@ const BlogForm = ({ initialData = null, onSuccess, onCancel, isEdit = false }) =
           faqs = [];
         }
       }
+
+      const sanitizedInitialData = sanitizeBlogPayload(initialData);
       setFormData({
-        ...initialData,
+        ...sanitizedInitialData,
         faqs,
         date_posted: initialData.date_posted
           ? new Date(initialData.date_posted).toISOString().split('T')[0]
@@ -305,14 +352,16 @@ const BlogForm = ({ initialData = null, onSuccess, onCancel, isEdit = false }) =
         imageUrl = await uploadImage(imageFile);
       }
 
+      const payload = sanitizeBlogPayload({
+        ...formData,
+        image: imageUrl,
+        date_posted: formData.date_posted || new Date().toISOString().split('T')[0],
+      });
+
       if (isEdit && initialData) {
         const { data, error } = await supabase
           .from('blogs_site2')
-          .update({
-            ...formData,
-            image: imageUrl,
-            date_posted: formData.date_posted || new Date().toISOString().split('T')[0],
-          })
+          .update(payload)
           .eq('id', initialData.id)
           .select()
           .single();
@@ -328,13 +377,7 @@ const BlogForm = ({ initialData = null, onSuccess, onCancel, isEdit = false }) =
       } else {
         const { data, error } = await supabase
           .from('blogs_site2')
-          .insert([
-            {
-              ...formData,
-              image: imageUrl,
-              date_posted: formData.date_posted || new Date().toISOString().split('T')[0],
-            },
-          ])
+          .insert([payload])
           .select()
           .single();
 

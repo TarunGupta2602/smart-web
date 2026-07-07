@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { supabase } from '@/lib/supabaseClient'
 import BlogContentClient from '@/app/components/BlogContentClient'
 import TableOfContents from '@/app/components/TableOfContents'
-import { stripMarkdown, estimateReadTime } from '@/lib/utils'
+import { stripMarkdown, estimateReadTime, buildBlogSeo } from '@/lib/utils'
 import { breadcrumbList, article, faqPage, stringifySchema } from '@/lib/schema'
 
 export const revalidate = 3600;
@@ -33,29 +33,27 @@ export async function generateMetadata({ params }) {
     const blog = await getBlogBySlug(slug)
     if (!blog) return { title: 'Blog' }
 
-    const title = blog.meta_title || blog.title
-    const rawDescription = blog.meta_description || blog.description || ''
-    const description = stripMarkdown(rawDescription).slice(0, 160)
+    const blogSeo = buildBlogSeo(blog)
     const siteUrl = 'https://www.smartsoftsolutions.org'
     const canonicalUrl = `${siteUrl}/blog/${blog.slug}`
 
     return {
-        title,
-        description,
+        title: blogSeo.metaTitle || blogSeo.title,
+        description: blogSeo.metaDescription,
         alternates: { canonical: canonicalUrl },
         robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
         openGraph: {
-            title, description, type: 'article', locale: 'en_US', url: canonicalUrl,
+            title: blogSeo.metaTitle || blogSeo.title, description: blogSeo.metaDescription, type: 'article', locale: 'en_US', url: canonicalUrl,
             siteName: 'SmartSoft Solutions',
-            images: blog.image ? [{ url: blog.image, width: 1200, height: 630, alt: title }] : [{ url: `${siteUrl}/favicon.ico`, width: 512, height: 512, alt: title }],
+            images: blog.image ? [{ url: blog.image, width: 1200, height: 630, alt: blogSeo.metaTitle || blogSeo.title }] : [{ url: `${siteUrl}/favicon.ico`, width: 512, height: 512, alt: blogSeo.metaTitle || blogSeo.title }],
             publishedTime: blog.date_posted,
             modifiedTime: blog.updated_at || blog.date_posted,
             authors: blog.author ? [blog.author] : ['SmartSoft Solutions'],
-            section: blog.category || 'Finance',
-            tags: blog.meta_keywords ? blog.meta_keywords.split(',').map(k => k.trim()) : undefined,
+            section: 'Finance',
+            tags: blogSeo.keywords,
         },
-        twitter: { card: 'summary_large_image', title, description, images: blog.image ? [blog.image] : undefined, creator: '@SmartSoftSol' },
-        keywords: blog.meta_keywords || undefined,
+        twitter: { card: 'summary_large_image', title: blogSeo.metaTitle || blogSeo.title, description: blogSeo.metaDescription, images: blog.image ? [blog.image] : undefined, creator: '@SmartSoftSol' },
+        keywords: blogSeo.keywords.join(', '),
     }
 }
 
@@ -67,7 +65,8 @@ export default async function BlogSlugPage({ params }) {
 
     const faqs = Array.isArray(blog.faqs) ? blog.faqs : []
     const content = blog.content || blog.description || ''
-    const plainDescription = stripMarkdown(blog.meta_description || blog.description || '')
+    const blogSeo = buildBlogSeo(blog)
+    const plainDescription = stripMarkdown(blogSeo.metaDescription || '')
     const siteUrl = 'https://www.smartsoftsolutions.org'
     const canonicalUrl = `${siteUrl}/blog/${blog.slug}`
     const readTime = estimateReadTime(stripMarkdown(content || ''))
@@ -86,7 +85,7 @@ export default async function BlogSlugPage({ params }) {
         datePublished: blog.date_posted,
         dateModified: blog.updated_at || blog.date_posted,
         image: blog.image, url: canonicalUrl,
-        keywords: blog.meta_keywords
+        keywords: blogSeo.keywords.join(', ')
     })
     const faqSchema = faqs.length > 0 ? faqPage(faqs.map(f => ({ q: f.question, a: f.answer }))) : null
 
@@ -129,7 +128,7 @@ export default async function BlogSlugPage({ params }) {
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 mb-5">
                                 <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-400" />
                                 <span className="text-[9px] font-black uppercase tracking-widest text-yellow-700">
-                                    {blog.category || 'Financial Insights'}
+                                    Financial Insights
                                 </span>
                             </div>
 
