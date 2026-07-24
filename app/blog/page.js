@@ -51,10 +51,13 @@ const getBlogs = cache(async (page = 1, limit = 12) => {
         const to = from + limit - 1;
         const { data, count, error } = await supabase
             .from('blogs_site2')
-            .select('id, title, slug, description, image, date_posted, author, category, classification', { count: 'exact' })
+            .select('id, title, slug, description, image, date_posted, author', { count: 'exact' })
             .order('date_posted', { ascending: false })
             .range(from, to);
-        if (error) { console.error('Supabase blogs error:', error); return { data: [], count: 0 }; }
+        if (error) {
+            console.error('Supabase blogs error:', error.message || error.code || JSON.stringify(error));
+            return { data: [], count: 0 };
+        }
         return { data: data || [], count: count || 0 };
     } catch (err) {
         console.error('Unexpected error fetching blogs:', err);

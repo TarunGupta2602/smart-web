@@ -41,7 +41,7 @@ export async function generateMetadata({ params }) {
         ? blogSeo.keywords
         : (blog.meta_keywords ? blog.meta_keywords.split(',').map(k => k.trim()).filter(Boolean) : undefined)
     const { category, classification } = resolveBlogTaxonomy(blog)
-    const phoneNumber = blog.phone_number || '+1-707-708-4062'
+    const phoneNumber = '+1-707-708-4062'
 
     return {
         title: blogSeo.metaTitle || blogSeo.title,

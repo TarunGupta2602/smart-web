@@ -4,6 +4,7 @@ import React, { useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import BlogContentClient from './BlogContentClient'
+import { resolveBlogTaxonomy } from '@/lib/utils'
 
 export default function BlogListClient({ blogs = [] }) {
     const [query, setQuery] = useState('')
@@ -90,21 +91,17 @@ export default function BlogListClient({ blogs = [] }) {
                         )}
                         <div className="p-8 md:flex-1 flex flex-col justify-between">
                             <div>
-                                {hero.category ? (
-                                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 mb-5">
-                                        <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-500 animate-pulse" />
-                                        <span className="text-[9px] font-black uppercase tracking-widest text-yellow-700">
-                                            {hero.category}
-                                        </span>
-                                    </div>
-                                ) : (
-                                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 mb-5">
-                                        <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-500 animate-pulse" />
-                                        <span className="text-[9px] font-black uppercase tracking-widest text-yellow-700">
-                                            Featured Article
-                                        </span>
-                                    </div>
-                                )}
+                                {(() => {
+                                    const { category } = resolveBlogTaxonomy(hero)
+                                    return (
+                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 mb-5">
+                                            <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-500 animate-pulse" />
+                                            <span className="text-[9px] font-black uppercase tracking-widest text-yellow-700">
+                                                {category || 'Featured Article'}
+                                            </span>
+                                        </div>
+                                    )
+                                })()}
                                 <div className="text-[11px] uppercase tracking-widest font-bold text-slate-400 mb-3">
                                     {new Date(hero.date_posted).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                     {' '}&bull;{' '}{hero.author}
@@ -165,7 +162,7 @@ export default function BlogListClient({ blogs = [] }) {
 
                             <div className="p-5 flex-1">
                                 <div className="text-[9px] font-black uppercase tracking-widest text-yellow-600 mb-2">
-                                    {b.category || b.author || 'SmartSoft Editorial'}
+                                    {resolveBlogTaxonomy(b).category || b.author || 'SmartSoft Editorial'}
                                 </div>
                                 <h3 className="text-base font-black text-slate-900 mb-2 group-hover:text-yellow-600 transition-colors leading-snug line-clamp-2">
                                     {b.title}
