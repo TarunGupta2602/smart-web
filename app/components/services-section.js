@@ -132,6 +132,30 @@ export default function ServicesSection() {
             bgColor: "from-amber-50 to-orange-50",
             accentColor: "border-amber-400/50"
         },
+        {
+            slug: "website-designing",
+            title: "Website Designing",
+            description: "Custom, mobile-ready websites designed to reflect your brand and convert visitors into leads — clean layouts, strong CTAs, and fast performance.",
+            badge: "Technology",
+            bgColor: "from-yellow-50 to-amber-50",
+            accentColor: "border-yellow-400/50"
+        },
+        {
+            slug: "digital-marketing",
+            title: "Digital Marketing",
+            description: "Social, paid ads, content, and email campaigns that grow visibility and generate qualified leads — measured against real business outcomes.",
+            badge: "Technology",
+            bgColor: "from-orange-50 to-yellow-50",
+            accentColor: "border-orange-400/50"
+        },
+        {
+            slug: "seo",
+            title: "SEO Services",
+            description: "Technical SEO, keyword strategy, and on-page optimization that improve organic rankings, local visibility, and sustainable traffic growth.",
+            badge: "Technology",
+            bgColor: "from-amber-50 to-orange-50",
+            accentColor: "border-amber-400/50"
+        },
     ];
 
     return (

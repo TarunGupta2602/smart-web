@@ -17,7 +17,11 @@ export const metadata = {
         url: `${SITE_URL}/services/tax-preparation`,
         type: 'website',
         images: [{ url: '/og-image.jpg', width: 1200, height: 630 }]
-    }
+    },
+    other: {
+        category: 'Tax Preparation',
+        classification: 'Financial Services',
+    },
 };
 
 export default function TaxPreparationServicePage() {

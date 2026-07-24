@@ -17,6 +17,10 @@ export const metadata = {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions' }],
   },
   twitter: { card: 'summary_large_image', title: "Refund Policy | SmartSoft Solutions", description: "Our terms and conditions for refunds and cancellations." },
+  other: {
+    category: 'Refund Policy',
+    classification: 'Legal',
+  },
 };
 
 export default function RefundPolicyPage() {

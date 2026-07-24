@@ -28,6 +28,10 @@ export const metadata = {
         description: "Meet the experts behind our CPA-supervised financial, payroll, and compliance services.",
         images: ['/og-image.jpg'],
     },
+    other: {
+        category: 'About Us',
+        classification: 'Financial Services',
+    },
 };
 
 export default function AboutPage() {

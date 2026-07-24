@@ -22,11 +22,12 @@ export const metadata = {
     canonical: 'https://www.smartsoftsolutions.org',
   },
   openGraph: {
-    title: "SmartSoft Solutions | Bookkeeping, Accounting, Payroll & Tax Services USA & Canada",
-    description: "Get expert bookkeeping, accounting, invoicing, payroll & tax services for your small business. Serving USA and Canada. CPA-supervised, fast, and affordable.",
+    title: "SmartSoft Solutions | Accounting & Technology Services USA, Canada & India",
+    description: "Expert accounting, bookkeeping, payroll, tax, website designing, digital marketing, and SEO for small businesses. Serving USA, Canada, and India.",
     url: 'https://www.smartsoftsolutions.org',
     images: [
-      { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions - Bookkeeping & Accounting Services USA Canada' },
+      { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions - Accounting & Technology Services' },
+      { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' },
     ],
     type: 'website',
     siteName: 'SmartSoft Solutions',
@@ -35,10 +36,14 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@SmartSoftSolutions',
-    title: 'SmartSoft Solutions | Bookkeeping, Accounting & Payroll Services USA Canada',
-    description: 'Expert bookkeeping, accounting, payroll, invoicing & tax services for USA & Canada small businesses. CPA-supervised and affordable.',
+    title: 'SmartSoft Solutions | Accounting & Technology Services',
+    description: 'Accounting, bookkeeping, payroll, tax, website design, digital marketing & SEO for USA, Canada & India.',
     images: ['/og-image.jpg']
-  }
+  },
+  other: {
+    category: 'Accounting & Technology',
+    classification: 'Financial & Technology',
+  },
 };
 
 export default function Homepage() {

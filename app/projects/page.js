@@ -28,7 +28,11 @@ export const metadata = {
         title: 'Financial Case Studies & Success Stories | SmartSoft Solutions',
         description: 'Read our bookkeeping clean-up, payroll setup, and tax optimization stories.',
         images: ['/og-image.jpg']
-    }
+    },
+    other: {
+        category: 'Case Studies',
+        classification: 'Financial Services',
+    },
 };
 
 export default function ProjectsPage() {

@@ -11,16 +11,17 @@ const SITE_URL = 'https://www.smartsoftsolutions.org';
 export const revalidate = 1800;
 
 export const metadata = {
-    title: 'Financial Insights Blog | SmartSoft Solutions',
-    description: 'Expert guides on bookkeeping, accounting, payroll, tax preparation, and financial planning for USA & Canada small businesses.',
+    title: 'Insights Blog | SmartSoft Solutions',
+    description: 'Expert guides on bookkeeping, accounting, payroll, tax preparation, technology, and business growth for USA & Canada small businesses.',
     keywords: [
         'bookkeeping tips', 'accounting guides', 'payroll help USA Canada',
         'tax preparation tips', 'small business finance blog', 'QuickBooks tips',
-        'financial planning blog', 'SmartSoft Solutions blog',
+        'financial planning blog', 'technology blog', 'web development tips',
+        'SmartSoft Solutions blog',
     ],
     openGraph: {
-        title: 'Financial Insights Blog | SmartSoft Solutions',
-        description: 'Expert guides on bookkeeping, accounting, payroll, and tax preparation for USA & Canada small businesses.',
+        title: 'Insights Blog | SmartSoft Solutions',
+        description: 'Expert guides on bookkeeping, accounting, payroll, tax, and technology for USA & Canada small businesses.',
         type: 'website',
         url: `${SITE_URL}/blog`,
         siteName: 'SmartSoft Solutions',
@@ -29,14 +30,18 @@ export const metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Financial Insights Blog | SmartSoft Solutions',
-        description: 'Expert guides on bookkeeping, payroll, and tax services for small businesses.',
+        title: 'Insights Blog | SmartSoft Solutions',
+        description: 'Expert guides on finance and technology for small businesses.',
         images: ['/og-image.jpg'],
     },
     alternates: { canonical: `${SITE_URL}/blog` },
     robots: {
         index: true, follow: true,
         googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+    },
+    other: {
+        category: 'Insights',
+        classification: 'Financial & Technology',
     },
 };
 
@@ -46,7 +51,7 @@ const getBlogs = cache(async (page = 1, limit = 12) => {
         const to = from + limit - 1;
         const { data, count, error } = await supabase
             .from('blogs_site2')
-            .select('id, title, slug, description, image, date_posted, author', { count: 'exact' })
+            .select('id, title, slug, description, image, date_posted, author, category, classification', { count: 'exact' })
             .order('date_posted', { ascending: false })
             .range(from, to);
         if (error) { console.error('Supabase blogs error:', error); return { data: [], count: 0 }; }
@@ -96,13 +101,13 @@ export default async function BlogPage(props) {
                         <div>
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/30 mb-6">
                                 <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-400 animate-pulse" />
-                                <span className="text-[10px] uppercase tracking-[0.2em] font-black text-yellow-400">Financial Insights</span>
+                                <span className="text-[10px] uppercase tracking-[0.2em] font-black text-yellow-400">Insights</span>
                             </div>
                             <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white leading-[0.95] mb-4">
                                 OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase">blog.</span>
                             </h1>
                             <p className="text-slate-400 text-sm md:text-base max-w-xl leading-relaxed">
-                                Guides on bookkeeping, payroll, tax prep, and financial strategy — written for USA & Canada small business owners.
+                                Guides on bookkeeping, payroll, tax, and technology — written for USA & Canada small business owners.
                             </p>
                         </div>
                         <a
@@ -121,7 +126,7 @@ export default async function BlogPage(props) {
 
                 {/* Topics chips */}
                 <div className="flex flex-wrap gap-2 mb-12">
-                    {["All Posts", "Bookkeeping", "Payroll", "Tax Prep", "Accounting", "Financial Tips"].map((tag) => (
+                    {["All Posts", "Bookkeeping", "Payroll", "Tax Prep", "Accounting", "Technology"].map((tag) => (
                         <span key={tag} className={`text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-full border transition-all cursor-pointer ${tag === "All Posts" ? "bg-slate-900 text-yellow-400 border-slate-900" : "bg-white text-slate-600 border-slate-200 hover:border-yellow-400 hover:text-yellow-600"}`}>
                             {tag}
                         </span>

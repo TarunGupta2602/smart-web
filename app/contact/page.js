@@ -28,7 +28,11 @@ export const metadata = {
         title: 'Free Bookkeeping & Tax Consultation | SmartSoft Solutions',
         description: 'Speak with our accounting professionals to build a customized bookkeeping, payroll, or tax prep plan.',
         images: ['/og-image.jpg']
-    }
+    },
+    other: {
+        category: 'Contact',
+        classification: 'Financial & Technology',
+    },
 };
 
 export default function ContactPage() {

@@ -54,6 +54,19 @@ const contactMethods = [
         subtext: "Calgary, AB T3G 1S4, Canada",
         label: "View on Map",
         link: "https://maps.google.com/?q=24+Ranchlands+Bay+NW+Calgary+AB+T3G+1S4+Canada"
+    },
+    {
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6">
+                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+        ),
+        title: "India Branch",
+        description: "H-25 Sec 63, Basement Floor",
+        subtext: "Noida 201301, India",
+        label: "View on Map",
+        link: "https://maps.google.com/?q=H-25+Sector+63+Basement+Floor+Noida+201301+India"
     }
 ];
 
@@ -118,7 +131,7 @@ export default function ContactContent() {
             {/* ─── CONTACT METHOD CARDS ─────────────────────────────── */}
             <section className="py-20 bg-slate-50">
                 <div className="container mx-auto px-6 max-w-6xl">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {contactMethods.map((method, i) => (
                             <a
                                 key={i}
@@ -225,6 +238,9 @@ export default function ContactContent() {
                                             <option value="Payroll Processing">Payroll Processing</option>
                                             <option value="Tax Preparation">Tax Preparation</option>
                                             <option value="Financial Consulting">Financial Consulting</option>
+                                            <option value="Website Designing">Website Designing</option>
+                                            <option value="Digital Marketing">Digital Marketing</option>
+                                            <option value="SEO">SEO</option>
                                         </select>
                                     </div>
                                 </div>

@@ -37,21 +37,27 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://www.smartsoftsolutions.org',
     siteName: 'SmartSoft Solutions',
-    title: 'SmartSoft Solutions | Bookkeeping, Accounting, Payroll & Tax Services',
-    description: 'Professional bookkeeping, accounting, invoicing, payroll, and tax preparation services for small businesses across USA and Canada. CPA-supervised, accurate, and affordable.',
+    title: 'SmartSoft Solutions | Accounting & Technology Services',
+    description: 'Professional accounting, bookkeeping, payroll, tax, website designing, digital marketing, and SEO services for small businesses across USA, Canada, and India.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'SmartSoft Solutions - Bookkeeping & Accounting Services USA Canada',
+        alt: 'SmartSoft Solutions - Accounting & Technology Services',
+      },
+      {
+        url: '/images/logo.png',
+        width: 512,
+        height: 512,
+        alt: 'SmartSoft Solutions Logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SmartSoft Solutions | Bookkeeping, Accounting & Payroll Services USA',
-    description: 'Trusted bookkeeping, accounting, payroll, invoicing & tax services for USA & Canada small businesses.',
+    title: 'SmartSoft Solutions | Accounting & Technology Services',
+    description: 'Accounting, bookkeeping, payroll, tax, website design, digital marketing & SEO for USA, Canada & India.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -66,8 +72,6 @@ export const metadata = {
     },
   },
   other: {
-    category: 'Bookkeeping & Accounting Services',
-    classification: 'Business / Financial Services',
     telephone: '+1-707-708-4062',
   },
 };
@@ -79,11 +83,8 @@ export default function RootLayout({ children }) {
         <meta name="google-site-verification" content="2XUc_M2JA9i0tn_jLcEAgvJykTx-E0-BgqFoef2Oma8" />
         <meta name="geo.region" content="US" />
         <meta name="geo.region" content="CA" />
-        <meta name="category" content="Bookkeeping & Accounting Services" />
-        <meta name="classification" content="Business / Financial Services" />
+        <meta name="geo.region" content="IN" />
         <meta name="telephone" content="+1-707-708-4062" />
-        <meta property="og:see_also" content="https://www.facebook.com/profile.php?id=100078081377940" />
-        <link rel="me" href="https://www.facebook.com/profile.php?id=100078081377940" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -116,9 +117,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           dangerouslySetInnerHTML={{
             __html: stringifySchema([
               organization({
-                logo: '/favicon.ico',
+                logo: '/images/logo.png',
                 description: 'SmartSoft Solutions is a trusted provider of bookkeeping, accounting, invoicing, payroll management, and tax preparation services for small businesses in the USA and Canada.',
-                sameAs: ['https://www.facebook.com/profile.php?id=100078081377940'],
               }),
               webSite({ url: 'https://www.smartsoftsolutions.org', description: 'SmartSoft Solutions - Professional Bookkeeping, Accounting, Payroll & Tax Services for USA & Canada' }),
             ]),

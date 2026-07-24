@@ -842,6 +842,63 @@ const BlogForm = ({ initialData = null, onSuccess, onCancel, isEdit = false }) =
           />
         </div>
 
+        <div className="grid md:grid-cols-3 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Category <span className="text-gray-400 font-normal">(this post only)</span>
+            </label>
+            <input
+              type="text"
+              name="category"
+              list="blog-category-options"
+              placeholder="e.g. Bookkeeping, Web Development"
+              value={formData.category}
+              onChange={handleChange}
+              className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+            <datalist id="blog-category-options">
+              <option value="Bookkeeping" />
+              <option value="Accounting" />
+              <option value="Payroll" />
+              <option value="Tax Preparation" />
+              <option value="Web Development" />
+              <option value="Software" />
+              <option value="Technology" />
+            </datalist>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Classification <span className="text-gray-400 font-normal">(this post only)</span>
+            </label>
+            <input
+              type="text"
+              name="classification"
+              list="blog-classification-options"
+              placeholder="e.g. Financial Services, Technology"
+              value={formData.classification}
+              onChange={handleChange}
+              className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+            <datalist id="blog-classification-options">
+              <option value="Financial Services" />
+              <option value="Technology" />
+              <option value="Business Services" />
+              <option value="Software & IT" />
+            </datalist>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+            <input
+              type="tel"
+              name="phone_number"
+              placeholder="+1-707-708-4062"
+              value={formData.phone_number}
+              onChange={handleChange}
+              className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+        </div>
+
         <div className="flex md:hidden mb-2 border-b">
           <button
             type="button"

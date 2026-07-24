@@ -30,17 +30,33 @@ export default function Footer() {
                             Professional bookkeeping, accounting, invoicing, payroll, and tax services for small businesses across the USA and Canada. CPA-supervised, accurate, and affordable.
                         </p>
 
-                        {/* Physical Address */}
-                        <div className="flex items-start gap-3 text-slate-500 text-sm">
-                            <svg className="w-4 h-4 mt-0.5 text-yellow-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            <address className="not-italic leading-relaxed">
-                                24 Ranchlands Bay NW<br />
-                                Calgary, AB T3G 1S4<br />
-                                Canada
-                            </address>
+                        {/* Physical Addresses */}
+                        <div className="space-y-4">
+                            <div className="flex items-start gap-3 text-slate-500 text-sm">
+                                <svg className="w-4 h-4 mt-0.5 text-yellow-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <address className="not-italic leading-relaxed">
+                                    <span className="block text-[10px] font-black uppercase tracking-widest text-yellow-500/80 mb-1">Canada</span>
+                                    24 Ranchlands Bay NW<br />
+                                    Calgary, AB T3G 1S4<br />
+                                    Canada
+                                </address>
+                            </div>
+                            <div className="flex items-start gap-3 text-slate-500 text-sm">
+                                <svg className="w-4 h-4 mt-0.5 text-yellow-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <address className="not-italic leading-relaxed">
+                                    <span className="block text-[10px] font-black uppercase tracking-widest text-yellow-500/80 mb-1">India Branch</span>
+                                    H-25 Sec 63<br />
+                                    Basement Floor<br />
+                                    Noida 201301<br />
+                                    India
+                                </address>
+                            </div>
                         </div>
 
                         <div className="flex flex-wrap gap-2">
@@ -88,6 +104,9 @@ export default function Footer() {
                                 { name: "Payroll", href: "/services/payroll" },
                                 { name: "Tax Preparation", href: "/services/tax-preparation" },
                                 { name: "Financial Consulting", href: "/services/financial-consulting" },
+                                { name: "Website Designing", href: "/services/website-designing" },
+                                { name: "Digital Marketing", href: "/services/digital-marketing" },
+                                { name: "SEO", href: "/services/seo" },
                             ].map((item) => (
                                 <li key={item.name}>
                                     <Link
@@ -168,18 +187,6 @@ export default function Footer() {
                     <div className="flex items-center gap-6 text-xs text-slate-600">
                         <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
                         <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms</Link>
-                        {/* Facebook page */}
-                        <a
-                            href="https://www.facebook.com/profile.php?id=100078081377940"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="SmartSoft Solutions on Facebook"
-                            className="flex items-center justify-center w-8 h-8 rounded-full bg-white/[0.05] hover:bg-blue-600 border border-white/10 hover:border-blue-500 text-slate-400 hover:text-white transition-all"
-                        >
-                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.9v-2.89h2.538V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-                            </svg>
-                        </a>
                         <div className="flex items-center bg-white/[0.04] px-3 py-1.5 rounded-full border border-white/5">
                             <span className="w-1.5 h-1.5 rounded-full bg-green-400 mr-2 animate-pulse" />
                             Available for New Clients

@@ -17,7 +17,11 @@ export const metadata = {
         url: `${SITE_URL}/services/accounting`,
         type: 'website',
         images: [{ url: '/og-image.jpg', width: 1200, height: 630 }]
-    }
+    },
+    other: {
+        category: 'Accounting',
+        classification: 'Financial Services',
+    },
 };
 
 export default function AccountingServicePage() {

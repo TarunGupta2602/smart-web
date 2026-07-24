@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { supabase } from '@/lib/supabaseClient'
 import BlogContentClient from '@/app/components/BlogContentClient'
 import TableOfContents from '@/app/components/TableOfContents'
-import { stripMarkdown, estimateReadTime, buildBlogSeo } from '@/lib/utils'
+import { stripMarkdown, estimateReadTime, buildBlogSeo, resolveBlogTaxonomy } from '@/lib/utils'
 import { breadcrumbList, article, faqPage, stringifySchema } from '@/lib/schema'
 
 export const revalidate = 3600;
@@ -40,6 +40,8 @@ export async function generateMetadata({ params }) {
     const keywordTags = blogSeo.keywords.length > 0
         ? blogSeo.keywords
         : (blog.meta_keywords ? blog.meta_keywords.split(',').map(k => k.trim()).filter(Boolean) : undefined)
+    const { category, classification } = resolveBlogTaxonomy(blog)
+    const phoneNumber = blog.phone_number || '+1-707-708-4062'
 
     return {
         title: blogSeo.metaTitle || blogSeo.title,
@@ -57,7 +59,7 @@ export async function generateMetadata({ params }) {
             publishedTime: blog.date_posted,
             modifiedTime: blog.updated_at || blog.date_posted,
             authors: blog.author ? [blog.author] : ['SmartSoft Solutions'],
-            section: 'Finance',
+            ...(category ? { section: category } : {}),
             tags: keywordTags,
         },
         twitter: {
@@ -68,6 +70,11 @@ export async function generateMetadata({ params }) {
             creator: '@SmartSoftSol',
         },
         keywords: keywordTags ? keywordTags.join(', ') : undefined,
+        other: {
+            ...(category ? { category } : {}),
+            ...(classification ? { classification } : {}),
+            telephone: phoneNumber,
+        },
     }
 }
 
@@ -84,6 +91,7 @@ export default async function BlogSlugPage({ params }) {
     const siteUrl = 'https://www.smartsoftsolutions.org'
     const canonicalUrl = `${siteUrl}/blog/${blog.slug}`
     const readTime = estimateReadTime(stripMarkdown(content || ''))
+    const { category: postCategory } = resolveBlogTaxonomy(blog)
 
     const breadcrumbs = [
         { name: 'Home', url: siteUrl },
@@ -138,13 +146,14 @@ export default async function BlogSlugPage({ params }) {
 
                         {/* Article Header */}
                         <header className="mb-8">
-                            {/* Category chip */}
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 mb-5">
-                                <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-400" />
-                                <span className="text-[9px] font-black uppercase tracking-widest text-yellow-700">
-                                    Financial Insights
-                                </span>
-                            </div>
+                            {postCategory && (
+                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 mb-5">
+                                    <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-400" />
+                                    <span className="text-[9px] font-black uppercase tracking-widest text-yellow-700">
+                                        {postCategory}
+                                    </span>
+                                </div>
+                            )}
 
                             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-slate-900 mb-5">
                                 {blog.title}
@@ -291,7 +300,9 @@ export default async function BlogSlugPage({ params }) {
                                         { name: "Accounting", href: "/services/accounting" },
                                         { name: "Payroll Processing", href: "/services/payroll" },
                                         { name: "Tax Preparation", href: "/services/tax-preparation" },
-                                        { name: "Financial Consulting", href: "/services/financial-consulting" },
+                                        { name: "Website Designing", href: "/services/website-designing" },
+                                        { name: "Digital Marketing", href: "/services/digital-marketing" },
+                                        { name: "SEO", href: "/services/seo" },
                                         { name: "Pricing & Plans", href: "/pricing" },
                                     ].map((item) => (
                                         <li key={item.name}>

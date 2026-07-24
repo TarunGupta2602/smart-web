@@ -5,15 +5,18 @@ import { localBusiness, webPage, breadcrumbList, stringifySchema } from "@/lib/s
 const SITE_URL = 'https://www.smartsoftsolutions.org';
 
 export const metadata = {
-    title: "CPA Supervised Bookkeeping, Payroll & Tax Services | USA & Canada",
-    description: "Explore our smart financial services for small businesses and freelancers. We offer bookkeeping, full-service payroll, invoicing, and tax preparation.",
-    keywords: ["bookkeeping services", "business accounting firm", "payroll processing USA Canada", "corporate tax preparation", "invoicing solutions", "CPA supervised accounting"],
+    title: "Financial & Technology Services | SmartSoft Solutions",
+    description: "Explore bookkeeping, payroll, tax, website designing, digital marketing, and SEO services for small businesses across the USA and Canada.",
+    keywords: [
+        "bookkeeping services", "business accounting firm", "payroll processing USA Canada",
+        "corporate tax preparation", "website designing", "digital marketing", "SEO services"
+    ],
     alternates: {
         canonical: `${SITE_URL}/services`,
     },
     openGraph: {
-        title: "Financial Services Hub | SmartSoft Solutions",
-        description: "Scale your business with our absolute compliance solutions: bookkeeping, payroll, and corporate tax prep.",
+        title: "Services Hub | SmartSoft Solutions",
+        description: "Financial and technology services: bookkeeping, payroll, tax, website design, digital marketing, and SEO.",
         url: `${SITE_URL}/services`,
         type: 'website',
         siteName: 'SmartSoft Solutions',
@@ -24,10 +27,14 @@ export const metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Financial Services Hub | SmartSoft Solutions',
-        description: 'Scale your business with our absolute compliance solutions: bookkeeping, payroll, and corporate tax prep.',
+        title: 'Services Hub | SmartSoft Solutions',
+        description: 'Financial and technology services for USA & Canada small businesses.',
         images: ['/og-image.jpg']
-    }
+    },
+    other: {
+        category: 'Accounting & Technology Services',
+        classification: 'Financial & Technology',
+    },
 };
 
 export default function ServicesPage() {
@@ -103,6 +110,42 @@ export default function ServicesPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
             )
+        },
+        {
+            slug: "website-designing",
+            title: "Website Designing",
+            tagline: "Custom, conversion-focused business websites",
+            description: "Launch a mobile-ready website that matches your brand and turns visitors into leads. We design clean layouts, strong CTAs, and fast-loading pages built for real business growth.",
+            color: "border-yellow-200 hover:border-yellow-400 group-hover:bg-yellow-50",
+            icon: (
+                <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+            )
+        },
+        {
+            slug: "digital-marketing",
+            title: "Digital Marketing",
+            tagline: "Social, ads, content & email that generate leads",
+            description: "Grow visibility with practical digital campaigns — social media, paid ads, content, and email nurturing — tracked against leads and revenue, not vanity metrics.",
+            color: "border-orange-200 hover:border-orange-400 group-hover:bg-orange-50",
+            icon: (
+                <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                </svg>
+            )
+        },
+        {
+            slug: "seo",
+            title: "SEO Services",
+            tagline: "Rank higher with technical & on-page SEO",
+            description: "Improve organic rankings and local search visibility with technical audits, keyword strategy, on-page optimization, and performance reporting that compounds over time.",
+            color: "border-slate-200 hover:border-slate-400 group-hover:bg-slate-50",
+            icon: (
+                <svg className="w-8 h-8 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            )
         }
     ];
 
@@ -145,14 +188,14 @@ export default function ServicesPage() {
                 <div className="container mx-auto px-6 relative z-10 py-20 text-center">
                     <div className="max-w-4xl mx-auto">
                         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
-                            <span className="text-xs uppercase tracking-[0.2em] font-black text-yellow-400">Total Financial Compliance</span>
+                            <span className="text-xs uppercase tracking-[0.2em] font-black text-yellow-400">Financial & Technology Services</span>
                         </div>
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.95] tracking-tighter uppercase whitespace-pre-line text-white">
-                            Smart Financial <br />
+                            Smart Business <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif">Solutions.</span>
                         </h1>
                         <p className="text-base md:text-lg lg:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
-                            Stop worrying about bookkeeping reconciliation or IRS/CRA files. Our CPA-supervised specialists manage your daily financial operations.
+                            From bookkeeping and tax to website design, digital marketing, and SEO — services that help your business run and grow.
                         </p>
                     </div>
                 </div>

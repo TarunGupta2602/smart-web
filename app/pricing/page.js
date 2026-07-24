@@ -28,6 +28,10 @@ export const metadata = {
         description: "Compare flat-rate bookkeeping, payroll, and business tax packages starting at $49/month.",
         images: ['/og-image.jpg'],
     },
+    other: {
+        category: 'Pricing',
+        classification: 'Financial Services',
+    },
 };
 
 export default function PricingPage() {

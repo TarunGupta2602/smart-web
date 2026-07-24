@@ -17,6 +17,10 @@ export const metadata = {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions' }],
   },
   twitter: { card: 'summary_large_image', title: "Terms of Service | SmartSoft Solutions", description: "The rules and guidelines for using our website and services." },
+  other: {
+    category: 'Terms of Service',
+    classification: 'Legal',
+  },
 };
 
 export default function TermsOfServicePage() {
