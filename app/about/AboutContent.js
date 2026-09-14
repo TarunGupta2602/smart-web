@@ -6,7 +6,7 @@ export default function AboutContent({ expertiseItems, team }) {
     return (
         <div className="bg-white text-slate-900">
             <section className="border-b border-slate-100">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6 py-16 md:py-24">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-16 md:py-24">
                     <p className="text-sm font-medium text-[#0f3d68] mb-4">About SmartSoft Solutions</p>
                     <h1 className="max-w-3xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-6">
                         A development company that ships live products
@@ -19,7 +19,7 @@ export default function AboutContent({ expertiseItems, team }) {
             </section>
 
             <section className="py-16 md:py-24">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
                         <div>
                             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 mb-5">
@@ -59,7 +59,7 @@ export default function AboutContent({ expertiseItems, team }) {
             </section>
 
             <section className="py-16 md:py-20 bg-slate-50 border-y border-slate-100">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
                     <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 mb-10">
                         What we are good at
                     </h2>
@@ -75,7 +75,7 @@ export default function AboutContent({ expertiseItems, team }) {
             </section>
 
             <section className="py-16 md:py-20">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
                     <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 mb-10">
                         Team
                     </h2>
@@ -94,7 +94,7 @@ export default function AboutContent({ expertiseItems, team }) {
             </section>
 
             <section className="border-t border-slate-100 py-14">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                     <div>
                         <h2 className="text-xl font-semibold text-slate-900 mb-2">Ready to start a project?</h2>
                         <p className="text-sm text-slate-600">Send a brief — we reply with scope and a fixed quote.</p>

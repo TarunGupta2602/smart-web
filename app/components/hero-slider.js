@@ -1,40 +1,99 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import brandMark from "../icon.png";
+
+const HERO_VIDEO =
+  "https://videos.pexels.com/video-files/6774633/6774633-hd_1920_1080_30fps.mp4";
+const HERO_POSTER =
+  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2000&q=80";
 
 export default function HeroSlider() {
-    return (
-        <section className="bg-white border-b border-slate-100">
-            <div className="max-w-6xl mx-auto px-5 sm:px-6 py-20 md:py-28 lg:py-32">
-                <p className="text-sm font-medium text-[#0f3d68] mb-5">
-                    Website development company · E-commerce · SEO
-                </p>
-                <h1 className="max-w-3xl text-4xl md:text-5xl lg:text-[3.25rem] font-semibold tracking-tight text-slate-900 leading-[1.15] mb-6">
-                    Website development for businesses that need customers — not demos
-                </h1>
-                <p className="max-w-2xl text-lg text-slate-600 leading-relaxed mb-10">
-                    SmartSoft Solutions builds marketing websites, e-commerce stores, and web apps with Next.js and React.
-                    You get SEO-ready pages, a fixed quote, clear timeline, and a live launch.
-                </p>
-                <div className="flex flex-wrap items-center gap-3 mb-12">
-                    <Link
-                        href="/contact"
-                        className="inline-flex px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium transition-colors"
-                    >
-                        Get a project quote
-                    </Link>
-                    <Link
-                        href="/services"
-                        className="inline-flex px-5 py-2.5 rounded-md border border-slate-200 hover:border-slate-300 text-slate-700 text-sm font-medium transition-colors"
-                    >
-                        Explore services
-                    </Link>
-                </div>
-                <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-slate-500">
-                    <span>Business websites</span>
-                    <span>E-commerce stores</span>
-                    <span>SEO & digital marketing</span>
-                    <span>Remote delivery worldwide</span>
-                </div>
-            </div>
-        </section>
-    );
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const play = async () => {
+      try {
+        await video.play();
+      } catch {
+        // Autoplay can fail on some browsers; poster image remains.
+      }
+    };
+    play();
+  }, []);
+
+  return (
+    <section className="relative min-h-[88vh] md:min-h-[92vh] overflow-hidden bg-[#081220] text-white">
+      <div className="absolute inset-0">
+        <video
+          ref={videoRef}
+          className="h-full w-full object-cover animate-slow-zoom"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={HERO_POSTER}
+          aria-hidden="true"
+        >
+          <source src={HERO_VIDEO} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 hero-scrim" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-20 pb-16 md:pt-28 md:pb-24 flex min-h-[88vh] md:min-h-[92vh] items-end md:items-center">
+        <div className="max-w-3xl">
+          <div className="animate-fade-up flex items-center gap-3 mb-7">
+            <Image
+              src={brandMark}
+              alt=""
+              width={48}
+              height={48}
+              priority
+              className="object-contain drop-shadow-sm"
+            />
+            <p className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-white">
+              SmartSoft Solutions
+            </p>
+          </div>
+
+          <h1
+            className="animate-fade-up font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.15rem] font-semibold tracking-tight leading-[1.08] mb-6"
+            style={{ animationDelay: "0.12s" }}
+          >
+            Websites and stores built to win customers
+          </h1>
+
+          <p
+            className="animate-fade-up max-w-xl text-base md:text-lg text-slate-200/90 leading-relaxed mb-9"
+            style={{ animationDelay: "0.24s" }}
+          >
+            Business websites, e-commerce, and web apps with Next.js & React — fixed quotes, SEO-ready structure, and a live launch.
+          </p>
+
+          <div
+            className="animate-fade-up flex flex-wrap items-center gap-3"
+            style={{ animationDelay: "0.36s" }}
+          >
+            <Link
+              href="/contact"
+              className="inline-flex px-6 py-3 rounded-md bg-white text-[#0f3d68] text-sm font-semibold hover:bg-slate-100 transition-colors"
+            >
+              Get a project quote
+            </Link>
+            <Link
+              href="/projects"
+              className="inline-flex px-6 py-3 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition-colors"
+            >
+              See selected work
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

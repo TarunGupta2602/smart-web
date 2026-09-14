@@ -64,10 +64,10 @@ export default function ServicesPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: stringifySchema([serviceListSchema, webPageSchema, breadcrumbSchema]) }}
             />
-            <Breadcrumb items={breadcrumbItems} className="max-w-6xl mx-auto px-5 sm:px-6 pt-4" />
+            <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-4" />
 
             <section className="border-b border-slate-100">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6 py-14 md:py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-20">
                     <p className="text-sm font-medium text-[#0f3d68] mb-4">Services</p>
                     <h1 className="max-w-2xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
                         Website development, e-commerce, and growth services
@@ -79,7 +79,7 @@ export default function ServicesPage() {
             </section>
 
             <section className="py-14 md:py-20">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-12">
                         {services.map((service) => (
                             <Link
@@ -104,7 +104,7 @@ export default function ServicesPage() {
             <IndiaCitiesSection />
 
             <section className="border-t border-slate-100 py-14">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                     <div>
                         <h2 className="text-xl font-semibold text-slate-900 mb-2">Need a clear quote?</h2>
                         <p className="text-sm text-slate-600">Tell us what you need — we reply with scope and price before any build starts.</p>

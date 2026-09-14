@@ -1,12 +1,18 @@
-import { IBM_Plex_Sans } from "next/font/google";
+import { Syne, Figtree } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import { organization, webSite, stringifySchema } from "@/lib/schema";
 import { CORE_KEYWORDS, SITE_URL } from "@/lib/seo";
 
-const companySans = IBM_Plex_Sans({
-  variable: "--font-company-sans",
+const display = Syne({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+});
+
+const body = Figtree({
+  variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -98,7 +104,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </head>
       <body
-        className={`${companySans.variable} antialiased text-slate-900 bg-white font-sans`}
+        className={`${display.variable} ${body.variable} antialiased text-slate-900 bg-white font-sans`}
       >
         <noscript>
           <iframe

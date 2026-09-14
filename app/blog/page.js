@@ -79,7 +79,7 @@ export default async function BlogPage(props) {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }} />
 
             <section className="border-b border-slate-100">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6 py-14 md:py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-20">
                     <Breadcrumb items={breadcrumbItems} className="mb-6" />
                     <p className="text-sm font-medium text-[#0f3d68] mb-4">Blog</p>
                     <h1 className="max-w-2xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
@@ -91,7 +91,7 @@ export default async function BlogPage(props) {
                 </div>
             </section>
 
-            <main className="max-w-6xl mx-auto px-5 sm:px-6 py-14">
+            <main className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14">
                 <div className="flex flex-wrap gap-2 mb-10">
                     {["All posts", "Websites", "E-commerce", "SEO", "Web apps", "Marketing"].map((tag) => (
                         <span

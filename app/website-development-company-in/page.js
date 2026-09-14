@@ -47,10 +47,10 @@ export default function IndiaCitiesHubPage() {
           __html: stringifySchema([pageSchema, breadcrumbSchema, faqPage(faqs)]),
         }}
       />
-      <Breadcrumb items={breadcrumbItems} className="max-w-6xl mx-auto px-5 sm:px-6 pt-4" />
+      <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-4" />
 
       <section className="border-b border-slate-100">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 py-14 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-20">
           <p className="text-sm font-medium text-[#0f3d68] mb-4">India · Local SEO pages</p>
           <h1 className="max-w-3xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
             Website development company for major Indian cities
@@ -70,7 +70,7 @@ export default function IndiaCitiesHubPage() {
       </section>
 
       <section className="py-14 md:py-20">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-8">
             Choose your city
           </h2>
@@ -95,7 +95,7 @@ export default function IndiaCitiesHubPage() {
       </section>
 
       <section className="py-14 bg-slate-50 border-y border-slate-100">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
           <h2 className="text-2xl font-semibold text-slate-900 mb-8">Frequently asked questions</h2>
           <div className="divide-y divide-slate-200 border-t border-slate-200">
             {faqs.map((faq) => (

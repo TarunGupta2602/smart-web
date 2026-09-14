@@ -13,7 +13,7 @@ export default function ProjectsContent({ projects }) {
     return (
         <div className="bg-white text-slate-900">
             <section className="border-b border-slate-100">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6 py-16 md:py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-16 md:py-20">
                     <p className="text-sm font-medium text-[#0f3d68] mb-4">Selected work</p>
                     <h1 className="max-w-2xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
                         Projects we have shipped for real businesses
@@ -25,7 +25,7 @@ export default function ProjectsContent({ projects }) {
             </section>
 
             <section className="border-b border-slate-100">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex flex-wrap gap-2">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-4 flex flex-wrap gap-2">
                     {categories.map((cat) => (
                         <button
                             key={cat}
@@ -44,7 +44,7 @@ export default function ProjectsContent({ projects }) {
             </section>
 
             <section className="py-14 md:py-20">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6 space-y-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 space-y-12">
                     {filteredProjects.map((p) => (
                         <article key={p.title} className="border-t border-slate-200 pt-8 grid grid-cols-1 lg:grid-cols-12 gap-6">
                             <div className="lg:col-span-4">
@@ -67,7 +67,7 @@ export default function ProjectsContent({ projects }) {
             </section>
 
             <section className="border-t border-slate-100 py-14">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                     <div>
                         <h2 className="text-xl font-semibold text-slate-900 mb-2">Want similar results for your business?</h2>
                         <p className="text-sm text-slate-600">Tell us about your project and we will send a fixed quote.</p>

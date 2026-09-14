@@ -97,10 +97,10 @@ export default async function CityWebsitePage({ params }) {
           ]),
         }}
       />
-      <Breadcrumb items={breadcrumbItems} className="max-w-6xl mx-auto px-5 sm:px-6 pt-4" />
+      <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-4" />
 
       <section className="border-b border-slate-100">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 py-14 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-20">
           <p className="text-sm font-medium text-[#0f3d68] mb-4">
             {city.name} · {city.region}
           </p>
@@ -131,7 +131,7 @@ export default async function CityWebsitePage({ params }) {
       </section>
 
       <section className="py-14 md:py-20">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-3">
             What we build for {city.name} businesses
           </h2>
@@ -150,7 +150,7 @@ export default async function CityWebsitePage({ params }) {
       </section>
 
       <section className="py-14 bg-slate-50 border-y border-slate-100">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <h2 className="text-2xl font-semibold text-slate-900 mb-4">
               Services for {city.name}
@@ -205,7 +205,7 @@ export default async function CityWebsitePage({ params }) {
       </section>
 
       <section className="py-14 md:py-20">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
           <h2 className="text-2xl font-semibold text-slate-900 mb-8">
             Frequently asked questions — {city.name}
           </h2>
@@ -221,7 +221,7 @@ export default async function CityWebsitePage({ params }) {
       </section>
 
       <section className="py-14 border-t border-slate-100">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
           <h2 className="text-xl font-semibold text-slate-900 mb-6">
             Website development in other Indian cities
           </h2>
@@ -246,7 +246,7 @@ export default async function CityWebsitePage({ params }) {
       </section>
 
       <section className="border-t border-slate-100 py-14">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
             <h2 className="text-xl font-semibold text-slate-900 mb-2">
               Ready for a website quote in {city.name}?

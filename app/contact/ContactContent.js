@@ -73,7 +73,7 @@ export default function ContactContent() {
     return (
         <div className="bg-white text-slate-900">
             <section className="border-b border-slate-100">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6 py-16 md:py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-16 md:py-20">
                     <p className="text-sm font-medium text-[#0f3d68] mb-4">Contact</p>
                     <h1 className="max-w-2xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
                         Tell us what you need. We’ll send a clear quote.
@@ -85,7 +85,7 @@ export default function ContactContent() {
             </section>
 
             <section className="py-14 md:py-20">
-                <div className="max-w-6xl mx-auto px-5 sm:px-6">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
                         <div className="lg:col-span-4 space-y-8">
                             <div>

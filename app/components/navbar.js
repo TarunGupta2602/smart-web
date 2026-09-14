@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import brandMark from "../icon.png";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,25 +25,31 @@ export default function Navbar() {
         { name: "Blog", href: "/blog" },
     ];
 
+    const isHome = pathname === "/";
+    const onHero = isHome && !scrolled;
+
     return (
         <>
             <nav
-                className={`fixed w-full z-50 transition-all duration-200 ${
-                    scrolled
-                        ? "bg-white/95 backdrop-blur-sm border-b border-slate-200 py-3"
-                        : "bg-white border-b border-transparent py-4"
+                className={`fixed w-full z-50 transition-all duration-300 ${
+                    onHero
+                        ? "bg-transparent border-b border-transparent py-4"
+                        : scrolled
+                          ? "bg-white/95 backdrop-blur-sm border-b border-slate-200 py-3"
+                          : "bg-white border-b border-transparent py-4"
                 }`}
             >
-                <div className="max-w-6xl mx-auto px-5 sm:px-6 flex justify-between items-center">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex justify-between items-center">
                     <Link href="/" className="flex items-center gap-2.5 shrink-0">
                         <Image
-                            src="/favicon.ico"
+                            src={brandMark}
                             alt="SmartSoft Solutions"
-                            width={32}
-                            height={32}
+                            width={40}
+                            height={40}
+                            priority
                             className="object-contain"
                         />
-                        <span className="text-[15px] font-semibold tracking-tight text-slate-900">
+                        <span className={`font-display text-[15px] font-semibold tracking-tight ${onHero ? "text-white" : "text-slate-900"}`}>
                             SmartSoft Solutions
                         </span>
                     </Link>
@@ -55,9 +62,13 @@ export default function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     className={`text-sm transition-colors ${
-                                        isActive
-                                            ? "text-slate-900 font-medium"
-                                            : "text-slate-500 hover:text-slate-900"
+                                        onHero
+                                            ? isActive
+                                                ? "text-white font-medium"
+                                                : "text-white/75 hover:text-white"
+                                            : isActive
+                                              ? "text-slate-900 font-medium"
+                                              : "text-slate-500 hover:text-slate-900"
                                     }`}
                                 >
                                     {link.name}
@@ -69,13 +80,17 @@ export default function Navbar() {
                     <div className="hidden lg:flex items-center gap-5">
                         <a
                             href="tel:17077084062"
-                            className="text-sm text-slate-500 hover:text-slate-900 transition-colors"
+                            className={`text-sm transition-colors ${onHero ? "text-white/80 hover:text-white" : "text-slate-500 hover:text-slate-900"}`}
                         >
                             +1 707 708 4062
                         </a>
                         <Link
                             href="/contact"
-                            className="px-4 py-2 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium transition-colors"
+                            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                                onHero
+                                    ? "bg-white text-[#0f3d68] hover:bg-slate-100"
+                                    : "bg-[#0f3d68] hover:bg-[#0a2f52] text-white"
+                            }`}
                         >
                             Get a quote
                         </Link>
@@ -86,9 +101,9 @@ export default function Navbar() {
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Toggle menu"
                     >
-                        <span className={`h-0.5 w-5 bg-slate-900 rounded-full transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
-                        <span className={`h-0.5 w-5 bg-slate-900 rounded-full transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
-                        <span className={`h-0.5 w-5 bg-slate-900 rounded-full transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+                        <span className={`h-0.5 w-5 rounded-full transition-all duration-300 ${onHero ? "bg-white" : "bg-slate-900"} ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+                        <span className={`h-0.5 w-5 rounded-full transition-all duration-300 ${onHero ? "bg-white" : "bg-slate-900"} ${isOpen ? "opacity-0" : ""}`} />
+                        <span className={`h-0.5 w-5 rounded-full transition-all duration-300 ${onHero ? "bg-white" : "bg-slate-900"} ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
                     </button>
                 </div>
             </nav>
@@ -145,7 +160,7 @@ export default function Navbar() {
                 </div>
             </div>
 
-            <div className="h-[65px] lg:h-[69px]" />
+            <div className={`${pathname === "/" ? "h-0" : "h-[65px] lg:h-[69px]"}`} />
         </>
     );
 }

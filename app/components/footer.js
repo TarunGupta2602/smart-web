@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { INDIA_CITIES, cityPath } from "@/lib/india-cities";
+import brandMark from "../icon.png";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -8,18 +9,18 @@ export default function Footer() {
 
     return (
         <footer className="bg-white border-t border-slate-200 pt-16 pb-10">
-            <div className="max-w-6xl mx-auto px-5 sm:px-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-14">
                     <div className="lg:col-span-4 space-y-5">
                         <Link href="/" className="inline-flex items-center gap-2.5">
                             <Image
-                                src="/favicon.ico"
+                                src={brandMark}
                                 alt="SmartSoft Solutions"
-                                width={32}
-                                height={32}
+                                width={40}
+                                height={40}
                                 className="object-contain"
                             />
-                            <span className="text-[15px] font-semibold tracking-tight text-slate-900">
+                            <span className="font-display text-[15px] font-semibold tracking-tight text-slate-900">
                                 SmartSoft Solutions
                             </span>
                         </Link>

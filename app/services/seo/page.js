@@ -75,10 +75,10 @@ export default function SeoServicePage() {
           __html: stringifySchema([pageSchema, serviceSchema, breadcrumbSchema, faqPage(faqs)]),
         }}
       />
-      <Breadcrumb items={breadcrumbItems} className="max-w-6xl mx-auto px-5 sm:px-6 pt-4" />
+      <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-4" />
 
       <section className="border-b border-slate-100">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 py-14 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-20">
           <p className="text-sm font-medium text-[#0f3d68] mb-4">On-page SEO · Technical SEO · Local SEO</p>
           <h1 className="max-w-3xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
             SEO services that help your business rank on Google
@@ -94,7 +94,7 @@ export default function SeoServicePage() {
       </section>
 
       <section className="py-14 md:py-20">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-8">On-page and off-page SEO coverage</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="border-t border-slate-200 pt-5">
@@ -126,7 +126,7 @@ export default function SeoServicePage() {
       </section>
 
       <section className="py-14 bg-slate-50 border-y border-slate-100">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
           <h2 className="text-2xl font-semibold text-slate-900 mb-4">Pair SEO with a site built to rank</h2>
           <p className="text-sm text-slate-600 mb-6 max-w-2xl">
             If your current website is slow or hard to crawl, SEO alone will struggle. See our{" "}
@@ -148,7 +148,7 @@ export default function SeoServicePage() {
       />
 
       <section className="py-14 md:py-20">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
           <h2 className="text-2xl font-semibold text-slate-900 mb-8">Frequently asked questions</h2>
           <div className="divide-y divide-slate-200 border-t border-slate-200">
             {faqs.map((faq) => (
@@ -162,7 +162,7 @@ export default function SeoServicePage() {
       </section>
 
       <section className="border-t border-slate-100 py-14">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
             <h2 className="text-xl font-semibold text-slate-900 mb-2">Want a ranking-focused SEO plan?</h2>
             <p className="text-sm text-slate-600">Share your site and target keywords — we reply with scope and a clear quote.</p>
