@@ -1,14 +1,21 @@
 import Link from "next/link";
 import Breadcrumb from "../components/Breadcrumb";
 import { localBusiness, webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
+import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 
-const SITE_URL = 'https://www.smartsoftsolutions.org';
-
-export const metadata = {
-    title: "Website, E-commerce & Digital Services",
-    description: "Business websites, e-commerce stores, web apps, digital marketing, and SEO from SmartSoft Solutions.",
-    alternates: { canonical: `${SITE_URL}/services` },
-};
+export const metadata = buildPageMetadata({
+    title: "Website Development, E-commerce, SEO & Marketing Services",
+    description:
+        "Explore SmartSoft Solutions services: business website development, e-commerce stores, web apps, SEO, and digital marketing — fixed quotes and live launches.",
+    path: "/services",
+    keywords: [
+        "website development services",
+        "e-commerce development services",
+        "SEO services company",
+        "digital marketing services",
+        "web app development services",
+    ],
+});
 
 const services = [
     {

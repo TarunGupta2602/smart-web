@@ -1,152 +1,166 @@
 import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
-import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
+import { webPage, breadcrumbList, service, faqPage, stringifySchema } from "@/lib/schema";
+import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 
-const SITE_URL = 'https://www.smartsoftsolutions.org';
+export const metadata = buildPageMetadata({
+  title: "SEO Services | On-Page & Technical Search Optimization",
+  description:
+    "SEO services for businesses that need higher Google rankings. Technical SEO, on-page optimization, keyword strategy, and local visibility — paired with website development that is built to rank.",
+  path: "/services/seo",
+  keywords: [
+    "SEO services",
+    "on-page SEO",
+    "technical SEO",
+    "search engine optimization company",
+    "local SEO services",
+    "SEO agency for small business",
+    "improve Google rankings",
+  ],
+});
 
-export const metadata = {
-    title: "SEO Services | Search Engine Optimization | SmartSoft Solutions",
-    description: "SEO services that improve rankings, organic traffic, and local visibility. Technical SEO, on-page optimization, and content strategy for USA & Canada businesses.",
-    keywords: [
-        "SEO services", "search engine optimization", "local SEO",
-        "technical SEO audit", "keyword research", "organic traffic growth USA Canada"
-    ],
-    alternates: {
-        canonical: `${SITE_URL}/services/seo`,
-    },
-    openGraph: {
-        title: "SEO Services | SmartSoft Solutions",
-        description: "Search engine optimization focused on rankings, organic traffic, and sustainable visibility for your business.",
-        url: `${SITE_URL}/services/seo`,
-        type: 'website',
-        images: [{ url: '/og-image.jpg', width: 1200, height: 630 }]
-    },
-    other: {
-        category: 'SEO',
-        classification: 'Technology',
-    },
-};
+const faqs = [
+  {
+    question: "What is included in your SEO services?",
+    answer:
+      "Technical audits, keyword research, on-page optimization, content guidance, and performance reporting focused on rankings and qualified organic traffic.",
+  },
+  {
+    question: "Do you fix on-page SEO on existing websites?",
+    answer:
+      "Yes. We improve titles, headings, internal links, page speed issues, crawlability, and content structure on sites you already have — or rebuild when needed.",
+  },
+  {
+    question: "How is SEO different from website development?",
+    answer:
+      "Development launches the product. SEO helps people find it on Google. SmartSoft Solutions can deliver both so your site is fast, clear, and search-ready from day one.",
+  },
+];
 
 export default function SeoServicePage() {
-    const pageSchema = webPage({
-        name: 'SEO Services',
-        description: 'Technical, on-page, and local search engine optimization for USA and Canada small businesses.',
-        url: `${SITE_URL}/services/seo`,
-    });
+  const pageSchema = webPage({
+    name: "SEO Services",
+    description: "On-page, technical, and local SEO services to improve Google rankings and organic traffic.",
+    url: `${SITE_URL}/services/seo`,
+  });
+  const serviceSchema = service({
+    name: "SEO Services",
+    description: "Technical SEO, on-page optimization, and keyword strategy for sustainable organic growth.",
+    url: "/services/seo",
+    serviceType: "Search Engine Optimization",
+    areaServed: "Worldwide",
+  });
+  const breadcrumbSchema = breadcrumbList([
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Services", url: `${SITE_URL}/services` },
+    { name: "SEO", url: `${SITE_URL}/services/seo` },
+  ], SITE_URL);
+  const breadcrumbItems = [
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services" },
+    { name: "SEO", url: "/services/seo" },
+  ];
 
-    const breadcrumbSchema = breadcrumbList([
-        { name: 'Home', url: `${SITE_URL}/` },
-        { name: 'Services', url: `${SITE_URL}/services` },
-        { name: 'SEO', url: `${SITE_URL}/services/seo` }
-    ], SITE_URL);
+  return (
+    <div className="bg-white text-slate-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: stringifySchema([pageSchema, serviceSchema, breadcrumbSchema, faqPage(faqs)]),
+        }}
+      />
+      <Breadcrumb items={breadcrumbItems} className="max-w-6xl mx-auto px-5 sm:px-6 pt-4" />
 
-    const breadcrumbItems = [
-        { name: 'Home', url: '/' },
-        { name: 'Services', url: '/services' },
-        { name: 'SEO', url: '/services/seo' }
-    ];
-
-    return (
-        <div className="min-h-screen bg-white text-slate-900 selection:bg-yellow-500 selection:text-black">
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: stringifySchema([pageSchema, breadcrumbSchema]) }}
-            />
-            <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-6 pt-4 pb-2" />
-
-            <section className="relative min-h-[40vh] flex items-center bg-slate-950 text-white overflow-hidden py-16">
-                <div className="absolute inset-0 z-0">
-                    <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-yellow-500/10 rounded-full blur-[100px] animate-pulse"></div>
-                </div>
-                <div className="container mx-auto px-6 relative z-10 w-full">
-                    <div className="max-w-4xl mx-auto text-center lg:text-left">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-8 self-center lg:self-start">
-                            <span className="text-[10px] uppercase tracking-[0.2em] font-black text-yellow-400">Technology Services</span>
-                        </div>
-                        <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-6">
-                            SEARCH ENGINE <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif">OPTIMIZATION.</span>
-                        </h1>
-                        <p className="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed">
-                            Get found when customers search. We improve technical health, on-page relevance, and local presence so your site ranks for the terms that matter.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section className="py-24 bg-white">
-                <div className="container mx-auto px-6 max-w-6xl">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div className="space-y-8">
-                            <h2 className="text-3xl md:text-4xl font-black uppercase text-slate-900 tracking-tight">
-                                RANK HIGHER, <br />
-                                <span className="text-yellow-500 italic font-serif">GET FOUND.</span>
-                            </h2>
-                            <p className="text-slate-600 leading-relaxed text-sm font-medium">
-                                Our SEO work combines keyword strategy, technical fixes, content structure, and local optimization — so organic traffic grows steadily and sustainably.
-                            </p>
-                            <ul className="space-y-4 font-bold text-xs uppercase tracking-widest text-slate-700">
-                                <li className="flex items-center gap-3">
-                                    <span className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">✓</span>
-                                    Technical SEO Audits & Site Health Fixes
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">✓</span>
-                                    Keyword Research & On-Page Optimization
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">✓</span>
-                                    Local SEO & Google Business Profile Support
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">✓</span>
-                                    Content Strategy & Performance Reporting
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className="p-8 rounded-[2.5rem] bg-slate-950 text-white border border-slate-800 shadow-2xl relative">
-                            <div className="border-b border-white/10 pb-4 mb-6 flex justify-between items-center">
-                                <div>
-                                    <h4 className="text-xs uppercase text-slate-400 font-bold">SEO Health Panel</h4>
-                                    <p className="text-[10px] text-yellow-500 font-serif italic">Visibility & indexing status</p>
-                                </div>
-                                <span className="bg-green-500/25 border border-green-500 text-green-400 px-3 py-1 rounded-full text-[9px] font-bold uppercase">Improving</span>
-                            </div>
-                            <div className="space-y-3 mb-6">
-                                <div className="flex justify-between text-xs">
-                                    <span className="text-slate-400">Indexable Pages:</span>
-                                    <span className="text-green-400 font-bold">Optimized</span>
-                                </div>
-                                <div className="flex justify-between text-xs">
-                                    <span className="text-slate-400">Core Web Vitals:</span>
-                                    <span className="text-yellow-400 font-bold">Monitored</span>
-                                </div>
-                                <div className="flex justify-between text-xs border-t border-white/5 pt-3">
-                                    <span className="text-white font-bold">Target Keywords:</span>
-                                    <span className="text-yellow-400 font-black">Tracked</span>
-                                </div>
-                            </div>
-                            <div className="p-3 bg-white/5 rounded-xl border border-white/10 text-[10px] text-slate-400">
-                                Insight: Clean structure, relevant content, and fast pages help search engines trust and rank your site.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="py-20 bg-slate-50 border-t border-slate-100 text-center">
-                <div className="container mx-auto px-6 max-w-4xl">
-                    <h3 className="text-xs font-black uppercase tracking-[0.2em] mb-4 text-slate-450">Want more organic traffic?</h3>
-                    <h2 className="text-3xl font-black uppercase text-slate-900 mb-6">GET AN SEO REVIEW</h2>
-                    <p className="text-slate-600 text-sm max-w-xl mx-auto mb-10 font-medium">
-                        We&apos;ll review your site&apos;s search readiness and share priority fixes that move rankings and traffic.
-                    </p>
-                    <Link href="/contact?service=SEO" className="px-10 py-4 bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-black uppercase tracking-widest text-xs rounded-full shadow-lg transition-all">
-                        Request Free Consultation
-                    </Link>
-                </div>
-            </section>
+      <section className="border-b border-slate-100">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6 py-14 md:py-20">
+          <p className="text-sm font-medium text-[#0f3d68] mb-4">On-page SEO · Technical SEO · Local SEO</p>
+          <h1 className="max-w-3xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
+            SEO services that help your business rank on Google
+          </h1>
+          <p className="max-w-2xl text-base text-slate-600 leading-relaxed mb-8">
+            Get found when customers search. We improve technical health, on-page relevance, and content strategy so your
+            website ranks for the terms that bring enquiries and sales.
+          </p>
+          <Link href="/contact?service=SEO" className="inline-flex px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium">
+            Request an SEO quote
+          </Link>
         </div>
-    );
+      </section>
+
+      <section className="py-14 md:py-20">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-8">On-page and off-page SEO coverage</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="border-t border-slate-200 pt-5">
+              <h3 className="text-lg font-semibold text-slate-900 mb-3">On-page SEO</h3>
+              <ul className="space-y-2 text-sm text-slate-600">
+                <li>– Title tags, meta descriptions, and heading structure</li>
+                <li>– Keyword mapping to service and location pages</li>
+                <li>– Internal linking and crawlable navigation</li>
+                <li>– Content clarity for search intent and conversions</li>
+                <li>– Image alt text and page experience improvements</li>
+              </ul>
+            </div>
+            <div className="border-t border-slate-200 pt-5">
+              <h3 className="text-lg font-semibold text-slate-900 mb-3">Technical & growth SEO</h3>
+              <ul className="space-y-2 text-sm text-slate-600">
+                <li>– Site audits, indexation, and Core Web Vitals</li>
+                <li>– Sitemap, robots, and schema markup guidance</li>
+                <li>– Local SEO signals and Google Business alignment</li>
+                <li>– Content plans that support ranking topics</li>
+                <li>– Reporting on rankings, clicks, and opportunities</li>
+              </ul>
+            </div>
+          </div>
+          <p className="mt-8 text-sm text-slate-600 max-w-3xl">
+            Off-page SEO (backlinks, citations, partnerships) works best when your on-page foundation is solid.
+            We help you prioritize what to improve first, then support growth content and outreach direction.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-14 bg-slate-50 border-y border-slate-100">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+          <h2 className="text-2xl font-semibold text-slate-900 mb-4">Pair SEO with a site built to rank</h2>
+          <p className="text-sm text-slate-600 mb-6 max-w-2xl">
+            If your current website is slow or hard to crawl, SEO alone will struggle. See our{" "}
+            <Link href="/services/website-designing" className="text-[#0f3d68] hover:underline font-medium">
+              website development service
+            </Link>{" "}
+            or{" "}
+            <Link href="/services/digital-marketing" className="text-[#0f3d68] hover:underline font-medium">
+              digital marketing
+            </Link>{" "}
+            for paid demand while organic grows.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-14 md:py-20">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+          <h2 className="text-2xl font-semibold text-slate-900 mb-8">Frequently asked questions</h2>
+          <div className="divide-y divide-slate-200 border-t border-slate-200">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="py-5">
+                <h3 className="text-base font-medium text-slate-900 mb-2">{faq.question}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed max-w-3xl">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-slate-100 py-14">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <h2 className="text-xl font-semibold text-slate-900 mb-2">Want a ranking-focused SEO plan?</h2>
+            <p className="text-sm text-slate-600">Share your site and target keywords — we reply with scope and a clear quote.</p>
+          </div>
+          <Link href="/contact?service=SEO" className="inline-flex self-start px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium">
+            Get an SEO quote
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
 }

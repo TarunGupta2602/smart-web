@@ -1,37 +1,11 @@
 "use client";
 
 import { useState } from "react";
-
-const faqs = [
-    {
-        question: "How much does a website or web app cost?",
-        answer:
-            "It depends on scope. A focused business site, an e-commerce store, and a custom web app are priced differently. Share your goals and budget range — we reply with a fixed quote before any build starts.",
-    },
-    {
-        question: "What kinds of projects do you take?",
-        answer:
-            "Business and marketing websites, e-commerce stores, and web apps or dashboards built with Next.js, React, Firebase, or Supabase — including redesigns when the goal is a live product.",
-    },
-    {
-        question: "How long does a typical project take?",
-        answer:
-            "Many marketing sites ship in a few weeks. Stores and apps take longer based on features. Timeline is written into the quote so you know launch timing before we start.",
-    },
-    {
-        question: "Do you work with clients outside Canada and India?",
-        answer:
-            "Yes. We work remotely via WhatsApp, email, and video calls — including USA and other time zones when needed.",
-    },
-    {
-        question: "What do we get when the project is done?",
-        answer:
-            "A production deploy, a maintainable codebase, and handoff notes so you can run the site or app. Deliverables are listed in the quote up front.",
-    },
-];
+import { HOME_FAQS } from "@/lib/seo";
 
 export default function FAQSection() {
     const [openIndex, setOpenIndex] = useState(0);
+    const faqs = HOME_FAQS;
 
     return (
         <section className="bg-slate-50 border-y border-slate-100 py-20 md:py-28">
@@ -40,10 +14,10 @@ export default function FAQSection() {
                     <div className="lg:col-span-4">
                         <p className="text-sm font-medium text-[#0f3d68] mb-3">FAQ</p>
                         <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-4">
-                            Straight answers before you hire
+                            Straight answers before you hire a website development company
                         </h2>
                         <p className="text-sm text-slate-600 leading-relaxed">
-                            Pricing, timelines, and deliverables — without the sales fluff.
+                            Pricing, timelines, and deliverables for websites, e-commerce, and web apps.
                         </p>
                     </div>
 

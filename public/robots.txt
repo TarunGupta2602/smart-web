@@ -2,10 +2,10 @@
 User-agent: *
 Allow: /
 
-# Disallow specific paths (if any exist)
 Disallow: /api/
 Disallow: /private/
 Disallow: /blog-uploads
+Disallow: /blog-uploads/
 
-# Sitemap location
 Sitemap: https://www.smartsoftsolutions.org/sitemap.xml
+Host: https://www.smartsoftsolutions.org

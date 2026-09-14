@@ -1,35 +1,20 @@
 import ContactContent from "./ContactContent";
 import Breadcrumb from "../components/Breadcrumb";
 import { organization, breadcrumbList, stringifySchema } from "@/lib/schema";
+import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 
-const SITE_URL = 'https://www.smartsoftsolutions.org';
-
-export const metadata = {
-    title: "Get a Project Quote | Contact SmartSoft Solutions",
-    description: "Request a quote for a business website, e-commerce store, or web app. SmartSoft Solutions replies with scope, timeline, and a clear price.",
-    keywords: ["website quote", "e-commerce development quote", "hire web development company", "contact SmartSoft Solutions"],
-    alternates: {
-        canonical: `${SITE_URL}/contact`,
-    },
-    openGraph: {
-        title: "Get a Project Quote | SmartSoft Solutions",
-        description: "Share your brief — we reply with scope and a fixed quote for websites, stores, and web apps.",
-        url: `${SITE_URL}/contact`,
-        type: 'website',
-        siteName: 'SmartSoft Solutions',
-        locale: 'en_US',
-        images: [
-            { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions' }
-        ],
-    },
-    twitter: {
-        card: 'summary_large_image',
-        site: '@SmartSoftSolutions',
-        title: 'Get a Project Quote | SmartSoft Solutions',
-        description: 'Share your brief — we reply with scope and a fixed quote.',
-        images: ['/og-image.jpg']
-    },
-};
+export const metadata = buildPageMetadata({
+    title: "Contact | Get a Website Development Quote",
+    description:
+        "Contact SmartSoft Solutions for a website, e-commerce, or web app quote. Call +1 707 708 4062 or send a brief — fixed pricing before any build starts.",
+    path: "/contact",
+    keywords: [
+        "hire website developer",
+        "website development quote",
+        "contact web development company",
+        "e-commerce development quote",
+    ],
+});
 
 export default function ContactPage() {
     const contactSchema = organization({

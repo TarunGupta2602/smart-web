@@ -1,34 +1,20 @@
 import AboutContent from "./AboutContent";
 import Breadcrumb from "../components/Breadcrumb";
 import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
+import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 
-const SITE_URL = 'https://www.smartsoftsolutions.org';
-
-export const metadata = {
-    title: "About Us | Website & Digital Product Team",
-    description: "SmartSoft Solutions builds business websites, e-commerce stores, and web apps with Next.js and React. Meet the company behind live launches for growing brands.",
-    keywords: ["about SmartSoft Solutions", "web development company", "Next.js agency", "e-commerce developers"],
-    alternates: {
-        canonical: `${SITE_URL}/about`,
-    },
-    openGraph: {
-        title: "About SmartSoft Solutions",
-        description: "We build websites and web apps that help businesses get customers.",
-        url: `${SITE_URL}/about`,
-        type: 'website',
-        siteName: 'SmartSoft Solutions',
-        locale: 'en_US',
-        images: [
-            { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions' },
-        ],
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: "About SmartSoft Solutions",
-        description: "We build websites and web apps that help businesses get customers.",
-        images: ['/og-image.jpg'],
-    },
-};
+export const metadata = buildPageMetadata({
+    title: "About SmartSoft Solutions | Website Development Company",
+    description:
+        "About SmartSoft Solutions — a website development company building business websites, e-commerce stores, and web apps with Next.js and React for clients worldwide.",
+    path: "/about",
+    keywords: [
+        "about SmartSoft Solutions",
+        "website development company",
+        "Next.js development team",
+        "e-commerce developers",
+    ],
+});
 
 export default function AboutPage() {
     const expertiseItems = [

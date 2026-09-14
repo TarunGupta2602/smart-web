@@ -4,42 +4,43 @@ import PricingIndustriesSection from "./components/pricing-industries-section";
 import ClientsSection from "./components/clients-section";
 import FAQSection from "./components/faq-section";
 import TestimonialsSection from "./components/testimonials-section";
-import { breadcrumbList, stringifySchema } from "@/lib/schema";
+import { breadcrumbList, faqPage, localBusiness, stringifySchema } from "@/lib/schema";
+import { buildPageMetadata, HOME_FAQS, SITE_URL } from "@/lib/seo";
 
-export const metadata = {
-  title: "SmartSoft Solutions | Business Websites, E-commerce & Web Apps",
-  description: "SmartSoft Solutions builds marketing websites, e-commerce stores, and full-stack web apps with Next.js, React, Firebase, and Supabase. Clear quotes, live launches, remote delivery for USA, Canada, and beyond.",
+export const metadata = buildPageMetadata({
+  title: "Website Development Company | E-commerce & Web Apps",
+  description:
+    "SmartSoft Solutions is a website development company for business websites, e-commerce stores, and web apps. Next.js & React builds with fixed quotes, SEO-ready launches, and remote delivery for USA, Canada, and worldwide clients.",
+  path: "/",
   keywords: [
-    "website development company", "business website design", "e-commerce development",
-    "Next.js agency", "React web apps", "digital marketing", "SEO services",
-    "custom online store", "web development USA Canada", "hire web development company"
+    "website development company",
+    "business website design",
+    "e-commerce website development",
+    "Next.js development company",
+    "hire web developer",
+    "custom web app development",
+    "SEO friendly website development",
+    "online store development",
   ],
-  alternates: {
-    canonical: 'https://www.smartsoftsolutions.org',
-  },
-  openGraph: {
-    title: "SmartSoft Solutions | Websites, E-commerce & Web Apps",
-    description: "Paid builds for marketing sites, online stores, and web apps. You get a live product, not a demo.",
-    url: 'https://www.smartsoftsolutions.org',
-    images: [
-      { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions - Website Development' },
-    ],
-    type: 'website',
-    siteName: 'SmartSoft Solutions',
-    locale: 'en_US',
-  },
-};
+});
 
 export default function Homepage() {
-  const breadcrumbSchema = breadcrumbList([
-    { name: 'Home', url: 'https://www.smartsoftsolutions.org/' }
-  ]);
+  const schemas = [
+    breadcrumbList([{ name: "Home", url: `${SITE_URL}/` }]),
+    localBusiness({
+      name: "SmartSoft Solutions",
+      description:
+        "Website development company building business websites, e-commerce stores, and web apps with Next.js and React.",
+      url: SITE_URL,
+    }),
+    faqPage(HOME_FAQS),
+  ];
 
   return (
-    <main className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: stringifySchema(schemas) }}
       />
       <HeroSlider />
       <ServicesSection />
@@ -47,6 +48,6 @@ export default function Homepage() {
       <ClientsSection />
       <FAQSection />
       <TestimonialsSection />
-    </main>
+    </div>
   );
 }

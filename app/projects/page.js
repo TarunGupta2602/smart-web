@@ -1,35 +1,20 @@
 import ProjectsContent from "./ProjectsContent";
 import Breadcrumb from "../components/Breadcrumb";
 import { localBusiness, breadcrumbList, stringifySchema } from "@/lib/schema";
+import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 
-const SITE_URL = 'https://www.smartsoftsolutions.org';
-
-export const metadata = {
-    title: "Selected Work | Websites & E-commerce Projects",
-    description: "Real client projects from SmartSoft Solutions — e-commerce stores, lead-gen websites, and business sites built with Next.js and React.",
-    keywords: ["web development portfolio", "e-commerce case study", "Next.js projects", "business website examples"],
-    alternates: {
-        canonical: `${SITE_URL}/projects`,
-    },
-    openGraph: {
-        title: "Selected Work | SmartSoft Solutions",
-        description: "E-commerce, lead-gen, and business websites shipped for real clients.",
-        url: `${SITE_URL}/projects`,
-        type: 'website',
-        siteName: 'SmartSoft Solutions',
-        locale: 'en_US',
-        images: [
-            { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions' }
-        ],
-    },
-    twitter: {
-        card: 'summary_large_image',
-        site: '@SmartSoftSolutions',
-        title: 'Selected Work | SmartSoft Solutions',
-        description: 'E-commerce, lead-gen, and business websites shipped for real clients.',
-        images: ['/og-image.jpg']
-    },
-};
+export const metadata = buildPageMetadata({
+    title: "Website & E-commerce Portfolio | Selected Client Work",
+    description:
+        "Selected website development and e-commerce projects by SmartSoft Solutions — jewellery stores, lead-generation sites, and business websites built with Next.js and React.",
+    path: "/projects",
+    keywords: [
+        "web development portfolio",
+        "e-commerce website examples",
+        "Next.js projects",
+        "business website case studies",
+    ],
+});
 
 export default function ProjectsPage() {
     const projects = [
