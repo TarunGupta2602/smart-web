@@ -1,8 +1,12 @@
 import Link from "next/link";
-import Breadcrumb from "../components/Breadcrumb";
+import Image from "next/image";
 import IndiaCitiesSection from "../components/india-cities-section";
+import PageHero from "../components/page-hero";
+import PageCta from "../components/page-cta";
+import Reveal from "../components/reveal";
 import { localBusiness, webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
+import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export const metadata = buildPageMetadata({
     title: "Website Development, E-commerce, SEO & Marketing Services",
@@ -24,18 +28,21 @@ const services = [
         title: "Business websites & stores",
         tagline: "Marketing sites, e-commerce & web apps",
         description: "Mobile-ready websites and online stores that match your brand and turn visitors into leads or orders. Built with Next.js and React for production.",
+        image: PAGE_POSTERS.analytics,
     },
     {
         slug: "digital-marketing",
         title: "Digital marketing",
         tagline: "Campaigns that generate leads",
         description: "Social, paid ads, content, and email — tracked against leads and revenue, not vanity metrics.",
+        image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=1200&q=80",
     },
     {
         slug: "seo",
         title: "SEO",
         tagline: "Technical & on-page search work",
         description: "Audits, keyword strategy, and on-page optimization that improve rankings and lasting organic traffic.",
+        image: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=1200&q=80",
     },
 ];
 
@@ -64,59 +71,55 @@ export default function ServicesPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: stringifySchema([serviceListSchema, webPageSchema, breadcrumbSchema]) }}
             />
-            <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-4" />
 
-            <section className="border-b border-slate-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-20">
-                    <p className="text-sm font-medium text-[#0f3d68] mb-4">Services</p>
-                    <h1 className="max-w-2xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
-                        Website development, e-commerce, and growth services
-                    </h1>
-                    <p className="max-w-xl text-base text-slate-600 leading-relaxed">
-                        We build and grow business websites, online stores, and web apps — with digital marketing and SEO when you need more customers.
-                    </p>
-                </div>
-            </section>
+            <PageHero
+                eyebrow="Services"
+                title="Website development, e-commerce, and growth services"
+                description="We build and grow business websites, online stores, and web apps — with digital marketing and SEO when you need more customers."
+                videoSrc={PAGE_VIDEOS.typing}
+                posterSrc={PAGE_POSTERS.code}
+                primaryCta={{ href: "/contact", label: "Get a quote" }}
+                secondaryCta={{ href: "/pricing", label: "View pricing" }}
+                breadcrumbs={breadcrumbItems}
+            />
 
             <section className="py-14 md:py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-12">
-                        {services.map((service) => (
-                            <Link
-                                key={service.slug}
-                                href={`/services/${service.slug}`}
-                                className="border-t border-slate-200 pt-6 group"
-                            >
-                                <p className="text-xs text-slate-400 mb-2">{service.tagline}</p>
-                                <h2 className="text-lg font-semibold text-slate-900 mb-3 group-hover:text-[#0f3d68] transition-colors">
-                                    {service.title}
-                                </h2>
-                                <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                                    {service.description}
-                                </p>
-                                <span className="text-sm font-medium text-[#0f3d68]">Learn more</span>
-                            </Link>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+                        {services.map((service, index) => (
+                            <Reveal key={service.slug} delay={index + 1}>
+                                <Link
+                                    href={`/services/${service.slug}`}
+                                    className="group block h-full border border-slate-200 hover:border-slate-300 transition-colors bg-white"
+                                >
+                                    <div className="media-frame relative aspect-[16/10] bg-slate-100">
+                                        <Image
+                                            src={service.image}
+                                            alt=""
+                                            fill
+                                            sizes="(max-width: 768px) 100vw, 33vw"
+                                            className="object-cover"
+                                        />
+                                    </div>
+                                    <div className="p-6">
+                                        <p className="text-xs text-slate-400 mb-2">{service.tagline}</p>
+                                        <h2 className="font-display text-xl font-semibold text-slate-900 mb-3 group-hover:text-[#0f3d68] transition-colors">
+                                            {service.title}
+                                        </h2>
+                                        <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                                            {service.description}
+                                        </p>
+                                        <span className="text-sm font-medium text-[#0f3d68]">Learn more →</span>
+                                    </div>
+                                </Link>
+                            </Reveal>
                         ))}
                     </div>
                 </div>
             </section>
 
             <IndiaCitiesSection />
-
-            <section className="border-t border-slate-100 py-14">
-                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                    <div>
-                        <h2 className="text-xl font-semibold text-slate-900 mb-2">Need a clear quote?</h2>
-                        <p className="text-sm text-slate-600">Tell us what you need — we reply with scope and price before any build starts.</p>
-                    </div>
-                    <Link
-                        href="/contact"
-                        className="inline-flex self-start px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium transition-colors"
-                    >
-                        Request a quote
-                    </Link>
-                </div>
-            </section>
+            <PageCta />
         </div>
     );
 }

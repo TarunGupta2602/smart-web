@@ -1,8 +1,11 @@
 import Link from "next/link";
-import Breadcrumb from "../../components/Breadcrumb";
 import IndiaCitiesSection from "../../components/india-cities-section";
+import PageHero from "../../components/page-hero";
+import PageCta from "../../components/page-cta";
+import Reveal from "../../components/reveal";
 import { webPage, breadcrumbList, service, faqPage, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
+import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export const metadata = buildPageMetadata({
   title: "SEO Services | On-Page & Technical Search Optimization",
@@ -75,30 +78,24 @@ export default function SeoServicePage() {
           __html: stringifySchema([pageSchema, serviceSchema, breadcrumbSchema, faqPage(faqs)]),
         }}
       />
-      <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-4" />
-
-      <section className="border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-20">
-          <p className="text-sm font-medium text-[#0f3d68] mb-4">On-page SEO · Technical SEO · Local SEO</p>
-          <h1 className="max-w-3xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
-            SEO services that help your business rank on Google
-          </h1>
-          <p className="max-w-2xl text-base text-slate-600 leading-relaxed mb-8">
-            Get found when customers search. We improve technical health, on-page relevance, and content strategy so your
-            website ranks for the terms that bring enquiries and sales.
-          </p>
-          <Link href="/contact?service=SEO" className="inline-flex px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium">
-            Request an SEO quote
-          </Link>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="On-page SEO · Technical SEO · Local SEO"
+        title="SEO services that help your business rank on Google"
+        description="Get found when customers search. We improve technical health, on-page relevance, and content strategy so your website ranks for the terms that bring enquiries and sales."
+        videoSrc={PAGE_VIDEOS.typing}
+        posterSrc={PAGE_POSTERS.analytics}
+        primaryCta={{ href: "/contact?service=SEO", label: "Request an SEO quote" }}
+        breadcrumbs={breadcrumbItems}
+      />
 
       <section className="py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-8">On-page and off-page SEO coverage</h2>
+          <Reveal>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-slate-900 mb-8">On-page and off-page SEO coverage</h2>
+          </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="border-t border-slate-200 pt-5">
-              <h3 className="text-lg font-semibold text-slate-900 mb-3">On-page SEO</h3>
+              <h3 className="font-display text-lg font-semibold text-slate-900 mb-3">On-page SEO</h3>
               <ul className="space-y-2 text-sm text-slate-600">
                 <li>– Title tags, meta descriptions, and heading structure</li>
                 <li>– Keyword mapping to service and location pages</li>
@@ -108,7 +105,7 @@ export default function SeoServicePage() {
               </ul>
             </div>
             <div className="border-t border-slate-200 pt-5">
-              <h3 className="text-lg font-semibold text-slate-900 mb-3">Technical & growth SEO</h3>
+              <h3 className="font-display text-lg font-semibold text-slate-900 mb-3">Technical & growth SEO</h3>
               <ul className="space-y-2 text-sm text-slate-600">
                 <li>– Site audits, indexation, and Core Web Vitals</li>
                 <li>– Sitemap, robots, and schema markup guidance</li>
@@ -127,7 +124,7 @@ export default function SeoServicePage() {
 
       <section className="py-14 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <h2 className="text-2xl font-semibold text-slate-900 mb-4">Pair SEO with a site built to rank</h2>
+          <h2 className="font-display text-2xl font-semibold text-slate-900 mb-4">Pair SEO with a site built to rank</h2>
           <p className="text-sm text-slate-600 mb-6 max-w-2xl">
             If your current website is slow or hard to crawl, SEO alone will struggle. See our{" "}
             <Link href="/services/website-designing" className="text-[#0f3d68] hover:underline font-medium">
@@ -149,7 +146,7 @@ export default function SeoServicePage() {
 
       <section className="py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <h2 className="text-2xl font-semibold text-slate-900 mb-8">Frequently asked questions</h2>
+          <h2 className="font-display text-2xl font-semibold text-slate-900 mb-8">Frequently asked questions</h2>
           <div className="divide-y divide-slate-200 border-t border-slate-200">
             {faqs.map((faq) => (
               <div key={faq.question} className="py-5">
@@ -161,17 +158,12 @@ export default function SeoServicePage() {
         </div>
       </section>
 
-      <section className="border-t border-slate-100 py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900 mb-2">Want a ranking-focused SEO plan?</h2>
-            <p className="text-sm text-slate-600">Share your site and target keywords — we reply with scope and a clear quote.</p>
-          </div>
-          <Link href="/contact?service=SEO" className="inline-flex self-start px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium">
-            Get an SEO quote
-          </Link>
-        </div>
-      </section>
+      <PageCta
+        title="Want a ranking-focused SEO plan?"
+        description="Share your site and target keywords — we reply with scope and a clear quote."
+        primaryHref="/contact?service=SEO"
+        primaryLabel="Get an SEO quote"
+      />
     </div>
   );
 }

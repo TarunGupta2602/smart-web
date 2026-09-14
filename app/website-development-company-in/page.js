@@ -1,8 +1,11 @@
 import Link from "next/link";
-import Breadcrumb from "../components/Breadcrumb";
+import PageHero from "../components/page-hero";
+import PageCta from "../components/page-cta";
+import Reveal from "../components/reveal";
 import { webPage, breadcrumbList, faqPage, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 import { INDIA_CITIES, cityPath, getIndiaHubFaqs } from "@/lib/india-cities";
+import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 const faqs = getIndiaHubFaqs();
 
@@ -47,48 +50,40 @@ export default function IndiaCitiesHubPage() {
           __html: stringifySchema([pageSchema, breadcrumbSchema, faqPage(faqs)]),
         }}
       />
-      <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-4" />
 
-      <section className="border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-20">
-          <p className="text-sm font-medium text-[#0f3d68] mb-4">India · Local SEO pages</p>
-          <h1 className="max-w-3xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
-            Website development company for major Indian cities
-          </h1>
-          <p className="max-w-2xl text-base text-slate-600 leading-relaxed mb-8">
-            SmartSoft Solutions builds business websites, e-commerce stores, and web apps for companies in Delhi,
-            Mumbai, Bangalore, and other business hubs — fixed quotes, Next.js & React builds, and remote delivery
-            with our Noida team.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium"
-          >
-            Get a quote
-          </Link>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="India · Local SEO pages"
+        title="Website development company for major Indian cities"
+        description="SmartSoft Solutions builds business websites, e-commerce stores, and web apps for companies in Delhi, Mumbai, Bangalore, and other business hubs — fixed quotes, Next.js & React builds, and remote delivery with our Noida team."
+        videoSrc={PAGE_VIDEOS.office}
+        posterSrc={PAGE_POSTERS.city}
+        primaryCta={{ href: "/contact", label: "Get a quote" }}
+        breadcrumbs={breadcrumbItems}
+      />
 
       <section className="py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-8">
-            Choose your city
-          </h2>
+          <Reveal>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-slate-900 mb-8">
+              Choose your city
+            </h2>
+          </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
-            {INDIA_CITIES.map((city) => (
-              <Link
-                key={city.slug}
-                href={cityPath(city.slug)}
-                className="border-t border-slate-200 pt-5 group"
-              >
-                <h3 className="text-lg font-semibold text-slate-900 group-hover:text-[#0f3d68] transition-colors mb-1">
-                  {city.name}
-                </h3>
-                <p className="text-xs text-slate-400 mb-2">{city.region}</p>
-                <p className="text-sm text-slate-600 leading-relaxed line-clamp-2">
-                  Website development company in {city.name} for local businesses.
-                </p>
-              </Link>
+            {INDIA_CITIES.map((city, index) => (
+              <Reveal key={city.slug} delay={(index % 3) + 1}>
+                <Link
+                  href={cityPath(city.slug)}
+                  className="border-t border-slate-200 pt-5 group block"
+                >
+                  <h3 className="font-display text-lg font-semibold text-slate-900 group-hover:text-[#0f3d68] transition-colors mb-1">
+                    {city.name}
+                  </h3>
+                  <p className="text-xs text-slate-400 mb-2">{city.region}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-2">
+                    Website development company in {city.name} for local businesses.
+                  </p>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -96,17 +91,23 @@ export default function IndiaCitiesHubPage() {
 
       <section className="py-14 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <h2 className="text-2xl font-semibold text-slate-900 mb-8">Frequently asked questions</h2>
+          <Reveal>
+            <h2 className="font-display text-2xl font-semibold text-slate-900 mb-8">Frequently asked questions</h2>
+          </Reveal>
           <div className="divide-y divide-slate-200 border-t border-slate-200">
             {faqs.map((faq) => (
-              <div key={faq.question} className="py-5">
-                <h3 className="text-base font-medium text-slate-900 mb-2">{faq.question}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed max-w-3xl">{faq.answer}</p>
-              </div>
+              <Reveal key={faq.question}>
+                <div className="py-5">
+                  <h3 className="text-base font-medium text-slate-900 mb-2">{faq.question}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed max-w-3xl">{faq.answer}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
+
+      <PageCta />
     </div>
   );
 }

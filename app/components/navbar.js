@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import brandMark from "../icon.png";
+import { hasVideoHero } from "@/lib/page-media";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,8 +26,7 @@ export default function Navbar() {
         { name: "Blog", href: "/blog" },
     ];
 
-    const isHome = pathname === "/";
-    const onHero = isHome && !scrolled;
+    const onHero = hasVideoHero(pathname) && !scrolled;
 
     return (
         <>
@@ -160,7 +160,7 @@ export default function Navbar() {
                 </div>
             </div>
 
-            <div className={`${pathname === "/" ? "h-0" : "h-[65px] lg:h-[69px]"}`} />
+            <div className={`${hasVideoHero(pathname) ? "h-0" : "h-[65px] lg:h-[69px]"}`} />
         </>
     );
 }

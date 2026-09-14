@@ -1,8 +1,12 @@
 import Link from "next/link";
-import Breadcrumb from "../../components/Breadcrumb";
+import Image from "next/image";
 import IndiaCitiesSection from "../../components/india-cities-section";
+import PageHero from "../../components/page-hero";
+import PageCta from "../../components/page-cta";
+import Reveal from "../../components/reveal";
 import { webPage, breadcrumbList, service, faqPage, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
+import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export const metadata = buildPageMetadata({
   title: "Business Website & E-commerce Development",
@@ -77,51 +81,52 @@ export default function WebsiteDesigningServicePage() {
           __html: stringifySchema([pageSchema, serviceSchema, breadcrumbSchema, faqPage(faqs)]),
         }}
       />
-      <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-4" />
 
-      <section className="border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-20">
-          <p className="text-sm font-medium text-[#0f3d68] mb-4">Website development · E-commerce</p>
-          <h1 className="max-w-3xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
-            Business website and e-commerce development built to rank and convert
-          </h1>
-          <p className="max-w-2xl text-base text-slate-600 leading-relaxed mb-8">
-            SmartSoft Solutions designs and develops marketing websites, online stores, and web apps with Next.js and React —
-            fast, mobile-ready, and structured for search engines and sales.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/contact?service=Business%20Website" className="px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium">
-              Get a website quote
-            </Link>
-            <Link href="/projects" className="px-5 py-2.5 rounded-md border border-slate-200 text-slate-700 text-sm font-medium hover:border-slate-300">
-              See selected work
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Website development · E-commerce"
+        title="Business website and e-commerce development built to rank and convert"
+        description="SmartSoft Solutions designs and develops marketing websites, online stores, and web apps with Next.js and React — fast, mobile-ready, and structured for search engines and sales."
+        videoSrc={PAGE_VIDEOS.screens}
+        posterSrc={PAGE_POSTERS.shop}
+        primaryCta={{ href: "/contact?service=Business%20Website", label: "Get a website quote" }}
+        secondaryCta={{ href: "/projects", label: "See selected work" }}
+        breadcrumbs={breadcrumbItems}
+      />
 
       <section className="py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-8">What we build</h2>
+          <Reveal>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-slate-900 mb-8">What we build</h2>
+          </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: "Business websites",
                 text: "Service pages, about, pricing, and lead forms that explain your offer and capture enquiries.",
+                image: PAGE_POSTERS.analytics,
               },
               {
                 title: "E-commerce stores",
                 text: "Product catalogs, offers, cart, checkout, and payment integrations for real online orders.",
+                image: PAGE_POSTERS.shop,
               },
               {
                 title: "Web apps & dashboards",
                 text: "Auth, dashboards, and workflows with Firebase or Supabase for teams and customers.",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
               },
-            ].map((item) => (
-              <div key={item.title} className="border-t border-slate-200 pt-5">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
-              </div>
+            ].map((item, index) => (
+              <Reveal key={item.title} delay={index + 1}>
+                <div className="border border-slate-200 overflow-hidden">
+                  <div className="media-frame relative aspect-[16/10] bg-slate-100">
+                    <Image src={item.image} alt="" fill sizes="33vw" className="object-cover" />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-display text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
+                  </div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -129,8 +134,8 @@ export default function WebsiteDesigningServicePage() {
 
       <section className="py-14 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">On-page SEO included in every build</h2>
+          <Reveal>
+            <h2 className="font-display text-2xl font-semibold text-slate-900 mb-4">On-page SEO included in every build</h2>
             <p className="text-sm text-slate-600 leading-relaxed mb-6">
               Ranking starts with clean structure. We implement technical and on-page SEO foundations during development —
               not as an afterthought.
@@ -149,9 +154,9 @@ export default function WebsiteDesigningServicePage() {
                 </li>
               ))}
             </ul>
-          </div>
-          <div>
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">Related services</h2>
+          </Reveal>
+          <Reveal delay={2}>
+            <h2 className="font-display text-2xl font-semibold text-slate-900 mb-4">Related services</h2>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link href="/services/seo" className="text-[#0f3d68] hover:underline font-medium">SEO services</Link>
@@ -166,7 +171,7 @@ export default function WebsiteDesigningServicePage() {
                 <span className="text-slate-500"> — website, store, and web app quote options</span>
               </li>
             </ul>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -177,32 +182,27 @@ export default function WebsiteDesigningServicePage() {
 
       <section className="py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <h2 className="text-2xl font-semibold text-slate-900 mb-8">Frequently asked questions</h2>
+          <Reveal>
+            <h2 className="font-display text-2xl font-semibold text-slate-900 mb-8">Frequently asked questions</h2>
+          </Reveal>
           <div className="divide-y divide-slate-200 border-t border-slate-200">
             {faqs.map((faq) => (
-              <div key={faq.question} className="py-5">
-                <h3 className="text-base font-medium text-slate-900 mb-2">{faq.question}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed max-w-3xl">{faq.answer}</p>
-              </div>
+              <Reveal key={faq.question}>
+                <div className="py-5">
+                  <h3 className="text-base font-medium text-slate-900 mb-2">{faq.question}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed max-w-3xl">{faq.answer}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-slate-100 py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900 mb-2">Ready for a website or store quote?</h2>
-            <p className="text-sm text-slate-600">Tell us your goals — we reply with scope, timeline, and a fixed price.</p>
-          </div>
-          <Link
-            href="/contact?service=Business%20Website"
-            className="inline-flex self-start px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium"
-          >
-            Request a quote
-          </Link>
-        </div>
-      </section>
+      <PageCta
+        title="Ready for a website or store quote?"
+        description="Tell us your goals — we reply with scope, timeline, and a fixed price."
+        primaryHref="/contact?service=Business%20Website"
+      />
     </div>
   );
 }

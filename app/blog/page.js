@@ -1,10 +1,11 @@
-import Link from 'next/link';
 import { Suspense, cache } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import BlogListClient from '../components/BlogListClient';
 import Pagination from '../components/Pagination';
-import Breadcrumb from '../components/Breadcrumb';
+import PageHero from '../components/page-hero';
+import PageCta from '../components/page-cta';
 import { breadcrumbList, stringifySchema } from '@/lib/schema';
+import { PAGE_VIDEOS, PAGE_POSTERS } from '@/lib/page-media';
 
 const SITE_URL = 'https://www.smartsoftsolutions.org';
 
@@ -78,18 +79,15 @@ export default async function BlogPage(props) {
         <div className="min-h-screen bg-white">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }} />
 
-            <section className="border-b border-slate-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-20">
-                    <Breadcrumb items={breadcrumbItems} className="mb-6" />
-                    <p className="text-sm font-medium text-[#0f3d68] mb-4">Blog</p>
-                    <h1 className="max-w-2xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
-                        Practical notes on websites, stores, and growth
-                    </h1>
-                    <p className="max-w-xl text-base text-slate-600 leading-relaxed">
-                        Guides on web development, e-commerce, SEO, and hiring a digital partner — written for business owners.
-                    </p>
-                </div>
-            </section>
+            <PageHero
+                compact
+                eyebrow="Blog"
+                title="Practical notes on websites, stores, and growth"
+                description="Guides on web development, e-commerce, SEO, and hiring a digital partner — written for business owners."
+                videoSrc={PAGE_VIDEOS.typing}
+                posterSrc={PAGE_POSTERS.code}
+                breadcrumbs={breadcrumbItems}
+            />
 
             <main className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14">
                 <div className="flex flex-wrap gap-2 mb-10">
@@ -128,20 +126,12 @@ export default async function BlogPage(props) {
                 </Suspense>
 
                 <Pagination currentPage={page} totalPages={totalPages} basePath="/blog" />
-
-                <div className="mt-16 border border-slate-200 bg-slate-50 px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                    <div>
-                        <h2 className="text-xl font-semibold text-slate-900 mb-2">Planning a website or store?</h2>
-                        <p className="text-sm text-slate-600">Send a short brief — we reply with scope and a fixed quote.</p>
-                    </div>
-                    <Link
-                        href="/contact"
-                        className="inline-flex self-start px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium transition-colors"
-                    >
-                        Get a quote
-                    </Link>
-                </div>
             </main>
+
+            <PageCta
+                title="Planning a website or store?"
+                description="Send a short brief — we reply with scope and a fixed quote."
+            />
         </div>
     );
 }

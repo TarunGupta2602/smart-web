@@ -8,12 +8,14 @@ import Link from 'next/link';
  * @param {Array<{ name: string, url: string }>} items - Breadcrumb items (last item = current page)
  * @param {string} [className] - Optional wrapper class
  */
-export default function Breadcrumb({ items = [], className = '' }) {
+export default function Breadcrumb({ items = [], className = '', variant = 'default' }) {
   if (!items?.length) return null;
+
+  const light = variant === 'light';
 
   return (
     <nav
-      className={`text-xs text-slate-500 ${className}`}
+      className={`text-xs ${light ? 'text-white/70' : 'text-slate-500'} ${className}`}
       aria-label="Breadcrumb"
     >
       <ol className="inline-flex flex-wrap items-center gap-1 sm:gap-2">
@@ -31,14 +33,14 @@ export default function Breadcrumb({ items = [], className = '' }) {
               itemType="https://schema.org/ListItem"
             >
               {i !== 0 && (
-                <span className="mx-1 text-slate-300 select-none" aria-hidden="true">
+                <span className={`mx-1 select-none ${light ? 'text-white/35' : 'text-slate-300'}`} aria-hidden="true">
                   /
                 </span>
               )}
               {!isLast && isInternal ? (
                 <Link
                   href={href}
-                  className="text-slate-500 hover:text-slate-800 transition-colors"
+                  className={`transition-colors ${light ? 'text-white/70 hover:text-white' : 'text-slate-500 hover:text-slate-800'}`}
                   itemProp="item"
                 >
                   <span itemProp="name">{item.name}</span>
@@ -46,7 +48,7 @@ export default function Breadcrumb({ items = [], className = '' }) {
               ) : !isLast && !isInternal ? (
                 <a
                   href={href}
-                  className="text-slate-500 hover:text-slate-800 transition-colors"
+                  className={`transition-colors ${light ? 'text-white/70 hover:text-white' : 'text-slate-500 hover:text-slate-800'}`}
                   itemProp="item"
                   rel="noopener noreferrer"
                 >
@@ -54,7 +56,7 @@ export default function Breadcrumb({ items = [], className = '' }) {
                 </a>
               ) : (
                 <span
-                  className="text-slate-800 truncate max-w-[160px] sm:max-w-xs"
+                  className={`truncate max-w-[160px] sm:max-w-xs ${light ? 'text-white' : 'text-slate-800'}`}
                   aria-current="page"
                   itemProp="name"
                 >

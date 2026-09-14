@@ -1,8 +1,11 @@
 import Link from "next/link";
-import Breadcrumb from "../../components/Breadcrumb";
 import IndiaCitiesSection from "../../components/india-cities-section";
+import PageHero from "../../components/page-hero";
+import PageCta from "../../components/page-cta";
+import Reveal from "../../components/reveal";
 import { webPage, breadcrumbList, service, faqPage, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
+import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export const metadata = buildPageMetadata({
   title: "Digital Marketing Services | Leads & Paid Growth",
@@ -74,23 +77,15 @@ export default function DigitalMarketingServicePage() {
           __html: stringifySchema([pageSchema, serviceSchema, breadcrumbSchema, faqPage(faqs)]),
         }}
       />
-      <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-4" />
-
-      <section className="border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-20">
-          <p className="text-sm font-medium text-[#0f3d68] mb-4">Digital marketing · Lead generation</p>
-          <h1 className="max-w-3xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
-            Digital marketing services that turn attention into customers
-          </h1>
-          <p className="max-w-2xl text-base text-slate-600 leading-relaxed mb-8">
-            Reach the right audience with focused campaigns across social, search, content, and email —
-            measured by leads and revenue, not vanity metrics.
-          </p>
-          <Link href="/contact?service=Digital%20Marketing" className="inline-flex px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium">
-            Request a marketing quote
-          </Link>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Digital marketing · Lead generation"
+        title="Digital marketing services that turn attention into customers"
+        description="Reach the right audience with focused campaigns across social, search, content, and email — measured by leads and revenue, not vanity metrics."
+        videoSrc={PAGE_VIDEOS.meeting}
+        posterSrc={PAGE_POSTERS.laptop}
+        primaryCta={{ href: "/contact?service=Digital%20Marketing", label: "Request a marketing quote" }}
+        breadcrumbs={breadcrumbItems}
+      />
 
       <section className="py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -98,11 +93,13 @@ export default function DigitalMarketingServicePage() {
             { title: "Paid ads", text: "Search and social campaigns aimed at high-intent traffic and measurable enquiries." },
             { title: "Content & social", text: "Clear messaging that supports your offer and builds trust over time." },
             { title: "Email nurturing", text: "Follow-up sequences that move leads from interest to booking or purchase." },
-          ].map((item) => (
-            <div key={item.title} className="border-t border-slate-200 pt-5">
-              <h2 className="text-lg font-semibold text-slate-900 mb-2">{item.title}</h2>
-              <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
-            </div>
+          ].map((item, index) => (
+            <Reveal key={item.title} delay={index + 1}>
+              <div className="border-t border-slate-200 pt-5">
+                <h2 className="font-display text-lg font-semibold text-slate-900 mb-2">{item.title}</h2>
+                <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -126,7 +123,7 @@ export default function DigitalMarketingServicePage() {
 
       <section className="py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <h2 className="text-2xl font-semibold text-slate-900 mb-8">Frequently asked questions</h2>
+          <h2 className="font-display text-2xl font-semibold text-slate-900 mb-8">Frequently asked questions</h2>
           <div className="divide-y divide-slate-200 border-t border-slate-200">
             {faqs.map((faq) => (
               <div key={faq.question} className="py-5">
@@ -138,17 +135,12 @@ export default function DigitalMarketingServicePage() {
         </div>
       </section>
 
-      <section className="border-t border-slate-100 py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900 mb-2">Need leads for your website or store?</h2>
-            <p className="text-sm text-slate-600">Tell us your offer and budget — we will propose a practical campaign plan.</p>
-          </div>
-          <Link href="/contact?service=Digital%20Marketing" className="inline-flex self-start px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium">
-            Get a marketing quote
-          </Link>
-        </div>
-      </section>
+      <PageCta
+        title="Need leads for your website or store?"
+        description="Tell us your offer and budget — we will propose a practical campaign plan."
+        primaryHref="/contact?service=Digital%20Marketing"
+        primaryLabel="Get a marketing quote"
+      />
     </div>
   );
 }

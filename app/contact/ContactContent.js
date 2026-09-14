@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import PageHero from "../components/page-hero";
+import Reveal from "../components/reveal";
+import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 const contactMethods = [
     {
@@ -72,24 +75,25 @@ export default function ContactContent() {
 
     return (
         <div className="bg-white text-slate-900">
-            <section className="border-b border-slate-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-16 md:py-20">
-                    <p className="text-sm font-medium text-[#0f3d68] mb-4">Contact</p>
-                    <h1 className="max-w-2xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
-                        Tell us what you need. We’ll send a clear quote.
-                    </h1>
-                    <p className="max-w-xl text-base text-slate-600 leading-relaxed">
-                        Share a short brief — goals, timeline, and budget range. No obligation.
-                    </p>
-                </div>
-            </section>
+            <PageHero
+                compact
+                eyebrow="Contact"
+                title="Tell us what you need. We’ll send a clear quote."
+                description="Share a short brief — goals, timeline, and budget range. No obligation."
+                videoSrc={PAGE_VIDEOS.meeting}
+                posterSrc={PAGE_POSTERS.laptop}
+                breadcrumbs={[
+                    { name: "Home", url: "/" },
+                    { name: "Contact", url: "/contact" },
+                ]}
+            />
 
             <section className="py-14 md:py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-                        <div className="lg:col-span-4 space-y-8">
+                        <Reveal className="lg:col-span-4 space-y-8">
                             <div>
-                                <h2 className="text-lg font-semibold text-slate-900 mb-4">Reach us directly</h2>
+                                <h2 className="font-display text-xl font-semibold text-slate-900 mb-4">Reach us directly</h2>
                                 <ul className="space-y-5">
                                     {contactMethods.map((method) => (
                                         <li key={method.title}>
@@ -112,16 +116,16 @@ export default function ContactContent() {
                                     Typical reply: scope, timeline, and a fixed project price within two business days.
                                 </p>
                             </div>
-                        </div>
+                        </Reveal>
 
-                        <div className="lg:col-span-8">
-                            <form onSubmit={handleSubmit} className="border border-slate-200 p-6 md:p-8 space-y-5">
+                        <Reveal className="lg:col-span-8" delay={2}>
+                            <form onSubmit={handleSubmit} className="border border-slate-200 p-6 md:p-8 space-y-5 bg-slate-50/40">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                     <div>
                                         <label className="block text-xs font-medium text-slate-500 mb-1.5" htmlFor="name">Full name *</label>
                                         <input
                                             type="text" name="name" id="name" value={form.name} onChange={handleChange} required
-                                            className="w-full px-3 py-2.5 border border-slate-200 rounded-md text-sm text-slate-900 focus:outline-none focus:border-slate-400"
+                                            className="w-full px-3 py-2.5 border border-slate-200 rounded-md text-sm text-slate-900 bg-white focus:outline-none focus:border-slate-400"
                                             placeholder="Your name"
                                         />
                                     </div>
@@ -129,7 +133,7 @@ export default function ContactContent() {
                                         <label className="block text-xs font-medium text-slate-500 mb-1.5" htmlFor="email">Email *</label>
                                         <input
                                             type="email" name="email" id="email" value={form.email} onChange={handleChange} required
-                                            className="w-full px-3 py-2.5 border border-slate-200 rounded-md text-sm text-slate-900 focus:outline-none focus:border-slate-400"
+                                            className="w-full px-3 py-2.5 border border-slate-200 rounded-md text-sm text-slate-900 bg-white focus:outline-none focus:border-slate-400"
                                             placeholder="you@company.com"
                                         />
                                     </div>
@@ -140,7 +144,7 @@ export default function ContactContent() {
                                         <label className="block text-xs font-medium text-slate-500 mb-1.5" htmlFor="phone">Phone</label>
                                         <input
                                             type="tel" name="phone" id="phone" value={form.phone} onChange={handleChange}
-                                            className="w-full px-3 py-2.5 border border-slate-200 rounded-md text-sm text-slate-900 focus:outline-none focus:border-slate-400"
+                                            className="w-full px-3 py-2.5 border border-slate-200 rounded-md text-sm text-slate-900 bg-white focus:outline-none focus:border-slate-400"
                                             placeholder="+1 ..."
                                         />
                                     </div>
@@ -164,7 +168,7 @@ export default function ContactContent() {
                                     <label className="block text-xs font-medium text-slate-500 mb-1.5" htmlFor="message">Project brief *</label>
                                     <textarea
                                         name="message" id="message" value={form.message} onChange={handleChange} required rows={5}
-                                        className="w-full px-3 py-2.5 border border-slate-200 rounded-md text-sm text-slate-900 focus:outline-none focus:border-slate-400 resize-y"
+                                        className="w-full px-3 py-2.5 border border-slate-200 rounded-md text-sm text-slate-900 bg-white focus:outline-none focus:border-slate-400 resize-y"
                                         placeholder="What do you need, when do you need it, and what budget range are you considering?"
                                     />
                                 </div>
@@ -180,7 +184,7 @@ export default function ContactContent() {
                                     {loading ? "Sending…" : "Send quote request"}
                                 </button>
                             </form>
-                        </div>
+                        </Reveal>
                     </div>
                 </div>
             </section>

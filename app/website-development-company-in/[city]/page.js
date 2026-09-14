@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Breadcrumb from "../../components/Breadcrumb";
+import PageHero from "../../components/page-hero";
+import PageCta from "../../components/page-cta";
+import Reveal from "../../components/reveal";
 import {
   webPage,
   breadcrumbList,
@@ -16,6 +18,7 @@ import {
   getCityFaqs,
   cityPath,
 } from "@/lib/india-cities";
+import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export function generateStaticParams() {
   return getAllCitySlugs().map((city) => ({ city }));
@@ -97,53 +100,39 @@ export default async function CityWebsitePage({ params }) {
           ]),
         }}
       />
-      <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-4" />
-
-      <section className="border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14 md:py-20">
-          <p className="text-sm font-medium text-[#0f3d68] mb-4">
-            {city.name} · {city.region}
-          </p>
-          <h1 className="max-w-3xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
-            {city.headline}
-          </h1>
-          <p className="max-w-2xl text-base text-slate-600 leading-relaxed mb-4">
-            {city.intro}
-          </p>
-          <p className="max-w-2xl text-sm text-slate-500 leading-relaxed mb-8">
-            {city.focus}
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href={`/contact?service=Website%20Development%20${encodeURIComponent(city.name)}`}
-              className="px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium"
-            >
-              Get a {city.name} website quote
-            </Link>
-            <Link
-              href="/projects"
-              className="px-5 py-2.5 rounded-md border border-slate-200 text-slate-700 text-sm font-medium hover:border-slate-300"
-            >
-              See selected work
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        compact
+        eyebrow={`${city.name} · ${city.region}`}
+        title={city.headline}
+        description={`${city.intro} ${city.focus}`}
+        videoSrc={PAGE_VIDEOS.workspace}
+        posterSrc={PAGE_POSTERS.city}
+        primaryCta={{
+          href: `/contact?service=Website%20Development%20${encodeURIComponent(city.name)}`,
+          label: `Get a ${city.name} website quote`,
+        }}
+        secondaryCta={{ href: "/projects", label: "See selected work" }}
+        breadcrumbs={breadcrumbItems}
+      />
 
       <section className="py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-3">
-            What we build for {city.name} businesses
-          </h2>
-          <p className="text-sm text-slate-600 mb-8 max-w-2xl">
-            Business websites, e-commerce stores, and web apps tailored to how companies in {city.name} actually sell and take enquiries.
-          </p>
+          <Reveal>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-slate-900 mb-3">
+              What we build for {city.name} businesses
+            </h2>
+            <p className="text-sm text-slate-600 mb-8 max-w-2xl">
+              Business websites, e-commerce stores, and web apps tailored to how companies in {city.name} actually sell and take enquiries.
+            </p>
+          </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {city.businesses.map((item) => (
-              <div key={item.title} className="border-t border-slate-200 pt-5">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
-              </div>
+            {city.businesses.map((item, index) => (
+              <Reveal key={item.title} delay={(index % 2) + 1}>
+                <div className="border-t border-slate-200 pt-5">
+                  <h3 className="font-display text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -152,7 +141,7 @@ export default async function CityWebsitePage({ params }) {
       <section className="py-14 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+            <h2 className="font-display text-2xl font-semibold text-slate-900 mb-4">
               Services for {city.name}
             </h2>
             <ul className="space-y-3 text-sm">
@@ -183,7 +172,7 @@ export default async function CityWebsitePage({ params }) {
             </ul>
           </div>
           <div>
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+            <h2 className="font-display text-2xl font-semibold text-slate-900 mb-4">
               Why {city.name} companies hire us
             </h2>
             <ul className="space-y-3 text-sm text-slate-700">
@@ -206,7 +195,7 @@ export default async function CityWebsitePage({ params }) {
 
       <section className="py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <h2 className="text-2xl font-semibold text-slate-900 mb-8">
+          <h2 className="font-display text-2xl font-semibold text-slate-900 mb-8">
             Frequently asked questions — {city.name}
           </h2>
           <div className="divide-y divide-slate-200 border-t border-slate-200">
@@ -222,7 +211,7 @@ export default async function CityWebsitePage({ params }) {
 
       <section className="py-14 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <h2 className="text-xl font-semibold text-slate-900 mb-6">
+          <h2 className="font-display text-xl font-semibold text-slate-900 mb-6">
             Website development in other Indian cities
           </h2>
           <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm">
@@ -245,24 +234,11 @@ export default async function CityWebsitePage({ params }) {
         </div>
       </section>
 
-      <section className="border-t border-slate-100 py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900 mb-2">
-              Ready for a website quote in {city.name}?
-            </h2>
-            <p className="text-sm text-slate-600">
-              Tell us your goals — we reply with scope, timeline, and a fixed price.
-            </p>
-          </div>
-          <Link
-            href={`/contact?service=Website%20Development%20${encodeURIComponent(city.name)}`}
-            className="inline-flex self-start px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium"
-          >
-            Request a quote
-          </Link>
-        </div>
-      </section>
+      <PageCta
+        title={`Ready for a website quote in ${city.name}?`}
+        description="Tell us your goals — we reply with scope, timeline, and a fixed price."
+        primaryHref={`/contact?service=Website%20Development%20${encodeURIComponent(city.name)}`}
+      />
     </div>
   );
 }
