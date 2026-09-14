@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
+import IndiaCitiesSection from "../../components/india-cities-section";
 import { webPage, breadcrumbList, service, faqPage, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 
@@ -34,6 +35,11 @@ const faqs = [
     question: "How is SEO different from website development?",
     answer:
       "Development launches the product. SEO helps people find it on Google. SmartSoft Solutions can deliver both so your site is fast, clear, and search-ready from day one.",
+  },
+  {
+    question: "Can you do local SEO for Indian cities like Delhi or Mumbai?",
+    answer:
+      "Yes. We map city and service keywords, structure location pages, and improve on-page signals so Indian businesses can rank for searches such as their service + city. See our website development company in India city pages for examples of location targeting.",
   },
 ];
 
@@ -135,6 +141,11 @@ export default function SeoServicePage() {
           </p>
         </div>
       </section>
+
+      <IndiaCitiesSection
+        title="Local SEO for major Indian cities"
+        subtitle="City landing pages help you target searches like website development company in Delhi, Mumbai, or Bangalore — with unique content per market."
+      />
 
       <section className="py-14 md:py-20">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">

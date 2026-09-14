@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
+import IndiaCitiesSection from "../../components/india-cities-section";
 import { webPage, breadcrumbList, service, faqPage, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 
@@ -33,6 +34,11 @@ const faqs = [
     question: "How do you measure marketing success?",
     answer:
       "By leads, form fills, calls, and revenue outcomes — not vanity metrics like likes alone.",
+  },
+  {
+    question: "Do you run campaigns for businesses in Indian cities?",
+    answer:
+      "Yes. We support lead campaigns for companies across Delhi, Mumbai, Bangalore, and other Indian markets — paired with a conversion-ready website and city-aware SEO when needed.",
   },
 ];
 
@@ -112,6 +118,11 @@ export default function DigitalMarketingServicePage() {
           </p>
         </div>
       </section>
+
+      <IndiaCitiesSection
+        title="Digital marketing for Indian city businesses"
+        subtitle="Campaigns work best with a clear website and local landing pages — see our city pages for Delhi, Mumbai, Bangalore, and more."
+      />
 
       <section className="py-14 md:py-20">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Breadcrumb from "../components/Breadcrumb";
+import IndiaCitiesSection from "../components/india-cities-section";
 import { localBusiness, webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 
@@ -99,6 +100,8 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
+
+            <IndiaCitiesSection />
 
             <section className="border-t border-slate-100 py-14">
                 <div className="max-w-6xl mx-auto px-5 sm:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import { INDIA_CITIES, cityPath } from "@/lib/india-cities";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const featuredCities = INDIA_CITIES.slice(0, 9);
 
     return (
         <footer className="bg-white border-t border-slate-200 pt-16 pb-10">
@@ -22,7 +24,7 @@ export default function Footer() {
                             </span>
                         </Link>
                         <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
-                            We build business websites, e-commerce stores, and web apps for companies that need a live product — quoted clearly, delivered remotely.
+                            We build business websites, e-commerce stores, and web apps for companies that need a live product — quoted clearly, delivered remotely across India and worldwide.
                         </p>
                         <div className="space-y-3 text-sm text-slate-500">
                             <p>
@@ -64,6 +66,7 @@ export default function Footer() {
                                 { name: "E-commerce & web apps", href: "/services/website-designing" },
                                 { name: "Digital marketing", href: "/services/digital-marketing" },
                                 { name: "SEO", href: "/services/seo" },
+                                { name: "India cities", href: "/website-development-company-in" },
                             ].map((item) => (
                                 <li key={item.name}>
                                     <Link href={item.href} className="text-sm text-slate-500 hover:text-slate-900 transition-colors">
@@ -98,6 +101,29 @@ export default function Footer() {
                             className="inline-flex mt-6 px-4 py-2 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium transition-colors"
                         >
                             Get a quote
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="border-t border-slate-100 pt-8 mb-8">
+                    <h3 className="text-xs font-semibold text-slate-900 mb-4 tracking-wide uppercase">
+                        Website development in India
+                    </h3>
+                    <div className="flex flex-wrap gap-x-4 gap-y-2">
+                        {featuredCities.map((city) => (
+                            <Link
+                                key={city.slug}
+                                href={cityPath(city.slug)}
+                                className="text-xs text-slate-500 hover:text-slate-900 transition-colors"
+                            >
+                                {city.name}
+                            </Link>
+                        ))}
+                        <Link
+                            href="/website-development-company-in"
+                            className="text-xs font-medium text-[#0f3d68] hover:underline"
+                        >
+                            All cities
                         </Link>
                     </div>
                 </div>

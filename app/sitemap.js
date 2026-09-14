@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabaseClient";
+import { INDIA_CITIES, cityPath } from "@/lib/india-cities";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,7 @@ export default async function sitemap() {
     { path: "services/website-designing", priority: 0.9, changeFrequency: "weekly" },
     { path: "services/digital-marketing", priority: 0.85, changeFrequency: "weekly" },
     { path: "services/seo", priority: 0.85, changeFrequency: "weekly" },
+    { path: "website-development-company-in", priority: 0.9, changeFrequency: "weekly" },
     { path: "pricing", priority: 0.85, changeFrequency: "monthly" },
     { path: "projects", priority: 0.85, changeFrequency: "monthly" },
     { path: "about", priority: 0.7, changeFrequency: "monthly" },
@@ -28,6 +30,13 @@ export default async function sitemap() {
     lastModified,
     changeFrequency,
     priority,
+  }));
+
+  const cityUrls = INDIA_CITIES.map((city) => ({
+    url: `${siteUrl}${cityPath(city.slug)}`,
+    lastModified,
+    changeFrequency: "weekly",
+    priority: 0.85,
   }));
 
   let blogUrls = [];
@@ -47,5 +56,5 @@ export default async function sitemap() {
     console.error("Sitemap generation error:", err);
   }
 
-  return [...staticUrls, ...blogUrls];
+  return [...staticUrls, ...cityUrls, ...blogUrls];
 }

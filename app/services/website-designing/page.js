@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
+import IndiaCitiesSection from "../../components/india-cities-section";
 import { webPage, breadcrumbList, service, faqPage, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 
@@ -34,6 +35,11 @@ const faqs = [
     question: "Will my new website be SEO-friendly?",
     answer:
       "Yes. We structure pages with clear headings, fast performance, mobile-first layouts, and on-page SEO basics so you can rank for relevant search terms.",
+  },
+  {
+    question: "Do you build websites for businesses in Delhi, Mumbai, Bangalore, and other Indian cities?",
+    answer:
+      "Yes. We serve companies across major Indian cities with remote delivery and fixed quotes. See our city pages under website development company in India for Delhi, Mumbai, Bangalore, Hyderabad, Chennai, and more.",
   },
 ];
 
@@ -163,6 +169,11 @@ export default function WebsiteDesigningServicePage() {
           </div>
         </div>
       </section>
+
+      <IndiaCitiesSection
+        title="Website development for Indian city businesses"
+        subtitle="Dedicated landing pages for Delhi, Mumbai, Bangalore, and other hubs — useful for local SEO and city-specific enquiries."
+      />
 
       <section className="py-14 md:py-20">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
