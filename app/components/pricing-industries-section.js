@@ -1,111 +1,99 @@
 import Link from "next/link";
 
+const packages = [
+    {
+        name: "Business website",
+        desc: "Marketing site with clear pages, lead forms, and SEO basics.",
+        includes: ["Custom Next.js build", "Mobile-first layout", "Contact / quote forms", "Production deploy"],
+    },
+    {
+        name: "E-commerce store",
+        desc: "Catalog, cart, checkout, and payments for real online sales.",
+        includes: ["Product catalog", "Checkout flow", "Payment integration", "Launch support"],
+        featured: true,
+    },
+    {
+        name: "Custom web app",
+        desc: "Auth, dashboards, and workflows with Firebase or Supabase.",
+        includes: ["User roles", "Core product flows", "Weekly demos", "Code handoff"],
+    },
+];
+
+const industries = [
+    "Local service businesses",
+    "E-commerce brands",
+    "Professional practices",
+    "Startups & product teams",
+    "Retail & specialty shops",
+    "Consultants & agencies",
+];
+
 export default function PricingIndustriesSection() {
-    const clientTypes = [
-        { name: "Local Service Businesses", icon: "🏢" },
-        { name: "E-commerce Brands", icon: "🛒" },
-        { name: "Startups & SaaS", icon: "🚀" },
-        { name: "Professional Practices", icon: "💼" },
-        { name: "Restaurants & Cafes", icon: "🍽️" },
-        { name: "Retail & Jewellery", icon: "💎" },
-        { name: "Agencies & Consultants", icon: "🤝" },
-        { name: "Remote Product Teams", icon: "💻" },
-    ];
-
     return (
-        <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-white to-gray-50">
-            <div className="container mx-auto px-6">
-
-                <div className="text-center mb-16 md:mb-20">
-                    <div className="inline-block bg-yellow-400 px-8 py-3 rounded-full mb-6">
-                        <p className="text-sm md:text-base font-bold text-gray-900 uppercase tracking-wide">
-                            Clear project quotes
-                        </p>
-                    </div>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 uppercase leading-tight">
-                        FROM BRIEF TO <span className="text-yellow-500">PAID LAUNCH</span>
+        <section className="bg-slate-50 border-y border-slate-100 py-20 md:py-28">
+            <div className="max-w-6xl mx-auto px-5 sm:px-6">
+                <div className="max-w-2xl mb-14">
+                    <p className="text-sm font-medium text-[#0f3d68] mb-3">Pricing</p>
+                    <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-4">
+                        Fixed quotes before any build starts
                     </h2>
-                    <p className="text-lg md:text-xl text-gray-700 mb-4 max-w-3xl mx-auto">
-                        Share your goal and budget range. We reply with scope, timeline, and a fixed quote — before any build starts.
+                    <p className="text-base text-slate-600 leading-relaxed">
+                        Share your goal and budget range. We reply with scope, timeline, and a clear price — usually within two business days.
                     </p>
-                    <p className="text-base md:text-lg text-gray-600 mb-2">
-                        Call <a href="tel:17077084062" className="font-bold text-gray-900 hover:text-yellow-500 transition-colors text-xl">1-707-708-4062</a>
-                        <span className="mx-2">·</span>
-                        <a href="https://wa.me/917456096455" className="font-bold text-gray-900 hover:text-yellow-500 transition-colors">WhatsApp</a>
-                    </p>
-                    <p className="text-base md:text-lg text-gray-600 mb-10 max-w-3xl mx-auto">
-                        Marketing sites often ship in a few weeks; stores and apps take longer based on features. Timeline is always in the quote.
-                    </p>
-                    <Link
-                        href="/pricing"
-                        className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-12 py-5 rounded-full font-bold text-lg uppercase shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                    >
-                        View Packages
-                    </Link>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-20">
-                    {[
-                        { label: "Business Website", price: "Quote", desc: "Marketing site with leads & SEO basics" },
-                        { label: "E-commerce Store", price: "Quote", desc: "Catalog, cart, checkout & payments" },
-                        { label: "Custom Web App", price: "Quote", desc: "Auth, dashboards & product flows" },
-                    ].map((plan) => (
-                        <div key={plan.label} className="bg-white border-2 border-yellow-100 hover:border-yellow-400 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-                            <h4 className="text-sm font-black uppercase tracking-widest text-slate-700 mb-2">{plan.label}</h4>
-                            <p className="text-4xl font-black text-yellow-500 mb-2">{plan.price}</p>
-                            <p className="text-sm text-slate-500 mb-4">{plan.desc}</p>
-                            <Link href="/contact" className="text-xs font-bold uppercase tracking-widest text-slate-900 group-hover:text-yellow-600 transition-colors">
-                                Request Quote →
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                    {packages.map((plan) => (
+                        <div
+                            key={plan.name}
+                            className={`bg-white p-7 border ${
+                                plan.featured ? "border-[#0f3d68]" : "border-slate-200"
+                            }`}
+                        >
+                            {plan.featured && (
+                                <p className="text-xs font-medium text-[#0f3d68] mb-3">Most requested</p>
+                            )}
+                            <h3 className="text-lg font-semibold text-slate-900 mb-2">{plan.name}</h3>
+                            <p className="text-sm text-slate-600 mb-6 leading-relaxed">{plan.desc}</p>
+                            <ul className="space-y-2.5 mb-8">
+                                {plan.includes.map((item) => (
+                                    <li key={item} className="text-sm text-slate-600 flex gap-2">
+                                        <span className="text-[#0f3d68]">–</span>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                            <Link
+                                href={`/contact?service=${encodeURIComponent(plan.name)}`}
+                                className="text-sm font-medium text-[#0f3d68] hover:underline"
+                            >
+                                Request this package
                             </Link>
                         </div>
                     ))}
                 </div>
 
-                <div className="mt-20">
-                    <div className="text-center mb-12">
-                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-6 uppercase">
-                            WHO WE <span className="text-yellow-500">BUILD FOR</span>
-                        </h3>
-                        <p className="text-base md:text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed mb-4">
-                            We ship websites and web products for businesses that need more customers, clearer offers, and software that actually launches.
-                        </p>
-                        <div className="h-1 w-24 bg-yellow-500 rounded-full mx-auto mt-6"></div>
-                    </div>
-
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-                        {clientTypes.map((type, index) => (
-                            <div
-                                key={index}
-                                className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-gray-100 hover:border-yellow-400"
-                            >
-                                <div className="text-center">
-                                    <div className="text-4xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
-                                        {type.icon}
-                                    </div>
-                                    <h4 className="text-sm md:text-base font-bold text-gray-800 leading-tight uppercase">
-                                        {type.name}
-                                    </h4>
-                                </div>
-                            </div>
+                <div className="pt-2">
+                    <h3 className="text-lg font-semibold text-slate-900 mb-3">Who we build for</h3>
+                    <p className="text-sm text-slate-600 mb-6 max-w-2xl">
+                        Businesses that need clearer offers online, more enquiries, or software that actually ships.
+                    </p>
+                    <div className="flex flex-wrap gap-x-6 gap-y-2">
+                        {industries.map((name) => (
+                            <span key={name} className="text-sm text-slate-500">
+                                {name}
+                            </span>
                         ))}
                     </div>
-
-                    <div className="mt-16 text-center bg-gradient-to-r from-yellow-50 to-orange-50 p-8 md:p-12 rounded-3xl border-2 border-yellow-200">
-                        <p className="text-xl md:text-2xl text-gray-800 mb-6 font-bold">
-                            Need a website, store, or web app? <span className="text-yellow-600">We deliver remotely worldwide.</span>
-                        </p>
-                        <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                            Based in Canada and India — we work with clients via WhatsApp, email, and video calls across time zones.
-                        </p>
+                    <div className="mt-10">
                         <Link
-                            href="/contact"
-                            className="inline-block bg-gray-900 text-white px-10 py-4 rounded-full font-bold text-base uppercase hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                            href="/pricing"
+                            className="text-sm font-medium text-[#0f3d68] hover:underline"
                         >
-                            Get a Project Quote
+                            View full pricing details
                         </Link>
                     </div>
                 </div>
-
             </div>
         </section>
     );

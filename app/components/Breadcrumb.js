@@ -13,7 +13,7 @@ export default function Breadcrumb({ items = [], className = '' }) {
 
   return (
     <nav
-      className={`text-xs sm:text-sm text-gray-600 ${className}`}
+      className={`text-xs text-slate-500 ${className}`}
       aria-label="Breadcrumb"
     >
       <ol className="inline-flex flex-wrap items-center gap-1 sm:gap-2">
@@ -31,14 +31,14 @@ export default function Breadcrumb({ items = [], className = '' }) {
               itemType="https://schema.org/ListItem"
             >
               {i !== 0 && (
-                <span className="mx-1 text-gray-400 select-none" aria-hidden="true">
+                <span className="mx-1 text-slate-300 select-none" aria-hidden="true">
                   /
                 </span>
               )}
               {!isLast && isInternal ? (
                 <Link
                   href={href}
-                  className="text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                  className="text-slate-500 hover:text-slate-800 transition-colors"
                   itemProp="item"
                 >
                   <span itemProp="name">{item.name}</span>
@@ -46,7 +46,7 @@ export default function Breadcrumb({ items = [], className = '' }) {
               ) : !isLast && !isInternal ? (
                 <a
                   href={href}
-                  className="text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                  className="text-slate-500 hover:text-slate-800 transition-colors"
                   itemProp="item"
                   rel="noopener noreferrer"
                 >
@@ -54,7 +54,7 @@ export default function Breadcrumb({ items = [], className = '' }) {
                 </a>
               ) : (
                 <span
-                  className="text-gray-900 font-semibold truncate max-w-[160px] sm:max-w-xs"
+                  className="text-slate-800 truncate max-w-[160px] sm:max-w-xs"
                   aria-current="page"
                   itemProp="name"
                 >

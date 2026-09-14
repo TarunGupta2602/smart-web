@@ -18,6 +18,16 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: '/services/bookkeeping', destination: '/services', permanent: true },
+      { source: '/services/accounting', destination: '/services', permanent: true },
+      { source: '/services/invoicing', destination: '/services', permanent: true },
+      { source: '/services/payroll', destination: '/services', permanent: true },
+      { source: '/services/tax-preparation', destination: '/services', permanent: true },
+      { source: '/services/financial-consulting', destination: '/services', permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

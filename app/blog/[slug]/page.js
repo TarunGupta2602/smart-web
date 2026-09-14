@@ -219,19 +219,18 @@ export default async function BlogSlugPage({ params }) {
                             <BlogContentClient content={content} />
 
                             {/* Inline CTA */}
-                            <div className="mt-10 p-6 rounded-2xl bg-slate-950 border border-slate-800 not-prose">
+                            <div className="mt-10 p-6 rounded-2xl bg-slate-50 border border-slate-200 not-prose">
                                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                                     <div>
-                                        <p className="text-white font-black uppercase tracking-tight text-sm mb-1">Need expert financial help?</p>
-                                        <p className="text-slate-400 text-xs">Talk to our CPA-supervised team today — free consultation.</p>
+                                        <p className="text-slate-900 font-semibold text-sm mb-1">Planning a website or store?</p>
+                                        <p className="text-slate-500 text-xs">Get a fixed project quote from SmartSoft Solutions.</p>
                                     </div>
-                                    <a
-                                        href="tel:+17077084062"
-                                        className="shrink-0 inline-flex items-center gap-2 px-5 py-3 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black uppercase text-[10px] tracking-widest rounded-full transition-all"
+                                    <Link
+                                        href="/contact"
+                                        className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium rounded-md transition-colors"
                                     >
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                                        +1-707-708-4062
-                                    </a>
+                                        Get a quote
+                                    </Link>
                                 </div>
                             </div>
 
@@ -268,57 +267,47 @@ export default async function BlogSlugPage({ params }) {
 
                             <TableOfContents content={content} />
 
-                            {/* CTA Card */}
-                            <div className="bg-slate-950 rounded-3xl p-6 relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400/10 rounded-full blur-3xl pointer-events-none" />
-                                <div className="relative z-10">
-                                    <div className="text-[9px] font-black uppercase tracking-widest text-yellow-400 mb-2">Free Consultation</div>
-                                    <p className="text-white font-black text-sm mb-1">Ready to outsource your books?</p>
-                                    <p className="text-slate-400 text-xs mb-5 leading-relaxed">CPA-supervised bookkeeping, payroll & tax services for USA & Canada businesses.</p>
-                                    <a
-                                        href="tel:+17077084062"
-                                        className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black uppercase text-[10px] tracking-widest rounded-2xl transition-all"
-                                    >
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                                        Call Now
-                                    </a>
-                                    <Link
-                                        href="/contact"
-                                        className="w-full mt-3 flex items-center justify-center px-4 py-3 bg-white/10 hover:bg-white/20 border border-white/10 text-white font-black uppercase text-[10px] tracking-widest rounded-2xl transition-all"
-                                    >
-                                        Book a Consultation
-                                    </Link>
-                                </div>
+                            <div className="bg-white border border-slate-200 p-6">
+                                <div className="text-xs font-medium text-slate-400 mb-2">Project quote</div>
+                                <p className="text-slate-900 font-semibold text-sm mb-1">Ready to start a build?</p>
+                                <p className="text-slate-500 text-xs mb-5 leading-relaxed">Website, e-commerce, or web app — fixed quote before work begins.</p>
+                                <Link
+                                    href="/contact"
+                                    className="w-full flex items-center justify-center px-4 py-2.5 bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium rounded-md transition-colors"
+                                >
+                                    Get a quote
+                                </Link>
+                                <a
+                                    href="tel:+17077084062"
+                                    className="w-full mt-3 flex items-center justify-center px-4 py-2.5 border border-slate-200 text-slate-700 text-sm font-medium rounded-md hover:border-slate-300 transition-colors"
+                                >
+                                    +1 707 708 4062
+                                </a>
                             </div>
 
                             {/* Quick Links */}
-                            <div className="bg-white rounded-3xl border-2 border-slate-100 p-6">
-                                <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-4">Our Services</div>
+                            <div className="bg-white border border-slate-200 p-6">
+                                <div className="text-xs font-medium text-slate-400 mb-4">Our services</div>
                                 <ul className="space-y-2">
                                     {[
-                                        { name: "Bookkeeping", href: "/services/bookkeeping" },
-                                        { name: "Accounting", href: "/services/accounting" },
-                                        { name: "Payroll Processing", href: "/services/payroll" },
-                                        { name: "Tax Preparation", href: "/services/tax-preparation" },
-                                        { name: "Website Designing", href: "/services/website-designing" },
-                                        { name: "Digital Marketing", href: "/services/digital-marketing" },
+                                        { name: "Business websites & stores", href: "/services/website-designing" },
+                                        { name: "Digital marketing", href: "/services/digital-marketing" },
                                         { name: "SEO", href: "/services/seo" },
-                                        { name: "Pricing & Plans", href: "/pricing" },
+                                        { name: "Pricing", href: "/pricing" },
                                     ].map((item) => (
                                         <li key={item.name}>
-                                            <Link href={item.href} className="flex items-center justify-between text-xs font-bold text-slate-700 hover:text-yellow-600 transition-colors py-1 group">
+                                            <Link href={item.href} className="flex items-center justify-between text-sm text-slate-700 hover:text-[#0f3d68] transition-colors py-1 group">
                                                 {item.name}
-                                                <svg className="w-3 h-3 text-slate-300 group-hover:text-yellow-400 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
+                                                <svg className="w-3 h-3 text-slate-300 group-hover:text-[#0f3d68] transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                                             </Link>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
 
-                            {/* Trust badges */}
                             <div className="flex flex-wrap gap-2">
-                                {["IRS Authorized", "CPA Supervised", "QuickBooks Pro"].map((b) => (
-                                    <span key={b} className="text-[8px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-slate-950 text-yellow-400">
+                                {["Next.js", "React", "E-commerce"].map((b) => (
+                                    <span key={b} className="text-[10px] font-medium px-2.5 py-1 rounded-md bg-slate-100 text-slate-600">
                                         {b}
                                     </span>
                                 ))}

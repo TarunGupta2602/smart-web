@@ -40,8 +40,8 @@ const sanitizeBlogPayload = (data = {}) => {
 
   if (!payload.meta_keywords) {
     payload.meta_keywords = title
-      ? `${title}, bookkeeping, accounting, payroll, tax preparation, financial strategy`
-      : 'bookkeeping, accounting, payroll, tax preparation, small business finance';
+      ? `${title}, website development, e-commerce, SEO, digital marketing, web apps`
+      : 'website development, e-commerce, SEO, digital marketing, web apps';
   }
 
   if (payload.faqs === undefined) {

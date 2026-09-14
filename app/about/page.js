@@ -35,32 +35,20 @@ export default function AboutPage() {
         {
             name: "Next.js & React",
             description: "Modern frontends that load fast, rank well, and stay maintainable — marketing sites, stores, and product UIs.",
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-            ),
-            color: "bg-yellow-50 text-yellow-600"
+            icon: null,
+            color: ""
         },
         {
-            name: "E-commerce & Payments",
+            name: "E-commerce & payments",
             description: "Catalogs, carts, offers, and checkout flows with real payment integrations so stores can take orders.",
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
-                </svg>
-            ),
-            color: "bg-orange-50 text-orange-600"
+            icon: null,
+            color: ""
         },
         {
             name: "Firebase & Supabase",
             description: "Auth, databases, and dashboards for web apps your team and customers can use every day.",
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                </svg>
-            ),
-            color: "bg-slate-50 text-slate-600"
+            icon: null,
+            color: ""
         }
     ];
 

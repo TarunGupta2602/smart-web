@@ -23,22 +23,10 @@ export const metadata = {
     url: 'https://www.smartsoftsolutions.org',
     images: [
       { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions - Website Development' },
-      { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' },
     ],
     type: 'website',
     siteName: 'SmartSoft Solutions',
     locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@SmartSoftSolutions',
-    title: 'SmartSoft Solutions | Websites, E-commerce & Web Apps',
-    description: 'Business websites, online stores, and web apps built to launch.',
-    images: ['/og-image.jpg']
-  },
-  other: {
-    category: 'Website Development & Digital Services',
-    classification: 'Technology',
   },
 };
 
@@ -49,28 +37,16 @@ export default function Homepage() {
 
   return (
     <main className="bg-white min-h-screen">
-      <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }}
-        />
-        <section className="mb-2 md:mb-6 lg:mb-2">
-          <HeroSlider />
-        </section>
-        <section className="mb-2 md:mb-6 lg:mb-2">
-          <ServicesSection />
-        </section>
-        <section className="mb-2 md:mb-6 lg:mb-2">
-          <PricingIndustriesSection />
-        </section>
-        <section className="mb-2 md:mb-6 lg:mb-2">
-          <ClientsSection />
-        </section>
-        <section className="mb-2 md:mb-6 lg:mb-2">
-          <FAQSection />
-        </section>
-        <TestimonialsSection />
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }}
+      />
+      <HeroSlider />
+      <ServicesSection />
+      <PricingIndustriesSection />
+      <ClientsSection />
+      <FAQSection />
+      <TestimonialsSection />
     </main>
   );
 }

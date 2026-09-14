@@ -1,17 +1,13 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import { organization, webSite, stringifySchema } from "@/lib/schema";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const companySans = IBM_Plex_Sans({
+  variable: "--font-company-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -97,7 +93,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* End Google Tag Manager */}
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased text-gray-900 bg-white`}
+        className={`${companySans.variable} antialiased text-slate-900 bg-white font-sans`}
       >
         {/* Google Tag Manager (noscript) */}
         <noscript>

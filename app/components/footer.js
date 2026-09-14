@@ -5,88 +5,50 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-slate-950 text-slate-400 pt-20 pb-10 border-t border-white/5">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
-
-                    {/* Brand Column */}
-                    <div className="lg:col-span-4 space-y-6">
-                        <Link href="/" className="inline-flex items-center gap-3 group mb-2">
+        <footer className="bg-white border-t border-slate-200 pt-16 pb-10">
+            <div className="max-w-6xl mx-auto px-5 sm:px-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-14">
+                    <div className="lg:col-span-4 space-y-5">
+                        <Link href="/" className="inline-flex items-center gap-2.5">
                             <Image
                                 src="/favicon.ico"
-                                alt="SmartSoft Solutions - Website Development"
-                                width={44}
-                                height={44}
-                                className="object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
+                                alt="SmartSoft Solutions"
+                                width={32}
+                                height={32}
+                                className="object-contain"
                             />
-                            <span className="text-2xl font-black tracking-tighter text-white group-hover:text-yellow-400 transition-colors uppercase">
-                                SmartSoft{" "}
-                                <span className="text-yellow-400 group-hover:text-white italic font-serif lowercase transition-colors">
-                                    Solutions
-                                </span>
+                            <span className="text-[15px] font-semibold tracking-tight text-slate-900">
+                                SmartSoft Solutions
                             </span>
                         </Link>
-                        <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-                            We build business websites, e-commerce stores, and web apps with Next.js and React — quoted up front, built to launch. Live products for companies that need customers, not demos.
+                        <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
+                            We build business websites, e-commerce stores, and web apps for companies that need a live product — quoted clearly, delivered remotely.
                         </p>
-
-                        {/* Physical Addresses */}
-                        <div className="space-y-4">
-                            <div className="flex items-start gap-3 text-slate-500 text-sm">
-                                <svg className="w-4 h-4 mt-0.5 text-yellow-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                                <address className="not-italic leading-relaxed">
-                                    <span className="block text-[10px] font-black uppercase tracking-widest text-yellow-500/80 mb-1">Canada</span>
-                                    24 Ranchlands Bay NW<br />
-                                    Calgary, AB T3G 1S4<br />
-                                    Canada
-                                </address>
-                            </div>
-                            <div className="flex items-start gap-3 text-slate-500 text-sm">
-                                <svg className="w-4 h-4 mt-0.5 text-yellow-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                                <address className="not-italic leading-relaxed">
-                                    <span className="block text-[10px] font-black uppercase tracking-widest text-yellow-500/80 mb-1">India Branch</span>
-                                    H-25 Sec 63<br />
-                                    Basement Floor<br />
-                                    Noida 201301<br />
-                                    India
-                                </address>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-wrap gap-2">
-                            {["Next.js", "React", "E-commerce"].map((badge) => (
-                                <span key={badge} className="text-[10px] text-yellow-400 font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-yellow-400/10 border border-yellow-400/20">
-                                    {badge}
-                                </span>
-                            ))}
+                        <div className="space-y-3 text-sm text-slate-500">
+                            <p>
+                                <span className="text-slate-400 block text-xs mb-0.5">Canada</span>
+                                24 Ranchlands Bay NW, Calgary, AB T3G 1S4
+                            </p>
+                            <p>
+                                <span className="text-slate-400 block text-xs mb-0.5">India</span>
+                                H-25 Sec 63, Basement Floor, Noida 201301
+                            </p>
                         </div>
                     </div>
 
-                    {/* Quick Links */}
                     <div className="lg:col-span-2">
-                        <h3 className="text-white font-black mb-6 text-[10px] uppercase tracking-[0.2em]">Navigation</h3>
-                        <ul className="space-y-3.5">
+                        <h3 className="text-xs font-semibold text-slate-900 mb-4 tracking-wide uppercase">Company</h3>
+                        <ul className="space-y-3">
                             {[
-                                { name: "Home", href: "/" },
                                 { name: "Services", href: "/services" },
                                 { name: "Work", href: "/projects" },
                                 { name: "Pricing", href: "/pricing" },
-                                { name: "Blog", href: "/blog" },
                                 { name: "About", href: "/about" },
+                                { name: "Blog", href: "/blog" },
                                 { name: "Contact", href: "/contact" },
                             ].map((item) => (
                                 <li key={item.name}>
-                                    <Link
-                                        href={item.href}
-                                        className="text-sm text-slate-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
-                                    >
-                                        <span className="w-0 group-hover:w-2 overflow-hidden h-0.5 bg-yellow-400 rounded-full transition-all duration-200" />
+                                    <Link href={item.href} className="text-sm text-slate-500 hover:text-slate-900 transition-colors">
                                         {item.name}
                                     </Link>
                                 </li>
@@ -94,25 +56,17 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Services Links */}
-                    <div className="lg:col-span-2">
-                        <h3 className="text-white font-black mb-6 text-[10px] uppercase tracking-[0.2em]">Our Services</h3>
-                        <ul className="space-y-3.5">
+                    <div className="lg:col-span-3">
+                        <h3 className="text-xs font-semibold text-slate-900 mb-4 tracking-wide uppercase">Services</h3>
+                        <ul className="space-y-3">
                             {[
-                                { name: "Business Websites", href: "/services/website-designing" },
-                                { name: "Digital Marketing", href: "/services/digital-marketing" },
+                                { name: "Business websites", href: "/services/website-designing" },
+                                { name: "E-commerce & web apps", href: "/services/website-designing" },
+                                { name: "Digital marketing", href: "/services/digital-marketing" },
                                 { name: "SEO", href: "/services/seo" },
-                                { name: "Bookkeeping", href: "/services/bookkeeping" },
-                                { name: "Accounting", href: "/services/accounting" },
-                                { name: "Payroll", href: "/services/payroll" },
-                                { name: "Tax Preparation", href: "/services/tax-preparation" },
                             ].map((item) => (
                                 <li key={item.name}>
-                                    <Link
-                                        href={item.href}
-                                        className="text-sm text-slate-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
-                                    >
-                                        <span className="w-0 group-hover:w-2 overflow-hidden h-0.5 bg-yellow-400 rounded-full transition-all duration-200" />
+                                    <Link href={item.href} className="text-sm text-slate-500 hover:text-slate-900 transition-colors">
                                         {item.name}
                                     </Link>
                                 </li>
@@ -120,78 +74,42 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Legal Links */}
-                    <div className="lg:col-span-2">
-                        <h3 className="text-white font-black mb-6 text-[10px] uppercase tracking-[0.2em]">Legal</h3>
-                        <ul className="space-y-3.5">
-                            {[
-                                { name: "Privacy Policy", href: "/privacy-policy" },
-                                { name: "Terms of Service", href: "/terms-of-service" },
-                                { name: "Refund Policy", href: "/refund-policy" },
-                                { name: "Cookie Policy", href: "/cookie-policy" },
-                            ].map((item) => (
-                                <li key={item.name}>
-                                    <Link
-                                        href={item.href}
-                                        className="text-sm text-slate-400 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
-                                    >
-                                        <span className="w-0 group-hover:w-2 overflow-hidden h-0.5 bg-yellow-400 rounded-full transition-all duration-200" />
-                                        {item.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* CTA Column */}
-                    <div className="lg:col-span-2">
-                        <div className="relative group overflow-hidden bg-white/[0.03] border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-yellow-400/30">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-
-                            <h3 className="text-white font-black text-base mb-2 relative z-10">Get a Project Quote</h3>
-                            <p className="text-xs text-slate-500 mb-6 relative z-10 leading-relaxed">
-                                Share your goals and budget range — we reply with scope, timeline, and a clear price.
-                            </p>
-
-                            <div className="space-y-3 relative z-10">
-                                <a
-                                    href="tel:17077084062"
-                                    className="flex items-center justify-center w-full py-3 px-4 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black rounded-xl text-[11px] uppercase tracking-widest transition-all shadow-lg shadow-yellow-500/20 hover:shadow-yellow-400/30 gap-2"
-                                >
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                                    +1-707-708-4062
+                    <div className="lg:col-span-3">
+                        <h3 className="text-xs font-semibold text-slate-900 mb-4 tracking-wide uppercase">Contact</h3>
+                        <ul className="space-y-3 text-sm text-slate-500">
+                            <li>
+                                <a href="tel:17077084062" className="hover:text-slate-900 transition-colors">
+                                    +1 707 708 4062
                                 </a>
-                                <Link
-                                    href="/contact"
-                                    className="flex items-center justify-center w-full py-3 px-4 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white font-black rounded-xl text-[11px] uppercase tracking-widest transition-all"
-                                >
-                                    Request a Quote
-                                </Link>
-                                <div className="text-center">
-                                    <a href="https://wa.me/917456096455" className="text-[10px] text-slate-600 uppercase tracking-widest font-medium hover:text-yellow-400 transition-colors">
-                                        WhatsApp +91 7456096455
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                            </li>
+                            <li>
+                                <a href="mailto:smartsoftsols@gmail.com" className="hover:text-slate-900 transition-colors">
+                                    smartsoftsols@gmail.com
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://wa.me/917456096455" className="hover:text-slate-900 transition-colors">
+                                    WhatsApp +91 74560 96455
+                                </a>
+                            </li>
+                        </ul>
+                        <Link
+                            href="/contact"
+                            className="inline-flex mt-6 px-4 py-2 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium transition-colors"
+                        >
+                            Get a quote
+                        </Link>
                     </div>
                 </div>
 
-                {/* Bottom Bar */}
-                <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <p className="text-slate-600 text-xs text-center md:text-left leading-relaxed">
-                        &copy; {currentYear} SmartSoft Solutions Inc. All rights reserved.
-                        <span className="hidden md:inline mx-2">•</span>
-                        <br className="md:hidden" />
-                        Website Development, E-commerce &amp; Digital Services.
+                <div className="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <p className="text-xs text-slate-400">
+                        © {currentYear} SmartSoft Solutions Inc. All rights reserved.
                     </p>
-                    <div className="flex items-center gap-6 text-xs text-slate-600">
-                        <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
-                        <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms</Link>
-                        <div className="flex items-center bg-white/[0.04] px-3 py-1.5 rounded-full border border-white/5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-green-400 mr-2 animate-pulse" />
-                            Open for Paid Projects
-                        </div>
+                    <div className="flex items-center gap-5 text-xs text-slate-400">
+                        <Link href="/privacy-policy" className="hover:text-slate-700">Privacy</Link>
+                        <Link href="/terms-of-service" className="hover:text-slate-700">Terms</Link>
+                        <Link href="/refund-policy" className="hover:text-slate-700">Refunds</Link>
                     </div>
                 </div>
             </div>

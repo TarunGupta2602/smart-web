@@ -5,141 +5,99 @@ import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 const SITE_URL = 'https://www.smartsoftsolutions.org';
 
 export const metadata = {
-    title: "Business Websites & E-commerce Development | SmartSoft Solutions",
+    title: "Business Websites & E-commerce Development",
     description: "Custom business websites, e-commerce stores, and web apps built with Next.js and React. Conversion-focused, mobile-ready, quoted up front.",
-    keywords: [
-        "website designing services", "business website development", "e-commerce website",
-        "Next.js website", "custom web development", "online store development"
-    ],
-    alternates: {
-        canonical: `${SITE_URL}/services/website-designing`,
-    },
-    openGraph: {
-        title: "Business Websites & E-commerce | SmartSoft Solutions",
-        description: "Marketing sites, online stores, and web apps — built to launch with Next.js and React.",
-        url: `${SITE_URL}/services/website-designing`,
-        type: 'website',
-        images: [{ url: '/og-image.jpg', width: 1200, height: 630 }]
-    },
+    alternates: { canonical: `${SITE_URL}/services/website-designing` },
 };
 
 export default function WebsiteDesigningServicePage() {
     const pageSchema = webPage({
-        name: 'Website Designing Services',
-        description: 'Custom website design, responsive layouts, and conversion-focused UI for USA and Canada small businesses.',
+        name: 'Business Websites & E-commerce',
+        description: 'Custom website and e-commerce development with Next.js and React.',
         url: `${SITE_URL}/services/website-designing`,
     });
-
     const breadcrumbSchema = breadcrumbList([
         { name: 'Home', url: `${SITE_URL}/` },
         { name: 'Services', url: `${SITE_URL}/services` },
-        { name: 'Website Designing', url: `${SITE_URL}/services/website-designing` }
+        { name: 'Websites & Stores', url: `${SITE_URL}/services/website-designing` }
     ], SITE_URL);
-
     const breadcrumbItems = [
         { name: 'Home', url: '/' },
         { name: 'Services', url: '/services' },
-        { name: 'Website Designing', url: '/services/website-designing' }
+        { name: 'Websites & Stores', url: '/services/website-designing' }
     ];
 
     return (
-        <div className="min-h-screen bg-white text-slate-900 selection:bg-yellow-500 selection:text-black">
+        <div className="bg-white text-slate-900">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: stringifySchema([pageSchema, breadcrumbSchema]) }}
             />
-            <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-6 pt-4 pb-2" />
+            <Breadcrumb items={breadcrumbItems} className="max-w-6xl mx-auto px-5 sm:px-6 pt-4" />
 
-            <section className="relative min-h-[40vh] flex items-center bg-slate-950 text-white overflow-hidden py-16">
-                <div className="absolute inset-0 z-0">
-                    <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-yellow-500/10 rounded-full blur-[100px] animate-pulse"></div>
-                </div>
-                <div className="container mx-auto px-6 relative z-10 w-full">
-                    <div className="max-w-4xl mx-auto text-center lg:text-left">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-8 self-center lg:self-start">
-                            <span className="text-[10px] uppercase tracking-[0.2em] font-black text-yellow-400">Websites · Stores · Apps</span>
-                        </div>
-                        <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-6">
-                            BUSINESS WEBSITES <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif">&amp; STORES.</span>
-                        </h1>
-                        <p className="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed">
-                            Marketing sites, e-commerce stores, and web apps with Next.js and React — quoted up front, built to launch, so visitors become customers.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section className="py-24 bg-white">
-                <div className="container mx-auto px-6 max-w-6xl">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div className="space-y-8">
-                            <h2 className="text-3xl md:text-4xl font-black uppercase text-slate-900 tracking-tight">
-                                DESIGNED TO CONVERT, <br />
-                                <span className="text-yellow-500 italic font-serif">BUILT TO SCALE.</span>
-                            </h2>
-                            <p className="text-slate-600 leading-relaxed text-sm font-medium">
-                                From first wireframe to launch, we craft websites that communicate trust, load quickly, and guide users toward contact, booking, or purchase — without clutter.
-                            </p>
-                            <ul className="space-y-4 font-bold text-xs uppercase tracking-widest text-slate-700">
-                                <li className="flex items-center gap-3">
-                                    <span className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">✓</span>
-                                    Custom UI/UX & Brand-Aligned Layouts
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">✓</span>
-                                    Mobile-First Responsive Design
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">✓</span>
-                                    Fast Performance & Core Web Vitals Focus
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">✓</span>
-                                    Landing Pages, Stores & Web Apps
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className="p-8 rounded-[2.5rem] bg-slate-950 text-white border border-slate-800 shadow-2xl relative">
-                            <div className="border-b border-white/10 pb-4 mb-6 flex justify-between items-center">
-                                <div>
-                                    <h4 className="text-xs uppercase text-slate-400 font-bold">Design Delivery</h4>
-                                    <p className="text-[10px] text-yellow-500 font-serif italic">From concept to live site</p>
-                                </div>
-                                <span className="bg-green-500/25 border border-green-500 text-green-400 px-3 py-1 rounded-full text-[9px] font-bold uppercase">Live</span>
-                            </div>
-                            <div className="space-y-3 mb-6">
-                                <div className="flex justify-between text-xs">
-                                    <span className="text-slate-400">Wireframes & Structure:</span>
-                                    <span className="text-yellow-400 font-bold">Complete</span>
-                                </div>
-                                <div className="flex justify-between text-xs">
-                                    <span className="text-slate-400">Responsive Breakpoints:</span>
-                                    <span className="text-yellow-400 font-bold">Mobile · Tablet · Desktop</span>
-                                </div>
-                                <div className="flex justify-between text-xs border-t border-white/5 pt-3">
-                                    <span className="text-white font-bold">Launch Readiness:</span>
-                                    <span className="text-green-400 font-black">100%</span>
-                                </div>
-                            </div>
-                            <div className="p-3 bg-white/5 rounded-xl border border-white/10 text-[10px] text-slate-400">
-                                Insight: Clear hierarchy, strong CTAs, and fast load times help more visitors take action.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="py-20 bg-slate-50 border-t border-slate-100 text-center">
-                <div className="container mx-auto px-6 max-w-4xl">
-                    <h3 className="text-xs font-black uppercase tracking-[0.2em] mb-4 text-slate-450">Need a new site?</h3>
-                    <h2 className="text-3xl font-black uppercase text-slate-900 mb-6">LET&apos;S DESIGN YOUR WEBSITE</h2>
-                    <p className="text-slate-600 text-sm max-w-xl mx-auto mb-10 font-medium">
-                        Tell us about your business goals and we&apos;ll map a website design plan that fits your brand and budget.
+            <section className="border-b border-slate-100">
+                <div className="max-w-6xl mx-auto px-5 sm:px-6 py-14 md:py-20">
+                    <p className="text-sm font-medium text-[#0f3d68] mb-4">Websites · Stores · Apps</p>
+                    <h1 className="max-w-2xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
+                        Business websites and online stores built to launch
+                    </h1>
+                    <p className="max-w-xl text-base text-slate-600 leading-relaxed">
+                        Marketing sites, e-commerce stores, and web apps with Next.js and React — quoted up front so visitors become customers.
                     </p>
-                    <Link href="/contact?service=Business%20Website" className="px-10 py-4 bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-black uppercase tracking-widest text-xs rounded-full shadow-lg transition-all">
-                        Request a Quote
+                </div>
+            </section>
+
+            <section className="py-14 md:py-20">
+                <div className="max-w-6xl mx-auto px-5 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                    <div>
+                        <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                            Designed to convert. Built to maintain.
+                        </h2>
+                        <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                            From structure to launch, we craft sites that communicate trust, load quickly, and guide users toward contact, booking, or purchase.
+                        </p>
+                        <ul className="space-y-3 text-sm text-slate-700">
+                            {[
+                                "Custom UI and brand-aligned layouts",
+                                "Mobile-first responsive design",
+                                "Fast performance and Core Web Vitals focus",
+                                "Landing pages, stores, and web apps",
+                            ].map((item) => (
+                                <li key={item} className="flex gap-2">
+                                    <span className="text-[#0f3d68]">–</span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="border border-slate-200 bg-slate-50 p-7 space-y-4">
+                        <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
+                            <span className="text-slate-500">Wireframes & structure</span>
+                            <span className="font-medium text-slate-900">Included</span>
+                        </div>
+                        <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
+                            <span className="text-slate-500">Responsive breakpoints</span>
+                            <span className="font-medium text-slate-900">Mobile · Tablet · Desktop</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                            <span className="text-slate-500">Deliverable</span>
+                            <span className="font-medium text-slate-900">Live production site</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="border-t border-slate-100 py-14">
+                <div className="max-w-6xl mx-auto px-5 sm:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <div>
+                        <h2 className="text-xl font-semibold text-slate-900 mb-2">Need a new site or store?</h2>
+                        <p className="text-sm text-slate-600">Tell us your goals and budget — we will map a clear plan.</p>
+                    </div>
+                    <Link
+                        href="/contact?service=Business%20Website"
+                        className="inline-flex self-start px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium transition-colors"
+                    >
+                        Request a quote
                     </Link>
                 </div>
             </section>

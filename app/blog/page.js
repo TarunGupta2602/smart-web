@@ -12,16 +12,15 @@ export const revalidate = 1800;
 
 export const metadata = {
     title: 'Insights Blog | SmartSoft Solutions',
-    description: 'Expert guides on bookkeeping, accounting, payroll, tax preparation, technology, and business growth for USA & Canada small businesses.',
+    description: 'Guides on website development, e-commerce, SEO, and digital growth for businesses hiring a development partner.',
     keywords: [
-        'bookkeeping tips', 'accounting guides', 'payroll help USA Canada',
-        'tax preparation tips', 'small business finance blog', 'QuickBooks tips',
-        'financial planning blog', 'technology blog', 'web development tips',
+        'website development tips', 'e-commerce guides', 'SEO blog',
+        'Next.js tips', 'digital marketing', 'web app development',
         'SmartSoft Solutions blog',
     ],
     openGraph: {
         title: 'Insights Blog | SmartSoft Solutions',
-        description: 'Expert guides on bookkeeping, accounting, payroll, tax, and technology for USA & Canada small businesses.',
+        description: 'Guides on websites, e-commerce, SEO, and digital growth.',
         type: 'website',
         url: `${SITE_URL}/blog`,
         siteName: 'SmartSoft Solutions',
@@ -31,18 +30,10 @@ export const metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Insights Blog | SmartSoft Solutions',
-        description: 'Expert guides on finance and technology for small businesses.',
+        description: 'Guides on websites, e-commerce, SEO, and digital growth.',
         images: ['/og-image.jpg'],
     },
     alternates: { canonical: `${SITE_URL}/blog` },
-    robots: {
-        index: true, follow: true,
-        googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
-    },
-    other: {
-        category: 'Insights',
-        classification: 'Financial & Technology',
-    },
 };
 
 const getBlogs = cache(async (page = 1, limit = 12) => {
@@ -87,50 +78,30 @@ export default async function BlogPage(props) {
         <div className="min-h-screen bg-white">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: stringifySchema(breadcrumbSchema) }} />
 
-            {/* ─── HERO ─────────────────────────────────────────────── */}
-            <section className="relative bg-slate-950 text-white py-20 overflow-hidden">
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 left-1/3 w-[400px] h-[400px] bg-yellow-500/8 rounded-full blur-[120px]" />
-                    <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-orange-500/8 rounded-full blur-[100px]" />
-                    {/* Subtle grid lines */}
-                    <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
-                        <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" /></pattern></defs>
-                        <rect width="100%" height="100%" fill="url(#grid)" />
-                    </svg>
-                </div>
-                <div className="container mx-auto px-6 relative z-10 max-w-5xl">
-                    <Breadcrumb items={breadcrumbItems} className="mb-8 opacity-60" />
-                    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-                        <div>
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/30 mb-6">
-                                <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-400 animate-pulse" />
-                                <span className="text-[10px] uppercase tracking-[0.2em] font-black text-yellow-400">Insights</span>
-                            </div>
-                            <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white leading-[0.95] mb-4">
-                                OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase">blog.</span>
-                            </h1>
-                            <p className="text-slate-400 text-sm md:text-base max-w-xl leading-relaxed">
-                                Guides on bookkeeping, payroll, tax, and technology — written for USA & Canada small business owners.
-                            </p>
-                        </div>
-                        <a
-                            href="tel:+17077084062"
-                            className="inline-flex items-center gap-3 px-6 py-3.5 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black uppercase text-xs tracking-widest rounded-full shadow-lg transition-all duration-300 shrink-0"
-                        >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                            Free Consultation
-                        </a>
-                    </div>
+            <section className="border-b border-slate-100">
+                <div className="max-w-6xl mx-auto px-5 sm:px-6 py-14 md:py-20">
+                    <Breadcrumb items={breadcrumbItems} className="mb-6" />
+                    <p className="text-sm font-medium text-[#0f3d68] mb-4">Blog</p>
+                    <h1 className="max-w-2xl text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-5">
+                        Practical notes on websites, stores, and growth
+                    </h1>
+                    <p className="max-w-xl text-base text-slate-600 leading-relaxed">
+                        Guides on web development, e-commerce, SEO, and hiring a digital partner — written for business owners.
+                    </p>
                 </div>
             </section>
 
-            {/* ─── BLOG LIST ────────────────────────────────────────── */}
-            <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-7xl">
-
-                {/* Topics chips */}
-                <div className="flex flex-wrap gap-2 mb-12">
-                    {["All Posts", "Bookkeeping", "Payroll", "Tax Prep", "Accounting", "Technology"].map((tag) => (
-                        <span key={tag} className={`text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-full border transition-all cursor-pointer ${tag === "All Posts" ? "bg-slate-900 text-yellow-400 border-slate-900" : "bg-white text-slate-600 border-slate-200 hover:border-yellow-400 hover:text-yellow-600"}`}>
+            <main className="max-w-6xl mx-auto px-5 sm:px-6 py-14">
+                <div className="flex flex-wrap gap-2 mb-10">
+                    {["All posts", "Websites", "E-commerce", "SEO", "Web apps", "Marketing"].map((tag) => (
+                        <span
+                            key={tag}
+                            className={`text-xs px-3 py-1.5 rounded-md border ${
+                                tag === "All posts"
+                                    ? "bg-slate-900 text-white border-slate-900"
+                                    : "bg-white text-slate-500 border-slate-200"
+                            }`}
+                        >
                             {tag}
                         </span>
                     ))}
@@ -141,13 +112,12 @@ export default async function BlogPage(props) {
                     fallback={
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-pulse">
                             {[...Array(6)].map((_, i) => (
-                                <div key={i} className="bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm">
-                                    <div className="h-52 bg-slate-100 rounded-t-3xl" />
-                                    <div className="p-6 space-y-3">
-                                        <div className="h-3 w-1/4 bg-slate-100 rounded-full" />
-                                        <div className="h-6 w-4/5 bg-slate-100 rounded-xl" />
-                                        <div className="h-4 w-full bg-slate-100 rounded-xl" />
-                                        <div className="h-4 w-3/4 bg-slate-100 rounded-xl" />
+                                <div key={i} className="border border-slate-100 overflow-hidden">
+                                    <div className="h-44 bg-slate-100" />
+                                    <div className="p-5 space-y-3">
+                                        <div className="h-3 w-1/4 bg-slate-100 rounded" />
+                                        <div className="h-5 w-4/5 bg-slate-100 rounded" />
+                                        <div className="h-4 w-full bg-slate-100 rounded" />
                                     </div>
                                 </div>
                             ))}
@@ -159,23 +129,17 @@ export default async function BlogPage(props) {
 
                 <Pagination currentPage={page} totalPages={totalPages} basePath="/blog" />
 
-                {/* Bottom CTA */}
-                <div className="mt-20 bg-slate-950 rounded-[2.5rem] p-10 md:p-14 text-center relative overflow-hidden">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none" />
-                    <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-white mb-4 relative z-10">
-                        NEED EXPERT FINANCIAL HELP?
-                    </h2>
-                    <p className="text-slate-400 text-sm mb-8 max-w-md mx-auto relative z-10">
-                        Skip the reading — talk directly to a CPA-supervised bookkeeping or tax expert today.
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-4 relative z-10">
-                        <a href="tel:+17077084062" className="px-8 py-4 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black uppercase text-xs tracking-widest rounded-full transition-all">
-                            Call +1-707-708-4062
-                        </a>
-                        <Link href="/contact" className="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-black uppercase text-xs tracking-widest rounded-full transition-all">
-                            Book Free Consultation
-                        </Link>
+                <div className="mt-16 border border-slate-200 bg-slate-50 px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <div>
+                        <h2 className="text-xl font-semibold text-slate-900 mb-2">Planning a website or store?</h2>
+                        <p className="text-sm text-slate-600">Send a short brief — we reply with scope and a fixed quote.</p>
                     </div>
+                    <Link
+                        href="/contact"
+                        className="inline-flex self-start px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium transition-colors"
+                    >
+                        Get a quote
+                    </Link>
                 </div>
             </main>
         </div>
