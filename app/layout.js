@@ -17,17 +17,16 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL('https://www.smartsoftsolutions.org'),
   title: {
-    default: "SmartSoft Solutions | Bookkeeping, Accounting, Payroll & Tax Services USA & Canada",
+    default: "SmartSoft Solutions | Website Development, E-commerce & Business Web Apps",
     template: "%s | SmartSoft Solutions"
   },
-  description: "SmartSoft Solutions provides professional bookkeeping, accounting, invoicing, payroll processing, and tax preparation services for small businesses in the USA and Canada. Accurate, affordable, and CPA-supervised financial services.",
+  description: "SmartSoft Solutions builds business websites, e-commerce stores, and web apps with Next.js and React. Marketing sites, online stores, and full-stack products for companies that need a live launch — not a demo.",
   keywords: [
-    "bookkeeping services USA", "accounting firm USA", "payroll services USA", "tax preparation USA",
-    "invoicing services", "online bookkeeper", "small business accounting USA", "QuickBooks bookkeeping",
-    "CPA accounting services", "payroll processing Canada", "bookkeeping services Canada",
-    "tax filing USA Canada", "IRS tax preparation", "accounting services small business",
-    "virtual bookkeeper USA", "remote accounting services", "business tax preparation",
-    "payroll management", "accounts receivable", "accounts payable", "financial reporting"
+    "website development company", "business website design", "e-commerce website development",
+    "Next.js development agency", "React web development", "Shopify alternative custom store",
+    "web app development", "digital marketing services", "SEO company",
+    "freelance website agency USA", "website design Canada", "custom web development India",
+    "conversion focused websites", "online store development", "Firebase Supabase apps"
   ],
   authors: [{ name: "SmartSoft Solutions" }],
   creator: "SmartSoft Solutions",
@@ -37,14 +36,14 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://www.smartsoftsolutions.org',
     siteName: 'SmartSoft Solutions',
-    title: 'SmartSoft Solutions | Accounting & Technology Services',
-    description: 'Professional accounting, bookkeeping, payroll, tax, website designing, digital marketing, and SEO services for small businesses across USA, Canada, and India.',
+    title: 'SmartSoft Solutions | Websites, E-commerce & Web Apps',
+    description: 'We build marketing sites, e-commerce stores, and full-stack web apps with Next.js, React, Firebase, and Supabase — quoted up front, built to launch.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'SmartSoft Solutions - Accounting & Technology Services',
+        alt: 'SmartSoft Solutions - Website Development & Digital Services',
       },
       {
         url: '/images/logo.png',
@@ -56,8 +55,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SmartSoft Solutions | Accounting & Technology Services',
-    description: 'Accounting, bookkeeping, payroll, tax, website design, digital marketing & SEO for USA, Canada & India.',
+    title: 'SmartSoft Solutions | Websites, E-commerce & Web Apps',
+    description: 'Business websites, online stores, and web apps built with Next.js & React. Live products, clear quotes.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -118,9 +117,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             __html: stringifySchema([
               organization({
                 logo: '/images/logo.png',
-                description: 'SmartSoft Solutions is a trusted provider of bookkeeping, accounting, invoicing, payroll management, and tax preparation services for small businesses in the USA and Canada.',
+                description: 'SmartSoft Solutions builds business websites, e-commerce stores, and web apps with Next.js and React for companies that need a live product — not a demo.',
+                email: 'smartsoftsols@gmail.com',
               }),
-              webSite({ url: 'https://www.smartsoftsolutions.org', description: 'SmartSoft Solutions - Professional Bookkeeping, Accounting, Payroll & Tax Services for USA & Canada' }),
+              webSite({ url: 'https://www.smartsoftsolutions.org', description: 'SmartSoft Solutions — Website development, e-commerce, and digital services for growing businesses' }),
             ]),
           }}
         />

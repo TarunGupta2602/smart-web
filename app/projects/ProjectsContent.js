@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function ProjectsContent({ projects }) {
     const [filter, setFilter] = useState("All");
 
-    const categories = ["All", "Bookkeeping & Accounting", "Payroll Processing", "Tax Preparation"];
+    const categories = ["All", "E-commerce", "Business Website", "Web App"];
 
     const filteredProjects = filter === "All"
         ? projects
@@ -25,14 +25,14 @@ export default function ProjectsContent({ projects }) {
                 <div className="container mx-auto px-6 relative z-10 py-20 text-center">
                     <div className="max-w-4xl mx-auto">
                         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
-                            <span className="text-xs uppercase tracking-[0.2em] font-black text-yellow-400">Verified Client Results</span>
+                            <span className="text-xs uppercase tracking-[0.2em] font-black text-yellow-400">Selected Client Work</span>
                         </div>
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.95] tracking-tighter uppercase whitespace-pre-line text-white">
-                            Proven Case <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif">Studies.</span>
+                            Real Client <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif">Projects.</span>
                         </h1>
                         <p className="text-base md:text-lg lg:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
-                            Read how our bookkeeping restructuring, compliant payroll, and CPA-guided tax filings saved thousands of dollars and eliminated audit concern for small business owners.
+                            E-commerce stores, lead-generation sites, and business websites shipped with Next.js and React — live products, not demos.
                         </p>
                     </div>
                 </div>
@@ -104,35 +104,33 @@ export default function ProjectsContent({ projects }) {
                 </div>
             </section>
 
-            {/* Business Trust row (No local images) */}
             <section className="py-20 bg-slate-50 border-t border-slate-100">
                 <div className="container mx-auto px-6 text-center max-w-4xl">
-                    <h3 className="text-xs uppercase tracking-[0.3em] font-black text-slate-400 mb-6">Tax Compliance & Accreditations</h3>
+                    <h3 className="text-xs uppercase tracking-[0.3em] font-black text-slate-400 mb-6">Stack We Ship With</h3>
                     <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60">
-                        <span className="text-sm font-black tracking-widest uppercase">IRS Authorized e-File</span>
-                        <span className="text-sm font-black tracking-widest uppercase">Canada Revenue Compliant</span>
-                        <span className="text-sm font-black tracking-widest uppercase">CPA Monitored</span>
-                        <span className="text-sm font-black tracking-widest uppercase">QuickBooks ProAdvisor</span>
+                        <span className="text-sm font-black tracking-widest uppercase">Next.js</span>
+                        <span className="text-sm font-black tracking-widest uppercase">React</span>
+                        <span className="text-sm font-black tracking-widest uppercase">Firebase</span>
+                        <span className="text-sm font-black tracking-widest uppercase">Supabase</span>
                     </div>
                 </div>
             </section>
 
-            {/* bottom banner */}
             <section className="py-24 bg-slate-950 text-white relative">
                 <div className="container mx-auto px-6 text-center z-10 relative">
                     <div className="max-w-4xl mx-auto">
                         <h2 className="text-4xl md:text-7xl font-black mb-8 leading-[0.95] tracking-tighter uppercase">
-                            LET US STABILIZE <br />
-                            <span className="font-serif italic text-yellow-500">YOUR LEDGER.</span>
+                            HAVE A PROJECT? <br />
+                            <span className="font-serif italic text-yellow-500">Let&apos;s ship.</span>
                         </h2>
                         <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-12">
-                            Contact us configuration for a bookkeeping review, automated business payroll installation, or tax deductions check.
+                            Tell us about your website, store, or web app goals — we reply with scope and a clear quote.
                         </p>
                         <Link
                             href="/contact"
                             className="inline-flex items-center gap-3 px-10 py-5 bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-black uppercase text-xs tracking-widest rounded-full transition-all duration-300 shadow-xl"
                         >
-                            Request Free Consultation
+                            Request a Quote
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                         </Link>
                     </div>

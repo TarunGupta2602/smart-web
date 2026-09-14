@@ -19,6 +19,7 @@ export default function Navbar() {
     const navLinks = [
         { name: "Home", href: "/" },
         { name: "Services", href: "/services" },
+        { name: "Work", href: "/projects" },
         { name: "Pricing", href: "/pricing" },
         { name: "Blog", href: "/blog" },
         { name: "About", href: "/about" },
@@ -84,7 +85,7 @@ export default function Navbar() {
                             href="/contact"
                             className="px-5 py-2.5 rounded-full bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black text-[10px] uppercase tracking-widest shadow-lg shadow-yellow-400/20 hover:shadow-yellow-300/30 transition-all duration-200 hover:scale-105 active:scale-95"
                         >
-                            Free Consultation
+                            Get a Quote
                         </Link>
                     </div>
 
@@ -161,7 +162,7 @@ export default function Navbar() {
                             onClick={() => setIsOpen(false)}
                             className="flex items-center justify-center w-full py-3.5 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black text-[11px] uppercase tracking-widest transition-all"
                         >
-                            Free Consultation
+                            Get a Quote
                         </Link>
                         <a
                             href="tel:17077084062"

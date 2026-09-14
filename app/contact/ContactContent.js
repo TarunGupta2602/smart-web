@@ -71,7 +71,7 @@ const contactMethods = [
 ];
 
 export default function ContactContent() {
-    const [form, setForm] = useState({ name: "", email: "", phone: "", service: "Bookkeeping", message: "" });
+    const [form, setForm] = useState({ name: "", email: "", phone: "", service: "Business Website", message: "" });
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
@@ -95,8 +95,8 @@ export default function ContactContent() {
             if (supabaseError) {
                 setError("Submission failed. Please try again.");
             } else {
-                setSuccess("Thank you! A financial expert will follow up within 2 business hours.");
-                setForm({ name: "", email: "", phone: "", service: "Bookkeeping", message: "" });
+                setSuccess("Thank you! Our team will follow up within two business days with next steps.");
+                setForm({ name: "", email: "", phone: "", service: "Business Website", message: "" });
             }
         } catch {
             setError("Submission failed. Please try again.");
@@ -116,14 +116,14 @@ export default function ContactContent() {
                 <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/30 mb-8">
                         <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-400 animate-pulse" />
-                        <span className="text-[10px] uppercase tracking-[0.2em] font-black text-yellow-400">Free Consultation Available</span>
+                        <span className="text-[10px] uppercase tracking-[0.2em] font-black text-yellow-400">Get a Project Quote</span>
                     </div>
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white mb-6 leading-[0.95]">
-                        LET&apos;S FIX YOUR <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase">books & taxes.</span>
+                        HAVE A PROJECT? <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif lowercase">Let&apos;s price it.</span>
                     </h1>
                     <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                        Whether you need clean books, stress-free payroll, or a full tax strategy — our CPA-supervised team is ready to help your USA or Canada business today.
+                        Send a short brief — what you need, timeline, and budget range. We reply with scope and a clear quote, usually within two business days.
                     </p>
                 </div>
             </section>
@@ -168,17 +168,17 @@ export default function ContactContent() {
                                 <span className="text-[9px] uppercase tracking-[0.2em] font-black text-yellow-700">No Obligation</span>
                             </div>
                             <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-slate-900 mb-6 leading-[0.95]">
-                                GET A FREE <span className="text-yellow-500 italic font-serif lowercase">consultation.</span>
+                                GET A CLEAR <span className="text-yellow-500 italic font-serif lowercase">quote.</span>
                             </h2>
                             <p className="text-sm text-slate-600 font-medium leading-relaxed mb-8">
-                                Tell us what you need. We&apos;ll review your situation and send a custom, flat-rate proposal — typically within 2 business hours.
+                                Tell us what you need. We&apos;ll reply with scope, timeline, and a fixed quote — typically within two business days.
                             </p>
 
                             <div className="space-y-3 mb-10">
                                 {[
-                                    { label: "Bookkeeping Diagnostic", sub: "Free 30-minute review of your books" },
-                                    { label: "Flat-rate Proposal", sub: "No hidden fees, ever" },
-                                    { label: "USA & Canada Compliance", sub: "IRS authorized · CRA compliant" },
+                                    { label: "Fixed project quote", sub: "Price agreed before any build starts" },
+                                    { label: "Weekly progress demos", sub: "See the product as it ships" },
+                                    { label: "Live launch & handoff", sub: "Deploy + maintainable codebase" },
                                 ].map((item) => (
                                     <div key={item.label} className="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100">
                                         <div className="w-7 h-7 rounded-full bg-yellow-500 flex items-center justify-center text-white text-xs font-black shrink-0 mt-0.5">✓</div>
@@ -192,7 +192,7 @@ export default function ContactContent() {
 
                             {/* Trust badges */}
                             <div className="flex flex-wrap gap-2">
-                                {["IRS Authorized", "CPA Supervised", "QuickBooks Pro", "CRA Compliant"].map((b) => (
+                                {["Next.js", "React", "E-commerce", "Web Apps"].map((b) => (
                                     <span key={b} className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-slate-900 text-yellow-400 border border-slate-800">
                                         {b}
                                     </span>
@@ -232,15 +232,16 @@ export default function ContactContent() {
                                         <label className="block text-[9px] font-black uppercase tracking-[0.2em] mb-2 text-slate-400" htmlFor="service">Service Needed *</label>
                                         <select name="service" id="service" value={form.service} onChange={handleChange} required
                                             className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-yellow-500 focus:ring-0 focus:bg-white text-slate-900 font-semibold text-sm transition-all outline-none cursor-pointer appearance-none">
-                                            <option value="Bookkeeping">Bookkeeping</option>
-                                            <option value="Accounting & Reporting">Accounting & Reporting</option>
-                                            <option value="Invoicing & Billing">Invoicing & Billing</option>
-                                            <option value="Payroll Processing">Payroll Processing</option>
-                                            <option value="Tax Preparation">Tax Preparation</option>
-                                            <option value="Financial Consulting">Financial Consulting</option>
-                                            <option value="Website Designing">Website Designing</option>
+                                            <option value="Business Website">Business Website</option>
+                                            <option value="E-commerce Store">E-commerce Store</option>
+                                            <option value="Custom Web App">Custom Web App</option>
                                             <option value="Digital Marketing">Digital Marketing</option>
                                             <option value="SEO">SEO</option>
+                                            <option value="Bookkeeping">Bookkeeping</option>
+                                            <option value="Accounting & Reporting">Accounting & Reporting</option>
+                                            <option value="Payroll Processing">Payroll Processing</option>
+                                            <option value="Tax Preparation">Tax Preparation</option>
+                                            <option value="Other">Other</option>
                                         </select>
                                     </div>
                                 </div>
@@ -266,7 +267,7 @@ export default function ContactContent() {
 
                                 <button type="submit" disabled={loading}
                                     className="w-full py-4 bg-slate-900 hover:bg-yellow-500 text-white hover:text-slate-900 font-black rounded-2xl text-xs uppercase tracking-[0.25em] transition-all duration-300 disabled:opacity-50 shadow-lg hover:shadow-yellow-200">
-                                    {loading ? "Sending..." : "Request Free Consultation →"}
+                                    {loading ? "Sending..." : "Request a Quote →"}
                                 </button>
 
                                 <p className="text-center text-[10px] text-slate-400 font-medium">
@@ -284,20 +285,20 @@ export default function ContactContent() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         <div>
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6">
-                                <span className="text-[9px] uppercase tracking-[0.2em] font-black text-yellow-400">Your Data is Safe</span>
+                                <span className="text-[9px] uppercase tracking-[0.2em] font-black text-yellow-400">Private by Default</span>
                             </div>
                             <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-5 leading-none">
-                                BANK LEVEL <span className="text-yellow-500 italic font-serif">SECURITY.</span>
+                                YOUR BRIEF STAYS <span className="text-yellow-500 italic font-serif">SECURE.</span>
                             </h2>
                             <p className="text-slate-400 text-sm leading-relaxed mb-8">
-                                All spreadsheets, bank logs, payroll records, and tax files are protected with 256-bit encryption and stored on secure, audited cloud platforms. We maintain strict CPA supervisor access controls — your financial data never leaves our encrypted environment.
+                                Project details and contact info are handled carefully. We use secure forms and never share your business information with third parties for marketing.
                             </p>
                             <div className="grid grid-cols-2 gap-4">
                                 {[
-                                    { title: "256-Bit SSL", sub: "End-to-end encrypted" },
-                                    { title: "CPA Monitored", sub: "Strict access control" },
-                                    { title: "IRS Compliant", sub: "Authorized e-File provider" },
-                                    { title: "CRA Certified", sub: "Canada Revenue Compliant" },
+                                    { title: "256-Bit SSL", sub: "Encrypted form submissions" },
+                                    { title: "Fixed Quotes", sub: "Clear scope before build" },
+                                    { title: "Direct Contact", sub: "Phone · Email · WhatsApp" },
+                                    { title: "Remote Delivery", sub: "USA · Canada · Global" },
                                 ].map((item) => (
                                     <div key={item.title} className="p-4 rounded-2xl bg-white/5 border border-white/10">
                                         <span className="text-[9px] font-black uppercase tracking-widest text-yellow-400 block mb-1">✓ {item.title}</span>
@@ -318,7 +319,7 @@ export default function ContactContent() {
                                             <path d="M22 32l6 6 12-12" stroke="#F59E0B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                         <span className="text-[9px] font-black uppercase tracking-widest text-white">Protected</span>
-                                        <span className="text-[8px] uppercase text-slate-400 tracking-wide">IRS & CRA Secure</span>
+                                        <span className="text-[8px] uppercase text-slate-400 tracking-wide">Secure submissions</span>
                                     </div>
                                 </div>
                             </div>

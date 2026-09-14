@@ -7,26 +7,22 @@ import TestimonialsSection from "./components/testimonials-section";
 import { breadcrumbList, stringifySchema } from "@/lib/schema";
 
 export const metadata = {
-  title: "SmartSoft Solutions | Bookkeeping, Accounting, Payroll & Tax Services for USA & Canada Small Business",
-  description: "SmartSoft Solutions offers professional bookkeeping, accounting, invoicing, payroll processing, and tax preparation services for small businesses across the USA and Canada. CPA-supervised, accurate, affordable, and fully remote.",
+  title: "SmartSoft Solutions | Business Websites, E-commerce & Web Apps",
+  description: "SmartSoft Solutions builds marketing websites, e-commerce stores, and full-stack web apps with Next.js, React, Firebase, and Supabase. Clear quotes, live launches, remote delivery for USA, Canada, and beyond.",
   keywords: [
-    "bookkeeping services USA", "accounting services USA", "payroll services USA", "tax preparation USA",
-    "invoicing services USA", "small business bookkeeper", "online accounting firm USA",
-    "bookkeeping services Canada", "payroll processing Canada", "tax filing USA Canada",
-    "QuickBooks bookkeeper", "virtual accountant USA", "CPA services small business",
-    "accounts payable receivable USA", "IRS tax preparation service", "business accounting USA",
-    "remote bookkeeping USA", "affordable accounting services", "monthly bookkeeping service",
-    "tax return preparation USA Canada"
+    "website development company", "business website design", "e-commerce development",
+    "Next.js agency", "React web apps", "digital marketing", "SEO services",
+    "custom online store", "web development USA Canada", "hire web development company"
   ],
   alternates: {
     canonical: 'https://www.smartsoftsolutions.org',
   },
   openGraph: {
-    title: "SmartSoft Solutions | Accounting & Technology Services USA, Canada & India",
-    description: "Expert accounting, bookkeeping, payroll, tax, website designing, digital marketing, and SEO for small businesses. Serving USA, Canada, and India.",
+    title: "SmartSoft Solutions | Websites, E-commerce & Web Apps",
+    description: "Paid builds for marketing sites, online stores, and web apps. You get a live product, not a demo.",
     url: 'https://www.smartsoftsolutions.org',
     images: [
-      { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions - Accounting & Technology Services' },
+      { url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions - Website Development' },
       { url: '/images/logo.png', width: 512, height: 512, alt: 'SmartSoft Solutions Logo' },
     ],
     type: 'website',
@@ -36,13 +32,13 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@SmartSoftSolutions',
-    title: 'SmartSoft Solutions | Accounting & Technology Services',
-    description: 'Accounting, bookkeeping, payroll, tax, website design, digital marketing & SEO for USA, Canada & India.',
+    title: 'SmartSoft Solutions | Websites, E-commerce & Web Apps',
+    description: 'Business websites, online stores, and web apps built to launch.',
     images: ['/og-image.jpg']
   },
   other: {
-    category: 'Accounting & Technology',
-    classification: 'Financial & Technology',
+    category: 'Website Development & Digital Services',
+    classification: 'Technology',
   },
 };
 

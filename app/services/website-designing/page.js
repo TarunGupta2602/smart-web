@@ -5,25 +5,21 @@ import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 const SITE_URL = 'https://www.smartsoftsolutions.org';
 
 export const metadata = {
-    title: "Website Designing Services | Custom Business Websites | SmartSoft Solutions",
-    description: "Professional website designing for small businesses. Custom, mobile-responsive sites built for conversions, brand clarity, and fast performance across USA & Canada.",
+    title: "Business Websites & E-commerce Development | SmartSoft Solutions",
+    description: "Custom business websites, e-commerce stores, and web apps built with Next.js and React. Conversion-focused, mobile-ready, quoted up front.",
     keywords: [
-        "website designing services", "custom business website", "responsive web design",
-        "small business website design", "UI UX design", "landing page design USA Canada"
+        "website designing services", "business website development", "e-commerce website",
+        "Next.js website", "custom web development", "online store development"
     ],
     alternates: {
         canonical: `${SITE_URL}/services/website-designing`,
     },
     openGraph: {
-        title: "Website Designing Services | SmartSoft Solutions",
-        description: "Custom, conversion-focused website design for growing businesses — mobile-first, fast, and brand-aligned.",
+        title: "Business Websites & E-commerce | SmartSoft Solutions",
+        description: "Marketing sites, online stores, and web apps — built to launch with Next.js and React.",
         url: `${SITE_URL}/services/website-designing`,
         type: 'website',
         images: [{ url: '/og-image.jpg', width: 1200, height: 630 }]
-    },
-    other: {
-        category: 'Website Designing',
-        classification: 'Technology',
     },
 };
 
@@ -61,14 +57,14 @@ export default function WebsiteDesigningServicePage() {
                 <div className="container mx-auto px-6 relative z-10 w-full">
                     <div className="max-w-4xl mx-auto text-center lg:text-left">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-8 self-center lg:self-start">
-                            <span className="text-[10px] uppercase tracking-[0.2em] font-black text-yellow-400">Technology Services</span>
+                            <span className="text-[10px] uppercase tracking-[0.2em] font-black text-yellow-400">Websites · Stores · Apps</span>
                         </div>
                         <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-6">
-                            WEBSITE <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif">DESIGNING.</span>
+                            BUSINESS WEBSITES <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 italic font-serif">&amp; STORES.</span>
                         </h1>
                         <p className="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed">
-                            Launch a clean, mobile-ready website that reflects your brand and turns visitors into leads. We design and build sites that look sharp and perform fast.
+                            Marketing sites, e-commerce stores, and web apps with Next.js and React — quoted up front, built to launch, so visitors become customers.
                         </p>
                     </div>
                 </div>
@@ -100,7 +96,7 @@ export default function WebsiteDesigningServicePage() {
                                 </li>
                                 <li className="flex items-center gap-3">
                                     <span className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">✓</span>
-                                    Landing Pages, Business Sites & Portfolios
+                                    Landing Pages, Stores & Web Apps
                                 </li>
                             </ul>
                         </div>
@@ -142,8 +138,8 @@ export default function WebsiteDesigningServicePage() {
                     <p className="text-slate-600 text-sm max-w-xl mx-auto mb-10 font-medium">
                         Tell us about your business goals and we&apos;ll map a website design plan that fits your brand and budget.
                     </p>
-                    <Link href="/contact?service=Website%20Designing" className="px-10 py-4 bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-black uppercase tracking-widest text-xs rounded-full shadow-lg transition-all">
-                        Request Free Consultation
+                    <Link href="/contact?service=Business%20Website" className="px-10 py-4 bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-black uppercase tracking-widest text-xs rounded-full shadow-lg transition-all">
+                        Request a Quote
                     </Link>
                 </div>
             </section>

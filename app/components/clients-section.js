@@ -2,18 +2,18 @@
 
 export default function ClientsSection() {
     const trustBadges = [
-        { text: "500+ Clients Served", icon: "⭐" },
-        { text: "IRS Authorized e-File", icon: "🏛️" },
-        { text: "QuickBooks ProAdvisor", icon: "📊" },
-        { text: "CPA Supervised", icon: "🎓" },
-        { text: "Canada Revenue Compliant", icon: "🍁" },
-        { text: "99% Client Retention", icon: "🤝" },
-        { text: "Xero Certified", icon: "✅" },
-        { text: "Same-Day Response", icon: "⚡" },
-        { text: "100% Accuracy Guarantee", icon: "🔐" },
-        { text: "USA & Canada Licensed", icon: "🌎" },
-        { text: "Bank-Level Data Security", icon: "🔒" },
-        { text: "Zero Hidden Fees", icon: "💎" },
+        { text: "Next.js Builds", icon: "⚡" },
+        { text: "React & TypeScript", icon: "⚛️" },
+        { text: "E-commerce Ready", icon: "🛒" },
+        { text: "Firebase & Supabase", icon: "🔥" },
+        { text: "SEO-Friendly Sites", icon: "📈" },
+        { text: "Mobile-First UX", icon: "📱" },
+        { text: "Fixed Project Quotes", icon: "💎" },
+        { text: "Production Deploys", icon: "🚀" },
+        { text: "Remote Delivery", icon: "🌎" },
+        { text: "Maintainable Code", icon: "🧩" },
+        { text: "Weekly Progress Demos", icon: "✅" },
+        { text: "Clear Handoff", icon: "🤝" },
     ];
 
     const doubled = [...trustBadges, ...trustBadges];
@@ -22,23 +22,19 @@ export default function ClientsSection() {
         <section className="py-16 md:py-20 bg-gray-50 overflow-hidden">
             <div className="container mx-auto px-6">
 
-                {/* Header */}
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4 uppercase">
-                        TRUSTED BY <span className="text-yellow-500">HUNDREDS OF BUSINESSES</span>
+                        TOOLS WE <span className="text-yellow-500">SHIP WITH</span>
                     </h2>
                     <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
-                        Small businesses and entrepreneurs across the USA and Canada trust SmartSoft Solutions for accurate bookkeeping, payroll, and tax services.
+                        Modern stack, clear process, and production standards — so your website or app is ready for real customers.
                     </p>
                 </div>
 
-                {/* Marquee Container */}
                 <div className="relative">
-                    {/* Gradient Overlays */}
                     <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
                     <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
 
-                    {/* Scrolling Trust Badges */}
                     <div className="flex overflow-hidden">
                         <div className="flex animate-trust-marquee">
                             {doubled.map((badge, index) => (
@@ -58,13 +54,12 @@ export default function ClientsSection() {
                     </div>
                 </div>
 
-                {/* Stats Row */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
                     {[
-                        { stat: "500+", label: "Happy Clients" },
-                        { stat: "99%", label: "Accuracy Rate" },
-                        { stat: "10+", label: "Years Experience" },
-                        { stat: "USA & CA", label: "Coverage" },
+                        { stat: "3", label: "Core Offer Types" },
+                        { stat: "2–6 wks", label: "Typical Site Timeline" },
+                        { stat: "100%", label: "Fixed Quotes" },
+                        { stat: "Global", label: "Remote Clients" },
                     ].map((item) => (
                         <div key={item.stat} className="bg-white rounded-2xl p-6 text-center shadow-md border border-gray-100 hover:border-yellow-300 hover:shadow-xl transition-all duration-300">
                             <p className="text-3xl md:text-4xl font-black text-yellow-500 mb-1">{item.stat}</p>
@@ -73,10 +68,9 @@ export default function ClientsSection() {
                     ))}
                 </div>
 
-                {/* Bottom Text */}
                 <div className="text-center mt-12">
                     <p className="text-lg md:text-xl font-bold text-gray-800">
-                        Join hundreds of satisfied clients who trust us for bookkeeping, payroll, and tax services.
+                        Next.js · React · Node.js · TypeScript · Firebase · Supabase
                     </p>
                 </div>
 
