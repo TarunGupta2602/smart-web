@@ -15,7 +15,7 @@ export default async function sitemap() {
     { path: "services/seo", priority: 0.85, changeFrequency: "weekly" },
     { path: "website-development-company-in", priority: 0.9, changeFrequency: "weekly" },
     { path: "pricing", priority: 0.85, changeFrequency: "monthly" },
-    { path: "projects", priority: 0.85, changeFrequency: "monthly" },
+    { path: "projects", priority: 0.9, changeFrequency: "weekly" },
     { path: "about", priority: 0.7, changeFrequency: "monthly" },
     { path: "contact", priority: 0.8, changeFrequency: "monthly" },
     { path: "blog", priority: 0.8, changeFrequency: "daily" },

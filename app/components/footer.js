@@ -5,7 +5,7 @@ import brandMark from "../icon.png";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
-    const featuredCities = INDIA_CITIES.slice(0, 9);
+    const featuredCities = INDIA_CITIES.slice(0, 12);
 
     return (
         <footer className="bg-white border-t border-slate-200 pt-16 pb-10">
@@ -25,15 +25,12 @@ export default function Footer() {
                             </span>
                         </Link>
                         <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
-                            We build business websites, e-commerce stores, and web apps for companies that need a live product — quoted clearly, delivered remotely across India and worldwide.
+                            Website development company for business sites, e-commerce stores, and web apps —
+                            fixed quotes, SEO-ready launches, and remote delivery across India and worldwide.
                         </p>
-                        <div className="space-y-3 text-sm text-slate-500">
+                        <div className="text-sm text-slate-500">
                             <p>
-                                <span className="text-slate-400 block text-xs mb-0.5">Canada</span>
-                                24 Ranchlands Bay NW, Calgary, AB T3G 1S4
-                            </p>
-                            <p>
-                                <span className="text-slate-400 block text-xs mb-0.5">India</span>
+                                <span className="text-slate-400 block text-xs mb-0.5">India office</span>
                                 H-25 Sec 63, Basement Floor, Noida 201301
                             </p>
                         </div>
@@ -43,6 +40,7 @@ export default function Footer() {
                         <h3 className="text-xs font-semibold text-slate-900 mb-4 tracking-wide uppercase">Company</h3>
                         <ul className="space-y-3">
                             {[
+                                { name: "Home", href: "/" },
                                 { name: "Services", href: "/services" },
                                 { name: "Work", href: "/projects" },
                                 { name: "Pricing", href: "/pricing" },
@@ -68,6 +66,7 @@ export default function Footer() {
                                 { name: "Digital marketing", href: "/services/digital-marketing" },
                                 { name: "SEO", href: "/services/seo" },
                                 { name: "India cities", href: "/website-development-company-in" },
+                                { name: "Live projects", href: "/projects" },
                             ].map((item) => (
                                 <li key={item.name}>
                                     <Link href={item.href} className="text-sm text-slate-500 hover:text-slate-900 transition-colors">
@@ -131,12 +130,14 @@ export default function Footer() {
 
                 <div className="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <p className="text-xs text-slate-400">
-                        © {currentYear} SmartSoft Solutions Inc. All rights reserved.
+                        © {currentYear} SmartSoft Solutions. All rights reserved.
                     </p>
                     <div className="flex items-center gap-5 text-xs text-slate-400">
                         <Link href="/privacy-policy" className="hover:text-slate-700">Privacy</Link>
                         <Link href="/terms-of-service" className="hover:text-slate-700">Terms</Link>
                         <Link href="/refund-policy" className="hover:text-slate-700">Refunds</Link>
+                        <Link href="/cookie-policy" className="hover:text-slate-700">Cookies</Link>
+                        <Link href="/sitemap.xml" className="hover:text-slate-700">Sitemap</Link>
                     </div>
                 </div>
             </div>

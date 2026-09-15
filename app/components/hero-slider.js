@@ -65,14 +65,14 @@ export default function HeroSlider() {
             className="animate-fade-up font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.15rem] font-semibold tracking-tight leading-[1.08] mb-6"
             style={{ animationDelay: "0.12s" }}
           >
-            Websites and stores built to win customers
+            Website development that turns visitors into customers
           </h1>
 
           <p
             className="animate-fade-up max-w-xl text-base md:text-lg text-slate-200/90 leading-relaxed mb-9"
             style={{ animationDelay: "0.24s" }}
           >
-            Business websites, e-commerce, and web apps with Next.js & React — fixed quotes, SEO-ready structure, and a live launch.
+            Business sites, e-commerce stores, and web apps — Next.js & React, fixed project quotes, SEO-ready structure, and a production launch you can grow.
           </p>
 
           <div

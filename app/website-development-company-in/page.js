@@ -2,6 +2,7 @@ import Link from "next/link";
 import PageHero from "../components/page-hero";
 import PageCta from "../components/page-cta";
 import Reveal from "../components/reveal";
+import RelatedLinks from "../components/related-links";
 import { webPage, breadcrumbList, faqPage, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 import { INDIA_CITIES, cityPath, getIndiaHubFaqs } from "@/lib/india-cities";
@@ -107,6 +108,7 @@ export default function IndiaCitiesHubPage() {
         </div>
       </section>
 
+      <RelatedLinks excludeHref="/website-development-company-in" />
       <PageCta />
     </div>
   );

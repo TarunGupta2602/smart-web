@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import PageHero from "../../components/page-hero";
 import PageCta from "../../components/page-cta";
 import Reveal from "../../components/reveal";
+import RelatedLinks from "../../components/related-links";
 import {
   webPage,
   breadcrumbList,
@@ -233,6 +234,11 @@ export default async function CityWebsitePage({ params }) {
           </div>
         </div>
       </section>
+
+      <RelatedLinks
+        title={`More from SmartSoft Solutions`}
+        subtitle={`After browsing ${city.name}, explore services, live projects, and pricing.`}
+      />
 
       <PageCta
         title={`Ready for a website quote in ${city.name}?`}

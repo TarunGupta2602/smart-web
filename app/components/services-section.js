@@ -63,10 +63,10 @@ export default function ServicesSection() {
         <Reveal className="max-w-2xl mb-14">
           <p className="text-sm font-medium text-[#0f3d68] mb-3">What we build</p>
           <h2 className="font-display text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
-            Services for companies that need a live product
+            Website, store, and growth services that ship live
           </h2>
           <p className="text-base text-slate-600 leading-relaxed">
-            Quoted up front. Built in weekly checkpoints. Handed over as a maintainable codebase with a production deploy.
+            Fixed quotes before build starts. Weekly demos while we work. Production deploy and handoff so your team can run the product.
           </p>
         </Reveal>
 

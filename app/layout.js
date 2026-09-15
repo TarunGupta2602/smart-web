@@ -79,8 +79,8 @@ export const metadata = {
     google: "2XUc_M2JA9i0tn_jLcEAgvJykTx-E0-BgqFoef2Oma8",
   },
   other: {
-    "geo.region": "CA-AB",
-    "geo.placename": "Calgary",
+    "geo.region": "IN-UP",
+    "geo.placename": "Noida",
     telephone: "+1-707-708-4062",
   },
 };
@@ -89,8 +89,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en-US">
       <head>
-        <meta name="geo.region" content="CA-AB" />
-        <meta name="geo.placename" content="Calgary" />
+        <meta name="geo.region" content="IN-UP" />
+        <meta name="geo.placename" content="Noida" />
         <link rel="alternate" hrefLang="en" href={SITE_URL} />
         <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
         <script

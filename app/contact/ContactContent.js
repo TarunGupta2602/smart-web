@@ -4,13 +4,14 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import PageHero from "../components/page-hero";
 import Reveal from "../components/reveal";
+import RelatedLinks from "../components/related-links";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 const contactMethods = [
     {
         title: "Phone",
         description: "+1 707 708 4062",
-        subtext: "Mon–Fri, 9am–6pm EST",
+        subtext: "Mon–Fri, business hours",
         link: "tel:17077084062",
     },
     {
@@ -26,15 +27,9 @@ const contactMethods = [
         link: "https://wa.me/917456096455",
     },
     {
-        title: "Canada office",
-        description: "24 Ranchlands Bay NW",
-        subtext: "Calgary, AB T3G 1S4",
-        link: "https://maps.google.com/?q=24+Ranchlands+Bay+NW+Calgary+AB+T3G+1S4+Canada",
-    },
-    {
         title: "India office",
         description: "H-25 Sec 63, Basement Floor",
-        subtext: "Noida 201301",
+        subtext: "Noida 201301, India",
         link: "https://maps.google.com/?q=H-25+Sector+63+Basement+Floor+Noida+201301+India",
     },
 ];
@@ -188,6 +183,8 @@ export default function ContactContent() {
                     </div>
                 </div>
             </section>
+
+            <RelatedLinks excludeHref="/contact" />
         </div>
     );
 }

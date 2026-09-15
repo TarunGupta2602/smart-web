@@ -4,6 +4,7 @@ import Image from "next/image";
 import PageHero from "../components/page-hero";
 import PageCta from "../components/page-cta";
 import Reveal from "../components/reveal";
+import RelatedLinks from "../components/related-links";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export default function AboutContent({ expertiseItems, team }) {
@@ -37,7 +38,7 @@ export default function AboutContent({ expertiseItems, team }) {
                                     stores that take orders, and apps teams can actually use.
                                 </p>
                                 <p>
-                                    We work from Canada and India, and deliver remotely worldwide via WhatsApp, email, and video.
+                                    Based in Noida, India, we deliver remotely worldwide via WhatsApp, email, and video.
                                     Scope and budget stay written down from the first quote through launch.
                                 </p>
                             </div>
@@ -119,6 +120,7 @@ export default function AboutContent({ expertiseItems, team }) {
             </section>
 
             <PageCta title="Ready to start a project?" description="Send a brief — we reply with scope and a fixed quote." />
+            <RelatedLinks excludeHref="/about" />
         </div>
     );
 }

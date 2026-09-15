@@ -2,6 +2,7 @@ import Link from "next/link";
 import PageHero from "../components/page-hero";
 import PageCta from "../components/page-cta";
 import Reveal from "../components/reveal";
+import RelatedLinks from "../components/related-links";
 import { localBusiness, webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
@@ -150,6 +151,7 @@ export default function PricingPage() {
                 </div>
             </section>
 
+            <RelatedLinks excludeHref="/pricing" />
             <PageCta title="Ready for a custom quote?" description="Call +1 707 708 4062 or send a brief online." />
         </div>
     );
