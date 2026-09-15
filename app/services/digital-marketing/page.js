@@ -106,8 +106,22 @@ export default function DigitalMarketingServicePage() {
       </section>
 
       <section className="py-14 bg-slate-50 border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 text-sm text-slate-600">
-          <p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
+          <h2 className="font-display text-2xl font-semibold text-slate-900 mb-6">How a marketing engagement runs</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm text-slate-600">
+            {[
+              { t: "Offer clarity", d: "We lock the message, audience, and conversion goal before spending budget." },
+              { t: "Channel mix", d: "Search, social, content, or email — only what fits your sales cycle." },
+              { t: "Tracking", d: "Forms, calls, and purchase events so reporting matches revenue." },
+              { t: "Iterate", d: "Weekly or bi-weekly optimisations based on lead quality, not vanity metrics." },
+            ].map((item) => (
+              <div key={item.t} className="border-t border-slate-200 pt-4">
+                <h3 className="font-semibold text-slate-900 mb-2">{item.t}</h3>
+                <p>{item.d}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-slate-600 mt-8 max-w-2xl">
             Marketing performs best on a conversion-ready site. Explore{" "}
             <Link href="/services/website-designing" className="text-[#0f3d68] hover:underline font-medium">website development</Link>
             {" "}and{" "}

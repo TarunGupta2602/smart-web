@@ -136,6 +136,21 @@ export default async function CityWebsitePage({ params }) {
               </Reveal>
             ))}
           </div>
+          <Reveal className="mt-10 max-w-3xl">
+            <h3 className="font-display text-xl font-semibold text-slate-900 mb-3">
+              Local angle for {city.name}
+            </h3>
+            <p className="text-sm text-slate-600 leading-relaxed mb-3">{city.focus}</p>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              {city.intro} When you are ready, we map pages to the offers that matter in {city.region},
+              connect them to{" "}
+              <Link href="/services/website-designing" className="text-[#0f3d68] hover:underline">website development</Link>
+              {" "}and{" "}
+              <Link href="/services/seo" className="text-[#0f3d68] hover:underline">SEO</Link>,
+              and quote a fixed price before build starts. Typical marketing sites start from ₹45,000 —
+              see <Link href="/pricing" className="text-[#0f3d68] hover:underline">pricing</Link>.
+            </p>
+          </Reveal>
         </div>
       </section>
 

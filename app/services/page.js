@@ -119,6 +119,58 @@ export default function ServicesPage() {
                 </div>
             </section>
 
+            <section className="py-14 md:py-16 bg-slate-50 border-y border-slate-100">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
+                    <Reveal className="max-w-2xl mb-10">
+                        <h2 className="font-display text-2xl md:text-3xl font-semibold text-slate-900 mb-3">
+                            Who these services are for
+                        </h2>
+                        <p className="text-sm text-slate-600 leading-relaxed">
+                            We work best with owners and operators who need a live product — not a months-long redesign committee.
+                        </p>
+                    </Reveal>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {[
+                            { title: "Service businesses", text: "Consultants, clinics, institutes, and agencies that need enquiries from a clear offer page." },
+                            { title: "Retail & D2C", text: "Brands ready for catalogues, offers, and checkout that work on Indian mobile networks." },
+                            { title: "Product teams", text: "Startups and internal tools that need dashboards, auth, and maintainable React/Next.js code." },
+                        ].map((item, index) => (
+                            <Reveal key={item.title} delay={index + 1}>
+                                <h3 className="font-display text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
+                                <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
+                            </Reveal>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-14 md:py-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
+                    <Reveal>
+                        <h2 className="font-display text-2xl md:text-3xl font-semibold text-slate-900 mb-8">
+                            How we deliver
+                        </h2>
+                    </Reveal>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
+                        {[
+                            { t: "1. Scope", d: "Written deliverables and a fixed quote before coding starts." },
+                            { t: "2. Build", d: "Weekly demos on staging so feedback stays concrete." },
+                            { t: "3. Launch", d: "Production deploy, SEO basics, and analytics hooks." },
+                            { t: "4. Grow", d: "Optional SEO and marketing once the site converts." },
+                        ].map((item) => (
+                            <div key={item.t} className="border-t border-slate-200 pt-4">
+                                <h3 className="font-semibold text-slate-900 mb-2">{item.t}</h3>
+                                <p className="text-slate-600 leading-relaxed">{item.d}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <p className="mt-8 text-sm text-slate-600">
+                        Compare packages on <Link href="/pricing" className="text-[#0f3d68] hover:underline font-medium">pricing</Link>
+                        {" "}or see live work on <Link href="/projects" className="text-[#0f3d68] hover:underline font-medium">projects</Link>.
+                    </p>
+                </div>
+            </section>
+
             <IndiaCitiesSection />
             <RelatedLinks excludeHref="/services" />
             <PageCta />

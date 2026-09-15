@@ -76,6 +76,18 @@ export default function ProjectsContent({ projects }) {
                                         {p.title}
                                     </h2>
                                     <p className="text-[15px] text-slate-600 leading-relaxed mb-5">{p.description}</p>
+                                    {p.challenge && (
+                                        <div className="mb-4 space-y-3">
+                                            <div>
+                                                <p className="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Challenge</p>
+                                                <p className="text-sm text-slate-600 leading-relaxed">{p.challenge}</p>
+                                            </div>
+                                            <div>
+                                                <p className="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Approach</p>
+                                                <p className="text-sm text-slate-600 leading-relaxed">{p.approach}</p>
+                                            </div>
+                                        </div>
+                                    )}
                                     <p className="text-sm text-slate-500 mb-1">Timeline: {p.timeline}</p>
                                     <p className="text-sm font-medium text-[#0f3d68] mb-5">Result: {p.result}</p>
                                     <div className="flex flex-wrap gap-x-4 gap-y-1 mb-6">

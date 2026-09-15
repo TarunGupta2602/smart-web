@@ -41,6 +41,11 @@ export default function AboutContent({ expertiseItems, team }) {
                                     Based in Noida, India, we deliver remotely worldwide via WhatsApp, email, and video.
                                     Scope and budget stay written down from the first quote through launch.
                                 </p>
+                                <p>
+                                    We started as a hands-on product team: fewer slides, more staging links. That still
+                                    shapes how we work — weekly demos, written change notes, and a maintainable codebase
+                                    you can keep growing after handoff.
+                                </p>
                             </div>
                         </Reveal>
                         <Reveal delay={2}>
@@ -97,6 +102,33 @@ export default function AboutContent({ expertiseItems, team }) {
             </section>
 
             <section className="py-16 md:py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
+                    <Reveal className="max-w-2xl mb-10">
+                        <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-4">
+                            How projects run
+                        </h2>
+                        <p className="text-sm text-slate-600 leading-relaxed">
+                            A simple path from brief to production — so you always know what happens next.
+                        </p>
+                    </Reveal>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        {[
+                            { step: "01", title: "Brief & quote", text: "You share goals, references, and budget range. We reply with scope, timeline, and a fixed price." },
+                            { step: "02", title: "Design & build", text: "We ship in weekly checkpoints — layouts, pages, and integrations you can click on staging." },
+                            { step: "03", title: "SEO foundations", text: "Titles, structure, performance, and internal links are part of the build — not a last-day plugin." },
+                            { step: "04", title: "Launch & handoff", text: "Production deploy, access, and notes so your team can run and grow the product." },
+                        ].map((item, index) => (
+                            <Reveal key={item.step} delay={(index % 4) + 1}>
+                                <p className="text-xs font-medium text-[#0f3d68] mb-2">{item.step}</p>
+                                <h3 className="font-display text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
+                                <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
+                            </Reveal>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-16 md:py-20 bg-white border-t border-slate-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
                     <Reveal>
                         <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-10">

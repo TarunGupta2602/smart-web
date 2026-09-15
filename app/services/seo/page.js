@@ -98,35 +98,43 @@ export default function SeoServicePage() {
             <div className="border-t border-slate-200 pt-5">
               <h3 className="font-display text-lg font-semibold text-slate-900 mb-3">On-page SEO</h3>
               <ul className="space-y-2 text-sm text-slate-600">
-                <li>– Title tags, meta descriptions, and heading structure</li>
-                <li>– Keyword mapping to service and location pages</li>
-                <li>– Internal linking and crawlable navigation</li>
-                <li>– Content clarity for search intent and conversions</li>
-                <li>– Image alt text and page experience improvements</li>
+                <li>Title tags, meta descriptions, and heading structure</li>
+                <li>Internal linking between services, blog, and contact</li>
+                <li>Image alt text and crawl-friendly URLs</li>
+                <li>FAQ and content blocks that match search intent</li>
               </ul>
             </div>
             <div className="border-t border-slate-200 pt-5">
-              <h3 className="font-display text-lg font-semibold text-slate-900 mb-3">Technical & growth SEO</h3>
+              <h3 className="font-display text-lg font-semibold text-slate-900 mb-3">Technical SEO</h3>
               <ul className="space-y-2 text-sm text-slate-600">
-                <li>– Site audits, indexation, and Core Web Vitals</li>
-                <li>– Sitemap, robots, and schema markup guidance</li>
-                <li>– Local SEO signals and Google Business alignment</li>
-                <li>– Content plans that support ranking topics</li>
-                <li>– Reporting on rankings, clicks, and opportunities</li>
+                <li>Indexation, canonicals, robots, and sitemap hygiene</li>
+                <li>Mobile performance and Core Web Vitals improvements</li>
+                <li>Schema markup where it helps (FAQ, Article, Local)</li>
+                <li>Redirects for retired URLs so equity is not wasted</li>
               </ul>
             </div>
           </div>
-          <p className="mt-8 text-sm text-slate-600 max-w-3xl">
-            Off-page SEO (backlinks, citations, partnerships) works best when your on-page foundation is solid.
-            We help you prioritize what to improve first, then support growth content and outreach direction.
-          </p>
         </div>
       </section>
 
       <section className="py-14 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <h2 className="font-display text-2xl font-semibold text-slate-900 mb-4">Pair SEO with a site built to rank</h2>
-          <p className="text-sm text-slate-600 mb-6 max-w-2xl">
+          <h2 className="font-display text-2xl font-semibold text-slate-900 mb-4">Our SEO process</h2>
+          <ol className="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm text-slate-600 list-none p-0 m-0">
+            {[
+              { n: "1", t: "Audit", d: "Crawl errors, thin pages, speed, and keyword gaps." },
+              { n: "2", t: "Plan", d: "Priority fixes and content targets tied to enquiries." },
+              { n: "3", t: "Implement", d: "On-page edits, technical fixes, and internal links." },
+              { n: "4", t: "Measure", d: "Search Console reviews and next-sprint recommendations." },
+            ].map((s) => (
+              <li key={s.n} className="border-t border-slate-200 pt-4">
+                <p className="text-xs font-medium text-[#0f3d68] mb-1">{s.n}</p>
+                <p className="font-semibold text-slate-900 mb-1">{s.t}</p>
+                <p>{s.d}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="text-sm text-slate-600 mt-8 max-w-2xl">
             If your current website is slow or hard to crawl, SEO alone will struggle. See our{" "}
             <Link href="/services/website-designing" className="text-[#0f3d68] hover:underline font-medium">
               website development service

@@ -10,10 +10,11 @@ import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 export const metadata = buildPageMetadata({
     title: "Website Development Pricing | Fixed Project Quotes",
     description:
-        "Transparent website development and e-commerce pricing from SmartSoft Solutions. Fixed quotes for business websites, online stores, and custom web apps before any build starts.",
+        "Transparent website development and e-commerce pricing from SmartSoft Solutions. Business sites from ₹45,000, stores from ₹1.2L, and custom web apps from ₹2L — fixed quotes before build.",
     path: "/pricing",
     keywords: [
         "website development cost",
+        "website development cost India",
         "e-commerce website pricing",
         "web app development quote",
         "hire website developer pricing",
@@ -23,6 +24,8 @@ export const metadata = buildPageMetadata({
 const plans = [
     {
         name: "Business website",
+        priceFrom: "₹45,000",
+        priceNote: "Typical range ₹45k–₹1.2L depending on pages & design",
         description: "A focused marketing site that explains your offer, builds trust, and captures leads.",
         features: [
             "Custom Next.js / React design",
@@ -35,6 +38,8 @@ const plans = [
     },
     {
         name: "E-commerce store",
+        priceFrom: "₹1,20,000",
+        priceNote: "Typical range ₹1.2L–₹3.5L based on catalogue & payments",
         description: "Catalogs, collections, offers, cart, and checkout so you can sell online.",
         featured: true,
         features: [
@@ -48,6 +53,8 @@ const plans = [
     },
     {
         name: "Custom web app",
+        priceFrom: "₹2,00,000",
+        priceNote: "Quoted after feature map — auth, dashboards, workflows",
         description: "Login, dashboards, and product flows with Firebase or Supabase.",
         features: [
             "Auth and user roles",
@@ -108,6 +115,8 @@ export default function PricingPage() {
                                         <p className="text-xs font-medium text-[#0f3d68] mb-3">Most requested</p>
                                     )}
                                     <h2 className="font-display text-xl font-semibold text-slate-900 mb-2">{plan.name}</h2>
+                                    <p className="text-2xl font-semibold text-[#0f3d68] mb-1">From {plan.priceFrom}</p>
+                                    <p className="text-xs text-slate-500 mb-4">{plan.priceNote}</p>
                                     <p className="text-sm text-slate-600 leading-relaxed mb-6">{plan.description}</p>
                                     <ul className="space-y-2.5 mb-8">
                                         {plan.features.map((feature) => (
