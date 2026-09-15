@@ -32,6 +32,8 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      { source: '/blog-uploads', destination: '/blog', permanent: true },
+      { source: '/blog-uploads/:path*', destination: '/blog', permanent: true },
       { source: '/services/bookkeeping', destination: '/services', permanent: true },
       { source: '/services/accounting', destination: '/services', permanent: true },
       { source: '/services/invoicing', destination: '/services', permanent: true },

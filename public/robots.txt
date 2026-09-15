@@ -6,8 +6,6 @@ Allow: /
 
 Disallow: /api/
 Disallow: /private/
-Disallow: /blog-uploads
-Disallow: /blog-uploads/
 
 User-agent: GPTBot
 Allow: /

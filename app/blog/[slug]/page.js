@@ -1,36 +1,19 @@
-import { cache } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { supabase } from '@/lib/supabaseClient'
 import BlogContentClient from '@/app/components/BlogContentClient'
 import TableOfContents from '@/app/components/TableOfContents'
 import { stripMarkdown, estimateReadTime, buildBlogSeo, resolveBlogTaxonomy } from '@/lib/utils'
 import { breadcrumbList, article, faqPage, stringifySchema } from '@/lib/schema'
+import { getAllBlogSlugs, getPostBySlug, getRelatedPosts } from '@/lib/blog'
 
-export const revalidate = 3600;
-
-const getBlogBySlug = cache(async (slug) => {
-    if (!slug) return null
-    const { data, error } = await supabase.from('blogs_site2').select('*').eq('slug', slug).single()
-    if (error) { console.error('Error fetching blog:', error); return null }
-    return data
-})
-
-async function getRelatedBlogs(currentSlug, limit = 3) {
-    const { data, error } = await supabase
-        .from('blogs_site2')
-        .select('id, title, slug, image, date_posted, author')
-        .neq('slug', currentSlug)
-        .order('date_posted', { ascending: false })
-        .limit(limit)
-    if (error) { console.error('Error fetching related blogs:', error); return [] }
-    return data || []
+export function generateStaticParams() {
+    return getAllBlogSlugs().map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }) {
     const { slug } = await params
-    const blog = await getBlogBySlug(slug)
+    const blog = getPostBySlug(slug)
     if (!blog) return { title: 'Blog' }
 
     const blogSeo = buildBlogSeo(blog)
@@ -81,8 +64,9 @@ export async function generateMetadata({ params }) {
 export default async function BlogSlugPage({ params }) {
     const { slug } = await params
 
-    const [blog, relatedBlogs] = await Promise.all([getBlogBySlug(slug), getRelatedBlogs(slug)])
+    const blog = getPostBySlug(slug)
     if (!blog) return notFound()
+    const relatedBlogs = getRelatedPosts(slug)
 
     const faqs = Array.isArray(blog.faqs) ? blog.faqs : []
     const content = blog.content || blog.description || ''
@@ -114,7 +98,6 @@ export default async function BlogSlugPage({ params }) {
     return (
         <main className="min-h-screen bg-white">
 
-            {/* ── Breadcrumb bar ─────────────────────────────────── */}
             <div className="bg-slate-950 border-b border-white/5">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
                     <nav aria-label="Breadcrumb">
@@ -141,10 +124,8 @@ export default async function BlogSlugPage({ params }) {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
                 <div className="lg:grid lg:grid-cols-3 lg:gap-12 xl:gap-16">
 
-                    {/* ── Main Content ──────────────────────────── */}
                     <div className="lg:col-span-2">
 
-                        {/* Article Header */}
                         <header className="mb-8">
                             {postCategory && (
                                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 mb-5">
@@ -159,7 +140,6 @@ export default async function BlogSlugPage({ params }) {
                                 {blog.title}
                             </h1>
 
-                            {/* Author + meta row */}
                             <div className="flex flex-wrap items-center gap-4">
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-yellow-400 font-black text-sm shadow-md">
@@ -178,37 +158,24 @@ export default async function BlogSlugPage({ params }) {
                                 </div>
                             </div>
 
-                            {/* Description preview */}
-                            {(blog.meta_description || blog.description) && (
+                            {blog.meta_description && (
                                 <div className="mt-6 p-5 rounded-2xl bg-slate-50 border border-slate-100">
-                                    <BlogContentClient
-                                        content={blog.meta_description || blog.description}
-                                        wrapperClass="prose max-w-none prose-sm text-slate-700"
-                                        allowLinks={true}
-                                    />
-                                    {blog.content && (
-                                        <a href="#article-content" className="inline-flex items-center gap-1 text-xs font-black uppercase tracking-widest text-yellow-600 hover:text-yellow-700 mt-3 transition-colors">
-                                            Read full article
-                                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
-                                        </a>
-                                    )}
+                                    <p className="text-sm text-slate-700 leading-relaxed">{blog.meta_description}</p>
                                 </div>
                             )}
                         </header>
 
-                        {/* Featured Image */}
                         {blog.image && (
                             <figure className="mb-8 rounded-3xl overflow-hidden border border-slate-100 shadow-lg bg-slate-50">
                                 <Image
                                     src={blog.image} alt={blog.title}
-                                    width={1200} height={675} priority unoptimized={true}
+                                    width={1200} height={675} priority
                                     className="w-full h-auto object-cover"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
                                 />
                             </figure>
                         )}
 
-                        {/* Article Body */}
                         <article
                             id="article-content"
                             className="prose prose-sm sm:prose-base lg:prose-lg max-w-none bg-white rounded-3xl border border-slate-100 shadow-sm p-6 md:p-10
@@ -218,7 +185,6 @@ export default async function BlogSlugPage({ params }) {
                         >
                             <BlogContentClient content={content} />
 
-                            {/* Inline CTA */}
                             <div className="mt-10 p-6 rounded-2xl bg-slate-50 border border-slate-200 not-prose">
                                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                                     <div>
@@ -234,7 +200,6 @@ export default async function BlogSlugPage({ params }) {
                                 </div>
                             </div>
 
-                            {/* FAQs */}
                             {faqs.length > 0 && (
                                 <section className="mt-10 not-prose">
                                     <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900 mb-6">
@@ -261,7 +226,6 @@ export default async function BlogSlugPage({ params }) {
                         </article>
                     </div>
 
-                    {/* ── Sidebar ───────────────────────────────── */}
                     <aside className="mt-10 lg:mt-0 lg:col-span-1">
                         <div className="lg:sticky lg:top-28 space-y-6">
 
@@ -285,7 +249,6 @@ export default async function BlogSlugPage({ params }) {
                                 </a>
                             </div>
 
-                            {/* Quick Links */}
                             <div className="bg-white border border-slate-200 p-6">
                                 <div className="text-xs font-medium text-slate-400 mb-4">Our services</div>
                                 <ul className="space-y-2">
@@ -294,6 +257,7 @@ export default async function BlogSlugPage({ params }) {
                                         { name: "Digital marketing", href: "/services/digital-marketing" },
                                         { name: "SEO", href: "/services/seo" },
                                         { name: "Pricing", href: "/pricing" },
+                                        { name: "Live projects", href: "/projects" },
                                     ].map((item) => (
                                         <li key={item.name}>
                                             <Link href={item.href} className="flex items-center justify-between text-sm text-slate-700 hover:text-[#0f3d68] transition-colors py-1 group">
@@ -306,7 +270,7 @@ export default async function BlogSlugPage({ params }) {
                             </div>
 
                             <div className="flex flex-wrap gap-2">
-                                {["Next.js", "React", "E-commerce"].map((b) => (
+                                {["Next.js", "React", "E-commerce", "SEO"].map((b) => (
                                     <span key={b} className="text-[10px] font-medium px-2.5 py-1 rounded-md bg-slate-100 text-slate-600">
                                         {b}
                                     </span>
@@ -316,11 +280,9 @@ export default async function BlogSlugPage({ params }) {
                     </aside>
                 </div>
 
-                {/* JSON-LD schemas */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: stringifySchema(articleSchema) }} />
                 {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: stringifySchema(faqSchema) }} />}
 
-                {/* Related Blogs */}
                 {relatedBlogs.length > 0 && (
                     <section className="mt-20 pt-16 border-t border-slate-100">
                         <div className="flex items-end justify-between mb-10">
@@ -340,7 +302,7 @@ export default async function BlogSlugPage({ params }) {
                                             <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                                         ) : (
                                             <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
-                                                <span className="text-yellow-400 font-black text-4xl opacity-20">$</span>
+                                                <span className="text-yellow-400 font-black text-4xl opacity-20">S</span>
                                             </div>
                                         )}
                                     </Link>
@@ -364,7 +326,6 @@ export default async function BlogSlugPage({ params }) {
                     </section>
                 )}
 
-                {/* Back to Blog */}
                 <div className="mt-16 text-center">
                     <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-slate-500 hover:text-yellow-600 transition-colors">
                         <svg className="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
