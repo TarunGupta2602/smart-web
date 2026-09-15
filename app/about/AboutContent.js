@@ -135,8 +135,7 @@ export default function AboutContent({ expertiseItems, team }) {
                             Leadership
                         </h2>
                         <p className="text-sm text-slate-600 leading-relaxed mb-10 max-w-2xl">
-                            SmartSoft Solutions is led by Tarun G. Projects are built with a small hands-on product team —
-                            we do not invent staff names for the page.
+                            SmartSoft Solutions is led by Tarun G. Delivery stays lean — fixed quotes, weekly demos, and a maintainable handoff.
                         </p>
                     </Reveal>
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
