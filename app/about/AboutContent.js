@@ -131,9 +131,13 @@ export default function AboutContent({ expertiseItems, team }) {
             <section className="py-16 md:py-20 bg-white border-t border-slate-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
                     <Reveal>
-                        <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-10">
-                            Team
+                        <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-3">
+                            Leadership
                         </h2>
+                        <p className="text-sm text-slate-600 leading-relaxed mb-10 max-w-2xl">
+                            SmartSoft Solutions is led by Tarun G. Projects are built with a small hands-on product team —
+                            we do not invent staff names for the page.
+                        </p>
                     </Reveal>
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
                         {team.map((member, index) => (

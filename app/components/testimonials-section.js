@@ -1,65 +1,43 @@
 import Link from "next/link";
 import Image from "next/image";
 import Reveal from "./reveal";
+import { PORTFOLIO_PROJECTS } from "@/lib/projects";
 
-const testimonials = [
-  {
-    quote:
-      "SmartSoft rebuilt our jewellery store with clear collections, offers, and a checkout that works on mobile. We moved from brochure traffic to real online orders.",
-    name: "Ananya R.",
-    role: "Founder, jewellery brand",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
-  },
-  {
-    quote:
-      "Our support site finally turns urgent printer issues into phone calls. Clear pages, call-first CTAs, and a callback flow that our team can manage.",
-    name: "Imran K.",
-    role: "Owner, print support business",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
-  },
-  {
-    quote:
-      "Clear quote, weekly demos, and a maintainable Next.js codebase. No surprise fees. Exactly what we needed from a development partner.",
-    name: "Sarah L.",
-    role: "Marketing lead, service company",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
-  },
-];
-
+/**
+ * Honest proof section — live project outcomes only (no fabricated person quotes).
+ */
 export default function TestimonialsSection() {
+  const highlights = PORTFOLIO_PROJECTS.slice(0, 3);
+
   return (
     <section className="bg-white py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
         <Reveal className="max-w-2xl mb-14">
-          <p className="text-sm font-medium text-[#0f3d68] mb-3">Client feedback</p>
+          <p className="text-sm font-medium text-[#0f3d68] mb-3">Live proof</p>
           <h2 className="font-display text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
-            What partners say after launch
+            Results from shipped projects
           </h2>
           <p className="text-base text-slate-600 leading-relaxed">
-            Real projects. Clear communication. Live results — not slide decks.
+            No invented reviews. Open the live sites, then request a quote for your own build.
           </p>
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-16">
-          {testimonials.map((t, index) => (
-            <Reveal key={t.name} delay={index + 1}>
-              <figure className="h-full border border-slate-200 p-6 bg-slate-50/60">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="relative h-11 w-11 overflow-hidden rounded-full bg-slate-200">
-                    <Image src={t.image} alt="" fill sizes="44px" className="object-cover" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-slate-900">{t.name}</p>
-                    <p className="text-xs text-slate-500">{t.role}</p>
-                  </div>
-                </div>
-                <blockquote className="text-sm text-slate-700 leading-relaxed">
-                  “{t.quote}”
-                </blockquote>
-              </figure>
+          {highlights.map((project, index) => (
+            <Reveal key={project.title} delay={index + 1}>
+              <article className="h-full border border-slate-200 p-6 bg-slate-50/60 flex flex-col">
+                <p className="text-xs text-slate-400 mb-2">{project.category}</p>
+                <h3 className="font-display text-lg font-semibold text-slate-900 mb-2">{project.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4 flex-1">{project.result}</p>
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-[#0f3d68] hover:underline"
+                >
+                  Visit live site →
+                </a>
+              </article>
             </Reveal>
           ))}
         </div>
@@ -67,7 +45,7 @@ export default function TestimonialsSection() {
         <Reveal>
           <div className="relative overflow-hidden px-6 py-10 md:px-12 md:py-14 text-white">
             <Image
-              src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1800&q=80"
+              src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1400&q=70"
               alt=""
               fill
               sizes="100vw"

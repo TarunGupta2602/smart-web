@@ -40,11 +40,6 @@ export default function AboutPage() {
 
     const team = [
         { initials: "TG", name: "Tarun G.", role: "Managing Director" },
-        { initials: "AD", name: "Ankit D.", role: "Frontend Lead" },
-        { initials: "RS", name: "Riya S.", role: "Product Designer" },
-        { initials: "VK", name: "Vikram K.", role: "Full-Stack Engineer" },
-        { initials: "NM", name: "Neha M.", role: "SEO & Content" },
-        { initials: "AK", name: "Amit K.", role: "Integrations Lead" }
     ];
 
     const aboutPageSchema = webPage({
