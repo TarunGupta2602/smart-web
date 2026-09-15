@@ -9,9 +9,9 @@ import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export const metadata = buildPageMetadata({
-  title: "Digital Marketing Services | Leads & Paid Growth",
+  title: "Digital Marketing for Lead Growth",
   description:
-    "Digital marketing services that generate leads for your website and online store — social, paid ads, content, and email campaigns measured against enquiries and revenue.",
+    "Digital marketing that generates leads for your website and store — social, paid ads, content, and email measured against enquiries and revenue.",
   path: "/services/digital-marketing",
   keywords: [
     "digital marketing services",

@@ -18,6 +18,7 @@ import {
   getAllCitySlugs,
   getCityFaqs,
   cityPath,
+  CITY_LOCAL_ANGLES,
 } from "@/lib/india-cities";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
@@ -32,7 +33,7 @@ export async function generateMetadata({ params }) {
 
   return buildPageMetadata({
     title: `Website Development Company in ${city.name}`,
-    description: `Hire SmartSoft Solutions — a website development company in ${city.name} for business websites, e-commerce stores, and web apps. Fixed quotes, Next.js & React, SEO-ready launches for ${city.region} businesses.`,
+    description: `Website development company in ${city.name} for business sites, e-commerce & web apps. Fixed quotes, Next.js builds, SEO-ready launch for ${city.region}.`,
     path: cityPath(city.slug),
     keywords: city.keywords,
   });
@@ -44,6 +45,7 @@ export default async function CityWebsitePage({ params }) {
   if (!city) notFound();
 
   const faqs = getCityFaqs(city);
+  const localAngle = CITY_LOCAL_ANGLES[city.slug] || city.focus;
   const path = cityPath(city.slug);
   const pageUrl = `${SITE_URL}${path}`;
 
@@ -136,11 +138,12 @@ export default async function CityWebsitePage({ params }) {
               </Reveal>
             ))}
           </div>
-          <Reveal className="mt-10 max-w-3xl">
-            <h3 className="font-display text-xl font-semibold text-slate-900 mb-3">
-              Local angle for {city.name}
+          <Reveal className="mt-10 max-w-3xl space-y-4">
+            <h3 className="font-display text-xl font-semibold text-slate-900 mb-1">
+              Why {city.name} businesses need a different site brief
             </h3>
-            <p className="text-sm text-slate-600 leading-relaxed mb-3">{city.focus}</p>
+            <p className="text-sm text-slate-600 leading-relaxed">{localAngle}</p>
+            <p className="text-sm text-slate-600 leading-relaxed">{city.focus}</p>
             <p className="text-sm text-slate-600 leading-relaxed">
               {city.intro} When you are ready, we map pages to the offers that matter in {city.region},
               connect them to{" "}
@@ -149,6 +152,9 @@ export default async function CityWebsitePage({ params }) {
               <Link href="/services/seo" className="text-[#0f3d68] hover:underline">SEO</Link>,
               and quote a fixed price before build starts. Typical marketing sites start from ₹5,000 —
               see <Link href="/pricing" className="text-[#0f3d68] hover:underline">pricing</Link>.
+            </p>
+            <p className="text-xs text-slate-500 leading-relaxed border-l-2 border-slate-200 pl-3">
+              Local client case studies for {city.name}: add real project names here when available — we do not publish fabricated testimonials.
             </p>
           </Reveal>
         </div>

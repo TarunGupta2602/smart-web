@@ -126,7 +126,7 @@ export default function BlogListClient({ blogs = [] }) {
                                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
                                 </Link>
                                 <a
-                                    href="tel:+17077084062"
+                                    href="tel:+917456096455"
                                     className="inline-flex items-center gap-2 px-5 py-3 border-2 border-yellow-300 text-yellow-700 hover:bg-yellow-50 font-black text-[10px] uppercase tracking-widest rounded-full transition-all"
                                 >
                                     Call Us
@@ -191,7 +191,7 @@ export default function BlogListClient({ blogs = [] }) {
                                     <svg className="w-3 h-3 group-hover/read:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
                                 </Link>
                                 <a
-                                    href="tel:+17077084062"
+                                    href="tel:+917456096455"
                                     className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black text-[9px] uppercase tracking-widest transition-all shadow-sm"
                                 >
                                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>

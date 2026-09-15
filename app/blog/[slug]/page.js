@@ -24,7 +24,7 @@ export async function generateMetadata({ params }) {
         ? blogSeo.keywords
         : (blog.meta_keywords ? blog.meta_keywords.split(',').map(k => k.trim()).filter(Boolean) : undefined)
     const { category, classification } = resolveBlogTaxonomy(blog)
-    const phoneNumber = '+1-707-708-4062'
+    const phoneNumber = '+91-74560-96455'
 
     return {
         title: blogSeo.metaTitle || blogSeo.title,
@@ -242,10 +242,10 @@ export default async function BlogSlugPage({ params }) {
                                     Get a quote
                                 </Link>
                                 <a
-                                    href="tel:+17077084062"
+                                    href="tel:+917456096455"
                                     className="w-full mt-3 flex items-center justify-center px-4 py-2.5 border border-slate-200 text-slate-700 text-sm font-medium rounded-md hover:border-slate-300 transition-colors"
                                 >
-                                    +1 707 708 4062
+                                    +91 74560 96455
                                 </a>
                             </div>
 

@@ -81,18 +81,24 @@ export default function Footer() {
                         <h3 className="text-xs font-semibold text-slate-900 mb-4 tracking-wide uppercase">Contact</h3>
                         <ul className="space-y-3 text-sm text-slate-500">
                             <li>
-                                <a href="tel:17077084062" className="hover:text-slate-900 transition-colors">
+                                <a href="tel:+917456096455" className="hover:text-slate-900 transition-colors">
+                                    +91 74560 96455
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://wa.me/917456096455" className="hover:text-slate-900 transition-colors">
+                                    WhatsApp +91 74560 96455
+                                </a>
+                            </li>
+                            <li className="text-xs text-slate-400">
+                                US (secondary):{" "}
+                                <a href="tel:+17077084062" className="hover:text-slate-700 transition-colors">
                                     +1 707 708 4062
                                 </a>
                             </li>
                             <li>
                                 <a href="mailto:smartsoft.solutions0@gmail.com" className="hover:text-slate-900 transition-colors">
                                     smartsoft.solutions0@gmail.com
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://wa.me/917456096455" className="hover:text-slate-900 transition-colors">
-                                    WhatsApp +91 74560 96455
                                 </a>
                             </li>
                         </ul>

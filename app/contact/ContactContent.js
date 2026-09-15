@@ -9,10 +9,10 @@ import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 const contactMethods = [
     {
-        title: "Phone",
-        description: "+1 707 708 4062",
-        subtext: "Mon–Fri, business hours",
-        link: "tel:17077084062",
+        title: "Phone / WhatsApp",
+        description: "+91 74560 96455",
+        subtext: "Primary India line · Mon–Fri business hours",
+        link: "tel:+917456096455",
     },
     {
         title: "Email",
@@ -21,10 +21,10 @@ const contactMethods = [
         link: "mailto:smartsoft.solutions0@gmail.com",
     },
     {
-        title: "WhatsApp",
-        description: "+91 74560 96455",
-        subtext: "Quick questions and project briefs",
-        link: "https://wa.me/917456096455",
+        title: "US line (secondary)",
+        description: "+1 707 708 4062",
+        subtext: "For US-based callers",
+        link: "tel:+17077084062",
     },
     {
         title: "Service model",

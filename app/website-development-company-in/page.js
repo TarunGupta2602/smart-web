@@ -11,9 +11,9 @@ import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 const faqs = getIndiaHubFaqs();
 
 export const metadata = buildPageMetadata({
-  title: "Website Development Company in India | Major Cities",
+  title: "Website Development Company in India",
   description:
-    "SmartSoft Solutions builds business websites, e-commerce stores, and web apps for companies across Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, and other major Indian cities. Fixed quotes. SEO-ready launches.",
+    "Business websites, e-commerce stores, and web apps for Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, and more. Fixed quotes. SEO-ready launches.",
   path: "/website-development-company-in",
   keywords: [
     "website development company in India",

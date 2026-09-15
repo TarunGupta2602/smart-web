@@ -104,8 +104,8 @@ export default function ServicesSection() {
         <Reveal className="mt-16 pt-10 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <p className="text-sm text-slate-600">
             Prefer to talk first? Call{" "}
-            <a href="tel:17077084062" className="font-medium text-slate-900 hover:underline">
-              +1 707 708 4062
+            <a href="tel:+917456096455" className="font-medium text-slate-900 hover:underline">
+              +91 74560 96455
             </a>
           </p>
           <Link

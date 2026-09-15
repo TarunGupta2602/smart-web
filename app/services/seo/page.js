@@ -9,9 +9,9 @@ import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export const metadata = buildPageMetadata({
-  title: "SEO Services | On-Page & Technical Search Optimization",
+  title: "SEO Services for Business Websites",
   description:
-    "SEO services for businesses that need higher Google rankings. Technical SEO, on-page optimization, keyword strategy, and local visibility — paired with website development that is built to rank.",
+    "SEO services for higher Google rankings: technical SEO, on-page optimization, keyword strategy, and local visibility — built into sites that are ready to rank.",
   path: "/services/seo",
   keywords: [
     "SEO services",

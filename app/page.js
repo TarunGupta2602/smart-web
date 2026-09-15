@@ -11,9 +11,9 @@ import { breadcrumbList, faqPage, localBusiness, stringifySchema } from "@/lib/s
 import { buildPageMetadata, HOME_FAQS, SITE_URL } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
-  title: "Website Development Company | E-commerce & Web Apps",
+  title: "Website Development Company in India",
   description:
-    "SmartSoft Solutions is a remote website development company for business websites, e-commerce stores, and web apps across India (Delhi, Mumbai, Bangalore & more) and worldwide. Next.js & React builds with fixed quotes and SEO-ready launches.",
+    "Remote website development company for business sites, e-commerce stores & web apps across India. Next.js & React builds with fixed quotes and SEO-ready launches.",
   path: "/",
   keywords: [
     "website development company",

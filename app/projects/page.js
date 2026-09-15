@@ -4,9 +4,9 @@ import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 import { PORTFOLIO_PROJECTS } from "@/lib/projects";
 
 export const metadata = buildPageMetadata({
-    title: "Website & E-commerce Portfolio | Live Client Projects",
+    title: "Live Website & E-commerce Portfolio",
     description:
-        "Visit live SmartSoft Solutions projects — jewellery e-commerce, printer support sites, and Parvah (parvah.online) random video chat — built with Next.js and React. Open each URL and request a quote.",
+        "Live SmartSoft Solutions projects — jewellery e-commerce, lead-gen sites, and Parvah video chat — built with Next.js and React. Open each URL, then request a quote.",
     path: "/projects",
     keywords: [
         "web development portfolio",

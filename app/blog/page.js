@@ -7,13 +7,13 @@ import RelatedLinks from '../components/related-links';
 import { breadcrumbList, stringifySchema } from '@/lib/schema';
 import { PAGE_VIDEOS, PAGE_POSTERS } from '@/lib/page-media';
 import { getPaginatedPosts } from '@/lib/blog';
+import { buildPageMetadata, SITE_URL } from '@/lib/seo';
 
-const SITE_URL = 'https://www.smartsoftsolutions.org';
-
-export const metadata = {
-    title: 'Website Development Blog | SEO, E-commerce & Next.js Guides',
+export const metadata = buildPageMetadata({
+    title: 'Website Development Blog',
     description:
-        'Practical guides from SmartSoft Solutions on hiring a website company, website cost in India, e-commerce checklists, SEO launches, and Next.js for business sites.',
+        'Guides on hiring a website company, website cost in India, e-commerce checklists, SEO launches, and Next.js for business sites.',
+    path: '/blog',
     keywords: [
         'website development tips',
         'e-commerce guides',
@@ -23,23 +23,7 @@ export const metadata = {
         'website development company India',
         'SmartSoft Solutions blog',
     ],
-    openGraph: {
-        title: 'Website Development Blog | SmartSoft Solutions',
-        description: 'Guides on websites, e-commerce, SEO, and Next.js for growing businesses.',
-        type: 'website',
-        url: `${SITE_URL}/blog`,
-        siteName: 'SmartSoft Solutions',
-        locale: 'en_US',
-        images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'SmartSoft Solutions Blog' }],
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Website Development Blog | SmartSoft Solutions',
-        description: 'Guides on websites, e-commerce, SEO, and Next.js for growing businesses.',
-        images: ['/og-image.jpg'],
-    },
-    alternates: { canonical: `${SITE_URL}/blog` },
-};
+});
 
 export default async function BlogPage(props) {
     const searchParams = await props.searchParams;

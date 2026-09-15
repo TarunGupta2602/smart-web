@@ -8,9 +8,9 @@ import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export const metadata = buildPageMetadata({
-    title: "Website Development Pricing | Fixed Project Quotes",
+    title: "Website Development Pricing in India",
     description:
-        "Transparent website development and e-commerce pricing from SmartSoft Solutions. Business sites from ₹5,000, stores from ₹10,000, and custom web apps from ₹15,000 — fixed quotes before build.",
+        "Website and e-commerce pricing: business sites from ₹5,000, stores from ₹10,000, web apps from ₹15,000. Fixed quotes before any build starts.",
     path: "/pricing",
     keywords: [
         "website development cost",
@@ -161,7 +161,7 @@ export default function PricingPage() {
             </section>
 
             <RelatedLinks excludeHref="/pricing" />
-            <PageCta title="Ready for a custom quote?" description="Call +1 707 708 4062 or send a brief online." />
+            <PageCta title="Ready for a custom quote?" description="Call +91 74560 96455 or send a brief online." />
         </div>
     );
 }

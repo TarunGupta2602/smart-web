@@ -12,7 +12,7 @@ import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 export const metadata = buildPageMetadata({
   title: "Business Website & E-commerce Development",
   description:
-    "Custom business website design and e-commerce development with Next.js and React. Mobile-ready stores, marketing sites, and web apps — fixed quotes, SEO-friendly builds, production launch.",
+    "Custom business websites and e-commerce stores with Next.js and React. Mobile-ready, SEO-friendly builds with fixed quotes and production launch.",
   path: "/services/website-designing",
   keywords: [
     "business website development",

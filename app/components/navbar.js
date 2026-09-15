@@ -79,10 +79,10 @@ export default function Navbar() {
 
                     <div className="hidden lg:flex items-center gap-5">
                         <a
-                            href="tel:17077084062"
+                            href="tel:+917456096455"
                             className={`text-sm transition-colors ${onHero ? "text-white/80 hover:text-white" : "text-slate-500 hover:text-slate-900"}`}
                         >
-                            +1 707 708 4062
+                            +91 74560 96455
                         </a>
                         <Link
                             href="/contact"
@@ -153,8 +153,8 @@ export default function Navbar() {
                         >
                             Get a quote
                         </Link>
-                        <a href="tel:17077084062" className="block text-center text-sm text-slate-500">
-                            +1 707 708 4062
+                        <a href="tel:+917456096455" className="block text-center text-sm text-slate-500">
+                            +91 74560 96455
                         </a>
                     </div>
                 </div>

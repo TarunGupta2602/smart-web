@@ -20,11 +20,11 @@ const body = Figtree({
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "SmartSoft Solutions | Website Development Company for Business & E-commerce",
+    default: "SmartSoft Solutions | Website Development Company",
     template: "%s | SmartSoft Solutions",
   },
   description:
-    "SmartSoft Solutions builds business websites, e-commerce stores, and web apps with Next.js and React. Fixed quotes, SEO-ready launches, and remote delivery for growing companies.",
+    "SmartSoft Solutions builds business websites, e-commerce stores, and web apps with Next.js and React. Fixed quotes and SEO-ready launches across India.",
   keywords: CORE_KEYWORDS,
   authors: [{ name: "SmartSoft Solutions", url: SITE_URL }],
   creator: "SmartSoft Solutions",
@@ -39,12 +39,12 @@ export const metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_IN",
     url: SITE_URL,
     siteName: "SmartSoft Solutions",
-    title: "SmartSoft Solutions | Website Development, E-commerce & Web Apps",
+    title: "SmartSoft Solutions | Website Development Company",
     description:
-      "Business websites, online stores, and web apps built with Next.js & React. Clear quotes. Live launches.",
+      "Business websites, online stores, and web apps with Next.js & React. Fixed quotes. Live launches across India.",
     images: [
       {
         url: "/og-image.jpg",
@@ -56,9 +56,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SmartSoft Solutions | Website Development & E-commerce",
+    title: "SmartSoft Solutions | Website Development Company",
     description:
-      "Business websites, online stores, and web apps built with Next.js & React.",
+      "Business websites, online stores, and web apps with Next.js & React across India.",
     images: ["/og-image.jpg"],
   },
   icons: {
@@ -90,7 +90,7 @@ export const metadata = {
     google: "2XUc_M2JA9i0tn_jLcEAgvJykTx-E0-BgqFoef2Oma8",
   },
   other: {
-    telephone: "+1-707-708-4062",
+    telephone: "+91-74560-96455",
   },
 };
 

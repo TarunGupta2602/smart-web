@@ -10,9 +10,9 @@ import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export const metadata = buildPageMetadata({
-    title: "Website Development, E-commerce, SEO & Marketing Services",
+    title: "Web Dev, E-commerce, SEO & Marketing",
     description:
-        "Explore SmartSoft Solutions services: business website development, e-commerce stores, web apps, SEO, and digital marketing — fixed quotes and live launches.",
+        "SmartSoft Solutions services: business website development, e-commerce stores, web apps, SEO, and digital marketing — fixed quotes and live launches.",
     path: "/services",
     keywords: [
         "website development services",

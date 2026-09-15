@@ -4,9 +4,9 @@ import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
-    title: "About SmartSoft Solutions | Website Development Company",
+    title: "About SmartSoft Solutions",
     description:
-        "About SmartSoft Solutions — a website development company building business websites, e-commerce stores, and web apps with Next.js and React for clients worldwide.",
+        "About SmartSoft Solutions — a remote website development company building business sites, e-commerce stores, and web apps with Next.js and React across India.",
     path: "/about",
     keywords: [
         "about SmartSoft Solutions",
