@@ -3,7 +3,7 @@ import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 
 const SITE_URL = "https://www.smartsoftsolutions.org";
 const CONTACT_EMAIL = "smartsoft.solutions0@gmail.com";
-const INDIA_ADDRESS = "H-25 Sec 63, Basement Floor, Noida 201301, India";
+const SERVICE_MODEL = "Fully remote · India-based team";
 
 export const metadata = {
   title: "Privacy Policy | SmartSoft Solutions",
@@ -180,7 +180,7 @@ export default function PrivacyPolicyPage() {
             <p className="text-[15px] text-slate-600 leading-relaxed">
               SmartSoft Solutions
               <br />
-              {INDIA_ADDRESS}
+              {SERVICE_MODEL}
               <br />
               Email:{" "}
               <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#0f3d68] hover:underline">

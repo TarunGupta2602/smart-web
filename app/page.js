@@ -13,7 +13,7 @@ import { buildPageMetadata, HOME_FAQS, SITE_URL } from "@/lib/seo";
 export const metadata = buildPageMetadata({
   title: "Website Development Company | E-commerce & Web Apps",
   description:
-    "SmartSoft Solutions is a website development company in Noida for business websites, e-commerce stores, and web apps across India (Delhi, Mumbai, Bangalore & more) and worldwide. Next.js & React builds with fixed quotes and SEO-ready launches.",
+    "SmartSoft Solutions is a remote website development company for business websites, e-commerce stores, and web apps across India (Delhi, Mumbai, Bangalore & more) and worldwide. Next.js & React builds with fixed quotes and SEO-ready launches.",
   path: "/",
   keywords: [
     "website development company",
@@ -24,10 +24,10 @@ export const metadata = buildPageMetadata({
     "custom web app development",
     "SEO friendly website development",
     "online store development",
+    "remote website development company India",
     "website development company in Delhi",
     "website development company in Mumbai",
     "website development company in Bangalore",
-    "website development company in Noida",
   ],
 });
 

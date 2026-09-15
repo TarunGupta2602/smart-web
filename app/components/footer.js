@@ -25,13 +25,13 @@ export default function Footer() {
                             </span>
                         </Link>
                         <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
-                            Website development company for business sites, e-commerce stores, and web apps —
-                            fixed quotes, SEO-ready launches, and remote delivery across India and worldwide.
+                            Remote website development for business sites, e-commerce stores, and web apps —
+                            fixed quotes, SEO-ready launches, and delivery across India and worldwide via WhatsApp, email, and video.
                         </p>
                         <div className="text-sm text-slate-500">
                             <p>
-                                <span className="text-slate-400 block text-xs mb-0.5">India office</span>
-                                H-25 Sec 63, Basement Floor, Noida 201301
+                                <span className="text-slate-400 block text-xs mb-0.5">Service model</span>
+                                Fully remote · India-based team
                             </p>
                         </div>
                     </div>

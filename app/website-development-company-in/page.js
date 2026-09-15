@@ -55,7 +55,7 @@ export default function IndiaCitiesHubPage() {
       <PageHero
         eyebrow="India · Local SEO pages"
         title="Website development company for major Indian cities"
-        description="SmartSoft Solutions builds business websites, e-commerce stores, and web apps for companies in Delhi, Mumbai, Bangalore, and other business hubs — fixed quotes, Next.js & React builds, and remote delivery with our Noida team."
+        description="SmartSoft Solutions builds business websites, e-commerce stores, and web apps for companies in Delhi, Mumbai, Bangalore, and other business hubs — fixed quotes, Next.js & React builds, and fully remote delivery."
         videoSrc={PAGE_VIDEOS.office}
         posterSrc={PAGE_POSTERS.city}
         primaryCta={{ href: "/contact", label: "Get a quote" }}

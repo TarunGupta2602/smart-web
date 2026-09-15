@@ -27,10 +27,10 @@ const contactMethods = [
         link: "https://wa.me/917456096455",
     },
     {
-        title: "India office",
-        description: "H-25 Sec 63, Basement Floor",
-        subtext: "Noida 201301, India",
-        link: "https://maps.google.com/?q=H-25+Sector+63+Basement+Floor+Noida+201301+India",
+        title: "Service model",
+        description: "Fully remote",
+        subtext: "India-based team · WhatsApp, email, video",
+        link: "https://wa.me/917456096455",
     },
 ];
 

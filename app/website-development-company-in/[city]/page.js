@@ -195,8 +195,8 @@ export default async function CityWebsitePage({ params }) {
               {[
                 "Fixed quote before development starts",
                 "Next.js & React builds with SEO foundations",
-                "Remote delivery with WhatsApp and video updates",
-                "India team presence in Noida for NCR coordination",
+                "Fully remote delivery with WhatsApp and video updates",
+                "India-based team serving clients pan-India",
                 "Handoff with production deploy and maintainable code",
               ].map((item) => (
                 <li key={item} className="flex gap-2">

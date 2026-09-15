@@ -6,14 +6,14 @@ import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 export const metadata = buildPageMetadata({
     title: "Contact | Get a Website Development Quote",
     description:
-        "Contact SmartSoft Solutions in Noida for a website, e-commerce, or web app quote. Call +1 707 708 4062, WhatsApp +91 74560 96455, or send a brief — fixed pricing before any build starts.",
+        "Contact SmartSoft Solutions for a remote website, e-commerce, or web app quote. Call +1 707 708 4062, WhatsApp +91 74560 96455, or email smartsoft.solutions0@gmail.com — fixed pricing before any build starts.",
     path: "/contact",
     keywords: [
         "hire website developer",
         "website development quote",
         "contact web development company",
         "e-commerce development quote",
-        "website company Noida",
+        "remote website developer India",
     ],
 });
 

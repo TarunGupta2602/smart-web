@@ -3,7 +3,7 @@ import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 
 const SITE_URL = "https://www.smartsoftsolutions.org";
 const CONTACT_EMAIL = "smartsoft.solutions0@gmail.com";
-const INDIA_ADDRESS = "H-25 Sec 63, Basement Floor, Noida 201301, India";
+const SERVICE_MODEL = "Fully remote · India-based team";
 
 export const metadata = {
   title: "Terms of Service | SmartSoft Solutions",
@@ -183,9 +183,7 @@ export default function TermsOfServicePage() {
           <section className="mb-10">
             <h2 className="font-display text-2xl font-semibold text-slate-900 mb-3">9. Governing law</h2>
             <p className="text-[15px] text-slate-600 leading-relaxed">
-              These terms are governed by the laws of India. Courts in Noida / Gautam Buddha Nagar, Uttar Pradesh,
-              India shall have exclusive jurisdiction, without prejudice to any mandatory consumer protections that
-              apply in your location.
+              These terms are governed by the laws of India. Courts in India shall have jurisdiction, without prejudice to any mandatory consumer protections that apply in your location.
             </p>
           </section>
 
@@ -202,7 +200,7 @@ export default function TermsOfServicePage() {
             <p className="text-[15px] text-slate-600 leading-relaxed">
               SmartSoft Solutions
               <br />
-              {INDIA_ADDRESS}
+              {SERVICE_MODEL}
               <br />
               Email:{" "}
               <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#0f3d68] hover:underline">

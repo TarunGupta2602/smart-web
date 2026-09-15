@@ -38,8 +38,8 @@ export default function AboutContent({ expertiseItems, team }) {
                                     stores that take orders, and apps teams can actually use.
                                 </p>
                                 <p>
-                                    Based in Noida, India, we deliver remotely worldwide via WhatsApp, email, and video.
-                                    Scope and budget stay written down from the first quote through launch.
+                                    We are a fully remote, India-based team. Delivery is online worldwide via WhatsApp, email, and video —
+                                    with written scope and budget from the first quote through launch.
                                 </p>
                                 <p>
                                     We started as a hands-on product team: fewer slides, more staging links. That still
