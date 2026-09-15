@@ -147,7 +147,7 @@ export default async function CityWebsitePage({ params }) {
               <Link href="/services/website-designing" className="text-[#0f3d68] hover:underline">website development</Link>
               {" "}and{" "}
               <Link href="/services/seo" className="text-[#0f3d68] hover:underline">SEO</Link>,
-              and quote a fixed price before build starts. Typical marketing sites start from ₹45,000 —
+              and quote a fixed price before build starts. Typical marketing sites start from ₹5,000 —
               see <Link href="/pricing" className="text-[#0f3d68] hover:underline">pricing</Link>.
             </p>
           </Reveal>

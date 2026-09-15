@@ -10,7 +10,7 @@ import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 export const metadata = buildPageMetadata({
     title: "Website Development Pricing | Fixed Project Quotes",
     description:
-        "Transparent website development and e-commerce pricing from SmartSoft Solutions. Business sites from ₹45,000, stores from ₹1.2L, and custom web apps from ₹2L — fixed quotes before build.",
+        "Transparent website development and e-commerce pricing from SmartSoft Solutions. Business sites from ₹5,000, stores from ₹10,000, and custom web apps from ₹15,000 — fixed quotes before build.",
     path: "/pricing",
     keywords: [
         "website development cost",
@@ -24,8 +24,8 @@ export const metadata = buildPageMetadata({
 const plans = [
     {
         name: "Business website",
-        priceFrom: "₹45,000",
-        priceNote: "Typical range ₹45k–₹1.2L depending on pages & design",
+        priceFrom: "₹5,000",
+        priceNote: "Starter packages from ₹5k — final quote depends on pages & design",
         description: "A focused marketing site that explains your offer, builds trust, and captures leads.",
         features: [
             "Custom Next.js / React design",
@@ -38,8 +38,8 @@ const plans = [
     },
     {
         name: "E-commerce store",
-        priceFrom: "₹1,20,000",
-        priceNote: "Typical range ₹1.2L–₹3.5L based on catalogue & payments",
+        priceFrom: "₹10,000",
+        priceNote: "Starter packages from ₹10k — catalogue size & payments change the quote",
         description: "Catalogs, collections, offers, cart, and checkout so you can sell online.",
         featured: true,
         features: [
@@ -53,8 +53,8 @@ const plans = [
     },
     {
         name: "Custom web app",
-        priceFrom: "₹2,00,000",
-        priceNote: "Quoted after feature map — auth, dashboards, workflows",
+        priceFrom: "₹15,000",
+        priceNote: "Starter packages from ₹15k — quoted after feature map",
         description: "Login, dashboards, and product flows with Firebase or Supabase.",
         features: [
             "Auth and user roles",
