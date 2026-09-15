@@ -6,7 +6,7 @@ import { PORTFOLIO_PROJECTS } from "@/lib/projects";
 export const metadata = buildPageMetadata({
     title: "Website & E-commerce Portfolio | Live Client Projects",
     description:
-        "Visit live SmartSoft Solutions projects — jewellery e-commerce, printer support lead sites, and business websites built with Next.js and React. Open each URL and request a quote.",
+        "Visit live SmartSoft Solutions projects — jewellery e-commerce, printer support sites, and Parvah (parvah.online) random video chat — built with Next.js and React. Open each URL and request a quote.",
     path: "/projects",
     keywords: [
         "web development portfolio",
