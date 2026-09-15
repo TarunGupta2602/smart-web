@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Breadcrumb from "./Breadcrumb";
 import brandMark from "../icon.png";
+import LazyHeroVideo from "./lazy-hero-video";
 
 export default function PageHero({
   eyebrow,
@@ -18,21 +18,6 @@ export default function PageHero({
   showBrand = false,
   compact = false,
 }) {
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    const play = async () => {
-      try {
-        await video.play();
-      } catch {
-        // Poster remains if autoplay is blocked.
-      }
-    };
-    play();
-  }, [videoSrc]);
-
   return (
     <section
       className={`relative overflow-hidden bg-[#081220] text-white ${
@@ -41,19 +26,7 @@ export default function PageHero({
     >
       <div className="absolute inset-0">
         {videoSrc ? (
-          <video
-            ref={videoRef}
-            className="h-full w-full object-cover animate-slow-zoom"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={posterSrc}
-            aria-hidden="true"
-          >
-            <source src={videoSrc} type="video/mp4" />
-          </video>
+          <LazyHeroVideo src={videoSrc} poster={posterSrc} />
         ) : posterSrc ? (
           <Image
             src={posterSrc}

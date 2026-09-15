@@ -21,7 +21,7 @@ export default function ContactPage() {
     const contactSchema = organization({
         name: 'SmartSoft Solutions',
         description: 'Contact SmartSoft Solutions for website, e-commerce, and web app project quotes.',
-        email: 'smartsoftsols@gmail.com',
+        email: 'smartsoft.solutions0@gmail.com',
     });
 
     const breadcrumbSchema = breadcrumbList([

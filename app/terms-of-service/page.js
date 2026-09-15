@@ -2,7 +2,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 
 const SITE_URL = "https://www.smartsoftsolutions.org";
-const CONTACT_EMAIL = "smartsoftsols@gmail.com";
+const CONTACT_EMAIL = "smartsoft.solutions0@gmail.com";
 const INDIA_ADDRESS = "H-25 Sec 63, Basement Floor, Noida 201301, India";
 
 export const metadata = {

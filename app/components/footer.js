@@ -86,8 +86,8 @@ export default function Footer() {
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:smartsoftsols@gmail.com" className="hover:text-slate-900 transition-colors">
-                                    smartsoftsols@gmail.com
+                                <a href="mailto:smartsoft.solutions0@gmail.com" className="hover:text-slate-900 transition-colors">
+                                    smartsoft.solutions0@gmail.com
                                 </a>
                             </li>
                             <li>

@@ -16,9 +16,9 @@ const contactMethods = [
     },
     {
         title: "Email",
-        description: "smartsoftsols@gmail.com",
+        description: "smartsoft.solutions0@gmail.com",
         subtext: "We reply within two business days",
-        link: "mailto:smartsoftsols@gmail.com",
+        link: "mailto:smartsoft.solutions0@gmail.com",
     },
     {
         title: "WhatsApp",

@@ -1,47 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import brandMark from "../icon.png";
-
-const HERO_VIDEO =
-  "https://videos.pexels.com/video-files/6774633/6774633-hd_1920_1080_30fps.mp4";
-const HERO_POSTER =
-  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2000&q=80";
+import LazyHeroVideo from "./lazy-hero-video";
+import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export default function HeroSlider() {
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    const play = async () => {
-      try {
-        await video.play();
-      } catch {
-        // Autoplay can fail on some browsers; poster image remains.
-      }
-    };
-    play();
-  }, []);
-
   return (
     <section className="relative min-h-[88vh] md:min-h-[92vh] overflow-hidden bg-[#081220] text-white">
       <div className="absolute inset-0">
-        <video
-          ref={videoRef}
-          className="h-full w-full object-cover animate-slow-zoom"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={HERO_POSTER}
-          aria-hidden="true"
-        >
-          <source src={HERO_VIDEO} type="video/mp4" />
-        </video>
+        <LazyHeroVideo src={PAGE_VIDEOS.workspace} poster={PAGE_POSTERS.code} />
         <div className="absolute inset-0 hero-scrim" />
       </div>
 
