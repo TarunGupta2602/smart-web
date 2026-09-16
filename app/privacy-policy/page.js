@@ -191,10 +191,6 @@ export default function PrivacyPolicyPage() {
               <a href="tel:+917456096455" className="text-[#0f3d68] hover:underline">
                 +91 74560 96455
               </a>
-              {" "}(primary) · US:{" "}
-              <a href="tel:+17077084062" className="text-[#0f3d68] hover:underline">
-                +1 707 708 4062
-              </a>
               <br />
               WhatsApp:{" "}
               <a href="https://wa.me/917456096455" className="text-[#0f3d68] hover:underline">

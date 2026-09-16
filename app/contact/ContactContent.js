@@ -11,7 +11,7 @@ const contactMethods = [
     {
         title: "Phone / WhatsApp",
         description: "+91 74560 96455",
-        subtext: "Primary India line · Mon–Fri business hours",
+        subtext: "Mon–Fri business hours",
         link: "tel:+917456096455",
     },
     {
@@ -26,8 +26,6 @@ const contactMethods = [
         subtext: "Uttar Pradesh 201002 · Google Business Profile",
         link: "https://www.google.com/maps/search/?api=1&query=SK2+Shastri+Nagar+Ghaziabad+Uttar+Pradesh+201002",
     },
-    
-        
 ];
 
 export default function ContactContent() {
