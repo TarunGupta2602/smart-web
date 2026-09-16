@@ -26,12 +26,8 @@ const contactMethods = [
         subtext: "Uttar Pradesh 201002 · Google Business Profile",
         link: "https://www.google.com/maps/search/?api=1&query=SK2+Shastri+Nagar+Ghaziabad+Uttar+Pradesh+201002",
     },
-    {
-        title: "US line (secondary)",
-        description: "+1 707 708 4062",
-        subtext: "For US-based callers",
-        link: "tel:+17077084062",
-    },
+    
+        
 ];
 
 export default function ContactContent() {
