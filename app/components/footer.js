@@ -98,7 +98,7 @@ export default function Footer() {
                                     WhatsApp +91 74560 96455
                                 </a>
                             </li>
-                            <
+                            <li>
                                 <a href="mailto:smartsoft.solutions0@gmail.com" className="hover:text-slate-900 transition-colors">
                                     smartsoft.solutions0@gmail.com
                                 </a>
