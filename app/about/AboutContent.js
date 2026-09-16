@@ -14,7 +14,7 @@ export default function AboutContent({ expertiseItems, team }) {
                 showBrand
                 eyebrow="About SmartSoft Solutions"
                 title="A development company that ships live products"
-                description="We build business websites, e-commerce stores, and web apps with Next.js and React. Projects are quoted clearly, delivered with weekly demos, and launched to production."
+                description="Since 2018 we’ve built business websites, e-commerce stores, and web apps with Next.js and React. Projects are quoted clearly — from ₹5,000 — delivered with weekly demos, and launched to production."
                 videoSrc={PAGE_VIDEOS.office}
                 posterSrc={PAGE_POSTERS.team}
                 primaryCta={{ href: "/contact", label: "Get a quote" }}

@@ -51,7 +51,7 @@ export default async function BlogPage(props) {
                 compact
                 eyebrow="Blog"
                 title="Guides that help your website win customers"
-                description="Original playbooks on hiring developers, pricing, e-commerce launches, SEO, and Next.js — written for Indian business owners."
+                description={`${count} practical playbooks on hiring developers, pricing, e-commerce launches, SEO, and Next.js — written for Indian business owners.`}
                 videoSrc={PAGE_VIDEOS.typing}
                 posterSrc={PAGE_POSTERS.code}
                 breadcrumbs={breadcrumbItems}

@@ -74,7 +74,7 @@ export default function ContactContent() {
                 compact
                 eyebrow="Contact"
                 title="Tell us what you need. We’ll send a clear quote."
-                description="Share a short brief — goals, timeline, and budget range. No obligation."
+                description="Share a short brief — goals, timeline, and which package band fits (₹5k / ₹10k / ₹15k). No obligation."
                 videoSrc={PAGE_VIDEOS.meeting}
                 posterSrc={PAGE_POSTERS.laptop}
                 breadcrumbs={[

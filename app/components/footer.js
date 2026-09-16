@@ -148,7 +148,7 @@ export default function Footer() {
 
                 <div className="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <p className="text-xs text-slate-400">
-                        © {currentYear} SmartSoft Solutions. All rights reserved.
+                        © {currentYear} SmartSoft Solutions · Building products since 2018. All rights reserved.
                     </p>
                     <div className="flex items-center gap-5 text-xs text-slate-400">
                         <Link href="/privacy-policy" className="hover:text-slate-700">Privacy</Link>

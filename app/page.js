@@ -6,6 +6,7 @@ import FAQSection from "./components/faq-section";
 import TestimonialsSection from "./components/testimonials-section";
 import IndiaCitiesSection from "./components/india-cities-section";
 import FeaturedProjects from "./components/featured-projects";
+import HomeBlogSection from "./components/home-blog-section";
 import RelatedLinks from "./components/related-links";
 import { breadcrumbList, faqPage, localBusiness, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, HOME_FAQS, SITE_URL } from "@/lib/seo";
@@ -13,7 +14,7 @@ import { buildPageMetadata, HOME_FAQS, SITE_URL } from "@/lib/seo";
 export const metadata = buildPageMetadata({
   title: "Website Development Company in India",
   description:
-    "Remote website development company for business sites, e-commerce stores & web apps across India. Next.js & React builds with fixed quotes and SEO-ready launches.",
+    "Website development company in Ghaziabad for business sites, e-commerce & web apps across India. From ₹5,000 — Next.js builds, fixed quotes, SEO-ready launches.",
   path: "/",
   keywords: [
     "website development company",
@@ -24,7 +25,7 @@ export const metadata = buildPageMetadata({
     "custom web app development",
     "SEO friendly website development",
     "online store development",
-    "remote website development company India",
+    "website development company Ghaziabad",
     "website development company in Delhi",
     "website development company in Mumbai",
     "website development company in Bangalore",
@@ -37,7 +38,7 @@ export default function Homepage() {
     localBusiness({
       name: "SmartSoft Solutions",
       description:
-        "Website development company building business websites, e-commerce stores, and web apps with Next.js and React.",
+        "Website development company in Ghaziabad building business websites, e-commerce stores, and web apps with Next.js and React. Packages from ₹5,000.",
       url: SITE_URL,
     }),
     faqPage(HOME_FAQS),
@@ -55,6 +56,7 @@ export default function Homepage() {
       <PricingIndustriesSection />
       <ClientsSection />
       <IndiaCitiesSection />
+      <HomeBlogSection />
       <FAQSection />
       <TestimonialsSection />
       <RelatedLinks excludeHref="/" />

@@ -2,9 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "./reveal";
 import { PORTFOLIO_PROJECTS } from "@/lib/projects";
+import { GOOGLE_BUSINESS_URL } from "@/lib/seo";
 
 /**
- * Honest proof section — live project outcomes only (no fabricated person quotes).
+ * Honest proof — live projects + Google Business Profile (no fabricated person quotes).
  */
 export default function TestimonialsSection() {
   const highlights = PORTFOLIO_PROJECTS.slice(0, 3);
@@ -13,16 +14,26 @@ export default function TestimonialsSection() {
     <section className="bg-white py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
         <Reveal className="max-w-2xl mb-14">
-          <p className="text-sm font-medium text-[#0f3d68] mb-3">Live proof</p>
+          <p className="text-sm font-medium text-[#0f3d68] mb-3">Proof & reviews</p>
           <h2 className="font-display text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
-            Results from shipped projects
+            Live work you can open — plus Google reviews
           </h2>
           <p className="text-base text-slate-600 leading-relaxed">
-            No invented reviews. Open the live sites, then request a quote for your own build.
+            We show shipped projects with visit links, not invented quotes. For reviews and directions,
+            use our{" "}
+            <a
+              href={GOOGLE_BUSINESS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#0f3d68] font-medium hover:underline"
+            >
+              Google Business Profile
+            </a>
+            .
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-12">
           {highlights.map((project, index) => (
             <Reveal key={project.title} delay={index + 1}>
               <article className="h-full border border-slate-200 p-6 bg-slate-50/60 flex flex-col">
@@ -42,6 +53,36 @@ export default function TestimonialsSection() {
           ))}
         </div>
 
+        <Reveal className="mb-16">
+          <div className="border border-slate-200 bg-slate-50 p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+            <div className="max-w-xl">
+              <h3 className="font-display text-xl font-semibold text-slate-900 mb-2">
+                Google reviews
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                After a project ships, we ask clients to leave an honest review on Google.
+                If you have worked with us — or want to see what others say as reviews land — open the profile below.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 shrink-0">
+              <a
+                href={GOOGLE_BUSINESS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex px-5 py-2.5 rounded-md bg-[#0f3d68] text-white text-sm font-semibold hover:bg-[#0a2f52] transition-colors"
+              >
+                Open Google Business Profile
+              </a>
+              <Link
+                href="/projects"
+                className="inline-flex px-5 py-2.5 rounded-md border border-slate-300 text-slate-800 text-sm font-medium hover:bg-white transition-colors"
+              >
+                All live projects
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+
         <Reveal>
           <div className="relative overflow-hidden px-6 py-10 md:px-12 md:py-14 text-white">
             <Image
@@ -58,15 +99,15 @@ export default function TestimonialsSection() {
                   Have a project? Let’s price it and ship.
                 </h3>
                 <p className="text-sm text-slate-200 max-w-xl">
-                  Send a short brief — what you need, timeline, and budget range. We reply with scope and a clear quote.
+                  Packages start at ₹5,000 / ₹10,000 / ₹15,000. Send a short brief — we reply with scope and a fixed quote.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 shrink-0">
                 <Link
-                  href="/contact"
+                  href="/pricing"
                   className="inline-flex px-5 py-2.5 rounded-md bg-white text-[#0f3d68] text-sm font-semibold hover:bg-slate-100 transition-colors"
                 >
-                  Request a quote
+                  See pricing
                 </Link>
                 <a
                   href="https://wa.me/917456096455"

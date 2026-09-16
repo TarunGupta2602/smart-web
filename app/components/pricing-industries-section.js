@@ -1,25 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Reveal from "./reveal";
-
-const packages = [
-  {
-    name: "Business website",
-    desc: "Marketing site with clear pages, lead forms, and SEO basics.",
-    includes: ["Custom Next.js build", "Mobile-first layout", "Contact / quote forms", "Production deploy"],
-  },
-  {
-    name: "E-commerce store",
-    desc: "Catalog, cart, checkout, and payments for real online sales.",
-    includes: ["Product catalog", "Checkout flow", "Payment integration", "Launch support"],
-    featured: true,
-  },
-  {
-    name: "Custom web app",
-    desc: "Auth, dashboards, and workflows with Firebase or Supabase.",
-    includes: ["User roles", "Core product flows", "Weekly demos", "Code handoff"],
-  },
-];
+import { PRICING_PACKAGES, PRICING_SUMMARY } from "@/lib/pricing";
 
 const industries = [
   "Local service businesses",
@@ -48,15 +30,15 @@ export default function PricingIndustriesSection() {
         <Reveal className="max-w-2xl mb-14">
           <p className="text-sm font-medium text-sky-200/80 mb-3">Pricing</p>
           <h2 className="font-display text-3xl md:text-5xl font-semibold tracking-tight mb-4">
-            Fixed quotes before any build starts
+            Clear starting prices. Fixed quotes before build.
           </h2>
-          <p className="text-base text-slate-300 leading-relaxed">
-            Share your goal and budget range. We reply with scope, timeline, and a clear price — usually within two business days.
+          <p className="text-base text-slate-300 leading-relaxed mb-2">
+            {PRICING_SUMMARY}. You always get a written fixed quote before any development starts.
           </p>
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
-          {packages.map((plan, index) => (
+          {PRICING_PACKAGES.map((plan, index) => (
             <Reveal key={plan.name} delay={index + 1}>
               <div
                 className={`h-full p-7 backdrop-blur-sm ${
@@ -69,14 +51,34 @@ export default function PricingIndustriesSection() {
                   <p className="text-xs font-medium text-[#0f3d68] mb-3">Most requested</p>
                 )}
                 <h3 className="font-display text-xl font-semibold mb-2">{plan.name}</h3>
-                <p className={`text-sm mb-6 leading-relaxed ${plan.featured ? "text-slate-600" : "text-slate-300"}`}>
-                  {plan.desc}
+                <p
+                  className={`text-2xl font-semibold mb-1 ${
+                    plan.featured ? "text-[#0f3d68]" : "text-white"
+                  }`}
+                >
+                  From {plan.priceFrom}
+                </p>
+                <p
+                  className={`text-xs mb-4 ${
+                    plan.featured ? "text-slate-500" : "text-slate-400"
+                  }`}
+                >
+                  {plan.priceNote}
+                </p>
+                <p
+                  className={`text-sm mb-6 leading-relaxed ${
+                    plan.featured ? "text-slate-600" : "text-slate-300"
+                  }`}
+                >
+                  {plan.description}
                 </p>
                 <ul className="space-y-2.5 mb-8">
-                  {plan.includes.map((item) => (
+                  {plan.includes.slice(0, 4).map((item) => (
                     <li
                       key={item}
-                      className={`text-sm flex gap-2 ${plan.featured ? "text-slate-600" : "text-slate-300"}`}
+                      className={`text-sm flex gap-2 ${
+                        plan.featured ? "text-slate-600" : "text-slate-300"
+                      }`}
                     >
                       <span className={plan.featured ? "text-[#0f3d68]" : "text-sky-200"}>–</span>
                       {item}
@@ -98,13 +100,16 @@ export default function PricingIndustriesSection() {
 
         <Reveal>
           <h3 className="font-display text-xl font-semibold mb-3">Who we build for</h3>
-          <p className="text-sm text-slate-300 mb-6 max-w-2xl">
-            Businesses that need clearer offers online, more enquiries, or software that actually ships.
+          <p className="text-sm text-slate-300 mb-6 max-w-xl">
+            Practical sites for Indian businesses that need enquiries, orders, or a working product — not slide decks.
           </p>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 mb-10">
-            {industries.map((name) => (
-              <span key={name} className="text-sm text-slate-400">
-                {name}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {industries.map((item) => (
+              <span
+                key={item}
+                className="text-xs px-3 py-1.5 rounded-md border border-white/15 text-slate-200"
+              >
+                {item}
               </span>
             ))}
           </div>

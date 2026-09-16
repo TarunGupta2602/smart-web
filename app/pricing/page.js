@@ -5,6 +5,7 @@ import Reveal from "../components/reveal";
 import RelatedLinks from "../components/related-links";
 import { localBusiness, webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
+import { PRICING_PACKAGES, PRICING_SUMMARY } from "@/lib/pricing";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export const metadata = buildPageMetadata({
@@ -20,52 +21,6 @@ export const metadata = buildPageMetadata({
         "hire website developer pricing",
     ],
 });
-
-const plans = [
-    {
-        name: "Business website",
-        priceFrom: "₹5,000",
-        priceNote: "Starter packages from ₹5k — final quote depends on pages & design",
-        description: "A focused marketing site that explains your offer, builds trust, and captures leads.",
-        features: [
-            "Custom Next.js / React design",
-            "Service and about pages",
-            "Lead forms and CTAs",
-            "Mobile-first performance",
-            "Basic on-page SEO",
-            "Production deploy and handoff",
-        ],
-    },
-    {
-        name: "E-commerce store",
-        priceFrom: "₹10,000",
-        priceNote: "Starter packages from ₹10k — catalogue size & payments change the quote",
-        description: "Catalogs, collections, offers, cart, and checkout so you can sell online.",
-        featured: true,
-        features: [
-            "Product catalog and collections",
-            "Cart and checkout flow",
-            "Payment integration",
-            "Promotions and offer messaging",
-            "Mobile shopping UX",
-            "Launch support",
-        ],
-    },
-    {
-        name: "Custom web app",
-        priceFrom: "₹15,000",
-        priceNote: "Starter packages from ₹15k — quoted after feature map",
-        description: "Login, dashboards, and product flows with Firebase or Supabase.",
-        features: [
-            "Auth and user roles",
-            "Dashboards and workflows",
-            "Firebase or Supabase backend",
-            "Weekly progress demos",
-            "Maintainable codebase",
-            "Deploy and documentation",
-        ],
-    },
-];
 
 export default function PricingPage() {
     const pricingSchema = localBusiness({
@@ -95,8 +50,8 @@ export default function PricingPage() {
 
             <PageHero
                 eyebrow="Pricing"
-                title="Fixed quotes. Clear scope. No guesswork."
-                description="Share your goals and budget range. We reply with timeline and a clear fixed quote before any build starts."
+                title="From ₹5,000 · ₹10,000 · ₹15,000"
+                description={`${PRICING_SUMMARY}. Pick a starting band, then we lock a fixed quote for your exact scope before any build starts.`}
                 videoSrc={PAGE_VIDEOS.workspace}
                 posterSrc={PAGE_POSTERS.laptop}
                 primaryCta={{ href: "/contact", label: "Request a quote" }}
@@ -106,7 +61,7 @@ export default function PricingPage() {
             <section className="py-14 md:py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {plans.map((plan, index) => (
+                        {PRICING_PACKAGES.map((plan, index) => (
                             <Reveal key={plan.name} delay={index + 1}>
                                 <div
                                     className={`h-full p-7 border ${plan.featured ? "border-[#0f3d68] bg-slate-50" : "border-slate-200"}`}
@@ -115,11 +70,11 @@ export default function PricingPage() {
                                         <p className="text-xs font-medium text-[#0f3d68] mb-3">Most requested</p>
                                     )}
                                     <h2 className="font-display text-xl font-semibold text-slate-900 mb-2">{plan.name}</h2>
-                                    <p className="text-2xl font-semibold text-[#0f3d68] mb-1">From {plan.priceFrom}</p>
+                                    <p className="text-3xl font-semibold text-[#0f3d68] mb-1">From {plan.priceFrom}</p>
                                     <p className="text-xs text-slate-500 mb-4">{plan.priceNote}</p>
                                     <p className="text-sm text-slate-600 leading-relaxed mb-6">{plan.description}</p>
                                     <ul className="space-y-2.5 mb-8">
-                                        {plan.features.map((feature) => (
+                                        {plan.includes.map((feature) => (
                                             <li key={feature} className="text-sm text-slate-600 flex gap-2">
                                                 <span className="text-[#0f3d68]">–</span>
                                                 {feature}
@@ -146,10 +101,10 @@ export default function PricingPage() {
                     </Reveal>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {[
+                            { q: "What do the starting prices mean?", a: "They are entry bands for typical scopes — not empty bait. Your written quote may be higher if you need more pages, SKUs, or custom features." },
                             { q: "Are quotes fixed?", a: "Yes. Once scope is agreed, you get a clear fixed quote before any build starts." },
                             { q: "How do timelines work?", a: "Many marketing sites ship in a few weeks; stores and apps take longer. Timeline is written into the quote." },
-                            { q: "Do you work remotely?", a: "Yes. We work with clients via WhatsApp, email, and video across time zones." },
-                            { q: "What do we get at handoff?", a: "A production deploy, maintainable codebase, and guidance so you can run and grow the product." },
+                            { q: "Do you work remotely?", a: "Yes. Based in Ghaziabad (Delhi NCR), we deliver via WhatsApp, email, and video across India and other time zones." },
                         ].map((item, index) => (
                             <Reveal key={item.q} delay={(index % 2) + 1}>
                                 <h3 className="text-sm font-semibold text-slate-900 mb-2">{item.q}</h3>
@@ -161,7 +116,7 @@ export default function PricingPage() {
             </section>
 
             <RelatedLinks excludeHref="/pricing" />
-            <PageCta title="Ready for a custom quote?" description="Call +91 74560 96455 or send a brief online." />
+            <PageCta title="Ready for a custom quote?" description="Call +91 74560 96455 or send a brief online — mention which package band fits." />
         </div>
     );
 }
