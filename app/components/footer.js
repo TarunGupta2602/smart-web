@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { INDIA_CITIES, cityPath } from "@/lib/india-cities";
-import { CONTACT_ADDRESS_LINE, CONTACT_MAPS_URL } from "@/lib/seo";
+import { CONTACT_ADDRESS_LINE, CONTACT_MAPS_URL, GOOGLE_BUSINESS_URL } from "@/lib/seo";
 import brandMark from "../icon.png";
 
 export default function Footer() {
@@ -29,7 +29,7 @@ export default function Footer() {
                             Website development for business sites, e-commerce stores, and web apps —
                             fixed quotes, SEO-ready launches, and delivery across India via WhatsApp, email, and video.
                         </p>
-                        <div className="text-sm text-slate-500">
+                        <div className="text-sm text-slate-500 space-y-3">
                             <p>
                                 <span className="text-slate-400 block text-xs mb-0.5">Address</span>
                                 <a
@@ -39,6 +39,16 @@ export default function Footer() {
                                     className="hover:text-slate-900 transition-colors"
                                 >
                                     {CONTACT_ADDRESS_LINE}
+                                </a>
+                            </p>
+                            <p>
+                                <a
+                                    href={GOOGLE_BUSINESS_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-[#0f3d68] hover:underline text-sm font-medium"
+                                >
+                                    Google Business Profile
                                 </a>
                             </p>
                         </div>

@@ -23,8 +23,14 @@ const contactMethods = [
     {
         title: "Address",
         description: "SK2 Shastri Nagar, Ghaziabad",
-        subtext: "Uttar Pradesh 201002 · Google Business Profile",
-        link: "https://www.google.com/maps/search/?api=1&query=SK2+Shastri+Nagar+Ghaziabad+Uttar+Pradesh+201002",
+        subtext: "Uttar Pradesh 201002 · View on Google",
+        link: "https://share.google/R4SrBCxNLMdypmhSq",
+    },
+    {
+        title: "Google Business Profile",
+        description: "Smartsoft Solutions on Google",
+        subtext: "Reviews, hours, and directions",
+        link: "https://share.google/R4SrBCxNLMdypmhSq",
     },
 ];
 

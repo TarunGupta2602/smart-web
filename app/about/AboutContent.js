@@ -40,7 +40,16 @@ export default function AboutContent({ expertiseItems, team }) {
                                 <p>
                                     We are based in Ghaziabad (Delhi NCR) at SK2 Shastri Nagar, Uttar Pradesh 201002,
                                     and deliver projects across India and worldwide via WhatsApp, email, and video —
-                                    with written scope and budget from the first quote through launch.
+                                    with written scope and budget from the first quote through launch. Find us on{" "}
+                                    <a
+                                        href="https://share.google/R4SrBCxNLMdypmhSq"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-[#0f3d68] hover:underline"
+                                    >
+                                        Google Business Profile
+                                    </a>
+                                    .
                                 </p>
                                 <p>
                                     We started as a hands-on product team: fewer slides, more staging links. That still
