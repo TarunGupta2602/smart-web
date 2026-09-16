@@ -6,7 +6,7 @@ import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 export const metadata = buildPageMetadata({
     title: "About SmartSoft Solutions",
     description:
-        "About SmartSoft Solutions — a remote website development company building business sites, e-commerce stores, and web apps with Next.js and React across India.",
+        "About SmartSoft Solutions — website development company in Ghaziabad building business sites, e-commerce stores, and web apps with Next.js and React across India.",
     path: "/about",
     keywords: [
         "about SmartSoft Solutions",

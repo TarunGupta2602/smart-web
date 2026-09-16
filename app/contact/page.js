@@ -6,7 +6,7 @@ import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 export const metadata = buildPageMetadata({
     title: "Contact for a Website Quote",
     description:
-        "Contact SmartSoft Solutions for a website, e-commerce, or web app quote. Call or WhatsApp +91 74560 96455, or email smartsoft.solutions0@gmail.com.",
+        "Contact SmartSoft Solutions in Ghaziabad (SK2 Shastri Nagar). Call or WhatsApp +91 74560 96455, or email smartsoft.solutions0@gmail.com.",
     path: "/contact",
     keywords: [
         "hire website developer",

@@ -3,7 +3,7 @@ import { webPage, breadcrumbList, stringifySchema } from "@/lib/schema";
 
 const SITE_URL = "https://www.smartsoftsolutions.org";
 const CONTACT_EMAIL = "smartsoft.solutions0@gmail.com";
-const SERVICE_MODEL = "Fully remote · India-based team";
+const SERVICE_MODEL = "SK2 Shastri Nagar, Ghaziabad, Uttar Pradesh 201002";
 
 export const metadata = {
   title: "Privacy Policy | SmartSoft Solutions",

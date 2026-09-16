@@ -38,7 +38,8 @@ export default function AboutContent({ expertiseItems, team }) {
                                     stores that take orders, and apps teams can actually use.
                                 </p>
                                 <p>
-                                    We are a fully remote, India-based team. Delivery is online worldwide via WhatsApp, email, and video —
+                                    We are based in Ghaziabad (Delhi NCR) at SK2 Shastri Nagar, Uttar Pradesh 201002,
+                                    and deliver projects across India and worldwide via WhatsApp, email, and video —
                                     with written scope and budget from the first quote through launch.
                                 </p>
                                 <p>

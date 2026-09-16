@@ -21,16 +21,16 @@ const contactMethods = [
         link: "mailto:smartsoft.solutions0@gmail.com",
     },
     {
+        title: "Address",
+        description: "SK2 Shastri Nagar, Ghaziabad",
+        subtext: "Uttar Pradesh 201002 · Google Business Profile",
+        link: "https://www.google.com/maps/search/?api=1&query=SK2+Shastri+Nagar+Ghaziabad+Uttar+Pradesh+201002",
+    },
+    {
         title: "US line (secondary)",
         description: "+1 707 708 4062",
         subtext: "For US-based callers",
         link: "tel:+17077084062",
-    },
-    {
-        title: "Service model",
-        description: "Fully remote",
-        subtext: "India-based team · WhatsApp, email, video",
-        link: "https://wa.me/917456096455",
     },
 ];
 
