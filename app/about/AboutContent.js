@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import PageHero from "../components/page-hero";
 import PageCta from "../components/page-cta";
 import Reveal from "../components/reveal";
 import RelatedLinks from "../components/related-links";
+import ReelPlayer from "../components/reel-player";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export default function AboutContent({ expertiseItems, team }) {
@@ -59,14 +59,8 @@ export default function AboutContent({ expertiseItems, team }) {
                             </div>
                         </Reveal>
                         <Reveal delay={2}>
-                            <div className="media-frame relative aspect-[5/4] bg-slate-100 mb-6">
-                                <Image
-                                    src={PAGE_POSTERS.desk}
-                                    alt="Modern office workspace used by SmartSoft Solutions"
-                                    fill
-                                    sizes="(max-width: 1024px) 100vw, 50vw"
-                                    className="object-cover"
-                                />
+                            <div className="flex justify-center mb-6">
+                                <ReelPlayer size="feature" glow={false} />
                             </div>
                             <div className="border border-slate-200 bg-slate-50 p-7 md:p-8 space-y-5">
                                 <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
