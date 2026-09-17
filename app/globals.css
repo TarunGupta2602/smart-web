@@ -16,10 +16,6 @@ html {
   scroll-behavior: smooth;
 }
 
-#showreel {
-  scroll-margin-top: 80px;
-}
-
 body {
   font-family: var(--font-sans);
   color: var(--color-ink);

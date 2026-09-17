@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import Reveal from "./reveal";
+import ProjectPreview from "./project-preview";
 import { PORTFOLIO_PROJECTS } from "@/lib/projects";
 
 export default function FeaturedProjects({ limit = 3 }) {
@@ -16,7 +16,7 @@ export default function FeaturedProjects({ limit = 3 }) {
               Live projects you can open today
             </h2>
             <p className="text-base text-slate-600 leading-relaxed">
-              Real client sites — not mockups. Visit the live URLs, then request a quote for your own build.
+              Real homepages from sites we shipped — not stock photos. Open the live URL, then request a quote for your own build.
             </p>
           </div>
           <Link href="/projects" className="text-sm font-medium text-[#0f3d68] hover:underline shrink-0">
@@ -27,21 +27,12 @@ export default function FeaturedProjects({ limit = 3 }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
           {projects.map((project, index) => (
             <Reveal key={project.title} delay={index + 1}>
-              <article className="h-full border border-slate-200 bg-white flex flex-col overflow-hidden group">
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="media-frame relative aspect-[16/10] bg-slate-100 block"
-                >
-                  <Image
-                    src={project.image}
-                    alt={`${project.title} — live project preview`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
-                  />
-                </a>
+              <article className="h-full border border-slate-200 bg-white flex flex-col overflow-hidden">
+                <ProjectPreview
+                  src={project.image}
+                  alt={`${project.title} live homepage`}
+                  liveUrl={project.liveUrl}
+                />
                 <div className="p-6 flex flex-col flex-1">
                   <p className="text-xs text-slate-400 mb-2">{project.category}</p>
                   <h3 className="font-display text-xl font-semibold text-slate-900 mb-2">{project.title}</h3>

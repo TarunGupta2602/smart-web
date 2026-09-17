@@ -40,7 +40,7 @@ export default function sitemap() {
           description:
             "A 7-second look at SmartSoft Solutions: business websites, e-commerce stores, and web apps. Need a website? Get a fixed quote.",
           content_loc: `${siteUrl}/videos/smartsoft-reel.mp4`,
-          player_loc: `${siteUrl}/#showreel`,
+          player_loc: siteUrl,
           duration: 7,
           publication_date: "2026-09-17",
           family_friendly: "yes",

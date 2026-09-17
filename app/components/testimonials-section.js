@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Reveal from "./reveal";
+import ProjectPreview from "./project-preview";
 import { PORTFOLIO_PROJECTS } from "@/lib/projects";
 import { GOOGLE_BUSINESS_URL } from "@/lib/seo";
 
@@ -26,21 +27,15 @@ export default function TestimonialsSection() {
         <div className="space-y-10 md:space-y-12 mb-16">
           {projects.map((project, index) => (
             <Reveal key={project.title} delay={(index % 3) + 1}>
-              <article className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 border border-slate-200 overflow-hidden bg-slate-50/40">
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative lg:col-span-5 aspect-[16/11] lg:aspect-auto lg:min-h-[280px] bg-slate-100 block"
-                >
-                  <Image
+              <article className="grid grid-cols-1 lg:grid-cols-12 border border-slate-200 overflow-hidden bg-white">
+                <div className="lg:col-span-5">
+                  <ProjectPreview
                     src={project.image}
-                    alt={`${project.title} — live project`}
-                    fill
+                    alt={`${project.title} live homepage`}
+                    liveUrl={project.liveUrl}
                     sizes="(max-width: 1024px) 100vw, 42vw"
-                    className="object-cover"
                   />
-                </a>
+                </div>
                 <div className="lg:col-span-7 p-6 md:p-8 flex flex-col justify-center">
                   <div className="flex flex-wrap items-center gap-3 mb-3">
                     <span className="text-xs font-medium text-[#0f3d68]">{project.category}</span>

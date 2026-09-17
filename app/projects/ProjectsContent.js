@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import PageHero from "../components/page-hero";
 import PageCta from "../components/page-cta";
 import Reveal from "../components/reveal";
 import RelatedLinks from "../components/related-links";
+import ProjectPreview from "../components/project-preview";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
 export default function ProjectsContent({ projects }) {
@@ -55,21 +55,15 @@ export default function ProjectsContent({ projects }) {
                 <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 space-y-10">
                     {filteredProjects.map((p) => (
                         <Reveal key={p.title}>
-                            <article className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 border border-slate-200 overflow-hidden bg-white">
-                                <a
-                                    href={p.liveUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="lg:col-span-5 media-frame relative aspect-[16/11] lg:aspect-auto lg:min-h-[280px] bg-slate-100 block"
-                                >
-                                    <Image
+                            <article className="grid grid-cols-1 lg:grid-cols-12 border border-slate-200 overflow-hidden bg-white">
+                                <div className="lg:col-span-5">
+                                    <ProjectPreview
                                         src={p.image}
-                                        alt={`${p.title} live website preview`}
-                                        fill
+                                        alt={`${p.title} live homepage`}
+                                        liveUrl={p.liveUrl}
                                         sizes="(max-width: 1024px) 100vw, 40vw"
-                                        className="object-cover"
                                     />
-                                </a>
+                                </div>
                                 <div className="lg:col-span-7 p-6 md:p-8 flex flex-col justify-center">
                                     <p className="text-xs text-slate-400 mb-2">{p.category}</p>
                                     <h2 className="font-display text-2xl md:text-3xl font-semibold text-slate-900 mb-3">

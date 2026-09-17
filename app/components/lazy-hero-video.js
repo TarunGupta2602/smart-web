@@ -9,6 +9,7 @@ export default function LazyHeroVideo({
   src,
   poster,
   className = "h-full w-full object-cover animate-slow-zoom",
+  withSound = false,
 }) {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
@@ -32,7 +33,6 @@ export default function LazyHeroVideo({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
-          // Defer network until browser is idle when possible.
           if ("requestIdleCallback" in window) {
             idleId = window.requestIdleCallback(() => setShouldLoad(true), { timeout: 1200 });
           } else {
@@ -53,16 +53,54 @@ export default function LazyHeroVideo({
   useEffect(() => {
     if (!shouldLoad) return;
     const video = videoRef.current;
-    if (!video) return;
-    const play = async () => {
-      try {
-        await video.play();
-      } catch {
-        // Poster remains if autoplay is blocked.
+    const node = containerRef.current;
+    if (!video || !node) return undefined;
+
+    const tryPlay = () => {
+      if (withSound) {
+        video.muted = false;
+        video.volume = 1;
+        video.play().catch(() => {});
+        return;
+      }
+      video.muted = true;
+      video.play().catch(() => {});
+    };
+
+    const visibility = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          tryPlay();
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    visibility.observe(node);
+
+    const unlock = () => {
+      video.muted = false;
+      video.volume = 1;
+      video.play().catch(() => {});
+    };
+    if (withSound) {
+      window.addEventListener("pointerdown", unlock, { once: true });
+      window.addEventListener("touchstart", unlock, { once: true });
+      window.addEventListener("click", unlock, { once: true });
+    }
+
+    tryPlay();
+
+    return () => {
+      visibility.disconnect();
+      if (withSound) {
+        window.removeEventListener("pointerdown", unlock);
+        window.removeEventListener("touchstart", unlock);
+        window.removeEventListener("click", unlock);
       }
     };
-    play();
-  }, [shouldLoad, src]);
+  }, [shouldLoad, src, withSound]);
 
   return (
     <div ref={containerRef} className="absolute inset-0">
@@ -81,12 +119,15 @@ export default function LazyHeroVideo({
           ref={videoRef}
           className={`${className} absolute inset-0`}
           autoPlay
-          muted
           loop
           playsInline
-          preload="none"
+          preload={withSound ? "auto" : "none"}
           poster={poster}
+          controls={false}
+          controlsList="nodownload nofullscreen noremoteplayback"
+          disablePictureInPicture
           aria-hidden="true"
+          {...(withSound ? {} : { muted: true })}
         >
           <source src={src} type="video/mp4" />
         </video>

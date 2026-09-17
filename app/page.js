@@ -1,5 +1,4 @@
 import HeroSlider from "./components/hero-slider";
-import ShowreelSection from "./components/showreel-section";
 import ServicesSection from "./components/services-section";
 import PricingIndustriesSection from "./components/pricing-industries-section";
 import ClientsSection from "./components/clients-section";
@@ -67,7 +66,7 @@ export default function Homepage() {
       uploadDate: "2026-09-17",
       duration: SHOWREEL.durationIso,
       contentUrl: `${SITE_URL}${SHOWREEL.src}`,
-      embedUrl: `${SITE_URL}/#showreel`,
+      embedUrl: SITE_URL,
     }),
   ];
 
@@ -78,7 +77,6 @@ export default function Homepage() {
         dangerouslySetInnerHTML={{ __html: stringifySchema(schemas) }}
       />
       <HeroSlider />
-      <ShowreelSection />
       <ServicesSection />
       <FeaturedProjects />
       <PricingIndustriesSection />
