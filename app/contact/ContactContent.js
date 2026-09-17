@@ -34,8 +34,32 @@ const contactMethods = [
     },
 ];
 
-export default function ContactContent() {
-    const [form, setForm] = useState({ name: "", email: "", phone: "", service: "Business Website", message: "" });
+const SERVICE_OPTIONS = [
+    "Business website",
+    "E-commerce store",
+    "Custom web app",
+    "Free website audit",
+    "Digital marketing",
+    "SEO",
+    "Other",
+];
+
+function resolveService(raw) {
+    if (!raw) return "Business website";
+    const match = SERVICE_OPTIONS.find((option) => option.toLowerCase() === String(raw).toLowerCase());
+    if (match) return match;
+    if (/audit|review/i.test(raw)) return "Free website audit";
+    return "Other";
+}
+
+export default function ContactContent({ initialService = "" }) {
+    const [form, setForm] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        service: resolveService(initialService),
+        message: "",
+    });
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
@@ -60,7 +84,7 @@ export default function ContactContent() {
                 setError("Submission failed. Please try again.");
             } else {
                 setSuccess("Thank you. We will follow up within two business days with next steps.");
-                setForm({ name: "", email: "", phone: "", service: "Business Website", message: "" });
+                setForm({ name: "", email: "", phone: "", service: resolveService(initialService), message: "" });
             }
         } catch {
             setError("Submission failed. Please try again.");
@@ -74,9 +98,11 @@ export default function ContactContent() {
                 compact
                 eyebrow="Contact"
                 title="Tell us what you need. We’ll send a clear quote."
-                description="Share a short brief — goals, timeline, and which package band fits (₹5k / ₹10k / ₹15k). No obligation."
+                description="Share a short brief — goals, timeline, and which production band fits (₹10,000 / ₹15,000 / ₹25,000). Prefer a lighter start? Request a free website review."
                 videoSrc={PAGE_VIDEOS.meeting}
                 posterSrc={PAGE_POSTERS.laptop}
+                primaryCta={{ href: "/contact#contact-form", label: "Send a brief" }}
+                secondaryCta={{ href: "/free-website-audit", label: "Free website review" }}
                 breadcrumbs={[
                     { name: "Home", url: "/" },
                     { name: "Contact", url: "/contact" },
@@ -114,7 +140,7 @@ export default function ContactContent() {
                         </Reveal>
 
                         <Reveal className="lg:col-span-8" delay={2}>
-                            <form onSubmit={handleSubmit} className="border border-slate-200 p-6 md:p-8 space-y-5 bg-slate-50/40">
+                            <form id="contact-form" onSubmit={handleSubmit} className="border border-slate-200 p-6 md:p-8 space-y-5 bg-slate-50/40 scroll-mt-24">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                     <div>
                                         <label className="block text-xs font-medium text-slate-500 mb-1.5" htmlFor="name">Full name *</label>
@@ -140,7 +166,7 @@ export default function ContactContent() {
                                         <input
                                             type="tel" name="phone" id="phone" value={form.phone} onChange={handleChange}
                                             className="w-full px-3 py-2.5 border border-slate-200 rounded-md text-sm text-slate-900 bg-white focus:outline-none focus:border-slate-400"
-                                            placeholder="+1 ..."
+                                            placeholder="+91 …"
                                         />
                                     </div>
                                     <div>
@@ -149,12 +175,9 @@ export default function ContactContent() {
                                             name="service" id="service" value={form.service} onChange={handleChange} required
                                             className="w-full px-3 py-2.5 border border-slate-200 rounded-md text-sm text-slate-900 focus:outline-none focus:border-slate-400 bg-white"
                                         >
-                                            <option value="Business Website">Business website</option>
-                                            <option value="E-commerce Store">E-commerce store</option>
-                                            <option value="Custom Web App">Custom web app</option>
-                                            <option value="Digital Marketing">Digital marketing</option>
-                                            <option value="SEO">SEO</option>
-                                            <option value="Other">Other</option>
+                                            {SERVICE_OPTIONS.map((option) => (
+                                                <option key={option} value={option}>{option}</option>
+                                            ))}
                                         </select>
                                     </div>
                                 </div>

@@ -113,9 +113,14 @@ export default function PricingIndustriesSection() {
               </span>
             ))}
           </div>
-          <Link href="/pricing" className="text-sm font-medium text-sky-200 hover:underline">
-            View full pricing details →
-          </Link>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <Link href="/pricing" className="text-sm font-medium text-sky-200 hover:underline">
+              View full pricing details →
+            </Link>
+            <Link href="/free-website-audit" className="text-sm font-medium text-sky-200 hover:underline">
+              Get a free website review →
+            </Link>
+          </div>
         </Reveal>
       </div>
     </section>

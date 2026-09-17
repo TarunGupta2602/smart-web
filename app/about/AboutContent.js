@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import PageHero from "../components/page-hero";
 import PageCta from "../components/page-cta";
@@ -7,18 +5,18 @@ import Reveal from "../components/reveal";
 import RelatedLinks from "../components/related-links";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 
-export default function AboutContent({ expertiseItems, team }) {
+export default function AboutContent({ expertiseItems }) {
     return (
         <div className="bg-white text-slate-900">
             <PageHero
                 showBrand
                 eyebrow="About SmartSoft Solutions"
-                title="A development company that ships live products"
-                description="Since 2018 we’ve built business websites, e-commerce stores, and web apps with Next.js and React. Projects are quoted clearly — from ₹5,000 — delivered with weekly demos, and launched to production."
+                title="A founder-led studio that ships live business websites"
+                description="Since 2018 we’ve built business websites, e-commerce stores, and web apps with Next.js and React. You talk to the person who quotes the work — then see weekly staging links until launch."
                 videoSrc={PAGE_VIDEOS.office}
                 posterSrc={PAGE_POSTERS.team}
                 primaryCta={{ href: "/contact", label: "Get a quote" }}
-                secondaryCta={{ href: "/projects", label: "See work" }}
+                secondaryCta={{ href: "/free-website-audit", label: "Free website review" }}
                 breadcrumbs={[
                     { name: "Home", url: "/" },
                     { name: "About", url: "/about" },
@@ -30,17 +28,23 @@ export default function AboutContent({ expertiseItems, team }) {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                         <Reveal>
                             <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-5">
-                                Company builds. Real handoffs.
+                                Why businesses hire us
                             </h2>
                             <div className="space-y-4 text-slate-600 text-[15px] leading-relaxed">
                                 <p>
-                                    SmartSoft Solutions helps businesses get customers online — through clearer websites,
-                                    stores that take orders, and apps teams can actually use.
+                                    SmartSoft Solutions is a founder-led website studio in Ghaziabad (Delhi NCR). We help
+                                    owners get customers online — through clearer websites, stores that take orders, and
+                                    apps teams can actually use.
                                 </p>
                                 <p>
-                                    We are based in Ghaziabad (Delhi NCR) at SK2 Shastri Nagar, Uttar Pradesh 201002,
-                                    and deliver projects across India and worldwide via WhatsApp, email, and video —
-                                    with written scope and budget from the first quote through launch. Find us on{" "}
+                                    The 2018 start date is not a slogan on an empty About page. We have been shipping
+                                    production sites since then: written scope, a fixed quote before build, weekly demos,
+                                    and a maintainable handoff. You are not paying a sales layer that disappears after
+                                    the contract.
+                                </p>
+                                <p>
+                                    We work from SK2 Shastri Nagar, Uttar Pradesh 201002, and deliver across India and
+                                    worldwide via WhatsApp, email, and video. Find us on{" "}
                                     <a
                                         href="https://share.google/R4SrBCxNLMdypmhSq"
                                         target="_blank"
@@ -50,11 +54,6 @@ export default function AboutContent({ expertiseItems, team }) {
                                         Google Business Profile
                                     </a>
                                     .
-                                </p>
-                                <p>
-                                    We started as a hands-on product team: fewer slides, more staging links. That still
-                                    shapes how we work — weekly demos, written change notes, and a maintainable codebase
-                                    you can keep growing after handoff.
                                 </p>
                             </div>
                         </Reveal>
@@ -70,20 +69,24 @@ export default function AboutContent({ expertiseItems, team }) {
                             </div>
                             <div className="border border-slate-200 bg-slate-50 p-7 md:p-8 space-y-5">
                                 <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
-                                    <span className="text-slate-500">Primary stack</span>
-                                    <span className="font-medium text-slate-900">Next.js · React</span>
+                                    <span className="text-slate-500">Led by</span>
+                                    <span className="font-medium text-slate-900">Tarun Gupta, Managing Director</span>
                                 </div>
                                 <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
-                                    <span className="text-slate-500">Backends</span>
-                                    <span className="font-medium text-slate-900">Firebase · Supabase</span>
+                                    <span className="text-slate-500">Building since</span>
+                                    <span className="font-medium text-slate-900">2018</span>
+                                </div>
+                                <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
+                                    <span className="text-slate-500">Primary stack</span>
+                                    <span className="font-medium text-slate-900">Next.js · React</span>
                                 </div>
                                 <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
                                     <span className="text-slate-500">Pricing model</span>
                                     <span className="font-medium text-slate-900">Fixed project quotes</span>
                                 </div>
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-slate-500">Delivery</span>
-                                    <span className="font-medium text-slate-900">Remote · Global</span>
+                                    <span className="text-slate-500">Proof</span>
+                                    <span className="font-medium text-slate-900">Live client sites + GBP</span>
                                 </div>
                             </div>
                         </Reveal>
@@ -91,7 +94,43 @@ export default function AboutContent({ expertiseItems, team }) {
                 </div>
             </section>
 
-            <section className="py-16 md:py-20 bg-slate-50 border-y border-slate-100 soft-grid">
+            <section className="py-16 md:py-20 bg-slate-50 border-y border-slate-100">
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+                        <Reveal className="lg:col-span-4">
+                            <div className="w-16 h-16 mb-5 rounded-full bg-[#0f3d68] text-white flex items-center justify-center text-lg font-semibold">
+                                TG
+                            </div>
+                            <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-3">
+                                Founder story
+                            </h2>
+                            <p className="text-sm text-slate-500">Tarun Gupta · Managing Director</p>
+                        </Reveal>
+                        <Reveal className="lg:col-span-8 space-y-4 text-slate-600 text-[15px] leading-relaxed" delay={2}>
+                            <p>
+                                I started SmartSoft Solutions in 2018 because local businesses were being sold pretty
+                                templates that did not rank, did not convert, and could not be handed over cleanly. The
+                                studio stayed small on purpose: I quote the work, I stay on the weekly demos, and I
+                                ship the production launch.
+                            </p>
+                            <p>
+                                That is the credential we can stand behind — not a wall of invented teammates or awards.
+                                Open{" "}
+                                <a href="/projects" className="text-[#0f3d68] hover:underline">
+                                    live client sites
+                                </a>
+                                , read the Google Business Profile, and start with a{" "}
+                                <a href="/free-website-audit" className="text-[#0f3d68] hover:underline">
+                                    free website review
+                                </a>{" "}
+                                if you want proof before you pay for a build.
+                            </p>
+                        </Reveal>
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-16 md:py-20 border-y border-slate-100 soft-grid">
                 <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
                     <Reveal>
                         <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-10">
@@ -138,33 +177,12 @@ export default function AboutContent({ expertiseItems, team }) {
                 </div>
             </section>
 
-            <section className="py-16 md:py-20 bg-white border-t border-slate-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-                    <Reveal>
-                        <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-3">
-                            Leadership
-                        </h2>
-                        <p className="text-sm text-slate-600 leading-relaxed mb-10 max-w-2xl">
-                            SmartSoft Solutions is led by Tarun G. Delivery stays lean — fixed quotes, weekly demos, and a maintainable handoff.
-                        </p>
-                    </Reveal>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-                        {team.map((member, index) => (
-                            <Reveal key={member.name} delay={(index % 3) + 1}>
-                                <div>
-                                    <div className="w-12 h-12 mb-3 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-sm font-semibold">
-                                        {member.initials}
-                                    </div>
-                                    <p className="text-sm font-medium text-slate-900">{member.name}</p>
-                                    <p className="text-xs text-slate-500 mt-0.5">{member.role}</p>
-                                </div>
-                            </Reveal>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <PageCta title="Ready to start a project?" description="Send a brief — we reply with scope and a fixed quote." />
+            <PageCta
+                title="Ready to start a project?"
+                description="Send a brief — we reply with scope and a fixed quote. Or start with a free review of your current site."
+                secondaryLabel="Free website review"
+                secondaryHref="/free-website-audit"
+            />
             <RelatedLinks excludeHref="/about" />
         </div>
     );

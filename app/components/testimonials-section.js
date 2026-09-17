@@ -2,14 +2,15 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "./reveal";
 import ProjectPreview from "./project-preview";
-import { PORTFOLIO_PROJECTS } from "@/lib/projects";
+import { FEATURED_PROJECTS } from "@/lib/projects";
 import { GOOGLE_BUSINESS_URL } from "@/lib/seo";
+import { PRICING_SHORT } from "@/lib/pricing";
 
 /**
  * Case-study proof from real shipped projects (no fabricated person quotes).
  */
 export default function TestimonialsSection() {
-  const projects = PORTFOLIO_PROJECTS;
+  const projects = FEATURED_PROJECTS;
 
   return (
     <section className="bg-white py-20 md:py-28">
@@ -133,7 +134,7 @@ export default function TestimonialsSection() {
                   Want a site like these?
                 </h3>
                 <p className="text-sm text-slate-200 max-w-xl">
-                  Packages from ₹5,000 / ₹10,000 / ₹15,000. Tell us your goal — we reply with scope and a fixed quote.
+                  Production websites from {PRICING_SHORT}. Tell us your goal — we reply with scope and a fixed quote. Or start with a free review.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 shrink-0">
@@ -143,12 +144,12 @@ export default function TestimonialsSection() {
                 >
                   Request a quote
                 </Link>
-                <a
-                  href="https://wa.me/917456096455"
+                <Link
+                  href="/free-website-audit"
                   className="inline-flex px-5 py-2.5 rounded-md border border-white/35 text-white text-sm font-medium hover:bg-white/10 transition-colors"
                 >
-                  WhatsApp
-                </a>
+                  Free website review
+                </Link>
               </div>
             </div>
           </div>

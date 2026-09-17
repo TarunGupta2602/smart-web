@@ -25,7 +25,7 @@ export default function ProjectsContent({ projects }) {
                 videoSrc={PAGE_VIDEOS.screens}
                 posterSrc={PAGE_POSTERS.analytics}
                 primaryCta={{ href: "/contact", label: "Start your project" }}
-                secondaryCta={{ href: "/services", label: "Our services" }}
+                secondaryCta={{ href: "/free-website-audit", label: "Free website review" }}
                 breadcrumbs={[
                     { name: "Home", url: "/" },
                     { name: "Work", url: "/projects" },
@@ -116,7 +116,7 @@ export default function ProjectsContent({ projects }) {
 
             <PageCta
                 title="Want similar results for your business?"
-                description="Tell us about your project and we will send a fixed quote."
+                description="Tell us about your project and we will send a fixed quote — or start with a free review of your current site."
             />
         </div>
     );

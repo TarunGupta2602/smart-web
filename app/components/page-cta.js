@@ -5,11 +5,11 @@ import { CTA_IMAGE } from "@/lib/page-media";
 
 export default function PageCta({
   title = "Have a project? Let’s price it and ship.",
-  description = "Send a short brief — goals, timeline, and budget range. We reply with scope and a clear quote.",
+  description = "Send a short brief — goals, timeline, and budget range. We reply with scope and a clear quote. Or start with a free review of your live site.",
   primaryLabel = "Request a quote",
   primaryHref = "/contact",
-  secondaryLabel = "WhatsApp",
-  secondaryHref = "https://wa.me/917456096455",
+  secondaryLabel = "Free website review",
+  secondaryHref = "/free-website-audit",
   imageSrc = CTA_IMAGE,
 }) {
   return (
@@ -32,12 +32,12 @@ export default function PageCta({
                   {primaryLabel}
                 </Link>
                 {secondaryHref && (
-                  <a
+                  <Link
                     href={secondaryHref}
                     className="inline-flex px-5 py-2.5 rounded-md border border-white/35 text-white text-sm font-medium hover:bg-white/10 transition-colors"
                   >
                     {secondaryLabel}
-                  </a>
+                  </Link>
                 )}
               </div>
             </div>

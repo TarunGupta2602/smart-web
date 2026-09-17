@@ -78,6 +78,12 @@ export default function Navbar() {
                     </div>
 
                     <div className="hidden lg:flex items-center gap-5">
+                        <Link
+                            href="/free-website-audit"
+                            className={`text-sm transition-colors ${onHero ? "text-white/80 hover:text-white" : "text-slate-500 hover:text-slate-900"}`}
+                        >
+                            Free review
+                        </Link>
                         <a
                             href="tel:+917456096455"
                             className={`text-sm transition-colors ${onHero ? "text-white/80 hover:text-white" : "text-slate-500 hover:text-slate-900"}`}
@@ -146,6 +152,13 @@ export default function Navbar() {
                         ))}
                     </nav>
                     <div className="px-5 py-5 border-t border-slate-100 space-y-3">
+                        <Link
+                            href="/free-website-audit"
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center justify-center w-full py-2.5 rounded-md border border-slate-200 text-slate-800 text-sm font-medium"
+                        >
+                            Free website review
+                        </Link>
                         <Link
                             href="/contact"
                             onClick={() => setIsOpen(false)}

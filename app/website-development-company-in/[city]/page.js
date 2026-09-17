@@ -21,6 +21,7 @@ import {
   CITY_LOCAL_ANGLES,
 } from "@/lib/india-cities";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
+import { PRICE_WEBSITE } from "@/lib/pricing";
 
 export function generateStaticParams() {
   return getAllCitySlugs().map((city) => ({ city }));
@@ -150,7 +151,7 @@ export default async function CityWebsitePage({ params }) {
               <Link href="/services/website-designing" className="text-[#0f3d68] hover:underline">website development</Link>
               {" "}and{" "}
               <Link href="/services/seo" className="text-[#0f3d68] hover:underline">SEO</Link>,
-              and quote a fixed price before build starts. Typical marketing sites start from ₹5,000 —
+              and quote a fixed price before build starts. Typical production marketing sites start from {PRICE_WEBSITE} —
               see <Link href="/pricing" className="text-[#0f3d68] hover:underline">pricing</Link>.
             </p>
             <p className="text-xs text-slate-500 leading-relaxed border-l-2 border-slate-200 pl-3">

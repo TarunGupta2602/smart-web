@@ -6,7 +6,7 @@ import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 export const metadata = buildPageMetadata({
     title: "About SmartSoft Solutions",
     description:
-        "About SmartSoft Solutions — website development company in Ghaziabad building business sites, e-commerce stores, and web apps with Next.js and React across India.",
+        "About SmartSoft Solutions — founder-led website studio in Ghaziabad since 2018. Tarun Gupta ships business sites, e-commerce, and web apps with Next.js and fixed quotes.",
     path: "/about",
     keywords: [
         "about SmartSoft Solutions",
@@ -38,13 +38,9 @@ export default function AboutPage() {
         }
     ];
 
-    const team = [
-        { initials: "TG", name: "Tarun G.", role: "Managing Director" },
-    ];
-
     const aboutPageSchema = webPage({
         name: 'About SmartSoft Solutions',
-        description: 'SmartSoft Solutions builds business websites, e-commerce stores, and web apps that help companies get customers.',
+        description: 'Founder-led website studio in Ghaziabad since 2018. Tarun Gupta builds business websites, e-commerce stores, and web apps with Next.js and fixed quotes.',
         url: `${SITE_URL}/about`,
     });
 
@@ -65,7 +61,7 @@ export default function AboutPage() {
                 dangerouslySetInnerHTML={{ __html: stringifySchema([aboutPageSchema, breadcrumbSchema]) }}
             />
             <Breadcrumb items={breadcrumbItems} className="max-w-7xl mx-auto px-6 pt-4 pb-2" />
-            <AboutContent expertiseItems={expertiseItems} team={team} />
+            <AboutContent expertiseItems={expertiseItems} />
         </>
     );
 }

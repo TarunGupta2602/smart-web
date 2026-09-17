@@ -1,12 +1,12 @@
 import ProjectsContent from "./ProjectsContent";
 import { localBusiness, breadcrumbList, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
-import { PORTFOLIO_PROJECTS } from "@/lib/projects";
+import { getPortfolioProjects } from "@/lib/projects";
 
 export const metadata = buildPageMetadata({
     title: "Live Website & E-commerce Portfolio",
     description:
-        "Live SmartSoft Solutions projects — jewellery e-commerce, lead-gen sites, and Parvah video chat — built with Next.js and React. Open each URL, then request a quote.",
+        "Live SmartSoft Solutions client work — jewellery e-commerce and lead-generation websites built with Next.js and React. Open each URL, then request a quote.",
     path: "/projects",
     keywords: [
         "web development portfolio",
@@ -34,7 +34,7 @@ export default function ProjectsPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: stringifySchema([projectSchema, breadcrumbSchema]) }}
             />
-            <ProjectsContent projects={PORTFOLIO_PROJECTS} />
+            <ProjectsContent projects={getPortfolioProjects()} />
         </>
     );
 }

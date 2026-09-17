@@ -1,6 +1,7 @@
 "use client";
 
 import { HOME_FAQS } from "@/lib/seo";
+import { PRICING_SHORT } from "@/lib/pricing";
 import Reveal from "./reveal";
 
 /**
@@ -20,7 +21,7 @@ export default function FAQSection() {
               Straight answers before you hire
             </h2>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Pricing starts at ₹5,000 / ₹10,000 / ₹15,000. Timelines and deliverables for websites, stores, and web apps across India.
+              Production websites from {PRICING_SHORT}. Timelines and deliverables for business sites, stores, and web apps across India.
             </p>
           </Reveal>
 

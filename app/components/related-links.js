@@ -7,6 +7,7 @@ const DEFAULT_LINKS = [
   { href: "/services/digital-marketing", label: "Digital marketing" },
   { href: "/projects", label: "Selected work" },
   { href: "/pricing", label: "Pricing & quotes" },
+  { href: "/free-website-audit", label: "Free website review" },
   { href: "/website-development-company-in", label: "India city pages" },
   { href: "/blog", label: "Blog & guides" },
   { href: "/contact", label: "Contact / get a quote" },

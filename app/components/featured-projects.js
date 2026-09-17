@@ -1,22 +1,22 @@
 import Link from "next/link";
 import Reveal from "./reveal";
 import ProjectPreview from "./project-preview";
-import { PORTFOLIO_PROJECTS } from "@/lib/projects";
+import { FEATURED_PROJECTS } from "@/lib/projects";
 
-export default function FeaturedProjects({ limit = 3 }) {
-  const projects = PORTFOLIO_PROJECTS.slice(0, limit);
+export default function FeaturedProjects() {
+  const projects = FEATURED_PROJECTS;
 
   return (
     <section className="bg-white py-20 md:py-28 border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
         <Reveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
           <div className="max-w-2xl">
-            <p className="text-sm font-medium text-[#0f3d68] mb-3">Selected work</p>
+            <p className="text-sm font-medium text-[#0f3d68] mb-3">Selected client work</p>
             <h2 className="font-display text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-3">
-              Live projects you can open today
+              Live sites you can open today
             </h2>
             <p className="text-base text-slate-600 leading-relaxed">
-              Real homepages from sites we shipped — not stock photos. Open the live URL, then request a quote for your own build.
+              Real homepages from businesses we shipped — jewellery commerce and local lead-gen, not stock photos. Open the live URL, then request a quote or a free review.
             </p>
           </div>
           <Link href="/projects" className="text-sm font-medium text-[#0f3d68] hover:underline shrink-0">
@@ -58,6 +58,23 @@ export default function FeaturedProjects({ limit = 3 }) {
               </article>
             </Reveal>
           ))}
+          <Reveal delay={3}>
+            <article className="h-full border border-slate-200 bg-slate-50 flex flex-col p-6 md:p-7">
+              <p className="text-xs text-slate-400 mb-2">Lighter next step</p>
+              <h3 className="font-display text-xl font-semibold text-slate-900 mb-3">
+                Not ready to brief a build?
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed mb-6 flex-1">
+                Send your live URL. We email a written review of speed, mobile clarity, offers, and the enquiry path — no quote required.
+              </p>
+              <Link
+                href="/free-website-audit"
+                className="inline-flex px-4 py-2 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium transition-colors self-start"
+              >
+                Request a free review
+              </Link>
+            </article>
+          </Reveal>
         </div>
       </div>
     </section>

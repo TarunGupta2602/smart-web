@@ -49,7 +49,7 @@ export default function HeroSlider() {
             className="animate-fade-up hidden lg:block max-w-xl text-base md:text-lg text-slate-200/90 leading-relaxed mb-9"
             style={{ animationDelay: "0.24s" }}
           >
-            Business sites, e-commerce stores, and web apps — Next.js & React, fixed project quotes, SEO-ready structure, and a production launch you can grow.
+            Business sites, e-commerce stores, and web apps — Next.js & React, fixed project quotes from ₹10,000, SEO-ready structure, and a production launch you can grow.
           </p>
 
           <div
@@ -63,10 +63,10 @@ export default function HeroSlider() {
               Get a project quote
             </Link>
             <Link
-              href="/projects"
+              href="/free-website-audit"
               className="inline-flex px-6 py-3 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition-colors"
             >
-              See selected work
+              Free website review
             </Link>
           </div>
         </div>

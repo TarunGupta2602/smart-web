@@ -15,7 +15,7 @@ import { SHOWREEL } from "@/lib/page-media";
 const homeMetadata = buildPageMetadata({
   title: "Website Development Company in India",
   description:
-    "Website development in Ghaziabad for business sites, e-commerce & web apps across India. From ₹5,000. Next.js builds with fixed quotes.",
+    "Website development in Ghaziabad for business sites, e-commerce & web apps across India. Production Next.js builds with fixed quotes from ₹10,000.",
   path: "/",
   keywords: [
     "website development company",
@@ -55,7 +55,7 @@ export default function Homepage() {
     localBusiness({
       name: "SmartSoft Solutions",
       description:
-        "Website development company in Ghaziabad building business websites, e-commerce stores, and web apps with Next.js and React. Packages from ₹5,000.",
+        "Website development company in Ghaziabad building business websites, e-commerce stores, and web apps with Next.js and React. Production packages from ₹10,000.",
       url: SITE_URL,
     }),
     faqPage(HOME_FAQS),

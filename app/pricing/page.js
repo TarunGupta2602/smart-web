@@ -11,7 +11,7 @@ import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 export const metadata = buildPageMetadata({
     title: "Website Development Pricing in India",
     description:
-        "Website and e-commerce pricing: business sites from ₹5,000, stores from ₹10,000, web apps from ₹15,000. Fixed quotes before any build starts.",
+        "Website and e-commerce pricing in India: business sites from ₹10,000, stores from ₹15,000, web apps from ₹25,000. Fixed quotes before any build starts.",
     path: "/pricing",
     keywords: [
         "website development cost",
@@ -50,11 +50,12 @@ export default function PricingPage() {
 
             <PageHero
                 eyebrow="Pricing"
-                title="From ₹5,000 · ₹10,000 · ₹15,000"
-                description={`${PRICING_SUMMARY}. Pick a starting band, then we lock a fixed quote for your exact scope before any build starts.`}
+                title="Fixed quotes for production websites"
+                description={`${PRICING_SUMMARY}. These are production Next.js starting bands. We lock a fixed quote for your exact scope before any build starts.`}
                 videoSrc={PAGE_VIDEOS.workspace}
                 posterSrc={PAGE_POSTERS.laptop}
                 primaryCta={{ href: "/contact", label: "Request a quote" }}
+                secondaryCta={{ href: "/free-website-audit", label: "Free website review" }}
                 breadcrumbs={breadcrumbItems}
             />
 
@@ -101,7 +102,7 @@ export default function PricingPage() {
                     </Reveal>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {[
-                            { q: "What do the starting prices mean?", a: "They are entry bands for typical scopes — not empty bait. Your written quote may be higher if you need more pages, SKUs, or custom features." },
+                            { q: "What do the starting prices mean?", a: "They are production entry bands for typical Next.js scopes — not empty bait. A written quote may be higher if you need more pages, SKUs, or custom features." },
                             { q: "Are quotes fixed?", a: "Yes. Once scope is agreed, you get a clear fixed quote before any build starts." },
                             { q: "How do timelines work?", a: "Many marketing sites ship in a few weeks; stores and apps take longer. Timeline is written into the quote." },
                             { q: "Do you work remotely?", a: "Yes. Based in Ghaziabad (Delhi NCR), we deliver via WhatsApp, email, and video across India and other time zones." },
@@ -116,7 +117,7 @@ export default function PricingPage() {
             </section>
 
             <RelatedLinks excludeHref="/pricing" />
-            <PageCta title="Ready for a custom quote?" description="Call +91 74560 96455 or send a brief online — mention which package band fits." />
+            <PageCta title="Ready for a custom quote?" description="Call +91 74560 96455 or send a brief online — mention which package band fits. Prefer a lighter start? Request a free website review." />
         </div>
     );
 }

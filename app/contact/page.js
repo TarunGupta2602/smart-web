@@ -17,7 +17,10 @@ export const metadata = buildPageMetadata({
     ],
 });
 
-export default function ContactPage() {
+export default async function ContactPage(props) {
+    const searchParams = await props.searchParams;
+    const initialService = typeof searchParams?.service === "string" ? searchParams.service : "";
+
     const contactSchema = organization({
         name: 'SmartSoft Solutions',
         description: 'Contact SmartSoft Solutions for website, e-commerce, and web app project quotes.',
@@ -41,7 +44,7 @@ export default function ContactPage() {
                 dangerouslySetInnerHTML={{ __html: stringifySchema([contactSchema, breadcrumbSchema]) }}
             />
             <Breadcrumb items={breadcrumbItems} className="container mx-auto px-6 pt-4 pb-2" />
-            <ContactContent />
+            <ContactContent initialService={initialService} />
         </>
     );
 }
