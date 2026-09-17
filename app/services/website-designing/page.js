@@ -102,23 +102,26 @@ export default function WebsiteDesigningServicePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
+                id: "business-websites",
                 title: "Business websites",
                 text: "Service pages, about, pricing, and lead forms that explain your offer and capture enquiries.",
                 image: PAGE_POSTERS.analytics,
               },
               {
+                id: "ecommerce",
                 title: "E-commerce stores",
                 text: "Product catalogs, offers, cart, checkout, and payment integrations for real online orders.",
                 image: PAGE_POSTERS.shop,
               },
               {
+                id: "web-apps",
                 title: "Web apps & dashboards",
                 text: "Auth, dashboards, and workflows with Firebase or Supabase for teams and customers.",
                 image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
               },
             ].map((item, index) => (
               <Reveal key={item.title} delay={index + 1}>
-                <div className="border border-slate-200 overflow-hidden">
+                <div id={item.id} className="border border-slate-200 overflow-hidden scroll-mt-28">
                   <div className="media-frame relative aspect-[16/10] bg-slate-100">
                     <Image src={item.image} alt="" fill sizes="33vw" className="object-cover" />
                   </div>

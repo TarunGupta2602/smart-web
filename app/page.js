@@ -14,7 +14,7 @@ import { buildPageMetadata, HOME_FAQS, SITE_URL } from "@/lib/seo";
 export const metadata = buildPageMetadata({
   title: "Website Development Company in India",
   description:
-    "Website development company in Ghaziabad for business sites, e-commerce & web apps across India. From ₹5,000 — Next.js builds, fixed quotes, SEO-ready launches.",
+    "Website development in Ghaziabad for business sites, e-commerce & web apps across India. From ₹5,000. Next.js builds with fixed quotes.",
   path: "/",
   keywords: [
     "website development company",

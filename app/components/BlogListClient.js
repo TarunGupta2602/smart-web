@@ -4,7 +4,7 @@ import React, { useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import BlogContentClient from './BlogContentClient'
-import { resolveBlogTaxonomy } from '@/lib/utils'
+import { resolveBlogTaxonomy, estimateReadTime, stripMarkdown } from '@/lib/utils'
 
 export default function BlogListClient({ blogs = [] }) {
     const [query, setQuery] = useState('')
@@ -29,10 +29,8 @@ export default function BlogListClient({ blogs = [] }) {
         return items
     }, [blogs, query, sort])
 
-    const estimateReadTime = (text = '') => {
-        const words = (text || '').trim().split(/\s+/).filter(Boolean).length
-        return Math.max(1, Math.ceil(words / 200))
-    }
+    const readMins = (post) =>
+        estimateReadTime(stripMarkdown(`${post.content || ''} ${post.description || ''}`))
 
     const hero = filtered[0]
     const rest = filtered.slice(1)
@@ -105,7 +103,7 @@ export default function BlogListClient({ blogs = [] }) {
                                 <div className="text-[11px] uppercase tracking-widest font-bold text-slate-400 mb-3">
                                     {new Date(hero.date_posted).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                     {' '}&bull;{' '}{hero.author}
-                                    {' '}&bull;{' '}{estimateReadTime(hero.description)} min read
+                                    {' '}&bull;{' '}{readMins(hero)} min read
                                 </div>
                                 <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 mb-4 leading-tight">
                                     {hero.title}
@@ -169,7 +167,7 @@ export default function BlogListClient({ blogs = [] }) {
                                 </h3>
                                 <div className="text-[10px] uppercase tracking-widest text-slate-400 mb-3 font-medium">
                                     {new Date(b.date_posted).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                                    {' '}&bull;{' '}{estimateReadTime(b.description)} min read
+                                    {' '}&bull;{' '}{readMins(b)} min read
                                 </div>
                                 <div
                                     className="text-sm text-slate-600 leading-relaxed"

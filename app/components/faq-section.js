@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import { HOME_FAQS } from "@/lib/seo";
 import Reveal from "./reveal";
 
+/**
+ * Accordion UI, but answers stay in the DOM (visually hidden when closed)
+ * so crawlers and no-JS still see FAQ text — not empty "+" rows.
+ */
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState(0);
   const faqs = HOME_FAQS;
 
   return (
@@ -18,36 +20,30 @@ export default function FAQSection() {
               Straight answers before you hire
             </h2>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Pricing, timelines, and deliverables for websites, e-commerce, and web apps across India and worldwide.
+              Pricing starts at ₹5,000 / ₹10,000 / ₹15,000. Timelines and deliverables for websites, stores, and web apps across India.
             </p>
           </Reveal>
 
           <Reveal className="lg:col-span-8" delay={2}>
             <div className="divide-y divide-slate-200 border-t border-slate-200">
-              {faqs.map((faq, index) => {
-                const open = openIndex === index;
-                return (
-                  <div key={faq.question}>
-                    <button
-                      type="button"
-                      onClick={() => setOpenIndex(open ? null : index)}
-                      className="w-full text-left py-5 flex items-start justify-between gap-6"
-                    >
-                      <span className="text-base font-medium text-slate-900 pr-4">
-                        {faq.question}
-                      </span>
-                      <span className="text-slate-400 text-lg leading-none mt-0.5 shrink-0">
-                        {open ? "−" : "+"}
-                      </span>
-                    </button>
-                    {open && (
-                      <p className="pb-5 text-sm text-slate-600 leading-relaxed max-w-2xl -mt-1 animate-fade-in">
-                        {faq.answer}
-                      </p>
-                    )}
-                  </div>
-                );
-              })}
+              {faqs.map((faq) => (
+                <details key={faq.question} className="group py-2" open={faq === faqs[0]}>
+                  <summary className="py-3 flex items-start justify-between gap-6 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    <h3 className="text-base font-medium text-slate-900 pr-4">
+                      {faq.question}
+                    </h3>
+                    <span className="text-slate-400 text-lg leading-none mt-0.5 shrink-0 group-open:hidden">
+                      +
+                    </span>
+                    <span className="text-slate-400 text-lg leading-none mt-0.5 shrink-0 hidden group-open:inline">
+                      −
+                    </span>
+                  </summary>
+                  <p className="pb-5 text-sm text-slate-600 leading-relaxed max-w-2xl">
+                    {faq.answer}
+                  </p>
+                </details>
+              ))}
             </div>
           </Reveal>
         </div>

@@ -4,7 +4,7 @@ import Reveal from "./reveal";
 
 const services = [
   {
-    slug: "website-designing",
+    href: "/services/website-designing#business-websites",
     title: "Business websites",
     description:
       "A clear site that explains your offer and captures leads — mobile-ready, fast, and structured for search.",
@@ -14,7 +14,7 @@ const services = [
     alt: "Analytics dashboard on a laptop for a business website",
   },
   {
-    slug: "website-designing",
+    href: "/services/website-designing#ecommerce",
     title: "E-commerce stores",
     description:
       "Catalogs, offers, cart, and checkout with real payments — built so customers can buy on any device.",
@@ -24,7 +24,7 @@ const services = [
     alt: "Customer completing an online checkout on a phone",
   },
   {
-    slug: "website-designing",
+    href: "/services/website-designing#web-apps",
     title: "Web apps & dashboards",
     description:
       "Login, dashboards, and product flows with Firebase or Supabase — tools your team can use every day.",
@@ -34,7 +34,7 @@ const services = [
     alt: "Product dashboard charts on a desktop screen",
   },
   {
-    slug: "digital-marketing",
+    href: "/services/digital-marketing",
     title: "Digital marketing",
     description:
       "Practical campaigns across social, ads, content, and email — measured against leads and revenue.",
@@ -44,7 +44,7 @@ const services = [
     alt: "Marketing planning notes and laptop for campaigns",
   },
   {
-    slug: "seo",
+    href: "/services/seo",
     title: "SEO",
     description:
       "Technical fixes, keyword strategy, and on-page work that improve rankings and lasting organic traffic.",
@@ -74,7 +74,7 @@ export default function ServicesSection() {
           {services.map((service, index) => (
             <Reveal key={service.title} delay={(index % 3) + 1}>
               <Link
-                href={`/services/${service.slug}`}
+                href={service.href}
                 className="group block h-full border border-slate-200 bg-white hover:border-slate-300 transition-colors"
               >
                 <div className="media-frame relative aspect-[16/10] bg-slate-100">
