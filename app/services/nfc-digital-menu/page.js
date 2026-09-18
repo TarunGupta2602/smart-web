@@ -6,13 +6,19 @@ import Reveal from "../../components/reveal";
 import RelatedLinks from "../../components/related-links";
 import { webPage, breadcrumbList, service, faqPage, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
-import { PAGE_VIDEOS } from "@/lib/page-media";
+import { PAGE_VIDEOS, NFC_STORYBOARD } from "@/lib/page-media";
 
 export const metadata = buildPageMetadata({
   title: "Complete NFC QR Table Ordering System",
   description:
     "Complete NFC + QR table-ordering for Indian restaurants: tap or scan, live menu, cart, unique table links, and a real-time staff dashboard. No guest app. Free pilot.",
   path: "/services/nfc-digital-menu",
+  image: {
+    url: NFC_STORYBOARD.src,
+    width: NFC_STORYBOARD.width,
+    height: NFC_STORYBOARD.height,
+    alt: NFC_STORYBOARD.alt,
+  },
   keywords: [
     "NFC digital menu India",
     "QR code restaurant menu",
@@ -24,9 +30,6 @@ export const metadata = buildPageMetadata({
     "NFC menu card",
   ],
 });
-
-const HERO_POSTER =
-  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=70";
 
 const faqs = [
   {
@@ -104,15 +107,36 @@ export default function NfcDigitalMenuPage() {
         title="The full NFC + QR table system — menu, cart, and kitchen board."
         description="We are building the complete loop for Indian restaurants: tap or scan, live menu with photos and prices, unique table links, guest orders, and a staff dashboard. Not a PDF behind a QR. No guest app."
         videoSrc={PAGE_VIDEOS.meeting}
-        posterSrc={HERO_POSTER}
+        posterSrc="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=70"
         primaryCta={{ href: "/contact?service=NFC%20digital%20menu", label: "Apply for a free pilot" }}
         secondaryCta={{ href: "/blog/nfc-qr-digital-menu-table-ordering-india", label: "How it works" }}
         breadcrumbs={breadcrumbItems}
       />
 
+      <section className="py-10 md:py-14 bg-slate-50 border-b border-slate-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-5 lg:px-6">
+          <Reveal>
+            <figure>
+              <Image
+                src={NFC_STORYBOARD.src}
+                alt={NFC_STORYBOARD.alt}
+                width={NFC_STORYBOARD.width}
+                height={NFC_STORYBOARD.height}
+                priority
+                sizes="(max-width: 1024px) 100vw, 64rem"
+                className="w-full h-auto rounded-lg border border-slate-200 shadow-sm bg-white"
+              />
+              <figcaption className="mt-4 text-sm text-slate-500 text-center">
+                Tap or scan → live menu → cart → table ID → kitchen dashboard. No guest app.
+              </figcaption>
+            </figure>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <Reveal className="max-w-3xl mb-12">
+          <Reveal className="max-w-3xl">
             <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-4">
               One product. The whole order loop.
             </h2>
@@ -123,37 +147,6 @@ export default function NfcDigitalMenuPage() {
               takes the ticket and the kitchen knows which table it came from.
             </p>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "NFC tap, QR backup",
-                text: "Guests tap the card if their phone supports NFC, or scan the printed QR. Same unique table link either way.",
-                image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
-              },
-              {
-                title: "Full digital menu",
-                text: "Categories, prices, photos, and in-stock flags — so the guest is not guessing from a smudged card.",
-                image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
-              },
-              {
-                title: "Live kitchen board",
-                text: "New orders appear with table number, items, quantity, and total. Staff move them through accepted → preparing → ready → completed.",
-                image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80",
-              },
-            ].map((item, index) => (
-              <Reveal key={item.title} delay={index + 1}>
-                <article className="h-full border border-slate-200 overflow-hidden bg-white">
-                  <div className="media-frame relative aspect-[16/10] bg-slate-100">
-                    <Image src={item.image} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-display text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
-                    <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 

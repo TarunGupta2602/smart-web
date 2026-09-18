@@ -30,8 +30,9 @@ const services = [
       "The complete loop for Indian tables: NFC + QR, live menu, cart, unique table links, and a kitchen dashboard. Not a PDF behind a sticker.",
     outcome: "Full table ordering",
     image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
-    alt: "Restaurant dining room with tables set for service",
+      "/nfc/nfc-qr-ordering-storyboard.png",
+    alt: "SmartSoft NFC and QR restaurant ordering storyboard",
+    imageFit: "contain",
   },
   {
     href: "/services/website-designing#web-apps",
@@ -93,7 +94,7 @@ export default function ServicesSection() {
                     alt={service.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
+                    className={service.imageFit === "contain" ? "object-contain bg-slate-950 p-1" : "object-cover"}
                   />
                 </div>
                 <div className="p-6">
