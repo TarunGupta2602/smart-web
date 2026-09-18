@@ -1,4 +1,5 @@
 import HeroSlider from "./components/hero-slider";
+import NfcHomeBand from "./components/nfc-home-band";
 import ServicesSection from "./components/services-section";
 import PricingIndustriesSection from "./components/pricing-industries-section";
 import ClientsSection from "./components/clients-section";
@@ -10,7 +11,7 @@ import HomeBlogSection from "./components/home-blog-section";
 import RelatedLinks from "./components/related-links";
 import { breadcrumbList, faqPage, localBusiness, stringifySchema, videoObject } from "@/lib/schema";
 import { buildPageMetadata, HOME_FAQS, SITE_URL } from "@/lib/seo";
-import { SHOWREEL } from "@/lib/page-media";
+import { SHOWREEL, NFC_PROMO } from "@/lib/page-media";
 
 const homeMetadata = buildPageMetadata({
   title: "Website Development Company in India",
@@ -30,6 +31,7 @@ const homeMetadata = buildPageMetadata({
     "website development company in Delhi",
     "website development company in Mumbai",
     "website development company in Bangalore",
+    "NFC QR digital menu for restaurants",
   ],
 });
 
@@ -68,6 +70,15 @@ export default function Homepage() {
       contentUrl: `${SITE_URL}${SHOWREEL.src}`,
       embedUrl: SITE_URL,
     }),
+    videoObject({
+      name: NFC_PROMO.title,
+      description: NFC_PROMO.description,
+      thumbnailUrl: `${SITE_URL}${NFC_PROMO.poster}`,
+      uploadDate: "2026-09-18",
+      duration: NFC_PROMO.durationIso,
+      contentUrl: `${SITE_URL}${NFC_PROMO.src}`,
+      embedUrl: `${SITE_URL}/services/nfc-digital-menu`,
+    }),
   ];
 
   return (
@@ -77,6 +88,7 @@ export default function Homepage() {
         dangerouslySetInnerHTML={{ __html: stringifySchema(schemas) }}
       />
       <HeroSlider />
+      <NfcHomeBand />
       <ServicesSection />
       <FeaturedProjects />
       <PricingIndustriesSection />

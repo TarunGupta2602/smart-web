@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { INDIA_CITIES, cityPath } from "@/lib/india-cities";
-import { CONTACT_ADDRESS_LINE, CONTACT_MAPS_URL, GOOGLE_BUSINESS_URL } from "@/lib/seo";
+import { CONTACT_ADDRESS_LINE, CONTACT_MAPS_URL, FACEBOOK_URL, GOOGLE_BUSINESS_URL } from "@/lib/seo";
 import brandMark from "../icon.png";
 
 export default function Footer() {
@@ -9,8 +9,20 @@ export default function Footer() {
     const featuredCities = INDIA_CITIES.slice(0, 12);
 
     return (
-        <footer className="bg-white border-t border-slate-200 pt-16 pb-10">
-            <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
+        <footer className="bg-white border-t border-slate-200">
+            <Link
+                href="/services/nfc-digital-menu"
+                className="block bg-[#081220] text-white hover:bg-[#0b1c33] transition-colors"
+            >
+                <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <p className="text-sm">
+                        <span className="font-semibold">NFC QR digital menu</span>
+                        <span className="text-slate-300"> — tap-to-order for restaurants. Free 1–2 restaurant pilot.</span>
+                    </p>
+                    <span className="text-sm font-medium text-sky-200">See how it works →</span>
+                </div>
+            </Link>
+            <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-16 pb-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-14">
                     <div className="lg:col-span-4 space-y-5">
                         <Link href="/" className="inline-flex items-center gap-2.5">
@@ -51,6 +63,16 @@ export default function Footer() {
                                     Google Business Profile
                                 </a>
                             </p>
+                            <p>
+                                <a
+                                    href={FACEBOOK_URL}
+                                    target="_blank"
+                                    rel="me noopener noreferrer"
+                                    className="text-[#0f3d68] hover:underline text-sm font-medium"
+                                >
+                                    Facebook
+                                </a>
+                            </p>
                         </div>
                     </div>
 
@@ -80,8 +102,8 @@ export default function Footer() {
                         <h3 className="text-xs font-semibold text-slate-900 mb-4 tracking-wide uppercase">Services</h3>
                         <ul className="space-y-3">
                             {[
+                                { name: "NFC QR digital menu", href: "/services/nfc-digital-menu", featured: true },
                                 { name: "Business websites", href: "/services/website-designing" },
-                                { name: "NFC + QR ordering", href: "/services/nfc-digital-menu" },
                                 { name: "E-commerce & web apps", href: "/services/website-designing" },
                                 { name: "Digital marketing", href: "/services/digital-marketing" },
                                 { name: "SEO", href: "/services/seo" },
@@ -89,7 +111,14 @@ export default function Footer() {
                                 { name: "Live projects", href: "/projects" },
                             ].map((item) => (
                                 <li key={item.name}>
-                                    <Link href={item.href} className="text-sm text-slate-500 hover:text-slate-900 transition-colors">
+                                    <Link
+                                        href={item.href}
+                                        className={`text-sm transition-colors ${
+                                            item.featured
+                                                ? "font-medium text-[#0f3d68] hover:underline"
+                                                : "text-slate-500 hover:text-slate-900"
+                                        }`}
+                                    >
                                         {item.name}
                                     </Link>
                                 </li>
@@ -108,6 +137,16 @@ export default function Footer() {
                             <li>
                                 <a href="https://wa.me/917456096455" className="hover:text-slate-900 transition-colors">
                                     WhatsApp +91 74560 96455
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href={FACEBOOK_URL}
+                                    target="_blank"
+                                    rel="me noopener noreferrer"
+                                    className="hover:text-slate-900 transition-colors"
+                                >
+                                    Facebook
                                 </a>
                             </li>
                             <li>

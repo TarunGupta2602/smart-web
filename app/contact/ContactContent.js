@@ -6,6 +6,7 @@ import PageHero from "../components/page-hero";
 import Reveal from "../components/reveal";
 import RelatedLinks from "../components/related-links";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
+import { FACEBOOK_URL, GOOGLE_BUSINESS_URL } from "@/lib/seo";
 
 const contactMethods = [
     {
@@ -24,13 +25,19 @@ const contactMethods = [
         title: "Address",
         description: "SK2 Shastri Nagar, Ghaziabad",
         subtext: "Uttar Pradesh 201002 · View on Google",
-        link: "https://share.google/R4SrBCxNLMdypmhSq",
+        link: GOOGLE_BUSINESS_URL,
     },
     {
         title: "Google Business Profile",
         description: "Smartsoft Solutions on Google",
         subtext: "Reviews, hours, and directions",
-        link: "https://share.google/R4SrBCxNLMdypmhSq",
+        link: GOOGLE_BUSINESS_URL,
+    },
+    {
+        title: "Facebook",
+        description: "Smartsoft Solutions on Facebook",
+        subtext: "Follow updates and reach us on Facebook",
+        link: FACEBOOK_URL,
     },
 ];
 
@@ -124,7 +131,13 @@ export default function ContactContent({ initialService = "" }) {
                                             <a
                                                 href={method.link}
                                                 target={method.link.startsWith("http") ? "_blank" : undefined}
-                                                rel={method.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                                                rel={
+                                                    method.link.startsWith("http")
+                                                        ? method.link.includes("facebook.com")
+                                                            ? "me noopener noreferrer"
+                                                            : "noopener noreferrer"
+                                                        : undefined
+                                                }
                                                 className="text-sm font-medium text-slate-900 hover:text-[#0f3d68]"
                                             >
                                                 {method.description}

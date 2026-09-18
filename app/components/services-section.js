@@ -2,6 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "./reveal";
 
+const featured = {
+  href: "/services/nfc-digital-menu",
+  title: "NFC QR digital menu for restaurants",
+  description:
+    "The complete loop for Indian tables: NFC tap, QR backup, live menu, cart, unique table links, and a kitchen dashboard. Not a PDF behind a sticker. Free pilot for 1–2 restaurants.",
+  outcome: "Unique product · table ordering",
+  image: "/videos/nfc-qr-promo-poster.jpg",
+  alt: "Guest tapping an NFC QR card to open a restaurant digital menu",
+};
+
 const services = [
   {
     href: "/services/website-designing#business-websites",
@@ -22,17 +32,6 @@ const services = [
     image:
       "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
     alt: "Customer completing an online checkout on a phone",
-  },
-  {
-    href: "/services/nfc-digital-menu",
-    title: "NFC + QR restaurant system",
-    description:
-      "The complete loop for Indian tables: NFC + QR, live menu, cart, unique table links, and a kitchen dashboard. Not a PDF behind a sticker.",
-    outcome: "Full table ordering",
-    image:
-      "/nfc/nfc-qr-ordering-storyboard.png",
-    alt: "SmartSoft NFC and QR restaurant ordering storyboard",
-    imageFit: "contain",
   },
   {
     href: "/services/website-designing#web-apps",
@@ -81,6 +80,35 @@ export default function ServicesSection() {
           </p>
         </Reveal>
 
+        <Reveal className="mb-7">
+          <Link
+            href={featured.href}
+            className="group grid grid-cols-1 lg:grid-cols-12 overflow-hidden border border-slate-200 bg-white hover:border-slate-300 transition-colors"
+          >
+            <div className="relative lg:col-span-5 aspect-[16/10] lg:aspect-auto lg:min-h-[280px] bg-[#081220]">
+              <Image
+                src={featured.image}
+                alt={featured.alt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover object-[center_20%]"
+              />
+            </div>
+            <div className="lg:col-span-7 p-6 md:p-8 flex flex-col justify-center">
+              <p className="text-xs font-semibold uppercase tracking-wide text-[#0f3d68] mb-2">
+                {featured.outcome}
+              </p>
+              <h3 className="font-display text-2xl md:text-3xl font-semibold text-slate-900 mb-3 group-hover:text-[#0f3d68] transition-colors">
+                {featured.title}
+              </h3>
+              <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-5 max-w-xl">
+                {featured.description}
+              </p>
+              <span className="text-sm font-medium text-[#0f3d68]">See the NFC menu →</span>
+            </div>
+          </Link>
+        </Reveal>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {services.map((service, index) => (
             <Reveal key={service.title} delay={(index % 3) + 1}>
@@ -94,7 +122,7 @@ export default function ServicesSection() {
                     alt={service.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className={service.imageFit === "contain" ? "object-contain bg-slate-950 p-1" : "object-cover"}
+                    className="object-cover"
                   />
                 </div>
                 <div className="p-6">

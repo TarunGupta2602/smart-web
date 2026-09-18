@@ -26,19 +26,18 @@ export const metadata = buildPageMetadata({
 
 const services = [
     {
+        slug: "nfc-digital-menu",
+        title: "NFC QR digital menu",
+        tagline: "Complete table ordering · not a PDF menu",
+        description: "The full loop: NFC tap, QR backup, live menu, cart, unique table links, and a staff dashboard with order status. Free pilot for 1–2 Indian restaurants.",
+        image: "/videos/nfc-qr-promo-poster.jpg",
+    },
+    {
         slug: "website-designing",
         title: "Business websites & stores",
         tagline: "Marketing sites, e-commerce & web apps",
         description: "Mobile-ready websites and online stores that match your brand and turn visitors into leads or orders. Built with Next.js and React for production.",
         image: PAGE_POSTERS.analytics,
-    },
-    {
-        slug: "nfc-digital-menu",
-        title: "NFC + QR restaurant system",
-        tagline: "Complete table ordering · not a PDF menu",
-        description: "The full loop: NFC tap, QR backup, live menu, cart, unique table links, and a staff dashboard with order status. Free pilot for 1–2 Indian restaurants.",
-        image: "/nfc/nfc-qr-ordering-storyboard.png",
-        imageFit: "contain",
     },
     {
         slug: "digital-marketing",
@@ -108,7 +107,13 @@ export default function ServicesPage() {
                                             alt=""
                                             fill
                                             sizes="(max-width: 768px) 100vw, 33vw"
-                                            className={service.imageFit === "contain" ? "object-contain bg-slate-950 p-1" : "object-cover"}
+                                            className={
+                                                service.slug === "nfc-digital-menu"
+                                                    ? "object-cover object-[center_20%]"
+                                                    : service.imageFit === "contain"
+                                                      ? "object-contain bg-slate-950 p-1"
+                                                      : "object-cover"
+                                            }
                                         />
                                     </div>
                                     <div className="p-6">

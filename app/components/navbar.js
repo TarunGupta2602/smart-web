@@ -20,11 +20,13 @@ export default function Navbar() {
 
     const navLinks = [
         { name: "Services", href: "/services" },
+        { name: "NFC menu", href: "/services/nfc-digital-menu", badge: "New" },
         { name: "Work", href: "/projects" },
         { name: "Pricing", href: "/pricing" },
         { name: "About", href: "/about" },
         { name: "Blog", href: "/blog" },
     ];
+    const isNfc = pathname.startsWith("/services/nfc-digital-menu");
 
     const onHero = hasVideoHero(pathname) && !scrolled;
 
@@ -54,14 +56,19 @@ export default function Navbar() {
                         </span>
                     </Link>
 
-                    <div className="hidden lg:flex items-center gap-8">
+                    <div className="hidden lg:flex items-center gap-6">
                         {navLinks.map((link) => {
-                            const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
+                            const isActive =
+                                link.href === "/services/nfc-digital-menu"
+                                    ? isNfc
+                                    : link.href === "/services"
+                                      ? pathname.startsWith("/services") && !isNfc
+                                      : pathname === link.href || pathname.startsWith(link.href + "/");
                             return (
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className={`text-sm transition-colors ${
+                                    className={`inline-flex items-center gap-1.5 text-sm transition-colors ${
                                         onHero
                                             ? isActive
                                                 ? "text-white font-medium"
@@ -72,6 +79,15 @@ export default function Navbar() {
                                     }`}
                                 >
                                     {link.name}
+                                    {link.badge ? (
+                                        <span
+                                            className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
+                                                onHero ? "bg-white/20 text-white" : "bg-[#0f3d68] text-white"
+                                            }`}
+                                        >
+                                            {link.badge}
+                                        </span>
+                                    ) : null}
                                 </Link>
                             );
                         })}
@@ -86,7 +102,7 @@ export default function Navbar() {
                         </Link>
                         <a
                             href="tel:+917456096455"
-                            className={`text-sm transition-colors ${onHero ? "text-white/80 hover:text-white" : "text-slate-500 hover:text-slate-900"}`}
+                            className={`hidden xl:inline text-sm transition-colors ${onHero ? "text-white/80 hover:text-white" : "text-slate-500 hover:text-slate-900"}`}
                         >
                             +91 74560 96455
                         </a>
@@ -135,21 +151,39 @@ export default function Navbar() {
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                         </button>
                     </div>
-                    <nav className="flex-1 px-3 py-4 space-y-1">
-                        {navLinks.map((link) => (
+                    <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+                        <Link
+                            href="/services/nfc-digital-menu"
+                            onClick={() => setIsOpen(false)}
+                            className="block mx-0 mb-3 rounded-lg border border-[#0f3d68]/20 bg-[#0f3d68]/5 px-3 py-3"
+                        >
+                            <span className="flex items-center justify-between gap-2">
+                                <span className="text-sm font-semibold text-slate-900">NFC QR menu</span>
+                                <span className="rounded-full bg-[#0f3d68] px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white">
+                                    New
+                                </span>
+                            </span>
+                            <span className="mt-1 block text-xs text-slate-600">Tap-to-order for restaurants · free pilot</span>
+                        </Link>
+                        {navLinks
+                            .filter((link) => link.href !== "/services/nfc-digital-menu")
+                            .map((link) => {
+                            const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
+                            return (
                             <Link
                                 key={link.name}
                                 href={link.href}
                                 onClick={() => setIsOpen(false)}
                                 className={`block py-3 px-3 rounded-md text-sm ${
-                                    pathname === link.href
+                                    isActive
                                         ? "bg-slate-50 text-slate-900 font-medium"
                                         : "text-slate-600 hover:bg-slate-50"
                                 }`}
                             >
                                 {link.name}
                             </Link>
-                        ))}
+                            );
+                        })}
                     </nav>
                     <div className="px-5 py-5 border-t border-slate-100 space-y-3">
                         <Link

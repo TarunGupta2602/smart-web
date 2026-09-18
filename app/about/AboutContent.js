@@ -4,6 +4,7 @@ import PageCta from "../components/page-cta";
 import Reveal from "../components/reveal";
 import RelatedLinks from "../components/related-links";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
+import { FACEBOOK_URL, GOOGLE_BUSINESS_URL } from "@/lib/seo";
 
 export default function AboutContent({ expertiseItems }) {
     return (
@@ -46,12 +47,21 @@ export default function AboutContent({ expertiseItems }) {
                                     We work from SK2 Shastri Nagar, Uttar Pradesh 201002, and deliver across India and
                                     worldwide via WhatsApp, email, and video. Find us on{" "}
                                     <a
-                                        href="https://share.google/R4SrBCxNLMdypmhSq"
+                                        href={GOOGLE_BUSINESS_URL}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-[#0f3d68] hover:underline"
                                     >
                                         Google Business Profile
+                                    </a>
+                                    {" "}and{" "}
+                                    <a
+                                        href={FACEBOOK_URL}
+                                        target="_blank"
+                                        rel="me noopener noreferrer"
+                                        className="text-[#0f3d68] hover:underline"
+                                    >
+                                        Facebook
                                     </a>
                                     .
                                 </p>

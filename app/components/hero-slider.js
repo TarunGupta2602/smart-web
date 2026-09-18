@@ -68,6 +68,12 @@ export default function HeroSlider() {
             >
               Free website review
             </Link>
+            <Link
+              href="/services/nfc-digital-menu"
+              className="inline-flex px-6 py-3 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition-colors"
+            >
+              NFC menu for restaurants
+            </Link>
           </div>
         </div>
       </div>

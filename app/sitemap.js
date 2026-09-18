@@ -52,6 +52,24 @@ export default function sitemap() {
       ];
     }
 
+    if (path === "services/nfc-digital-menu") {
+      entry.videos = [
+        {
+          title: "SmartSoft NFC + QR restaurant ordering",
+          thumbnail_loc: `${siteUrl}/videos/nfc-qr-promo-poster.jpg`,
+          description:
+            "Tap an NFC card or scan a QR code to open a live restaurant menu, add items to cart, and send the order to a staff dashboard with the table number. No guest app.",
+          content_loc: `${siteUrl}/videos/nfc-qr-promo.mp4`,
+          player_loc: `${siteUrl}/services/nfc-digital-menu`,
+          duration: 29,
+          publication_date: "2026-09-18",
+          family_friendly: "yes",
+          live: "no",
+          tag: ["NFC digital menu", "QR restaurant ordering", "table ordering"],
+        },
+      ];
+    }
+
     return entry;
   });
 
