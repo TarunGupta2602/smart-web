@@ -34,9 +34,9 @@ const services = [
     },
     {
         slug: "nfc-digital-menu",
-        title: "NFC + QR restaurant menus",
-        tagline: "Tap or scan · table ordering · no app",
-        description: "Each table gets an NFC card with a QR backup. Guests open the live menu on their phone and order. Staff see table number and status in real time. Free pilot for 1–2 restaurants.",
+        title: "NFC + QR restaurant system",
+        tagline: "Complete table ordering · not a PDF menu",
+        description: "The full loop: NFC tap, QR backup, live menu, cart, unique table links, and a staff dashboard with order status. Free pilot for 1–2 Indian restaurants.",
         image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
     },
     {

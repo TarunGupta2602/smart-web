@@ -9,9 +9,9 @@ import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 import { PAGE_VIDEOS } from "@/lib/page-media";
 
 export const metadata = buildPageMetadata({
-  title: "NFC QR Digital Menu for Restaurants",
+  title: "Complete NFC QR Table Ordering System",
   description:
-    "NFC card + QR digital menu and table ordering for Indian restaurants. Guests tap or scan, open the menu on their phone, and order — no app. Free pilot for 1–2 restaurants.",
+    "Complete NFC + QR table-ordering for Indian restaurants: tap or scan, live menu, cart, unique table links, and a real-time staff dashboard. No guest app. Free pilot.",
   path: "/services/nfc-digital-menu",
   keywords: [
     "NFC digital menu India",
@@ -20,6 +20,7 @@ export const metadata = buildPageMetadata({
     "contactless restaurant menu",
     "digital menu no app",
     "restaurant order dashboard",
+    "complete restaurant ordering system",
     "NFC menu card",
   ],
 });
@@ -28,6 +29,11 @@ const HERO_POSTER =
   "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=70";
 
 const faqs = [
+  {
+    question: "Is this just a QR that opens a PDF menu?",
+    answer:
+      "No. We are building the complete table-ordering system: NFC tap plus QR backup, live menu with photos and availability, cart and place-order, unique table identity, and a staff dashboard with status updates. A PDF behind a QR is still a printed menu on a phone.",
+  },
   {
     question: "Does the guest need to install an app?",
     answer:
@@ -57,15 +63,15 @@ const faqs = [
 
 export default function NfcDigitalMenuPage() {
   const pageSchema = webPage({
-    name: "NFC + QR digital menu and table ordering",
+    name: "Complete NFC + QR table-ordering system",
     description:
-      "Tap-or-scan restaurant menus with unique table links, guest cart checkout, and a live staff dashboard.",
+      "End-to-end restaurant ordering: NFC card, QR backup, live menu, cart, unique table links, and a staff dashboard with order status.",
     url: `${SITE_URL}/services/nfc-digital-menu`,
   });
   const serviceSchema = service({
-    name: "NFC + QR Digital Menu for Restaurants",
+    name: "Complete NFC + QR Table Ordering System",
     description:
-      "Contactless digital menus and table ordering for Indian restaurants. NFC card with QR backup, unique table links, and a real-time order dashboard. No guest app.",
+      "A full restaurant ordering product for India: NFC tap and QR backup, live digital menu, cart, unique table links, and a real-time staff dashboard. Not a PDF menu. No guest app.",
     url: "/services/nfc-digital-menu",
     serviceType: "Restaurant digital menu and table ordering",
     areaServed: "India",
@@ -94,9 +100,9 @@ export default function NfcDigitalMenuPage() {
       />
 
       <PageHero
-        eyebrow="Restaurant product · Free pilot"
-        title="Tap the table. Open the menu. Place the order — no app."
-        description="Each table gets an NFC card with a QR backup. Guests see prices, photos, and availability on their phone. Orders land on a staff dashboard with the table number."
+        eyebrow="Complete ordering system · India"
+        title="The full NFC + QR table system — menu, cart, and kitchen board."
+        description="We are building the complete loop for Indian restaurants: tap or scan, live menu with photos and prices, unique table links, guest orders, and a staff dashboard. Not a PDF behind a QR. No guest app."
         videoSrc={PAGE_VIDEOS.meeting}
         posterSrc={HERO_POSTER}
         primaryCta={{ href: "/contact?service=NFC%20digital%20menu", label: "Apply for a free pilot" }}
@@ -108,12 +114,13 @@ export default function NfcDigitalMenuPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
           <Reveal className="max-w-3xl mb-12">
             <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-4">
-              Built for Indian restaurant tables
+              One product. The whole order loop.
             </h2>
             <p className="text-base text-slate-600 leading-relaxed">
-              Printed menus go stale. A PDF behind a QR code still needs a waiter to take the order.
-              SmartSoft’s NFC + QR menu is a table-ordering system: the guest orders from the phone,
-              and the floor team sees the table in real time.
+              Most Indian restaurants still print a card or stick a QR that opens a PDF. That is not ordering.
+              SmartSoft is building the <span className="font-medium text-slate-900">complete system</span> for
+              the table: NFC + QR, live menu, cart, table identity, and a live floor dashboard — so the phone
+              takes the ticket and the kitchen knows which table it came from.
             </p>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -145,6 +152,36 @@ export default function NfcDigitalMenuPage() {
                   </div>
                 </article>
               </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14 md:py-16 border-y border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
+          <Reveal className="max-w-2xl mb-10">
+            <h2 className="font-display text-2xl md:text-3xl font-semibold text-slate-900 mb-3">
+              What “complete system” means
+            </h2>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              If any of these is missing, you still have a brochure. We are shipping the loop as one product.
+            </p>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { t: "NFC card", d: "Tap the table. Menu opens in the browser." },
+              { t: "QR backup", d: "Same unique link if the phone cannot tap." },
+              { t: "Live menu", d: "Prices, photos, categories, in-stock flags." },
+              { t: "Guest cart", d: "Add items and place the order — no app." },
+              { t: "Table identity", d: "Each table has its own URL so kitchen knows where it came from." },
+              { t: "Staff dashboard", d: "New orders with quantity and total, in real time." },
+              { t: "Order status", d: "Accepted, preparing, ready, completed." },
+              { t: "Pilot in India", d: "Free setup for 1–2 restaurants with real customers." },
+            ].map((item) => (
+              <div key={item.t} className="border-t border-slate-200 pt-4">
+                <h3 className="font-display text-base font-semibold text-slate-900 mb-1">{item.t}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{item.d}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -226,12 +263,12 @@ export default function NfcDigitalMenuPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
           <Reveal className="max-w-3xl">
             <h2 className="font-display text-2xl md:text-3xl font-semibold text-slate-900 mb-4">
-              Free pilot for 1–2 restaurants
+              Free pilot: the complete system on real tables
             </h2>
             <p className="text-sm text-slate-600 leading-relaxed mb-6">
-              We are looking for owners who will use this with real customers — not a demo lunch.
-              Tell us city, covers, and whether tables already have QR standees. If the fit is right,
-              we set up the basic system at no charge for the pilot.
+              We are looking for 1–2 Indian restaurants that will run this with real customers — tap, scan,
+              order, dashboard. Not a PDF demo. Tell us city, covers, and whether tables already have QR
+              standees. If the fit is right, we set up the full basic loop at no charge.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link

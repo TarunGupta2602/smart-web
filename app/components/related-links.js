@@ -3,7 +3,7 @@ import Reveal from "./reveal";
 
 const DEFAULT_LINKS = [
   { href: "/services/website-designing", label: "Website & e-commerce development" },
-  { href: "/services/nfc-digital-menu", label: "NFC + QR restaurant menu" },
+  { href: "/services/nfc-digital-menu", label: "Complete NFC + QR table ordering" },
   { href: "/services/seo", label: "SEO services" },
   { href: "/services/digital-marketing", label: "Digital marketing" },
   { href: "/projects", label: "Selected work" },

@@ -25,10 +25,10 @@ const services = [
   },
   {
     href: "/services/nfc-digital-menu",
-    title: "NFC + QR restaurant menus",
+    title: "NFC + QR restaurant system",
     description:
-      "Tap the card or scan the QR. Guests open the live menu on their phone and order — no app. Staff see the table number in real time.",
-    outcome: "Orders from the table",
+      "The complete loop for Indian tables: NFC + QR, live menu, cart, unique table links, and a kitchen dashboard. Not a PDF behind a sticker.",
+    outcome: "Full table ordering",
     image:
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
     alt: "Restaurant dining room with tables set for service",
