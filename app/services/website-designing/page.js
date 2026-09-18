@@ -163,6 +163,10 @@ export default function WebsiteDesigningServicePage() {
             <h2 className="font-display text-2xl font-semibold text-slate-900 mb-4">Related services</h2>
             <ul className="space-y-3 text-sm">
               <li>
+                <Link href="/services/nfc-digital-menu" className="text-[#0f3d68] hover:underline font-medium">NFC + QR restaurant menus</Link>
+                <span className="text-slate-500"> — tap-or-scan table ordering for restaurants, no guest app</span>
+              </li>
+              <li>
                 <Link href="/services/seo" className="text-[#0f3d68] hover:underline font-medium">SEO services</Link>
                 <span className="text-slate-500"> — technical audits, keywords, and ongoing organic growth</span>
               </li>

@@ -81,6 +81,7 @@ export default function Footer() {
                         <ul className="space-y-3">
                             {[
                                 { name: "Business websites", href: "/services/website-designing" },
+                                { name: "NFC + QR menus", href: "/services/nfc-digital-menu" },
                                 { name: "E-commerce & web apps", href: "/services/website-designing" },
                                 { name: "Digital marketing", href: "/services/digital-marketing" },
                                 { name: "SEO", href: "/services/seo" },

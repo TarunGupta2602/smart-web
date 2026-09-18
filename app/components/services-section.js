@@ -24,6 +24,16 @@ const services = [
     alt: "Customer completing an online checkout on a phone",
   },
   {
+    href: "/services/nfc-digital-menu",
+    title: "NFC + QR restaurant menus",
+    description:
+      "Tap the card or scan the QR. Guests open the live menu on their phone and order — no app. Staff see the table number in real time.",
+    outcome: "Orders from the table",
+    image:
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+    alt: "Restaurant dining room with tables set for service",
+  },
+  {
     href: "/services/website-designing#web-apps",
     title: "Web apps & dashboards",
     description:

@@ -9,6 +9,7 @@ export default function sitemap() {
     { path: "", priority: 1.0, changeFrequency: "weekly" },
     { path: "services", priority: 0.95, changeFrequency: "weekly" },
     { path: "services/website-designing", priority: 0.9, changeFrequency: "weekly" },
+    { path: "services/nfc-digital-menu", priority: 0.9, changeFrequency: "weekly" },
     { path: "services/digital-marketing", priority: 0.85, changeFrequency: "weekly" },
     { path: "services/seo", priority: 0.85, changeFrequency: "weekly" },
     { path: "website-development-company-in", priority: 0.9, changeFrequency: "weekly" },

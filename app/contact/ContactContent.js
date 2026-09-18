@@ -38,6 +38,7 @@ const SERVICE_OPTIONS = [
     "Business website",
     "E-commerce store",
     "Custom web app",
+    "NFC digital menu",
     "Free website audit",
     "Digital marketing",
     "SEO",
@@ -49,6 +50,7 @@ function resolveService(raw) {
     const match = SERVICE_OPTIONS.find((option) => option.toLowerCase() === String(raw).toLowerCase());
     if (match) return match;
     if (/audit|review/i.test(raw)) return "Free website audit";
+    if (/nfc|digital menu|restaurant menu|table order/i.test(raw)) return "NFC digital menu";
     return "Other";
 }
 

@@ -5,6 +5,7 @@ import { PRICING_PACKAGES, PRICING_SUMMARY } from "@/lib/pricing";
 
 const industries = [
   "Local service businesses",
+  "Restaurants & cafes",
   "E-commerce brands",
   "Professional practices",
   "Startups & product teams",

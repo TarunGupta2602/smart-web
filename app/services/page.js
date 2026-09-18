@@ -12,11 +12,12 @@ import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 export const metadata = buildPageMetadata({
     title: "Web Dev, E-commerce, SEO & Marketing",
     description:
-        "SmartSoft Solutions services: business website development, e-commerce stores, web apps, SEO, and digital marketing — fixed quotes and live launches.",
+        "SmartSoft Solutions services: business websites, e-commerce, web apps, NFC restaurant menus, SEO, and digital marketing — fixed quotes and live launches.",
     path: "/services",
     keywords: [
         "website development services",
         "e-commerce development services",
+        "NFC digital menu",
         "SEO services company",
         "digital marketing services",
         "web app development services",
@@ -30,6 +31,13 @@ const services = [
         tagline: "Marketing sites, e-commerce & web apps",
         description: "Mobile-ready websites and online stores that match your brand and turn visitors into leads or orders. Built with Next.js and React for production.",
         image: PAGE_POSTERS.analytics,
+    },
+    {
+        slug: "nfc-digital-menu",
+        title: "NFC + QR restaurant menus",
+        tagline: "Tap or scan · table ordering · no app",
+        description: "Each table gets an NFC card with a QR backup. Guests open the live menu on their phone and order. Staff see table number and status in real time. Free pilot for 1–2 restaurants.",
+        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
     },
     {
         slug: "digital-marketing",
@@ -76,7 +84,7 @@ export default function ServicesPage() {
             <PageHero
                 eyebrow="Services"
                 title="Website development, e-commerce, and growth services"
-                description="We build and grow business websites, online stores, and web apps — with digital marketing and SEO when you need more customers."
+                description="We build business websites, online stores, web apps, and NFC + QR table menus for restaurants — plus SEO and marketing when you need more customers."
                 videoSrc={PAGE_VIDEOS.typing}
                 posterSrc={PAGE_POSTERS.code}
                 primaryCta={{ href: "/contact", label: "Get a quote" }}
@@ -86,7 +94,7 @@ export default function ServicesPage() {
 
             <section className="py-14 md:py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
                         {services.map((service, index) => (
                             <Reveal key={service.slug} delay={index + 1}>
                                 <Link
@@ -129,9 +137,10 @@ export default function ServicesPage() {
                             We work best with owners and operators who need a live product — not a months-long redesign committee.
                         </p>
                     </Reveal>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
                             { title: "Service businesses", text: "Consultants, clinics, institutes, and agencies that need enquiries from a clear offer page." },
+                            { title: "Restaurants", text: "Owners who want NFC + QR table menus so guests order from the phone and the floor sees the table in real time." },
                             { title: "Retail & D2C", text: "Brands ready for catalogues, offers, and checkout that work on Indian mobile networks." },
                             { title: "Product teams", text: "Startups and internal tools that need dashboards, auth, and maintainable React/Next.js code." },
                         ].map((item, index) => (
