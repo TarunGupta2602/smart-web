@@ -1,5 +1,3 @@
-import { legacyRedirects } from "./lib/legacy-redirects.mjs";
-
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -29,9 +27,6 @@ const nextConfig = {
         hostname: "images.pexels.com",
       },
     ],
-  },
-  async redirects() {
-    return legacyRedirects;
   },
 };
 
