@@ -7,6 +7,7 @@ import Reveal from "../components/reveal";
 import RelatedLinks from "../components/related-links";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 import { FACEBOOK_URL, GOOGLE_BUSINESS_URL } from "@/lib/seo";
+import { leadLooksLikeSpam, trackLead } from "@/lib/lead";
 
 const contactMethods = [
     {
@@ -85,6 +86,12 @@ export default function ContactContent({ initialService = "" }) {
             setLoading(false);
             return;
         }
+        const spam = leadLooksLikeSpam(form);
+        if (spam) {
+            setError(spam);
+            setLoading(false);
+            return;
+        }
         try {
             const { error: supabaseError } = await supabase.from("contact_inquiries").insert([
                 { name: form.name, email: form.email, phone: form.phone, service: form.service, message: form.message }
@@ -92,6 +99,7 @@ export default function ContactContent({ initialService = "" }) {
             if (supabaseError) {
                 setError("Submission failed. Please try again.");
             } else {
+                trackLead("contact_form");
                 setSuccess("Thank you. We will follow up within two business days with next steps.");
                 setForm({ name: "", email: "", phone: "", service: resolveService(initialService), message: "" });
             }

@@ -53,7 +53,7 @@ export default function HeroSlider() {
             style={{ animationDelay: "0.36s" }}
           >
             <Link
-              href="/contact"
+              href="/get-a-quote"
               className="press inline-flex px-6 py-3 rounded-md bg-white text-[#0f3d68] text-sm font-semibold hover:bg-slate-100"
             >
               Get a project quote

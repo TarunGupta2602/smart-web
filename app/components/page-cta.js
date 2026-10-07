@@ -7,7 +7,7 @@ export default function PageCta({
   title = "Have a project? Let’s price it and ship.",
   description = "Send a short brief — goals, timeline, and budget range. We reply with scope and a clear quote. Or start with a free review of your live site.",
   primaryLabel = "Request a quote",
-  primaryHref = "/contact",
+  primaryHref = "/get-a-quote",
   secondaryLabel = "Free website review",
   secondaryHref = "/free-website-audit",
   imageSrc = CTA_IMAGE,

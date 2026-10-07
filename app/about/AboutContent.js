@@ -15,7 +15,7 @@ export default function AboutContent({ expertiseItems }) {
                 description="Since 2018 we’ve built business websites, e-commerce stores, and web apps with Next.js and React. You talk to the person who quotes the work — then see weekly staging links until launch."
                 videoSrc={PAGE_VIDEOS.huddle}
                 posterSrc={PAGE_POSTERS.huddle}
-                primaryCta={{ href: "/contact", label: "Get a quote" }}
+                primaryCta={{ href: "/get-a-quote", label: "Get a quote" }}
                 secondaryCta={{ href: "/free-website-audit", label: "Free website review" }}
                 breadcrumbs={[
                     { name: "Home", url: "/" },
@@ -67,13 +67,13 @@ export default function AboutContent({ expertiseItems }) {
                             </div>
                         </Reveal>
                         <Reveal delay={2}>
-                            <div className="media-frame relative aspect-[5/4] overflow-hidden rounded-3xl bg-slate-100 mb-6 shadow-sm">
+                            <div className="relative mx-auto mb-6 aspect-[4/5] max-w-sm overflow-hidden rounded-3xl bg-white shadow-sm">
                                 <Image
-                                    src={PAGE_POSTERS.studio}
-                                    alt="Studio team working through a website brief"
+                                    src="/images/tarun-gupta.png"
+                                    alt="Tarun Gupta, Managing Director of SmartSoft Solutions"
                                     fill
-                                    sizes="(max-width: 1024px) 100vw, 50vw"
-                                    className="object-cover object-[center_40%]"
+                                    sizes="(max-width: 1024px) 100vw, 380px"
+                                    className="object-cover object-top"
                                 />
                             </div>
                             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-7 md:p-8 space-y-5 shadow-sm">
@@ -107,9 +107,13 @@ export default function AboutContent({ expertiseItems }) {
                 <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
                         <Reveal className="lg:col-span-4">
-                            <div className="w-16 h-16 mb-5 rounded-full bg-[#0f3d68] text-white flex items-center justify-center text-lg font-semibold">
-                                TG
-                            </div>
+                            <Image
+                                src="/images/tarun-gupta.png"
+                                alt="Tarun Gupta"
+                                width={72}
+                                height={72}
+                                className="mb-5 h-[72px] w-[72px] rounded-full object-cover object-top"
+                            />
                             <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-3">
                                 Founder story
                             </h2>

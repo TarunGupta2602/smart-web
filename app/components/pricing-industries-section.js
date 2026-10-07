@@ -87,7 +87,7 @@ export default function PricingIndustriesSection() {
                   ))}
                 </ul>
                 <Link
-                  href={`/contact?service=${encodeURIComponent(plan.name)}`}
+                  href={`/get-a-quote?service=${encodeURIComponent(plan.name)}`}
                   className={`press mt-auto inline-flex w-fit rounded-md px-4 py-2.5 text-sm font-semibold ${
                     plan.featured
                       ? "bg-[#0f3d68] text-white hover:bg-[#0a2f52]"

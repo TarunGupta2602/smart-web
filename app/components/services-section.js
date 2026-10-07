@@ -265,7 +265,7 @@ export default function ServicesSection() {
             </a>
           </p>
           <Link
-            href="/contact"
+            href="/get-a-quote"
             className="press inline-flex self-start rounded-md bg-[#0f3d68] px-5 py-2.5 text-sm font-medium text-white"
           >
             Request a quote

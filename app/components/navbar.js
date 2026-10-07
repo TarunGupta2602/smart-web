@@ -108,7 +108,7 @@ export default function Navbar() {
                             +91 74560 96455
                         </a>
                         <Link
-                            href="/contact"
+                            href="/get-a-quote"
                             className={`press px-4 py-2 rounded-md text-sm font-medium ${
                                 onHero
                                     ? "bg-white text-[#0f3d68] hover:bg-slate-100"
@@ -195,7 +195,7 @@ export default function Navbar() {
                             Free website review
                         </Link>
                         <Link
-                            href="/contact"
+                            href="/get-a-quote"
                             onClick={() => setIsOpen(false)}
                             className="press flex items-center justify-center w-full py-2.5 rounded-md bg-[#0f3d68] text-white text-sm font-medium"
                         >

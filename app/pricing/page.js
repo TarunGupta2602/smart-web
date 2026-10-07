@@ -54,7 +54,7 @@ export default function PricingPage() {
                 description={`${PRICING_SUMMARY}. These are production Next.js starting bands. We lock a fixed quote for your exact scope before any build starts.`}
                 videoSrc={PAGE_VIDEOS.cafe}
                 posterSrc={PAGE_POSTERS.cafe}
-                primaryCta={{ href: "/contact", label: "Request a quote" }}
+                primaryCta={{ href: "/get-a-quote", label: "Request a quote" }}
                 secondaryCta={{ href: "/free-website-audit", label: "Free website review" }}
                 breadcrumbs={breadcrumbItems}
             />
@@ -87,7 +87,7 @@ export default function PricingPage() {
                                         ))}
                                     </ul>
                                     <Link
-                                        href={`/contact?service=${encodeURIComponent(plan.name)}`}
+                                        href={`/get-a-quote?service=${encodeURIComponent(plan.name)}`}
                                         className="press mt-auto inline-flex w-fit px-4 py-2.5 rounded-md bg-[#0f3d68] text-white text-sm font-medium hover:bg-[#0a2f52]"
                                     >
                                         Request this package
@@ -108,7 +108,8 @@ export default function PricingPage() {
                         {[
                             { q: "What do the starting prices mean?", a: "They are production entry bands for typical Next.js scopes — not empty bait. A written quote may be higher if you need more pages, SKUs, or custom features." },
                             { q: "Are quotes fixed?", a: "Yes. Once scope is agreed, you get a clear fixed quote before any build starts." },
-                            { q: "How do timelines work?", a: "Many marketing sites ship in a few weeks; stores and apps take longer. Timeline is written into the quote." },
+                            { q: "How do timelines work?", a: "A focused marketing site is often ready in about 2–3 weeks. Stores and apps take longer. The timeline is written into the quote." },
+                            { q: "When do you pay?", a: "Work starts after a deposit. The rest is due at the milestones in your quote. Hosting, domain, and payment-gateway fees are separate." },
                             { q: "Do you work remotely?", a: "Yes. Based in Ghaziabad (Delhi NCR), we deliver via WhatsApp, email, and video across India and other time zones." },
                         ].map((item, index) => (
                             <Reveal key={item.q} delay={(index % 2) + 1}>

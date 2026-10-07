@@ -14,7 +14,8 @@ const DEFAULT_LINKS = [
   { href: "/blog/website-development-cost-in-delhi-2026", label: "Website development cost in Delhi" },
   { href: "/blog/hire-web-developer-for-local-business-india", label: "Hiring a web developer for a local business" },
   { href: "/blog", label: "All guides" },
-  { href: "/contact", label: "Contact / get a quote" },
+  { href: "/get-a-quote", label: "Get a fixed quote" },
+  { href: "/contact", label: "Contact" },
 ];
 
 /**

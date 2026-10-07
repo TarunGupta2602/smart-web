@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "./reveal";
 import { PORTFOLIO_PROJECTS } from "@/lib/projects";
 import { GOOGLE_BUSINESS_URL } from "@/lib/seo";
@@ -12,6 +13,18 @@ export default function TestimonialsSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-6">
         <Reveal className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
+            <div className="mb-4 flex items-center gap-3">
+              <Image
+                src="/images/tarun-gupta.png"
+                alt="Tarun Gupta"
+                width={48}
+                height={48}
+                className="h-12 w-12 rounded-full object-cover object-top"
+              />
+              <p className="text-sm text-slate-700">
+                You talk to <span className="font-medium text-slate-900">Tarun Gupta</span> — the person who quotes the work.
+              </p>
+            </div>
             <p className="mb-3 text-sm font-medium text-[#0f3d68]">Reviews</p>
             <h2 className="mb-3 font-display text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
               Clients judge the live site, then the Google review.
