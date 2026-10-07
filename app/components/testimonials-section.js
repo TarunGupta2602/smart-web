@@ -20,6 +20,7 @@ export default function TestimonialsSection() {
                 width={48}
                 height={48}
                 className="h-12 w-12 rounded-full object-cover object-top"
+                unoptimized
               />
               <p className="text-sm text-slate-700">
                 You talk to <span className="font-medium text-slate-900">Tarun Gupta</span> — the person who quotes the work.

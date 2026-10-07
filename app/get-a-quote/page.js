@@ -49,6 +49,7 @@ export default async function GetAQuotePage(props) {
                 width={84}
                 height={84}
                 priority
+                unoptimized
                 className="h-[84px] w-[84px] rounded-full object-cover object-top"
               />
               <div>

@@ -74,6 +74,7 @@ export default function AboutContent({ expertiseItems }) {
                                     fill
                                     sizes="(max-width: 1024px) 100vw, 380px"
                                     className="object-cover object-top"
+                                    unoptimized
                                 />
                             </div>
                             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-7 md:p-8 space-y-5 shadow-sm">
@@ -113,6 +114,7 @@ export default function AboutContent({ expertiseItems }) {
                                 width={72}
                                 height={72}
                                 className="mb-5 h-[72px] w-[72px] rounded-full object-cover object-top"
+                                unoptimized
                             />
                             <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-3">
                                 Founder story
