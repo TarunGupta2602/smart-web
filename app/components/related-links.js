@@ -10,7 +10,10 @@ const DEFAULT_LINKS = [
   { href: "/pricing", label: "Pricing & quotes" },
   { href: "/free-website-audit", label: "Free website review" },
   { href: "/website-development-company-in", label: "India city pages" },
-  { href: "/blog", label: "Blog & guides" },
+  { href: "/blog/business-website-cost-in-india", label: "What a business website costs in India" },
+  { href: "/blog/website-development-cost-in-delhi-2026", label: "Website development cost in Delhi" },
+  { href: "/blog/hire-web-developer-for-local-business-india", label: "Hiring a web developer for a local business" },
+  { href: "/blog", label: "All guides" },
   { href: "/contact", label: "Contact / get a quote" },
 ];
 

@@ -6,8 +6,16 @@ import { getAllPosts } from "@/lib/blog";
 /**
  * Homepage blog strip — surfaces newest guides for SEO + trust.
  */
+const FEATURED_SLUGS = [
+  "business-website-cost-in-india",
+  "website-development-cost-in-delhi-2026",
+  "seo-checklist-for-new-business-website",
+];
+
 export default function HomeBlogSection() {
-  const posts = getAllPosts().slice(0, 3);
+  const all = getAllPosts();
+  const featured = FEATURED_SLUGS.map((slug) => all.find((post) => post.slug === slug)).filter(Boolean);
+  const posts = featured.length ? featured : all.slice(0, 3);
 
   if (!posts.length) return null;
 

@@ -84,9 +84,6 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: SITE_URL,
-  },
   verification: {
     google: "2XUc_M2JA9i0tn_jLcEAgvJykTx-E0-BgqFoef2Oma8",
   },
@@ -99,8 +96,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en-IN">
       <head>
-        <link rel="alternate" hrefLang="en" href={SITE_URL} />
-        <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
