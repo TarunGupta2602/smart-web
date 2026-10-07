@@ -175,7 +175,7 @@ body {
   opacity: 1;
 }
 
-@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .service-deck {
     height: 100svh;
     overflow: hidden;

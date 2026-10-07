@@ -112,7 +112,7 @@ export default function ServicesSection() {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
-      mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
         const deck = root.querySelector("[data-deck]");
         const cards = gsap.utils.toArray(".stack-card", root);
         const faces = gsap.utils.toArray(".stack-card-face", root);
@@ -197,7 +197,7 @@ export default function ServicesSection() {
   return (
     <section ref={rootRef}>
       <style>{`
-        @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+        @media (prefers-reduced-motion: no-preference) {
           .service-deck {
             height: 100svh;
             overflow: hidden;
@@ -216,6 +216,13 @@ export default function ServicesSection() {
           .stack-card .stack-card-face {
             opacity: 0;
             visibility: hidden;
+          }
+          [data-statement] {
+            position: absolute;
+            inset: 0;
+            min-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
           }
         }
       `}</style>

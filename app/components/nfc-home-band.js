@@ -24,7 +24,7 @@ export default function NfcHomeBand() {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
         const pin = root.querySelector("[data-nfc-pin]");
         const video = root.querySelector("[data-nfc-video]");
         const frame = root.querySelector("[data-nfc-frame]");
