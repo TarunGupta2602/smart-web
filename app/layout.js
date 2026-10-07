@@ -1,4 +1,5 @@
-import { Syne, Figtree } from "next/font/google";
+import { Syne } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
