@@ -17,9 +17,9 @@ export default function TestimonialsSection() {
               <Image
                 src="/images/tarun-gupta.png"
                 alt="Tarun Gupta"
-                width={48}
-                height={48}
-                className="h-12 w-12 rounded-full object-cover object-top"
+                width={56}
+                height={56}
+                className="h-14 w-14 rounded-full object-cover object-[center_18%] ring-2 ring-white shadow-sm"
                 unoptimized
               />
               <p className="text-sm text-slate-700">

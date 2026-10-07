@@ -46,11 +46,11 @@ export default async function GetAQuotePage(props) {
               <Image
                 src="/images/tarun-gupta.png"
                 alt="Tarun Gupta, founder of SmartSoft Solutions"
-                width={84}
-                height={84}
+                width={104}
+                height={130}
                 priority
                 unoptimized
-                className="h-[84px] w-[84px] rounded-full object-cover object-top"
+                className="h-[130px] w-[104px] rounded-2xl object-cover object-top shadow-[0_16px_30px_-18px_rgba(15,61,104,0.7)] ring-1 ring-slate-200"
               />
               <div>
                 <p className="text-sm font-medium text-[#0f3d68]">You talk to the person who quotes the work</p>

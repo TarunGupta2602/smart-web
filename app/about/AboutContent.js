@@ -67,15 +67,21 @@ export default function AboutContent({ expertiseItems }) {
                             </div>
                         </Reveal>
                         <Reveal delay={2}>
-                            <div className="relative mx-auto mb-6 aspect-[4/5] max-w-sm overflow-hidden rounded-3xl bg-white shadow-sm">
+                            <div className="mx-auto mb-6 max-w-sm overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_28px_60px_-36px_rgba(15,61,104,0.55)]">
                                 <Image
                                     src="/images/tarun-gupta.png"
                                     alt="Tarun Gupta, Managing Director of SmartSoft Solutions"
-                                    fill
-                                    sizes="(max-width: 1024px) 100vw, 380px"
-                                    className="object-cover object-top"
+                                    width={320}
+                                    height={400}
+                                    sizes="(max-width: 1024px) 100vw, 384px"
+                                    className="aspect-[4/5] w-full object-cover object-top"
                                     unoptimized
                                 />
+                                <div className="bg-[#081220] px-6 py-5 text-white">
+                                    <p className="text-xs font-medium tracking-wide text-white/55">You talk to</p>
+                                    <p className="mt-1 font-display text-2xl font-semibold">Tarun Gupta</p>
+                                    <p className="mt-1 text-sm text-white/70">Managing Director · Ghaziabad</p>
+                                </div>
                             </div>
                             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-7 md:p-8 space-y-5 shadow-sm">
                                 <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
@@ -111,9 +117,9 @@ export default function AboutContent({ expertiseItems }) {
                             <Image
                                 src="/images/tarun-gupta.png"
                                 alt="Tarun Gupta"
-                                width={72}
-                                height={72}
-                                className="mb-5 h-[72px] w-[72px] rounded-full object-cover object-top"
+                                width={80}
+                                height={80}
+                                className="mb-5 h-20 w-20 rounded-full object-cover object-[center_18%] ring-4 ring-white shadow-sm"
                                 unoptimized
                             />
                             <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-3">
