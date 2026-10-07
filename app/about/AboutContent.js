@@ -25,7 +25,7 @@ export default function AboutContent({ expertiseItems }) {
 
             <section className="py-16 md:py-24">
                 <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
                         <Reveal>
                             <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-5">
                                 Why businesses hire us
@@ -67,42 +67,36 @@ export default function AboutContent({ expertiseItems }) {
                             </div>
                         </Reveal>
                         <Reveal delay={2}>
-                            <div className="mx-auto mb-6 max-w-sm overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_28px_60px_-36px_rgba(15,61,104,0.55)]">
-                                <Image
-                                    src="/images/tarun-gupta.png"
-                                    alt="Tarun Gupta, Managing Director of SmartSoft Solutions"
-                                    width={320}
-                                    height={400}
-                                    sizes="(max-width: 1024px) 100vw, 384px"
-                                    className="aspect-[4/5] w-full object-cover object-top"
-                                    unoptimized
-                                />
-                                <div className="bg-[#081220] px-6 py-5 text-white">
-                                    <p className="text-xs font-medium tracking-wide text-white/55">You talk to</p>
-                                    <p className="mt-1 font-display text-2xl font-semibold">Tarun Gupta</p>
-                                    <p className="mt-1 text-sm text-white/70">Managing Director · Ghaziabad</p>
-                                </div>
-                            </div>
-                            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-7 md:p-8 space-y-5 shadow-sm">
-                                <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
-                                    <span className="text-slate-500">Led by</span>
-                                    <span className="font-medium text-slate-900">Tarun Gupta, Managing Director</span>
-                                </div>
-                                <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
-                                    <span className="text-slate-500">Building since</span>
-                                    <span className="font-medium text-slate-900">2018</span>
-                                </div>
-                                <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
-                                    <span className="text-slate-500">Primary stack</span>
-                                    <span className="font-medium text-slate-900">Next.js · React</span>
-                                </div>
-                                <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
-                                    <span className="text-slate-500">Pricing model</span>
-                                    <span className="font-medium text-slate-900">Fixed project quotes</span>
-                                </div>
-                                <div className="flex justify-between text-sm">
-                                    <span className="text-slate-500">Proof</span>
-                                    <span className="font-medium text-slate-900">Live client sites + GBP</span>
+                            <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+                                <div className="grid grid-cols-1 sm:grid-cols-[210px_minmax(0,1fr)]">
+                                    <div className="relative h-72 bg-[#f4f6f8] sm:h-full sm:min-h-[340px]">
+                                        <Image
+                                            src="/images/tarun-gupta.png"
+                                            alt="Tarun Gupta, Managing Director of SmartSoft Solutions"
+                                            fill
+                                            sizes="210px"
+                                            className="object-cover object-[center_12%]"
+                                            unoptimized
+                                        />
+                                    </div>
+                                    <div className="flex flex-col justify-center px-6 py-6 md:px-7">
+                                        <p className="text-xs font-medium text-[#0f3d68]">You talk to</p>
+                                        <p className="mt-1 font-display text-2xl font-semibold text-slate-900">Tarun Gupta</p>
+                                        <p className="mt-1 text-sm text-slate-500">Managing Director · Ghaziabad</p>
+                                        <div className="mt-6 space-y-3 border-t border-slate-200 pt-5">
+                                            {[
+                                                ["Building since", "2018"],
+                                                ["Primary stack", "Next.js · React"],
+                                                ["Pricing model", "Fixed project quotes"],
+                                                ["Proof", "Live client sites + GBP"],
+                                            ].map(([label, value]) => (
+                                                <div key={label} className="flex items-baseline justify-between gap-4 text-sm">
+                                                    <span className="text-slate-500">{label}</span>
+                                                    <span className="text-right font-medium text-slate-900">{value}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </Reveal>
