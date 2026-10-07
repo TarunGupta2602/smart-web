@@ -61,8 +61,8 @@ export default function NfcReelPlayer({ src, poster, title, className = "max-w-[
 
   return (
     <div ref={wrapRef} className={`mx-auto w-full ${className}`}>
-      <div className="relative rounded-[2.15rem] border-[10px] border-slate-950 bg-slate-950 shadow-[0_28px_70px_rgba(0,0,0,0.5)] overflow-hidden aspect-[9/16]">
-        <div className="pointer-events-none absolute top-2 left-1/2 z-20 h-5 w-24 -translate-x-1/2 rounded-full bg-black/80" />
+      <div data-nfc-frame className="relative rounded-[2.15rem] border-[10px] border-slate-950 bg-slate-950 shadow-[0_28px_70px_rgba(0,0,0,0.5)] overflow-hidden aspect-[9/16]">
+        <div data-nfc-chrome className="pointer-events-none absolute top-2 left-1/2 z-20 h-5 w-24 -translate-x-1/2 rounded-full bg-black/80" />
         {poster ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -91,7 +91,7 @@ export default function NfcReelPlayer({ src, poster, title, className = "max-w-[
             <source src={src} type="video/mp4" />
           </video>
         ) : null}
-        <div className="pointer-events-none absolute bottom-2 left-1/2 z-20 h-1 w-20 -translate-x-1/2 rounded-full bg-white/35" />
+        <div data-nfc-chrome className="pointer-events-none absolute bottom-2 left-1/2 z-20 h-1 w-20 -translate-x-1/2 rounded-full bg-white/35" />
       </div>
     </div>
   );

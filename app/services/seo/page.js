@@ -83,8 +83,9 @@ export default function SeoServicePage() {
         eyebrow="On-page SEO · Technical SEO · Local SEO"
         title="SEO services that help your business rank on Google"
         description="Get found when customers search. We improve technical health, on-page relevance, and content strategy so your website ranks for the terms that bring enquiries and sales."
-        videoSrc={PAGE_VIDEOS.typing}
-        posterSrc={PAGE_POSTERS.analytics}
+        videoSrc={PAGE_VIDEOS.dining}
+        posterSrc={PAGE_POSTERS.dining}
+        objectPosition="object-[62%_center]"
         primaryCta={{ href: "/contact?service=SEO", label: "Request an SEO quote" }}
         breadcrumbs={breadcrumbItems}
       />
@@ -127,7 +128,7 @@ export default function SeoServicePage() {
               { n: "3", t: "Implement", d: "On-page edits, technical fixes, and internal links." },
               { n: "4", t: "Measure", d: "Search Console reviews and next-sprint recommendations." },
             ].map((s) => (
-              <li key={s.n} className="border-t border-slate-200 pt-4">
+              <li key={s.n} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
                 <p className="text-xs font-medium text-[#0f3d68] mb-1">{s.n}</p>
                 <p className="font-semibold text-slate-900 mb-1">{s.t}</p>
                 <p>{s.d}</p>

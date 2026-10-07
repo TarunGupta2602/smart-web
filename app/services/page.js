@@ -37,21 +37,21 @@ const services = [
         title: "Business websites & stores",
         tagline: "Marketing sites, e-commerce & web apps",
         description: "Mobile-ready websites and online stores that match your brand and turn visitors into leads or orders. Built with Next.js and React for production.",
-        image: PAGE_POSTERS.analytics,
+        image: PAGE_POSTERS.design,
     },
     {
         slug: "digital-marketing",
         title: "Digital marketing",
         tagline: "Campaigns that generate leads",
         description: "Social, paid ads, content, and email — tracked against leads and revenue, not vanity metrics.",
-        image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=1200&q=80",
+        image: PAGE_POSTERS.workshop,
     },
     {
         slug: "seo",
         title: "SEO",
         tagline: "Technical & on-page search work",
         description: "Audits, keyword strategy, and on-page optimization that improve rankings and lasting organic traffic.",
-        image: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=1200&q=80",
+        image: PAGE_POSTERS.analytics,
     },
 ];
 
@@ -85,8 +85,8 @@ export default function ServicesPage() {
                 eyebrow="Services"
                 title="Website development, e-commerce, and growth services"
                 description="We build business websites, online stores, web apps, and NFC + QR table menus for restaurants — plus SEO and marketing when you need more customers."
-                videoSrc={PAGE_VIDEOS.typing}
-                posterSrc={PAGE_POSTERS.code}
+                videoSrc={PAGE_VIDEOS.studio}
+                posterSrc={PAGE_POSTERS.studio}
                 primaryCta={{ href: "/contact", label: "Get a quote" }}
                 secondaryCta={{ href: "/pricing", label: "View pricing" }}
                 breadcrumbs={breadcrumbItems}
@@ -99,7 +99,7 @@ export default function ServicesPage() {
                             <Reveal key={service.slug} delay={index + 1}>
                                 <Link
                                     href={`/services/${service.slug}`}
-                                    className="group block h-full border border-slate-200 hover:border-slate-300 transition-colors bg-white"
+                                    className="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
                                 >
                                     <div className="media-frame relative aspect-[16/10] bg-slate-100">
                                         <Image
@@ -124,7 +124,9 @@ export default function ServicesPage() {
                                         <p className="text-sm text-slate-600 leading-relaxed mb-4">
                                             {service.description}
                                         </p>
-                                        <span className="text-sm font-medium text-[#0f3d68]">Learn more →</span>
+                                        <span className="link-shift text-sm font-medium text-[#0f3d68]">
+                                            Learn more <span className="shift-icon">→</span>
+                                        </span>
                                     </div>
                                 </Link>
                             </Reveal>
@@ -151,8 +153,10 @@ export default function ServicesPage() {
                             { title: "Product teams", text: "Startups and internal tools that need dashboards, auth, and maintainable React/Next.js code." },
                         ].map((item, index) => (
                             <Reveal key={item.title} delay={index + 1}>
-                                <h3 className="font-display text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
-                                <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
+                                <div className="h-full rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+                                    <h3 className="font-display text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
+                                    <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
+                                </div>
                             </Reveal>
                         ))}
                     </div>
@@ -172,11 +176,13 @@ export default function ServicesPage() {
                             { t: "2. Build", d: "Weekly demos on staging so feedback stays concrete." },
                             { t: "3. Launch", d: "Production deploy, SEO basics, and analytics hooks." },
                             { t: "4. Grow", d: "Optional SEO and marketing once the site converts." },
-                        ].map((item) => (
-                            <div key={item.t} className="border-t border-slate-200 pt-4">
-                                <h3 className="font-semibold text-slate-900 mb-2">{item.t}</h3>
-                                <p className="text-slate-600 leading-relaxed">{item.d}</p>
-                            </div>
+                        ].map((item, index) => (
+                            <Reveal key={item.t} delay={(index % 4) + 1}>
+                                <div className="h-full rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:shadow-md">
+                                    <h3 className="font-semibold text-slate-900 mb-2">{item.t}</h3>
+                                    <p className="text-slate-600 leading-relaxed">{item.d}</p>
+                                </div>
+                            </Reveal>
                         ))}
                     </div>
                     <p className="mt-8 text-sm text-slate-600">

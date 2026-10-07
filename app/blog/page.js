@@ -52,27 +52,13 @@ export default async function BlogPage(props) {
                 eyebrow="Blog"
                 title="Guides that help your website win customers"
                 description={`${count} practical playbooks on hiring developers, pricing, e-commerce launches, SEO, and Next.js — written for Indian business owners.`}
-                videoSrc={PAGE_VIDEOS.typing}
-                posterSrc={PAGE_POSTERS.code}
+                videoSrc={PAGE_VIDEOS.desk}
+                posterSrc={PAGE_POSTERS.desk}
+                objectPosition="object-[24%_center]"
                 breadcrumbs={breadcrumbItems}
             />
 
             <main className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-14">
-                <div className="flex flex-wrap gap-2 mb-10">
-                    {["All posts", "Websites", "E-commerce", "SEO", "Next.js", "Pricing"].map((tag) => (
-                        <span
-                            key={tag}
-                            className={`text-xs px-3 py-1.5 rounded-md border ${
-                                tag === "All posts"
-                                    ? "bg-slate-900 text-white border-slate-900"
-                                    : "bg-white text-slate-500 border-slate-200"
-                            }`}
-                        >
-                            {tag}
-                        </span>
-                    ))}
-                </div>
-
                 <Suspense
                     key={page}
                     fallback={

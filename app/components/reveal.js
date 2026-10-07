@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-export default function Reveal({ children, className = "", delay = 0 }) {
+export default function Reveal({ as: Tag = "div", children, className = "", delay = 0 }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -32,8 +32,8 @@ export default function Reveal({ children, className = "", delay = 0 }) {
     delay === 1 ? "reveal-delay-1" : delay === 2 ? "reveal-delay-2" : delay === 3 ? "reveal-delay-3" : "";
 
   return (
-    <div ref={ref} className={`reveal ${delayClass} ${className}`.trim()}>
+    <Tag ref={ref} className={`reveal ${delayClass} ${className}`.trim()}>
       {children}
-    </div>
+    </Tag>
   );
 }

@@ -26,7 +26,7 @@ export default function NfcMenuHero({ breadcrumbs }) {
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-          <div className="lg:col-span-7 order-2 lg:order-1">
+          <div className="lg:col-span-7 order-2 lg:order-1 animate-fade-up">
             <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-200 mb-5">
               <span className="rounded-full bg-white text-[#0f3d68] px-2 py-0.5">Free pilot</span>
               NFC + QR table ordering · India
@@ -41,7 +41,7 @@ export default function NfcMenuHero({ breadcrumbs }) {
             <div className="flex flex-wrap gap-3 mb-8">
               <Link
                 href="/contact?service=NFC%20digital%20menu"
-                className="inline-flex px-6 py-3 rounded-md bg-white text-[#0f3d68] text-sm font-semibold hover:bg-slate-100 transition-colors"
+                className="press inline-flex px-6 py-3 rounded-md bg-white text-[#0f3d68] text-sm font-semibold hover:bg-slate-100"
               >
                 Apply for a free pilot
               </Link>
@@ -49,7 +49,7 @@ export default function NfcMenuHero({ breadcrumbs }) {
                 href={WHATSAPP_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex px-6 py-3 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition-colors"
+                className="press inline-flex px-6 py-3 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10"
               >
                 WhatsApp us
               </a>
@@ -62,7 +62,7 @@ export default function NfcMenuHero({ breadcrumbs }) {
             </ul>
           </div>
 
-          <div id="nfc-reel" className="lg:col-span-5 order-1 lg:order-2 scroll-mt-24">
+          <div id="nfc-reel" className="lg:col-span-5 order-1 lg:order-2 scroll-mt-24 animate-fade-up" style={{ animationDelay: "0.15s" }}>
             <div className="relative">
               <div className="absolute -inset-8 rounded-full bg-sky-400/10 blur-3xl pointer-events-none" />
               <NfcReelPlayer src={NFC_PROMO.src} poster={NFC_PROMO.poster} title={NFC_PROMO.title} />

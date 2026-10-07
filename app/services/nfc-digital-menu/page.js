@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import NfcMenuHero from "../../components/nfc-menu-hero";
 import NfcStickyCta from "../../components/nfc-sticky-cta";
@@ -194,14 +195,14 @@ export default function NfcDigitalMenuPage() {
 
       <section className="border-b border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 py-8 md:py-10">
-          <dl className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <dl className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {[
               { dt: "Guest app", dd: "None — phone browser" },
               { dt: "Table identity", dd: "Unique NFC + QR URL" },
               { dt: "Kitchen view", dd: "Live order dashboard" },
               { dt: "Pilot", dd: "Free for 1–2 restaurants" },
             ].map((item) => (
-              <div key={item.dt} className="border-l border-slate-200 pl-4">
+              <div key={item.dt} className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 md:px-5">
                 <dt className="text-xs uppercase tracking-wide text-slate-500 mb-1">{item.dt}</dt>
                 <dd className="text-sm font-medium text-slate-900">{item.dd}</dd>
               </div>
@@ -211,8 +212,8 @@ export default function NfcDigitalMenuPage() {
       </section>
 
       <section className="py-14 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <Reveal className="max-w-3xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <Reveal className="lg:col-span-6">
             <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-4">
               A digital menu that actually takes the order
             </h2>
@@ -222,6 +223,17 @@ export default function NfcDigitalMenuPage() {
               live menu, cart, unique table links, and a floor dashboard — so the phone takes the ticket and the
               kitchen knows which table it came from.
             </p>
+          </Reveal>
+          <Reveal delay={2} className="lg:col-span-6">
+            <div className="media-frame relative aspect-[4/3] overflow-hidden rounded-3xl bg-slate-100 shadow-sm">
+              <Image
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=70"
+                alt="Restaurant dining room with tables ready for a tap-to-order menu"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -240,10 +252,10 @@ export default function NfcDigitalMenuPage() {
             {compareRows.map((col) => (
               <div
                 key={col.name}
-                className={`rounded-2xl p-6 ${
+                className={`rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 ${
                   col.highlight
                     ? "bg-[#081220] text-white shadow-lg"
-                    : "bg-white border border-slate-200 text-slate-900"
+                    : "bg-white border border-slate-200 text-slate-900 shadow-sm"
                 }`}
               >
                 <p className={`text-xs font-semibold uppercase tracking-wide mb-3 ${col.highlight ? "text-sky-200" : "text-slate-500"}`}>
@@ -278,7 +290,7 @@ export default function NfcDigitalMenuPage() {
             {systemParts.map((item, index) => (
               <div
                 key={item.t}
-                className="rounded-2xl border border-slate-200 bg-white p-5 hover:border-slate-300 transition-colors"
+                className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-slate-300"
               >
                 <p className="text-xs font-semibold text-[#0f3d68] mb-3">{String(index + 1).padStart(2, "0")}</p>
                 <h3 className="font-display text-base font-semibold text-slate-900 mb-2">{item.t}</h3>
@@ -302,7 +314,7 @@ export default function NfcDigitalMenuPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {flowSteps.map((item, index) => (
               <Reveal key={item.step} delay={(index % 3) + 1}>
-                <div className="h-full rounded-2xl bg-white border border-slate-200 p-6">
+                <div className="h-full rounded-3xl bg-white border border-slate-200 p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1">
                   <p className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#0f3d68] text-white text-xs font-semibold mb-4">
                     {item.step}
                   </p>
@@ -358,7 +370,7 @@ export default function NfcDigitalMenuPage() {
 
       <section className="py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 md:p-10">
+          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 md:p-10 shadow-sm">
             <Reveal className="max-w-3xl">
               <p className="text-xs font-semibold uppercase tracking-wide text-[#0f3d68] mb-3">Limited pilot</p>
               <h2 className="font-display text-2xl md:text-3xl font-semibold text-slate-900 mb-4">
@@ -372,7 +384,7 @@ export default function NfcDigitalMenuPage() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/contact?service=NFC%20digital%20menu"
-                  className="inline-flex px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium transition-colors"
+                  className="press inline-flex px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium"
                 >
                   Apply for the pilot
                 </Link>
@@ -380,13 +392,13 @@ export default function NfcDigitalMenuPage() {
                   href={WHATSAPP_HREF}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex px-5 py-2.5 rounded-md border border-slate-300 text-slate-800 text-sm font-medium hover:border-slate-400 transition-colors"
+                  className="press inline-flex px-5 py-2.5 rounded-md border border-slate-300 text-slate-800 text-sm font-medium hover:border-slate-400"
                 >
                   WhatsApp +91 74560 96455
                 </a>
                 <Link
                   href="/blog/nfc-qr-digital-menu-table-ordering-india"
-                  className="inline-flex px-5 py-2.5 rounded-md text-slate-700 text-sm font-medium hover:text-slate-900"
+                  className="press inline-flex px-5 py-2.5 rounded-md text-slate-700 text-sm font-medium hover:text-slate-900"
                 >
                   Read the restaurant guide →
                 </Link>
@@ -401,13 +413,14 @@ export default function NfcDigitalMenuPage() {
           <Reveal>
             <h2 className="font-display text-2xl font-semibold text-slate-900 mb-8">Frequently asked questions</h2>
           </Reveal>
-          <div className="divide-y divide-slate-200 border border-slate-200 bg-white rounded-2xl overflow-hidden">
+          <div className="divide-y divide-slate-200 border border-slate-200 bg-white rounded-3xl overflow-hidden shadow-sm">
             {faqs.map((faq, index) => (
-              <details key={faq.question} className="group" open={index === 0}>
+              <details key={faq.question} className="group" {...(index === 0 ? { open: true } : {})}>
                 <summary className="py-5 px-5 md:px-6 flex items-start justify-between gap-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                   <h3 className="text-base font-medium text-slate-900">{faq.question}</h3>
-                  <span className="text-slate-400 text-lg leading-none mt-0.5 shrink-0 group-open:hidden">+</span>
-                  <span className="text-slate-400 text-lg leading-none mt-0.5 shrink-0 hidden group-open:inline">−</span>
+                  <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center text-slate-400 text-lg leading-none transition-transform duration-300 group-open:rotate-45">
+                    +
+                  </span>
                 </summary>
                 <p className="px-5 md:px-6 pb-5 text-sm text-slate-600 leading-relaxed max-w-3xl">{faq.answer}</p>
               </details>

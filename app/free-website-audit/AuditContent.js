@@ -82,8 +82,9 @@ export default function AuditContent() {
         eyebrow="Free website review"
         title="Get a written look at your live site before you hire anyone."
         description="No quote required. We review speed, mobile clarity, offers, and the enquiry path — then email notes you can use even if you never work with us."
-        videoSrc={PAGE_VIDEOS.meeting}
-        posterSrc={PAGE_POSTERS.laptop}
+        videoSrc={PAGE_VIDEOS.dining}
+        posterSrc={PAGE_POSTERS.dining}
+        objectPosition="object-[62%_center]"
         primaryCta={{ href: "/free-website-audit#audit-form", label: "Request the review" }}
         secondaryCta={{ href: "/projects", label: "See client work" }}
         breadcrumbs={[
@@ -132,7 +133,7 @@ export default function AuditContent() {
               <form
                 id="audit-form"
                 onSubmit={handleSubmit}
-                className="border border-slate-200 p-6 md:p-8 space-y-5 bg-slate-50/40 scroll-mt-24"
+                className="rounded-3xl border border-slate-200 p-6 md:p-8 space-y-5 bg-slate-50/40 shadow-sm scroll-mt-24"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
@@ -220,7 +221,7 @@ export default function AuditContent() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] disabled:opacity-60 text-white text-sm font-medium transition-colors"
+                  className="press px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] disabled:opacity-60 text-white text-sm font-medium"
                 >
                   {loading ? "Sending…" : "Request free review"}
                 </button>

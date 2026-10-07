@@ -38,9 +38,12 @@ export default function RelatedLinks({
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 hover:text-[#0f3d68] hover:border-slate-300 transition-colors"
+                  className="group flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm font-medium text-slate-800 transition duration-300 hover:-translate-y-0.5 hover:border-[#0f3d68] hover:bg-[#0f3d68] hover:text-white"
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  <span className="shift-icon text-base transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
+                    →
+                  </span>
                 </Link>
               </li>
             ))}

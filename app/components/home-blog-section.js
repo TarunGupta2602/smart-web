@@ -24,8 +24,8 @@ export default function HomeBlogSection() {
               Pricing, hiring checklists, e-commerce launches, and SEO — written for owners who need leads, not fluff.
             </p>
           </div>
-          <Link href="/blog" className="text-sm font-medium text-[#0f3d68] hover:underline shrink-0">
-            View all posts →
+          <Link href="/blog" className="link-shift shrink-0 text-sm font-medium text-[#0f3d68]">
+            View all posts <span className="shift-icon" aria-hidden="true">→</span>
           </Link>
         </Reveal>
 
@@ -33,20 +33,22 @@ export default function HomeBlogSection() {
           {posts.map((post, index) => (
             <Reveal key={post.slug} delay={index + 1}>
               <Link href={`/blog/${post.slug}`} className="group block h-full">
-                <article className="h-full border border-slate-200 bg-white overflow-hidden hover:border-slate-300 transition-colors">
-                  <div className="relative aspect-[16/10] bg-slate-100">
+                <article className="h-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_16px_40px_-28px_rgba(15,23,42,0.45)] transition duration-300 group-hover:-translate-y-1 group-hover:border-[#0f3d68]/20 group-hover:shadow-[0_24px_50px_-24px_rgba(15,61,104,0.35)]">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                     {post.image ? (
                       <Image
                         src={post.image}
                         alt=""
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                        className={`object-cover transition duration-700 group-hover:scale-[1.04] ${
+                          post.image.includes("storyboard") ? "object-[center_18%]" : "object-center"
+                        }`}
                       />
                     ) : null}
                   </div>
-                  <div className="p-5">
-                    <p className="text-xs text-slate-400 mb-2">
+                  <div className="flex h-[calc(100%-0px)] flex-col p-5">
+                    <p className="mb-2 text-xs text-slate-400">
                       {post.date_posted
                         ? new Date(post.date_posted).toLocaleDateString("en-IN", {
                             year: "numeric",
@@ -55,12 +57,13 @@ export default function HomeBlogSection() {
                           })
                         : null}
                     </p>
-                    <h3 className="font-display text-lg font-semibold text-slate-900 mb-2 group-hover:text-[#0f3d68] transition-colors line-clamp-2">
+                    <h3 className="mb-2 line-clamp-2 font-display text-lg font-semibold text-slate-900 transition-colors group-hover:text-[#0f3d68]">
                       {post.title}
                     </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
-                      {post.description}
-                    </p>
+                    <p className="line-clamp-3 text-sm leading-relaxed text-slate-600">{post.description}</p>
+                    <span className="link-shift mt-4 inline-flex items-center gap-2 text-sm font-medium text-[#0f3d68]">
+                      Read guide <span className="shift-icon" aria-hidden="true">→</span>
+                    </span>
                   </div>
                 </article>
               </Link>

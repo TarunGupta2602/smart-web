@@ -22,8 +22,8 @@ export default function ProjectsContent({ projects }) {
                 eyebrow="Selected work"
                 title="Live websites you can open and review"
                 description="E-commerce stores, lead-generation sites, and business websites shipped with Next.js and React — visit each live URL below."
-                videoSrc={PAGE_VIDEOS.screens}
-                posterSrc={PAGE_POSTERS.analytics}
+                videoSrc={PAGE_VIDEOS.team}
+                posterSrc={PAGE_POSTERS.team}
                 primaryCta={{ href: "/contact", label: "Start your project" }}
                 secondaryCta={{ href: "/free-website-audit", label: "Free website review" }}
                 breadcrumbs={[
@@ -39,7 +39,7 @@ export default function ProjectsContent({ projects }) {
                             key={cat}
                             type="button"
                             onClick={() => setFilter(cat)}
-                            className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
+                            className={`press px-3.5 py-1.5 rounded-full text-sm transition-colors ${
                                 filter === cat
                                     ? "bg-slate-900 text-white"
                                     : "text-slate-500 hover:text-slate-900 hover:bg-white"
@@ -55,7 +55,7 @@ export default function ProjectsContent({ projects }) {
                 <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 space-y-10">
                     {filteredProjects.map((p) => (
                         <Reveal key={p.title}>
-                            <article className="grid grid-cols-1 lg:grid-cols-12 border border-slate-200 overflow-hidden bg-white">
+                            <article className="grid grid-cols-1 lg:grid-cols-12 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
                                 <div className="lg:col-span-5">
                                     <ProjectPreview
                                         src={p.image}
@@ -94,13 +94,13 @@ export default function ProjectsContent({ projects }) {
                                             href={p.liveUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex px-4 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium transition-colors"
+                                            className="press inline-flex px-4 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium"
                                         >
                                             Visit live site
                                         </a>
                                         <Link
                                             href="/contact"
-                                            className="inline-flex px-4 py-2.5 rounded-md border border-slate-200 text-slate-700 text-sm font-medium hover:border-slate-300 transition-colors"
+                                            className="press inline-flex px-4 py-2.5 rounded-md border border-slate-200 text-slate-700 text-sm font-medium hover:border-slate-300"
                                         >
                                             Get a similar quote
                                         </Link>

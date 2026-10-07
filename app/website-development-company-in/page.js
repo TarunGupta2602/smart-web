@@ -56,8 +56,8 @@ export default function IndiaCitiesHubPage() {
         eyebrow="India · Local SEO pages"
         title="Website development company for major Indian cities"
         description="SmartSoft Solutions builds business websites, e-commerce stores, and web apps for companies in Delhi, Mumbai, Bangalore, and other business hubs — fixed quotes, Next.js & React builds, and fully remote delivery."
-        videoSrc={PAGE_VIDEOS.office}
-        posterSrc={PAGE_POSTERS.city}
+        videoSrc={PAGE_VIDEOS.huddle}
+        posterSrc={PAGE_POSTERS.huddle}
         primaryCta={{ href: "/contact", label: "Get a quote" }}
         breadcrumbs={breadcrumbItems}
       />
@@ -74,7 +74,7 @@ export default function IndiaCitiesHubPage() {
               <Reveal key={city.slug} delay={(index % 3) + 1}>
                 <Link
                   href={cityPath(city.slug)}
-                  className="border-t border-slate-200 pt-5 group block"
+                  className="group block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
                 >
                   <h3 className="font-display text-lg font-semibold text-slate-900 group-hover:text-[#0f3d68] transition-colors mb-1">
                     {city.name}

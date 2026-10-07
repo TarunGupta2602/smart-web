@@ -4,26 +4,22 @@ import Link from "next/link";
 import Image from "next/image";
 import brandMark from "../icon.png";
 import LazyHeroVideo from "./lazy-hero-video";
-import { PAGE_VIDEOS, PAGE_POSTERS, SHOWREEL } from "@/lib/page-media";
+import { HERO_MEDIA } from "@/lib/page-media";
 
 export default function HeroSlider() {
   return (
-    <section className="relative min-h-[100svh] lg:min-h-[92vh] overflow-hidden bg-[#081220] text-white">
-      <div className="absolute inset-0 lg:hidden">
+    <section className="relative min-h-[86svh] overflow-hidden bg-[#081220] text-white lg:min-h-[78vh]">
+      <div className="absolute inset-0">
         <LazyHeroVideo
-          src={SHOWREEL.src}
-          poster={SHOWREEL.poster}
-          withSound
-          className="h-full w-full object-cover object-center"
+          src={HERO_MEDIA.src}
+          poster={HERO_MEDIA.poster}
+          className="h-full w-full object-cover object-[68%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#081220]/90 via-[#081220]/20 to-transparent" />
-      </div>
-      <div className="absolute inset-0 hidden lg:block">
-        <LazyHeroVideo src={PAGE_VIDEOS.workspace} poster={PAGE_POSTERS.code} />
-        <div className="absolute inset-0 hero-scrim" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#081220]/92 via-[#081220]/55 to-[#081220]/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#081220]/50 via-transparent to-[#081220]/25" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 pt-20 pb-10 lg:pt-28 lg:pb-24 flex min-h-[100svh] lg:min-h-[92vh] items-end lg:items-center">
+      <div className="relative z-10 mx-auto flex min-h-[86svh] max-w-7xl items-end px-4 pb-8 pt-24 sm:px-5 lg:min-h-[78vh] lg:px-6 lg:pb-10 lg:pt-28">
         <div className="max-w-3xl w-full">
           <div className="hidden lg:flex animate-fade-up items-center gap-3 mb-7">
               <Image
@@ -58,19 +54,19 @@ export default function HeroSlider() {
           >
             <Link
               href="/contact"
-              className="inline-flex px-6 py-3 rounded-md bg-white text-[#0f3d68] text-sm font-semibold hover:bg-slate-100 transition-colors"
+              className="press inline-flex px-6 py-3 rounded-md bg-white text-[#0f3d68] text-sm font-semibold hover:bg-slate-100"
             >
               Get a project quote
             </Link>
             <Link
               href="/free-website-audit"
-              className="inline-flex px-6 py-3 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition-colors"
+              className="press inline-flex px-6 py-3 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10"
             >
               Free website review
             </Link>
             <Link
               href="/services/nfc-digital-menu"
-              className="inline-flex px-6 py-3 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition-colors"
+              className="press inline-flex px-6 py-3 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10"
             >
               NFC menu for restaurants
             </Link>

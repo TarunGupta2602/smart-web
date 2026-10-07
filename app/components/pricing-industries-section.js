@@ -1,6 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import Reveal from "./reveal";
+import LazyHeroVideo from "./lazy-hero-video";
+import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
 import { PRICING_PACKAGES, PRICING_SUMMARY } from "@/lib/pricing";
 
 const industries = [
@@ -15,17 +16,16 @@ const industries = [
 
 export default function PricingIndustriesSection() {
   return (
-    <section className="relative bg-[#0b1726] text-white py-20 md:py-28 overflow-hidden">
-      <div className="absolute inset-0 opacity-35">
-        <Image
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover"
+    <section className="relative overflow-hidden bg-[#07111c] py-20 text-white md:py-28">
+      <div className="absolute inset-0">
+        <LazyHeroVideo
+          src={PAGE_VIDEOS.coffee}
+          poster={PAGE_POSTERS.coffee}
+          className="h-full w-full object-cover object-[70%_center]"
         />
-        <div className="absolute inset-0 bg-[#0b1726]/85" />
       </div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#07111c]/92 via-[#07111c]/48 to-[#07111c]/12" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#07111c]/10 via-[#07111c]/20 to-[#07111c]/78" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
         <Reveal className="max-w-2xl mb-14">
@@ -42,10 +42,10 @@ export default function PricingIndustriesSection() {
           {PRICING_PACKAGES.map((plan, index) => (
             <Reveal key={plan.name} delay={index + 1}>
               <div
-                className={`h-full p-7 backdrop-blur-sm ${
+                className={`flex h-full flex-col rounded-3xl p-7 transition duration-300 hover:-translate-y-1 ${
                   plan.featured
-                    ? "bg-white text-slate-900"
-                    : "bg-white/5 border border-white/15 text-white"
+                    ? "bg-white text-slate-900 shadow-[0_28px_70px_-24px_rgba(0,0,0,0.55)]"
+                    : "border border-white/10 bg-[#101c2e]/95 text-white shadow-[0_18px_40px_-28px_rgba(0,0,0,0.8)] hover:border-white/25"
                 }`}
               >
                 {plan.featured && (
@@ -73,7 +73,7 @@ export default function PricingIndustriesSection() {
                 >
                   {plan.description}
                 </p>
-                <ul className="space-y-2.5 mb-8">
+                <ul className="mb-8 flex-1 space-y-2.5">
                   {plan.includes.slice(0, 4).map((item) => (
                     <li
                       key={item}
@@ -88,8 +88,10 @@ export default function PricingIndustriesSection() {
                 </ul>
                 <Link
                   href={`/contact?service=${encodeURIComponent(plan.name)}`}
-                  className={`text-sm font-medium hover:underline ${
-                    plan.featured ? "text-[#0f3d68]" : "text-white"
+                  className={`press mt-auto inline-flex w-fit rounded-md px-4 py-2.5 text-sm font-semibold ${
+                    plan.featured
+                      ? "bg-[#0f3d68] text-white hover:bg-[#0a2f52]"
+                      : "border border-white/20 text-white hover:border-white/50 hover:bg-white/10"
                   }`}
                 >
                   Request this package
@@ -108,7 +110,7 @@ export default function PricingIndustriesSection() {
             {industries.map((item) => (
               <span
                 key={item}
-                className="text-xs px-3 py-1.5 rounded-md border border-white/15 text-slate-200"
+                className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-slate-200 transition hover:border-white/40 hover:bg-white/10"
               >
                 {item}
               </span>

@@ -87,8 +87,8 @@ export default function WebsiteDesigningServicePage() {
         eyebrow="Website development · E-commerce"
         title="Business website and e-commerce development built to rank and convert"
         description="SmartSoft Solutions designs and develops marketing websites, online stores, and web apps with Next.js and React — fast, mobile-ready, and structured for search engines and sales."
-        videoSrc={PAGE_VIDEOS.screens}
-        posterSrc={PAGE_POSTERS.shop}
+        videoSrc={PAGE_VIDEOS.orders}
+        posterSrc={PAGE_POSTERS.orders}
         primaryCta={{ href: "/contact?service=Business%20Website", label: "Get a website quote" }}
         secondaryCta={{ href: "/projects", label: "See selected work" }}
         breadcrumbs={breadcrumbItems}
@@ -105,7 +105,7 @@ export default function WebsiteDesigningServicePage() {
                 id: "business-websites",
                 title: "Business websites",
                 text: "Service pages, about, pricing, and lead forms that explain your offer and capture enquiries.",
-                image: PAGE_POSTERS.analytics,
+                image: PAGE_POSTERS.design,
               },
               {
                 id: "ecommerce",
@@ -117,11 +117,11 @@ export default function WebsiteDesigningServicePage() {
                 id: "web-apps",
                 title: "Web apps & dashboards",
                 text: "Auth, dashboards, and workflows with Firebase or Supabase for teams and customers.",
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+                image: PAGE_POSTERS.dashboard,
               },
             ].map((item, index) => (
               <Reveal key={item.title} delay={index + 1}>
-                <div id={item.id} className="border border-slate-200 overflow-hidden scroll-mt-28">
+                <div id={item.id} className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg scroll-mt-28">
                   <div className="media-frame relative aspect-[16/10] bg-slate-100">
                     <Image src={item.image} alt="" fill sizes="33vw" className="object-cover" />
                   </div>

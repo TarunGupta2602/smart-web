@@ -109,8 +109,8 @@ export default async function CityWebsitePage({ params }) {
         eyebrow={`${city.name} · ${city.region}`}
         title={city.headline}
         description={`${city.intro} ${city.focus}`}
-        videoSrc={PAGE_VIDEOS.workspace}
-        posterSrc={PAGE_POSTERS.city}
+        videoSrc={PAGE_VIDEOS.huddle}
+        posterSrc={PAGE_POSTERS.huddle}
         primaryCta={{
           href: `/contact?service=Website%20Development%20${encodeURIComponent(city.name)}`,
           label: `Get a ${city.name} website quote`,
@@ -132,7 +132,7 @@ export default async function CityWebsitePage({ params }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {city.businesses.map((item, index) => (
               <Reveal key={item.title} delay={(index % 2) + 1}>
-                <div className="border-t border-slate-200 pt-5">
+                <div className="h-full rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
                   <h3 className="font-display text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
                 </div>

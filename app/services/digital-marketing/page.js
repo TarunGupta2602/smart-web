@@ -82,8 +82,9 @@ export default function DigitalMarketingServicePage() {
         eyebrow="Digital marketing · Lead generation"
         title="Digital marketing services that turn attention into customers"
         description="Reach the right audience with focused campaigns across social, search, content, and email — measured by leads and revenue, not vanity metrics."
-        videoSrc={PAGE_VIDEOS.meeting}
-        posterSrc={PAGE_POSTERS.laptop}
+        videoSrc={PAGE_VIDEOS.brief}
+        posterSrc={PAGE_POSTERS.brief}
+        objectPosition="object-[center_45%]"
         primaryCta={{ href: "/contact?service=Digital%20Marketing", label: "Request a marketing quote" }}
         breadcrumbs={breadcrumbItems}
       />
@@ -96,7 +97,7 @@ export default function DigitalMarketingServicePage() {
             { title: "Email nurturing", text: "Follow-up sequences that move leads from interest to booking or purchase." },
           ].map((item, index) => (
             <Reveal key={item.title} delay={index + 1}>
-              <div className="border-t border-slate-200 pt-5">
+              <div className="h-full rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
                 <h2 className="font-display text-lg font-semibold text-slate-900 mb-2">{item.title}</h2>
                 <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
               </div>
@@ -115,7 +116,7 @@ export default function DigitalMarketingServicePage() {
               { t: "Tracking", d: "Forms, calls, and purchase events so reporting matches revenue." },
               { t: "Iterate", d: "Weekly or bi-weekly optimisations based on lead quality, not vanity metrics." },
             ].map((item) => (
-              <div key={item.t} className="border-t border-slate-200 pt-4">
+              <div key={item.t} className="h-full rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                 <h3 className="font-semibold text-slate-900 mb-2">{item.t}</h3>
                 <p>{item.d}</p>
               </div>

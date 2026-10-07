@@ -13,7 +13,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -64,7 +64,7 @@ body {
 }
 
 .animate-fade-up {
-  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .animate-fade-in {
@@ -83,8 +83,8 @@ body {
   opacity: 0;
   transform: translateY(28px);
   transition:
-    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.is-visible {
@@ -124,6 +124,101 @@ body {
   transform: scale(1.04);
 }
 
+.press {
+  transition-property: transform, background-color, color, border-color, opacity;
+  transition-duration: 0.22s;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.press:active {
+  transform: scale(0.97);
+}
+
+.link-shift .shift-icon {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-shift:hover .shift-icon {
+  transform: translateX(5px);
+}
+
+@keyframes marquee-x {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+.marquee-clip {
+  overflow: hidden;
+}
+
+.animate-marquee {
+  animation: marquee-x 36s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.pin-tick-bar {
+  width: 1px;
+  height: 1.65rem;
+  background: currentColor;
+  opacity: 0.28;
+  transition:
+    height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pin-tick.is-active .pin-tick-bar {
+  height: 2.65rem;
+  opacity: 1;
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .service-deck {
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  .service-deck > div {
+    height: 100%;
+  }
+
+  .stack-card {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    width: min(1080px, 92vw);
+    transform: translate(-50%, -50%);
+  }
+
+  .stack-card ~ .stack-card .stack-card-face {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .pin-stage {
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  .pin-panel {
+    position: absolute;
+    inset: 0;
+  }
+
+  .pin-panel ~ .pin-panel {
+    pointer-events: none;
+  }
+
+  .pin-panel ~ .pin-panel .pin-copy,
+  .pin-panel ~ .pin-panel .pin-media {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
   .animate-fade-in,
@@ -134,5 +229,29 @@ body {
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .press,
+  .press:active,
+  .link-shift:hover .shift-icon {
+    transform: none !important;
+  }
+
+  .marquee-clip {
+    overflow: visible;
+  }
+
+  .animate-marquee {
+    animation: none !important;
+    width: auto !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    transform: none !important;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .animate-marquee [aria-hidden="true"] {
+    display: none;
   }
 }

@@ -10,12 +10,11 @@ export default function AboutContent({ expertiseItems }) {
     return (
         <div className="bg-white text-slate-900">
             <PageHero
-                showBrand
                 eyebrow="About SmartSoft Solutions"
                 title="A founder-led studio that ships live business websites"
                 description="Since 2018 we’ve built business websites, e-commerce stores, and web apps with Next.js and React. You talk to the person who quotes the work — then see weekly staging links until launch."
-                videoSrc={PAGE_VIDEOS.office}
-                posterSrc={PAGE_POSTERS.team}
+                videoSrc={PAGE_VIDEOS.huddle}
+                posterSrc={PAGE_POSTERS.huddle}
                 primaryCta={{ href: "/contact", label: "Get a quote" }}
                 secondaryCta={{ href: "/free-website-audit", label: "Free website review" }}
                 breadcrumbs={[
@@ -68,16 +67,16 @@ export default function AboutContent({ expertiseItems }) {
                             </div>
                         </Reveal>
                         <Reveal delay={2}>
-                            <div className="media-frame relative aspect-[5/4] bg-slate-100 mb-6">
+                            <div className="media-frame relative aspect-[5/4] overflow-hidden rounded-3xl bg-slate-100 mb-6 shadow-sm">
                                 <Image
-                                    src={PAGE_POSTERS.desk}
-                                    alt="Modern office workspace used by SmartSoft Solutions"
+                                    src={PAGE_POSTERS.studio}
+                                    alt="Studio team working through a website brief"
                                     fill
                                     sizes="(max-width: 1024px) 100vw, 50vw"
-                                    className="object-cover"
+                                    className="object-cover object-[center_40%]"
                                 />
                             </div>
-                            <div className="border border-slate-200 bg-slate-50 p-7 md:p-8 space-y-5">
+                            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-7 md:p-8 space-y-5 shadow-sm">
                                 <div className="flex justify-between text-sm border-b border-slate-200 pb-3">
                                     <span className="text-slate-500">Led by</span>
                                     <span className="font-medium text-slate-900">Tarun Gupta, Managing Director</span>

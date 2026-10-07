@@ -91,12 +91,12 @@ export default function Homepage() {
       <NfcHomeBand />
       <ServicesSection />
       <FeaturedProjects />
+      <TestimonialsSection />
       <PricingIndustriesSection />
       <ClientsSection />
       <IndiaCitiesSection />
       <HomeBlogSection />
       <FAQSection />
-      <TestimonialsSection />
       <RelatedLinks excludeHref="/" />
     </div>
   );

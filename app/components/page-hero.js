@@ -17,6 +17,7 @@ export default function PageHero({
   breadcrumbs,
   showBrand = false,
   compact = false,
+  objectPosition = "object-[center_40%]",
 }) {
   return (
     <section
@@ -26,7 +27,11 @@ export default function PageHero({
     >
       <div className="absolute inset-0">
         {videoSrc ? (
-          <LazyHeroVideo src={videoSrc} poster={posterSrc} />
+          <LazyHeroVideo
+            src={videoSrc}
+            poster={posterSrc}
+            className={`h-full w-full object-cover ${objectPosition} animate-slow-zoom`}
+          />
         ) : posterSrc ? (
           <Image
             src={posterSrc}
@@ -34,10 +39,11 @@ export default function PageHero({
             fill
             priority
             sizes="100vw"
-            className="object-cover animate-slow-zoom"
+            className={`object-cover ${objectPosition} animate-slow-zoom`}
           />
         ) : null}
-        <div className="absolute inset-0 hero-scrim" />
+        <div className="absolute inset-0 bg-[linear-gradient(102deg,rgba(8,18,32,0.9)_0%,rgba(8,18,32,0.68)_36%,rgba(8,18,32,0.22)_78%)]" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#081220] to-transparent" />
       </div>
 
       <div
@@ -88,7 +94,7 @@ export default function PageHero({
             {primaryCta && (
               <Link
                 href={primaryCta.href}
-                className="inline-flex px-6 py-3 rounded-md bg-white text-[#0f3d68] text-sm font-semibold hover:bg-slate-100 transition-colors"
+                className="press inline-flex px-6 py-3 rounded-md bg-white text-[#0f3d68] text-sm font-semibold hover:bg-slate-100"
               >
                 {primaryCta.label}
               </Link>
@@ -96,7 +102,7 @@ export default function PageHero({
             {secondaryCta && (
               <Link
                 href={secondaryCta.href}
-                className="inline-flex px-6 py-3 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition-colors"
+                className="press inline-flex px-6 py-3 rounded-md border border-white/30 text-white text-sm font-medium hover:bg-white/10"
               >
                 {secondaryCta.label}
               </Link>

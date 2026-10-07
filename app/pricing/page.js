@@ -52,8 +52,8 @@ export default function PricingPage() {
                 eyebrow="Pricing"
                 title="Fixed quotes for production websites"
                 description={`${PRICING_SUMMARY}. These are production Next.js starting bands. We lock a fixed quote for your exact scope before any build starts.`}
-                videoSrc={PAGE_VIDEOS.workspace}
-                posterSrc={PAGE_POSTERS.laptop}
+                videoSrc={PAGE_VIDEOS.cafe}
+                posterSrc={PAGE_POSTERS.cafe}
                 primaryCta={{ href: "/contact", label: "Request a quote" }}
                 secondaryCta={{ href: "/free-website-audit", label: "Free website review" }}
                 breadcrumbs={breadcrumbItems}
@@ -65,7 +65,11 @@ export default function PricingPage() {
                         {PRICING_PACKAGES.map((plan, index) => (
                             <Reveal key={plan.name} delay={index + 1}>
                                 <div
-                                    className={`h-full p-7 border ${plan.featured ? "border-[#0f3d68] bg-slate-50" : "border-slate-200"}`}
+                                    className={`flex h-full flex-col rounded-3xl border p-7 transition duration-300 hover:-translate-y-1 ${
+                                        plan.featured
+                                            ? "border-[#0f3d68] bg-white shadow-[0_24px_50px_-28px_rgba(15,61,104,0.55)]"
+                                            : "border-slate-200 bg-white shadow-sm hover:shadow-md"
+                                    }`}
                                 >
                                     {plan.featured && (
                                         <p className="text-xs font-medium text-[#0f3d68] mb-3">Most requested</p>
@@ -84,7 +88,7 @@ export default function PricingPage() {
                                     </ul>
                                     <Link
                                         href={`/contact?service=${encodeURIComponent(plan.name)}`}
-                                        className="text-sm font-medium text-[#0f3d68] hover:underline"
+                                        className="press mt-auto inline-flex w-fit px-4 py-2.5 rounded-md bg-[#0f3d68] text-white text-sm font-medium hover:bg-[#0a2f52]"
                                     >
                                         Request this package
                                     </Link>

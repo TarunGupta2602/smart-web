@@ -108,8 +108,9 @@ export default function ContactContent({ initialService = "" }) {
                 eyebrow="Contact"
                 title="Tell us what you need. We’ll send a clear quote."
                 description="Share a short brief — goals, timeline, and which production band fits (₹10,000 / ₹15,000 / ₹25,000). Prefer a lighter start? Request a free website review."
-                videoSrc={PAGE_VIDEOS.meeting}
-                posterSrc={PAGE_POSTERS.laptop}
+                videoSrc={PAGE_VIDEOS.window}
+                posterSrc={PAGE_POSTERS.window}
+                objectPosition="object-[34%_center]"
                 primaryCta={{ href: "/contact#contact-form", label: "Send a brief" }}
                 secondaryCta={{ href: "/free-website-audit", label: "Free website review" }}
                 breadcrumbs={[
@@ -155,7 +156,7 @@ export default function ContactContent({ initialService = "" }) {
                         </Reveal>
 
                         <Reveal className="lg:col-span-8" delay={2}>
-                            <form id="contact-form" onSubmit={handleSubmit} className="border border-slate-200 p-6 md:p-8 space-y-5 bg-slate-50/40 scroll-mt-24">
+                            <form id="contact-form" onSubmit={handleSubmit} className="rounded-3xl border border-slate-200 p-6 md:p-8 space-y-5 bg-slate-50/40 shadow-sm scroll-mt-24">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                     <div>
                                         <label className="block text-xs font-medium text-slate-500 mb-1.5" htmlFor="name">Full name *</label>
@@ -212,7 +213,7 @@ export default function ContactContent({ initialService = "" }) {
                                 <button
                                     type="submit"
                                     disabled={loading}
-                                    className="px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] disabled:opacity-60 text-white text-sm font-medium transition-colors"
+                                    className="press px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] disabled:opacity-60 text-white text-sm font-medium"
                                 >
                                     {loading ? "Sending…" : "Send quote request"}
                                 </button>

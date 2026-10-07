@@ -98,19 +98,19 @@ export default async function BlogSlugPage({ params }) {
     return (
         <main className="min-h-screen bg-white">
 
-            <div className="bg-slate-950 border-b border-white/5">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div className="border-b border-slate-100 bg-white">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                     <nav aria-label="Breadcrumb">
                         <ol className="inline-flex flex-wrap items-center gap-1 text-xs">
                             {breadcrumbs.map((b, i) => (
                                 <li key={i} className="inline-flex items-center">
-                                    {i !== 0 && <span className="mx-2 text-slate-600">/</span>}
+                                    {i !== 0 && <span className="mx-2 text-slate-300">/</span>}
                                     {i < breadcrumbs.length - 1 ? (
-                                        <Link href={b.url.replace(siteUrl, '')} className="text-slate-400 hover:text-yellow-400 transition-colors font-medium">
+                                        <Link href={b.url.replace(siteUrl, '')} className="font-medium text-slate-500 hover:text-[#0f3d68]">
                                             {b.name}
                                         </Link>
                                     ) : (
-                                        <span className="text-slate-300 font-semibold truncate max-w-[180px] sm:max-w-xs">{b.name}</span>
+                                        <span className="truncate max-w-[180px] font-medium text-slate-800 sm:max-w-xs">{b.name}</span>
                                     )}
                                 </li>
                             ))}
@@ -128,21 +128,16 @@ export default async function BlogSlugPage({ params }) {
 
                         <header className="mb-8">
                             {postCategory && (
-                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 mb-5">
-                                    <span className="flex h-1.5 w-1.5 rounded-full bg-yellow-400" />
-                                    <span className="text-[9px] font-black uppercase tracking-widest text-yellow-700">
-                                        {postCategory}
-                                    </span>
-                                </div>
+                                <p className="mb-4 text-sm font-medium text-[#0f3d68]">{postCategory}</p>
                             )}
 
-                            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-slate-900 mb-5">
+                            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight text-slate-900 mb-5">
                                 {blog.title}
                             </h1>
 
                             <div className="flex flex-wrap items-center gap-4">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-yellow-400 font-black text-sm shadow-md">
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0f3d68] text-sm font-semibold text-white">
                                         {(blog.author || 'S').slice(0, 1)}
                                     </div>
                                     <div>
@@ -154,7 +149,7 @@ export default async function BlogSlugPage({ params }) {
                                     </div>
                                 </div>
                                 <div className="ml-auto flex items-center gap-2">
-                                    <span className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-slate-900 text-yellow-400">{readTime} min</span>
+                                    <span className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600">{readTime} min read</span>
                                 </div>
                             </div>
 
@@ -178,10 +173,10 @@ export default async function BlogSlugPage({ params }) {
 
                         <article
                             id="article-content"
-                            className="prose prose-sm sm:prose-base lg:prose-lg max-w-none bg-white rounded-3xl border border-slate-100 shadow-sm p-6 md:p-10
-                            prose-headings:font-black prose-headings:tracking-tight prose-headings:text-slate-900
-                            prose-a:text-yellow-600 prose-a:no-underline hover:prose-a:text-yellow-700
-                            prose-strong:text-slate-900 prose-blockquote:border-yellow-400 prose-blockquote:text-slate-600"
+                            className="prose prose-sm sm:prose-base lg:prose-lg max-w-none rounded-3xl border border-slate-200 bg-white p-6 shadow-sm md:p-10
+                            prose-headings:font-display prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-slate-900
+                            prose-a:text-[#0f3d68] prose-a:no-underline hover:prose-a:underline
+                            prose-strong:text-slate-900 prose-blockquote:border-[#0f3d68] prose-blockquote:text-slate-600"
                         >
                             <BlogContentClient content={content} />
 
@@ -193,7 +188,7 @@ export default async function BlogSlugPage({ params }) {
                                     </div>
                                     <Link
                                         href="/contact"
-                                        className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium rounded-md transition-colors"
+                                        className="press shrink-0 inline-flex items-center gap-2 rounded-md bg-[#0f3d68] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#0a2f52]"
                                     >
                                         Get a quote
                                     </Link>
@@ -202,17 +197,16 @@ export default async function BlogSlugPage({ params }) {
 
                             {faqs.length > 0 && (
                                 <section className="mt-10 not-prose">
-                                    <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900 mb-6">
-                                        Frequently Asked <span className="text-yellow-500">Questions</span>
+                                    <h2 className="font-display mb-6 text-2xl font-semibold tracking-tight text-slate-900">
+                                        Questions on this guide
                                     </h2>
                                     <div className="space-y-3">
                                         {faqs.map((f, i) => (
-                                            <details key={i} className="group border-2 border-slate-100 hover:border-yellow-300 rounded-2xl bg-white px-5 py-4 transition-all">
-                                                <summary className="font-black cursor-pointer list-none flex items-center justify-between gap-3 text-sm text-slate-900">
+                                            <details key={i} className="group rounded-2xl border border-slate-200 bg-white px-5 py-4 transition-colors open:shadow-sm">
+                                                <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-medium text-slate-900">
                                                     <span>{f.question}</span>
-                                                    <span className="w-6 h-6 rounded-full bg-slate-100 group-hover:bg-yellow-400 flex items-center justify-center text-xs text-slate-700 group-hover:text-slate-900 transition-all shrink-0 font-black">
-                                                        <span className="group-open:hidden">+</span>
-                                                        <span className="hidden group-open:inline">−</span>
+                                                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-100 text-xs text-[#0f3d68] transition-transform group-open:rotate-45">
+                                                        +
                                                     </span>
                                                 </summary>
                                                 <div className="mt-4 text-sm text-slate-600 leading-relaxed">
@@ -231,25 +225,25 @@ export default async function BlogSlugPage({ params }) {
 
                             <TableOfContents content={content} />
 
-                            <div className="bg-white border border-slate-200 p-6">
+                            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                                 <div className="text-xs font-medium text-slate-400 mb-2">Project quote</div>
                                 <p className="text-slate-900 font-semibold text-sm mb-1">Ready to start a build?</p>
                                 <p className="text-slate-500 text-xs mb-5 leading-relaxed">Website, e-commerce, or web app — fixed quote before work begins.</p>
                                 <Link
                                     href="/contact"
-                                    className="w-full flex items-center justify-center px-4 py-2.5 bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium rounded-md transition-colors"
+                                    className="press flex w-full items-center justify-center rounded-md bg-[#0f3d68] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#0a2f52]"
                                 >
                                     Get a quote
                                 </Link>
                                 <a
                                     href="tel:+917456096455"
-                                    className="w-full mt-3 flex items-center justify-center px-4 py-2.5 border border-slate-200 text-slate-700 text-sm font-medium rounded-md hover:border-slate-300 transition-colors"
+                                    className="press mt-3 flex w-full items-center justify-center rounded-md border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 hover:border-slate-300"
                                 >
                                     +91 74560 96455
                                 </a>
                             </div>
 
-                            <div className="bg-white border border-slate-200 p-6">
+                            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                                 <div className="text-xs font-medium text-slate-400 mb-4">Our services</div>
                                 <ul className="space-y-2">
                                     {[
@@ -285,49 +279,40 @@ export default async function BlogSlugPage({ params }) {
 
                 {relatedBlogs.length > 0 && (
                     <section className="mt-20 pt-16 border-t border-slate-100">
-                        <div className="flex items-end justify-between mb-10">
-                            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter text-slate-900">
-                                Related <span className="text-yellow-500 italic font-serif lowercase">Articles</span>
+                        <div className="mb-10 flex items-end justify-between">
+                            <h2 className="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+                                More guides
                             </h2>
-                            <Link href="/blog" className="text-[9px] font-black uppercase tracking-widest text-slate-500 hover:text-yellow-600 transition-colors flex items-center gap-1">
-                                All Posts
-                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
+                            <Link href="/blog" className="link-shift text-sm font-medium text-[#0f3d68]">
+                                All posts <span className="shift-icon">→</span>
                             </Link>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                             {relatedBlogs.map((item) => (
-                                <article key={item.id} className="group bg-white rounded-3xl border-2 border-slate-100 hover:border-yellow-300 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                                    <Link href={`/blog/${item.slug}`} className="block relative h-44 overflow-hidden bg-slate-100">
-                                        {item.image ? (
-                                            <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                                        ) : (
-                                            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
-                                                <span className="text-yellow-400 font-black text-4xl opacity-20">S</span>
-                                            </div>
-                                        )}
-                                    </Link>
-                                    <div className="p-5">
-                                        <div className="text-[9px] font-black uppercase tracking-widest text-yellow-600 mb-2">{item.author || 'SmartSoft Editorial'}</div>
-                                        <h3 className="text-base font-black text-slate-900 mb-3 group-hover:text-yellow-600 transition-colors line-clamp-2">
-                                            <Link href={`/blog/${item.slug}`}>{item.title}</Link>
-                                        </h3>
-                                        <div className="flex items-center justify-between">
-                                            <time className="text-[10px] text-slate-400 font-medium">
-                                                {new Date(item.date_posted).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                                            </time>
-                                            <Link href={`/blog/${item.slug}`} className="text-[10px] font-black uppercase tracking-widest text-yellow-600 hover:text-yellow-700 flex items-center gap-1 group-hover:gap-2 transition-all">
-                                                Read →
-                                            </Link>
+                                <Link key={item.id} href={`/blog/${item.slug}`} className="group block h-full">
+                                    <article className="h-full overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 group-hover:-translate-y-1 group-hover:shadow-lg">
+                                        <div className="media-frame relative h-44 bg-slate-100">
+                                            {item.image ? (
+                                                <Image src={item.image} alt="" fill className="object-cover" sizes="33vw" />
+                                            ) : null}
                                         </div>
-                                    </div>
-                                </article>
+                                        <div className="p-5">
+                                            <time className="text-xs text-slate-400">
+                                                {new Date(item.date_posted).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                            </time>
+                                            <h3 className="mt-2 line-clamp-2 font-display text-base font-semibold text-slate-900 transition-colors group-hover:text-[#0f3d68]">
+                                                {item.title}
+                                            </h3>
+                                        </div>
+                                    </article>
+                                </Link>
                             ))}
                         </div>
                     </section>
                 )}
 
                 <div className="mt-16 text-center">
-                    <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-slate-500 hover:text-yellow-600 transition-colors">
+                    <Link href="/blog" className="link-shift inline-flex items-center gap-2 text-sm font-medium text-[#0f3d68]">
                         <svg className="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
                         Back to Blog
                     </Link>
