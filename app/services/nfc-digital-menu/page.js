@@ -383,7 +383,7 @@ export default function NfcDigitalMenuPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
-                  href="/contact?service=NFC%20digital%20menu"
+                  href="/get-a-quote?service=NFC%20digital%20menu"
                   className="press inline-flex px-5 py-2.5 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium"
                 >
                   Apply for the pilot
@@ -433,7 +433,8 @@ export default function NfcDigitalMenuPage() {
       <PageCta
         title="Want this on your tables?"
         description="Apply for the free 1–2 restaurant pilot — or send a brief if you already know you want a paid build."
-        primaryHref="/contact?service=NFC%20digital%20menu"
+        primaryLabel="Get a Free Quote"
+        primaryHref="/get-a-quote?service=NFC%20digital%20menu"
         primaryLabel="Apply for a free pilot"
       />
     </div>

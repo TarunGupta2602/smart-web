@@ -112,8 +112,8 @@ export default async function CityWebsitePage({ params }) {
         videoSrc={PAGE_VIDEOS.huddle}
         posterSrc={PAGE_POSTERS.huddle}
         primaryCta={{
-          href: `/contact?service=Website%20Development%20${encodeURIComponent(city.name)}`,
-          label: `Get a ${city.name} website quote`,
+          href: `/get-a-quote?service=Website%20Development%20${encodeURIComponent(city.name)}`,
+          label: "Get a Free Quote",
         }}
         secondaryCta={{ href: "/projects", label: "See selected work" }}
         breadcrumbs={breadcrumbItems}
@@ -265,7 +265,8 @@ export default async function CityWebsitePage({ params }) {
       <PageCta
         title={`Ready for a website quote in ${city.name}?`}
         description="Tell us your goals — we reply with scope, timeline, and a fixed price."
-        primaryHref={`/contact?service=Website%20Development%20${encodeURIComponent(city.name)}`}
+        primaryLabel="Get a Free Quote"
+        primaryHref={`/get-a-quote?service=Website%20Development%20${encodeURIComponent(city.name)}`}
       />
     </div>
   );

@@ -159,7 +159,7 @@ export default function Footer() {
                             href="/get-a-quote"
                             className="inline-flex mt-6 px-4 py-2 rounded-md bg-[#0f3d68] hover:bg-[#0a2f52] text-white text-sm font-medium transition-colors"
                         >
-                            Get a quote
+                            Get a Free Quote
                         </Link>
                     </div>
                 </div>

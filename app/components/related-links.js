@@ -4,8 +4,10 @@ import Reveal from "./reveal";
 const DEFAULT_LINKS = [
   { href: "/services/nfc-digital-menu", label: "NFC QR digital menu for restaurants" },
   { href: "/services/website-designing", label: "Website & e-commerce development" },
+  { href: "/services/web-app-development", label: "Custom web app development" },
   { href: "/services/seo", label: "SEO services" },
   { href: "/services/digital-marketing", label: "Digital marketing" },
+  { href: "/website-development-company-in/ghaziabad", label: "Website development in Ghaziabad" },
   { href: "/projects", label: "Selected work" },
   { href: "/pricing", label: "Pricing & quotes" },
   { href: "/free-website-audit", label: "Free website review" },

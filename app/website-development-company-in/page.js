@@ -58,7 +58,7 @@ export default function IndiaCitiesHubPage() {
         description="SmartSoft Solutions builds business websites, e-commerce stores, and web apps for companies in Delhi, Mumbai, Bangalore, and other business hubs — fixed quotes, Next.js & React builds, and fully remote delivery."
         videoSrc={PAGE_VIDEOS.huddle}
         posterSrc={PAGE_POSTERS.huddle}
-        primaryCta={{ href: "/contact", label: "Get a quote" }}
+        primaryCta={{ href: "/get-a-quote", label: "Get a Free Quote" }}
         breadcrumbs={breadcrumbItems}
       />
 

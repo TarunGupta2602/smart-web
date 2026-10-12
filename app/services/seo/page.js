@@ -86,7 +86,7 @@ export default function SeoServicePage() {
         videoSrc={PAGE_VIDEOS.dining}
         posterSrc={PAGE_POSTERS.dining}
         objectPosition="object-[62%_center]"
-        primaryCta={{ href: "/contact?service=SEO", label: "Request an SEO quote" }}
+        primaryCta={{ href: "/get-a-quote?service=SEO", label: "Get a Free Quote" }}
         breadcrumbs={breadcrumbItems}
       />
 
@@ -173,7 +173,8 @@ export default function SeoServicePage() {
       <PageCta
         title="Want a ranking-focused SEO plan?"
         description="Share your site and target keywords — we reply with scope and a clear quote."
-        primaryHref="/contact?service=SEO"
+        primaryLabel="Get a Free Quote"
+        primaryHref="/get-a-quote?service=SEO"
         primaryLabel="Get an SEO quote"
       />
     </div>

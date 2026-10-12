@@ -85,7 +85,7 @@ export default function DigitalMarketingServicePage() {
         videoSrc={PAGE_VIDEOS.brief}
         posterSrc={PAGE_POSTERS.brief}
         objectPosition="object-[center_45%]"
-        primaryCta={{ href: "/contact?service=Digital%20Marketing", label: "Request a marketing quote" }}
+        primaryCta={{ href: "/get-a-quote?service=Digital%20marketing", label: "Get a Free Quote" }}
         breadcrumbs={breadcrumbItems}
       />
 
@@ -156,7 +156,8 @@ export default function DigitalMarketingServicePage() {
       <PageCta
         title="Need leads for your website or store?"
         description="Tell us your offer and budget — we will propose a practical campaign plan."
-        primaryHref="/contact?service=Digital%20Marketing"
+        primaryLabel="Get a Free Quote"
+        primaryHref="/get-a-quote?service=Digital%20marketing"
         primaryLabel="Get a marketing quote"
       />
     </div>

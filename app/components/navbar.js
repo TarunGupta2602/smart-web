@@ -115,7 +115,7 @@ export default function Navbar() {
                                     : "bg-[#0f3d68] hover:bg-[#0a2f52] text-white"
                             }`}
                         >
-                            Get a quote
+                            Get a Free Quote
                         </Link>
                     </div>
 
@@ -199,7 +199,7 @@ export default function Navbar() {
                             onClick={() => setIsOpen(false)}
                             className="press flex items-center justify-center w-full py-2.5 rounded-md bg-[#0f3d68] text-white text-sm font-medium"
                         >
-                            Get a quote
+                            Get a Free Quote
                         </Link>
                         <a href="tel:+917456096455" className="block text-center text-sm text-slate-500">
                             +91 74560 96455

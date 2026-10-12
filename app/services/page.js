@@ -26,6 +26,20 @@ export const metadata = buildPageMetadata({
 
 const services = [
     {
+        slug: "website-designing",
+        title: "Business websites & stores",
+        tagline: "Marketing sites & e-commerce",
+        description: "Mobile-ready websites and online stores that match your brand and turn visitors into leads or orders. Built with Next.js and React for production.",
+        image: PAGE_POSTERS.design,
+    },
+    {
+        slug: "web-app-development",
+        title: "Custom web apps",
+        tagline: "Auth, dashboards & workflows",
+        description: "Login, roles, and product flows with Firebase or Supabase — fixed quotes from ₹25,000 and weekly staging demos.",
+        image: PAGE_POSTERS.dashboard,
+    },
+    {
         slug: "nfc-digital-menu",
         title: "NFC QR digital menu",
         tagline: "Complete table ordering · not a PDF menu",
@@ -33,11 +47,11 @@ const services = [
         image: "/videos/nfc-qr-promo-poster.jpg",
     },
     {
-        slug: "website-designing",
-        title: "Business websites & stores",
-        tagline: "Marketing sites, e-commerce & web apps",
-        description: "Mobile-ready websites and online stores that match your brand and turn visitors into leads or orders. Built with Next.js and React for production.",
-        image: PAGE_POSTERS.design,
+        slug: "seo",
+        title: "SEO",
+        tagline: "Technical & on-page search work",
+        description: "Audits, keyword strategy, and on-page optimization that improve rankings and lasting organic traffic.",
+        image: PAGE_POSTERS.analytics,
     },
     {
         slug: "digital-marketing",
@@ -45,13 +59,6 @@ const services = [
         tagline: "Campaigns that generate leads",
         description: "Social, paid ads, content, and email — tracked against leads and revenue, not vanity metrics.",
         image: PAGE_POSTERS.workshop,
-    },
-    {
-        slug: "seo",
-        title: "SEO",
-        tagline: "Technical & on-page search work",
-        description: "Audits, keyword strategy, and on-page optimization that improve rankings and lasting organic traffic.",
-        image: PAGE_POSTERS.analytics,
     },
 ];
 
@@ -87,7 +94,7 @@ export default function ServicesPage() {
                 description="We build business websites, online stores, web apps, and NFC + QR table menus for restaurants — plus SEO and marketing when you need more customers."
                 videoSrc={PAGE_VIDEOS.studio}
                 posterSrc={PAGE_POSTERS.studio}
-                primaryCta={{ href: "/contact", label: "Get a quote" }}
+                primaryCta={{ href: "/get-a-quote", label: "Get a Free Quote" }}
                 secondaryCta={{ href: "/pricing", label: "View pricing" }}
                 breadcrumbs={breadcrumbItems}
             />

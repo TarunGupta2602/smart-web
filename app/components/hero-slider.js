@@ -56,7 +56,7 @@ export default function HeroSlider() {
               href="/get-a-quote"
               className="press inline-flex px-6 py-3 rounded-md bg-white text-[#0f3d68] text-sm font-semibold hover:bg-slate-100"
             >
-              Get a project quote
+              Get a Free Quote
             </Link>
             <Link
               href="/free-website-audit"

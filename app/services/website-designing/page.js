@@ -8,6 +8,7 @@ import RelatedLinks from "../../components/related-links";
 import { webPage, breadcrumbList, service, faqPage, stringifySchema } from "@/lib/schema";
 import { buildPageMetadata, SITE_URL } from "@/lib/seo";
 import { PAGE_VIDEOS, PAGE_POSTERS } from "@/lib/page-media";
+import { PRICE_APP, PRICE_STORE, PRICE_WEBSITE } from "@/lib/pricing";
 
 export const metadata = buildPageMetadata({
   title: "Business Website & E-commerce Development",
@@ -89,10 +90,29 @@ export default function WebsiteDesigningServicePage() {
         description="SmartSoft Solutions designs and develops marketing websites, online stores, and web apps with Next.js and React — fast, mobile-ready, and structured for search engines and sales."
         videoSrc={PAGE_VIDEOS.orders}
         posterSrc={PAGE_POSTERS.orders}
-        primaryCta={{ href: "/contact?service=Business%20Website", label: "Get a website quote" }}
+        primaryCta={{ href: "/get-a-quote?service=Business%20website", label: "Get a Free Quote" }}
         secondaryCta={{ href: "/projects", label: "See selected work" }}
         breadcrumbs={breadcrumbItems}
       />
+
+      <section className="py-14 md:py-20 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <Reveal>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold text-slate-900 mb-4">The problem</h2>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Many businesses still sell from Instagram, WhatsApp, or a slow template that does not rank. Visitors cannot
+              tell what you offer, and enquiries die in DMs.
+            </p>
+          </Reveal>
+          <Reveal delay={2}>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold text-slate-900 mb-4">The solution</h2>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              A production Next.js site or store with clear offers, lead or checkout paths, and SEO structure — fixed
+              quote before build, weekly staging demos until launch.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
       <section className="py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
@@ -136,7 +156,38 @@ export default function WebsiteDesigningServicePage() {
         </div>
       </section>
 
-      <section className="py-14 bg-slate-50 border-y border-slate-100">
+      <section className="py-14 border-y border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
+          <Reveal>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold text-slate-900 mb-8">Process</h2>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            {[
+              { step: "01", title: "Brief", text: "Goals, pages, and must-have features in one short call or WhatsApp thread." },
+              { step: "02", title: "Fixed quote", text: "Written scope and price before any build starts." },
+              { step: "03", title: "Weekly demos", text: "Staging links so you review the real site, not mockups." },
+              { step: "04", title: "Launch", text: "Production deploy, handoff, and a codebase you own." },
+            ].map((item, index) => (
+              <Reveal key={item.step} delay={(index % 4) + 1}>
+                <p className="text-xs font-medium text-[#0f3d68] mb-2">{item.step}</p>
+                <h3 className="font-display text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal>
+            <h2 className="font-display text-2xl font-semibold text-slate-900 mb-4">Pricing range</h2>
+            <ul className="space-y-2 text-sm text-slate-700 mb-2">
+              <li><span className="font-medium text-slate-900">Business website</span> from {PRICE_WEBSITE}</li>
+              <li><span className="font-medium text-slate-900">E-commerce store</span> from {PRICE_STORE}</li>
+              <li><span className="font-medium text-slate-900">Custom web app</span> from {PRICE_APP}</li>
+            </ul>
+            <p className="text-sm text-slate-500">Exact quote depends on pages, SKUs, and integrations. Hosting and domain are separate.</p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="py-14 bg-slate-50 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
           <Reveal>
             <h2 className="font-display text-2xl font-semibold text-slate-900 mb-4">On-page SEO included in every build</h2>
@@ -165,6 +216,10 @@ export default function WebsiteDesigningServicePage() {
               <li>
                 <Link href="/services/nfc-digital-menu" className="text-[#0f3d68] hover:underline font-medium">Complete NFC + QR table ordering</Link>
                 <span className="text-slate-500"> — tap, live menu, cart, table identity, and kitchen dashboard as one system</span>
+              </li>
+              <li>
+                <Link href="/services/web-app-development" className="text-[#0f3d68] hover:underline font-medium">Custom web apps</Link>
+                <span className="text-slate-500"> — auth, dashboards, and workflows from ₹25,000</span>
               </li>
               <li>
                 <Link href="/services/seo" className="text-[#0f3d68] hover:underline font-medium">SEO services</Link>
@@ -211,7 +266,8 @@ export default function WebsiteDesigningServicePage() {
       <PageCta
         title="Ready for a website or store quote?"
         description="Tell us your goals — we reply with scope, timeline, and a fixed price."
-        primaryHref="/contact?service=Business%20Website"
+        primaryLabel="Get a Free Quote"
+        primaryHref="/get-a-quote?service=Business%20website"
       />
     </div>
   );

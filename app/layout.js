@@ -3,6 +3,7 @@ import { Figtree } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import WhatsAppFloat from "./components/whatsapp-float";
 import { organization, webSite, stringifySchema } from "@/lib/schema";
 import { CORE_KEYWORDS, SITE_URL } from "@/lib/seo";
 
@@ -139,6 +140,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <main id="main-content" className="min-h-screen">
           {children}
         </main>
+        <WhatsAppFloat />
         <Footer />
       </body>
     </html>

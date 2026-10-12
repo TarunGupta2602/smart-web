@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { CONTACT_WHATSAPP_URL } from "@/lib/seo";
-import { leadLooksLikeSpam, trackLead } from "@/lib/lead";
+import { leadLooksLikeSpam, trackLead, trackWhatsApp } from "@/lib/lead";
 
 const WHATSAPP_HREF = `${CONTACT_WHATSAPP_URL}?text=${encodeURIComponent(
   "Hi, I need a website quote. My city is "
@@ -83,13 +83,13 @@ export default function QuoteForm({ service = "Business website" }) {
       {success ? <p className="text-sm text-[#0f3d68]">{success}</p> : null}
       <div className="flex flex-wrap gap-3">
         <button type="submit" disabled={loading} className="press rounded-md bg-[#0f3d68] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#0a2f52] disabled:opacity-60">
-          {loading ? "Sending…" : "Send for a fixed quote"}
+          {loading ? "Sending…" : "Get a Free Quote"}
         </button>
         <a
           href={WHATSAPP_HREF}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => trackLead("whatsapp")}
+          onClick={() => trackWhatsApp("quote_form")}
           className="press rounded-md border border-slate-300 px-5 py-2.5 text-sm font-medium text-slate-800 hover:border-slate-400"
         >
           WhatsApp Tarun

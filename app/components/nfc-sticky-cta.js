@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CONTACT_WHATSAPP_URL } from "@/lib/seo";
+import { trackWhatsApp } from "@/lib/lead";
 
 const WHATSAPP_HREF = `${CONTACT_WHATSAPP_URL}?text=${encodeURIComponent(
   "Hi, I want the NFC + QR digital menu pilot for my restaurant."
@@ -26,7 +27,7 @@ export default function NfcStickyCta() {
     >
       <div className="flex gap-2 max-w-lg mx-auto">
         <Link
-          href="/contact?service=NFC%20digital%20menu"
+          href="/get-a-quote?service=NFC%20digital%20menu"
           className="flex-1 inline-flex items-center justify-center py-3 rounded-md bg-[#0f3d68] text-white text-sm font-semibold"
         >
           Free pilot
@@ -35,6 +36,7 @@ export default function NfcStickyCta() {
           href={WHATSAPP_HREF}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsApp("nfc_sticky")}
           className="flex-1 inline-flex items-center justify-center py-3 rounded-md border border-slate-300 text-slate-800 text-sm font-medium"
         >
           WhatsApp
